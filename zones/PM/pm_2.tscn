@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://qen4ovexpt6n" path="res://props/common/interiors/door.tscn" id="2_4epon"]
 [ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://materials/Orange Texture.tres" id="2_laehp"]
 [ext_resource type="PackedScene" uid="uid://cgen42rr1eia1" path="res://props/common/zone_change.tscn" id="3_jl4re"]
-[ext_resource type="Script" path="res://lib/spawn_point.gd" id="6_vjmli"]
+[ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="6_vjmli"]
 
 [node name="PM2" type="Node3D"]
 script = ExtResource("1_8y2xd")

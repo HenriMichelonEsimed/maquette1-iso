@@ -5,7 +5,7 @@ extends Camera3D
 
 signal view_rotate(view:int)
 
-const positions = [ Vector3(-50, 70, 50), Vector3(-50,70,-50), Vector3(50,70,-50), Vector3(50,70,50) ]
+const positions = [ Vector3(-50, 70, 50), Vector3(-50,70,-50), Vector3(50,70,-50),  Vector3(50,70,50) ]
 const rotations = [ Vector3(-45, -45, 0), Vector3(-45,-135,0), Vector3(-45,-225,0), Vector3(-45,45,0) ]
 const accel = 2
 var camera_pivot

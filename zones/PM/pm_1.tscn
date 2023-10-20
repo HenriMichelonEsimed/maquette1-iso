@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b0cir47ek00ym"]
 
-[ext_resource type="Script" path="res://lib/spawn_point.gd" id="1_1chcy"]
+[ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="1_1chcy"]
 [ext_resource type="PackedScene" uid="uid://bui56f6v53gx4" path="res://zones/PM/ground.tscn" id="1_e58tr"]
 [ext_resource type="Script" path="res://zones/PM/pm_1.gd" id="1_oo6bp"]
 [ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://materials/Orange Texture.tres" id="2_i5k24"]

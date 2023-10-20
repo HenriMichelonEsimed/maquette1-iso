@@ -8,6 +8,10 @@ func _ready():
 	_on_change_zonelevel(state.current_zone_name, "default", false)
 	if (state.current_position != Vector3.ZERO):
 		_set_player_position(state.current_position, state.current_rotation)
+	PlayerInventory.add($Tool1)
+	PlayerInventory.add($UniqueTool1)
+	PlayerInventory.add($Tool1)
+	PlayerInventory.add($UniqueTool1)
 	
 func _set_player_position(pos:Vector3, rot:Vector3):
 	$Player.position = pos
@@ -16,8 +20,7 @@ func _set_player_position(pos:Vector3, rot:Vector3):
 
 func _on_change_zonelevel(zone_name:String, spawnpoint_key:String, save:bool=true):
 	state.current_zone_name = zone_name
-	if (current_scene != null):
-		remove_child(current_scene)
+	if (current_scene != null): remove_child(current_scene)
 	current_scene = load("res://zones/" + zone_name + ".tscn").instantiate()
 	current_scene.connect("change_zone", _on_change_zonelevel)
 	add_child(current_scene)
@@ -25,8 +28,7 @@ func _on_change_zonelevel(zone_name:String, spawnpoint_key:String, save:bool=tru
 		if (node is SpawnPoint and node.key == spawnpoint_key):
 			_set_player_position(node.position, node.rotation)
 			break
-	if (save):
-		_save()
+	if (save): _save()
 	
 func _on_button_quit_pressed():
 	_save()
