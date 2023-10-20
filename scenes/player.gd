@@ -6,6 +6,9 @@ var fall_acceleration = 80
 var target_velocity = Vector3.ZERO
 var last_collision = null
 var current_view = 0
+var item_to_collect:Item = null
+signal item_collectable(item:Item)
+signal item_collectable_reset()
 
 const directions = {
 	"forward" : 	[  { 'x':  1, 'z': -1 },  { 'x':  1, 'z':  1 },  { 'x': -1, 'z':  1 },  { 'x': -1, 'z': -1 } ],
@@ -13,6 +16,11 @@ const directions = {
 	"backward" : 	[  { 'x': -1, 'z':  1 },  { 'x': -1, 'z': -1 },  { 'x':  1, 'z': -1 },  { 'x':  1, 'z':  1 } ],
 	"right" : 		[  { 'x':  1, 'z':  1 },  { 'x': -1, 'z':  1 },  { 'x': -1, 'z': -1 },  { 'x':  1, 'z': -1 } ]
 }
+
+func _process(delta):
+	if (item_to_collect != null and Input.is_action_just_pressed("player_use")):
+		PlayerInventory.add(item_to_collect.duplicate())
+		item_to_collect.queue_free()
 
 func _physics_process(delta):
 	if (GameState.paused): return
@@ -63,6 +71,13 @@ func _physics_process(delta):
 	velocity = target_velocity
 	move_and_slide()
 
-
 func _on_camera_view_rotate(view:int):
 	current_view = view
+
+func _on_collect_item_aera_body_entered(item):
+	item_to_collect = item
+	item_collectable.emit(item)
+
+func _on_collect_item_aera_body_exited(body):
+	item_to_collect = null
+	item_collectable_reset.emit()

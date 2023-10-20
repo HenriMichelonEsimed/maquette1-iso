@@ -1,6 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bamoxutsna6sx"]
+[gd_scene load_steps=5 format=3 uid="uid://bamoxutsna6sx"]
 
 [ext_resource type="Script" path="res://scenes/inventory_screen.gd" id="1_0hce1"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_fyb42"]
+button_index = 1
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_ptj7n"]
+events = [SubResource("InputEventJoypadButton_fyb42")]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gicgb"]
 font_size = 34
@@ -38,6 +45,7 @@ theme_override_constants/separation = 20
 [node name="ButtonBack" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
+shortcut = SubResource("Shortcut_ptj7n")
 text = "<-"
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
@@ -45,31 +53,72 @@ layout_mode = 2
 text = "Inventory"
 label_settings = SubResource("LabelSettings_gicgb")
 
-[node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
+[node name="Tabs" type="TabContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 
-[node name="Tools" type="TabBar" parent="VBoxContainer/TabContainer"]
+[node name="Tools" type="Control" parent="VBoxContainer/Tabs"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 
-[node name="Clothes" type="TabBar" parent="VBoxContainer/TabContainer"]
+[node name="List" type="ItemList" parent="VBoxContainer/Tabs/Tools"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_columns = 3
+
+[node name="Clothes" type="Control" parent="VBoxContainer/Tabs"]
 visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 
-[node name="Consumables" type="TabBar" parent="VBoxContainer/TabContainer"]
+[node name="List" type="ItemList" parent="VBoxContainer/Tabs/Clothes"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_columns = 3
+
+[node name="Consumables" type="Control" parent="VBoxContainer/Tabs"]
 visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 
-[node name="Ammunitions" type="TabBar" parent="VBoxContainer/TabContainer"]
+[node name="List" type="ItemList" parent="VBoxContainer/Tabs/Consumables"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_columns = 2
+
+[node name="Ammunitions" type="Control" parent="VBoxContainer/Tabs"]
 visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 
-[node name="Miscellaneous" type="TabBar" parent="VBoxContainer/TabContainer"]
+[node name="List" type="ItemList" parent="VBoxContainer/Tabs/Ammunitions"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_columns = 2
+
+[node name="Miscellaneous" type="Control" parent="VBoxContainer/Tabs"]
 visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+
+[node name="List" type="ItemList" parent="VBoxContainer/Tabs/Miscellaneous"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_columns = 2
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2020jb1cp5mf"]
+
+[ext_resource type="Script" path="res://lib/nodes/item_tool.gd" id="1_2su7a"]
+[ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://materials/Orange Texture.tres" id="2_qo3qq"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ox2lj"]
+material = ExtResource("2_qo3qq")
+top_radius = 0.01
+bottom_radius = 0.01
+height = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dmcqr"]
+
+[node name="ItemTool" type="CharacterBody3D"]
+script = ExtResource("1_2su7a")
+key = "ironbar1"
+label = "Iron Bar"
+weight = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_ox2lj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-6.89377e-10, -0.497004, 0, 0.0157711, -2.17247e-08, 0, 0, 0, 0.0222558, 0, 0, 0)
+shape = SubResource("CylinderShape3D_dmcqr")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.259338, -1.49012e-07, 0)

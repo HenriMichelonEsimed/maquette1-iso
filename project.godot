@@ -100,6 +100,10 @@ cancel={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_2="items"
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 1)

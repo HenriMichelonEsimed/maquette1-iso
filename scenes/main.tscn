@@ -1,14 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://dyj5pxcv4nq84"]
+[gd_scene load_steps=7 format=3 uid="uid://dyj5pxcv4nq84"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_4sx3e"]
 [ext_resource type="PackedScene" uid="uid://drr16dfcqhfyw" path="res://scenes/player.tscn" id="1_hswq3"]
-[ext_resource type="Script" path="res://lib/nodes/item_miscellaneous.gd" id="1_ju6t3"]
 [ext_resource type="Script" path="res://scenes/camera.gd" id="2_b0j3s"]
 [ext_resource type="Environment" uid="uid://730uhqlxrn44" path="res://env.tres" id="2_dhum8"]
-[ext_resource type="Script" path="res://lib/nodes/item_tool.gd" id="5_h30jr"]
-[ext_resource type="Script" path="res://lib/nodes/item_clothe.gd" id="7_ovlhx"]
-[ext_resource type="Script" path="res://lib/nodes/item_consumable.gd" id="8_2db6b"]
-[ext_resource type="Script" path="res://lib/nodes/item_ammunition.gd" id="9_bmj3k"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_eow7v"]
+button_index = 4
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_v3gv7"]
+events = [SubResource("InputEventJoypadButton_eow7v")]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_4sx3e")
@@ -48,36 +50,23 @@ text = "Quit"
 
 [node name="ButtonInventory" type="Button" parent="Game/UI/HBoxContainer"]
 layout_mode = 2
+shortcut = SubResource("Shortcut_v3gv7")
 text = "Inventory"
+
+[node name="LabelItem" type="Label" parent="Game/UI"]
+visible = false
+layout_mode = 0
+offset_left = 484.0
+offset_top = 564.0
+offset_right = 733.0
+offset_bottom = 598.0
+theme_override_font_sizes/font_size = 24
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_dhum8")
 
-[node name="ItemTool" type="Node3D" parent="."]
-script = ExtResource("5_h30jr")
-key = "tool1"
-label = "Outil"
-
-[node name="ItemMiscellaneous" type="Node3D" parent="."]
-script = ExtResource("1_ju6t3")
-key = "truc1"
-label = "Truc"
-
-[node name="ItemClothes" type="Node3D" parent="."]
-script = ExtResource("7_ovlhx")
-key = "clothe1"
-label = "Manteau"
-
-[node name="ItemConsumable" type="Node3D" parent="."]
-script = ExtResource("8_2db6b")
-key = "medoc1"
-label = "Médoc"
-
-[node name="ItemAmmunition" type="Node3D" parent="."]
-script = ExtResource("9_bmj3k")
-key = "10mm"
-label = "Munition 10mm"
-
+[connection signal="item_collectable" from="Game/Player" to="." method="_on_player_item_collectable"]
+[connection signal="item_collectable_reset" from="Game/Player" to="." method="_on_player_item_collectable_reset"]
 [connection signal="view_rotate" from="Game/CameraPivot/Camera" to="Game/Player" method="_on_camera_view_rotate"]
 [connection signal="pressed" from="Game/UI/HBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
 [connection signal="pressed" from="Game/UI/HBoxContainer/ButtonInventory" to="." method="_on_button_inventory_pressed"]

@@ -8,14 +8,6 @@ func _ready():
 	_on_change_zonelevel(state.zone_name, "default", false)
 	if (state.position != Vector3.ZERO):
 		_set_player_position(state.position, state.rotation)
-	PlayerInventory.add($ItemMiscellaneous)
-	PlayerInventory.add($ItemMiscellaneous)
-	PlayerInventory.add($ItemTool)
-	PlayerInventory.add($ItemTool)
-	PlayerInventory.add($ItemClothes)
-	PlayerInventory.add($ItemConsumable)
-	for i in range(10) : PlayerInventory.add($ItemAmmunition)
-	_on_button_inventory_pressed()
 	
 func _set_player_position(pos:Vector3, rot:Vector3):
 	$Game/Player.position = pos
@@ -50,7 +42,6 @@ func _on_button_inventory_pressed():
 	add_child(scene)
 	scene.connect("close", _on_resume)
 	
-	
 func _on_pause():
 	GameState.paused = true
 	_save()
@@ -69,3 +60,12 @@ class MainState extends State:
 	var rotation:Vector3 = Vector3.ZERO
 	func _init():
 		super("main")
+
+func _on_player_item_collectable(item:Item):
+	$Game/UI/LabelItem.visible = true
+	$Game/UI/LabelItem.text = item.label
+
+
+func _on_player_item_collectable_reset():
+	$Game/UI/LabelItem.visible = false
+	$Game/UI/LabelItem.text = ''

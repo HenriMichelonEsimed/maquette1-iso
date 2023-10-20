@@ -1,15 +1,21 @@
 extends Node
 class_name ItemsCollection
 
-var entries =[]
+var _entries =[]
 
 func add(item:Item):
 	if (item.type in [ Item.ItemType.ITEM_CONSUMABLES, Item.ItemType.ITEM_AMMUNITIONS, Item.ItemType.ITEM_MISCELLANEOUS ]):
-		var found = entries.filter(func(entry): return entry.item.key == item.key)
+		var found = _entries.filter(func(entry): return entry.item.key == item.key)
 		if (found.size() > 0):
 			found[0].quantity += 1
 			return
-	entries.push_back(ItemEntry.new(item, 1))
+	_entries.push_back(ItemEntry.new(item, 1))
+	
+func get_bytype(type:Item.ItemType) -> Array:
+	return _entries.filter(func(e) : return e.item.type == type)
+	
+func count():
+	return _entries.size()
 
 class ItemEntry:
 	var item:Item
