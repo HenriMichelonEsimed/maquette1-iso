@@ -5,22 +5,30 @@ var jump_impulse = 15
 var fall_acceleration = 80
 var target_velocity = Vector3.ZERO
 var last_collision = null
+var current_view = 0
+
+const directions = {
+	"forward" : 	[  { 'x':  1, 'z': -1 },  { 'x':  1, 'z':  1 },  { 'x': -1, 'z':  1 },  { 'x': -1, 'z': -1 } ],
+	"left" : 		[  { 'x': -1, 'z': -1 },  { 'x':  1, 'z': -1 },  { 'x':  1, 'z':  1 },  { 'x': -1, 'z':  1 } ],
+	"backward" : 	[  { 'x': -1, 'z':  1 },  { 'x': -1, 'z': -1 },  { 'x':  1, 'z': -1 },  { 'x':  1, 'z':  1 } ],
+	"right" : 		[  { 'x':  1, 'z':  1 },  { 'x': -1, 'z':  1 },  { 'x': -1, 'z': -1 },  { 'x':  1, 'z': -1 } ]
+}
 
 func _physics_process(delta):
 	var no_jump = false
 	var direction = Vector3.ZERO
 	if Input.is_action_pressed("player_right"):
-		direction.x += 1
-		direction.z += 1
+		direction.x += directions["right"][current_view].x
+		direction.z += directions["right"][current_view].z
 	if Input.is_action_pressed("player_left"):
-		direction.x -= 1
-		direction.z -= 1
+		direction.x += directions["left"][current_view].x
+		direction.z += directions["left"][current_view].z
 	if Input.is_action_pressed("player_backward"):
-		direction.z += 1
-		direction.x -= 1
+		direction.x += directions["backward"][current_view].x
+		direction.z += directions["backward"][current_view].z
 	if Input.is_action_pressed("player_forward"):
-		direction.z -= 1
-		direction.x += 1
+		direction.x += directions["forward"][current_view].x
+		direction.z += directions["forward"][current_view].z
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
 		look_at(position + direction, Vector3.UP)
@@ -53,3 +61,7 @@ func _physics_process(delta):
 	
 	velocity = target_velocity
 	move_and_slide()
+
+
+func _on_camera_view_rotate(view:int):
+	current_view = view
