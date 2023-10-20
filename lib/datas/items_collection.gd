@@ -4,7 +4,7 @@ class_name ItemsCollection
 var entries =[]
 
 func add(item:Item):
-	if (!item.is_unique):
+	if (item.type in [ Item.ItemType.ITEM_CONSUMABLES, Item.ItemType.ITEM_AMMUNITIONS, Item.ItemType.ITEM_MISCELLANEOUS ]):
 		var found = entries.filter(func(entry): return entry.item.key == item.key)
 		if (found.size() > 0):
 			found[0].quantity += 1
