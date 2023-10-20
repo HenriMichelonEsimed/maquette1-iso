@@ -10,9 +10,6 @@ func add(item:Item):
 			found[0].quantity += 1
 			return
 	entries.push_back(ItemEntry.new(item, 1))
-	print('-----------------------------')
-	for e in entries:
-		print(str(e.quantity) + "x " + e.item.label)
 
 class ItemEntry:
 	var item:Item

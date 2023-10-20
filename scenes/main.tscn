@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_4sx3e"]
 [ext_resource type="PackedScene" uid="uid://drr16dfcqhfyw" path="res://scenes/player.tscn" id="1_hswq3"]
+[ext_resource type="Script" path="res://lib/nodes/item_miscellaneous.gd" id="1_ju6t3"]
 [ext_resource type="Script" path="res://scenes/camera.gd" id="2_b0j3s"]
 [ext_resource type="Environment" uid="uid://730uhqlxrn44" path="res://env.tres" id="2_dhum8"]
-[ext_resource type="Script" path="res://lib/nodes/item.gd" id="5_nh2cl"]
-[ext_resource type="Script" path="res://lib/nodes/item_canwearout.gd" id="6_po625"]
+[ext_resource type="Script" path="res://lib/nodes/item_tool.gd" id="5_h30jr"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_4sx3e")
@@ -41,20 +41,15 @@ offset_right = 8.0
 offset_bottom = 8.0
 text = "Quit"
 
-[node name="Thing1" type="Node3D" parent="."]
-visible = false
-script = ExtResource("5_nh2cl")
-key = "thing1"
-label = "Truc 1"
-weight = 2
-type = 5
-
-[node name="Tool1" type="Node3D" parent="."]
-script = ExtResource("6_po625")
-wear = 50
+[node name="ItemTool" type="Node3D" parent="."]
+script = ExtResource("5_h30jr")
 key = "tool1"
-label = "Outils qui s'use 1"
-weight = 3
+label = "Outil"
+
+[node name="ItemMiscellaneous" type="Node3D" parent="."]
+script = ExtResource("1_ju6t3")
+key = "truc1"
+label = "Truc"
 
 [connection signal="view_rotate" from="CameraPivot/Camera" to="Player" method="_on_camera_view_rotate"]
 [connection signal="pressed" from="UI/ButtonQuit" to="." method="_on_button_quit_pressed"]

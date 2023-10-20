@@ -52,11 +52,6 @@ spawnpoint_key = "ladder"
 [node name="Door2" parent="." instance=ExtResource("5_iomyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.6276)
 
-[node name="Door3" parent="." instance=ExtResource("5_iomyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.356, 0, 0)
-
-[node name="Door" parent="." instance=ExtResource("5_iomyc")]
-
 [node name="SpawnPointDefault" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.04492, 0, -5.74768)
 script = ExtResource("1_1chcy")

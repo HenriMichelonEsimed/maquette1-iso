@@ -8,10 +8,10 @@ func _ready():
 	_on_change_zonelevel(state.current_zone_name, "default", false)
 	if (state.current_position != Vector3.ZERO):
 		_set_player_position(state.current_position, state.current_rotation)
-	PlayerInventory.add($Thing1)
-	PlayerInventory.add($Tool1)
-	PlayerInventory.add($Thing1)
-	PlayerInventory.add($Tool1)
+	PlayerInventory.add($ItemMiscellaneous)
+	PlayerInventory.add($ItemMiscellaneous)
+	PlayerInventory.add($ItemTool)
+	PlayerInventory.add($ItemTool)
 	
 func _set_player_position(pos:Vector3, rot:Vector3):
 	$Player.position = pos
