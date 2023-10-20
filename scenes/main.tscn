@@ -37,17 +37,17 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ButtonQuit" type="Button" parent="Game/UI"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Game/UI"]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ButtonQuit" type="Button" parent="Game/UI/HBoxContainer"]
+layout_mode = 2
 text = "Quit"
 
-[node name="ButtonInventory" type="Button" parent="Game/UI"]
-layout_mode = 0
-offset_left = 53.0
-offset_right = 136.0
-offset_bottom = 31.0
+[node name="ButtonInventory" type="Button" parent="Game/UI/HBoxContainer"]
+layout_mode = 2
 text = "Inventory"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -79,5 +79,5 @@ key = "10mm"
 label = "Munition 10mm"
 
 [connection signal="view_rotate" from="Game/CameraPivot/Camera" to="Game/Player" method="_on_camera_view_rotate"]
-[connection signal="pressed" from="Game/UI/ButtonQuit" to="." method="_on_button_quit_pressed"]
-[connection signal="pressed" from="Game/UI/ButtonInventory" to="." method="_on_button_inventory_pressed"]
+[connection signal="pressed" from="Game/UI/HBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="Game/UI/HBoxContainer/ButtonInventory" to="." method="_on_button_inventory_pressed"]

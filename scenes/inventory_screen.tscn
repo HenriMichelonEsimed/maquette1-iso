@@ -14,20 +14,62 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0hce1")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 144.0
-offset_top = 4.0
-offset_right = 315.0
-offset_bottom = 59.0
-text = "Inventory"
-label_settings = SubResource("LabelSettings_gicgb")
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.137255, 0.313726, 0.380392, 1)
 
-[node name="ButtonBack" type="Button" parent="."]
-layout_mode = 0
-offset_right = 78.0
-offset_bottom = 55.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ButtonBack" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 34
 text = "<-"
 
-[connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Inventory"
+label_settings = SubResource("LabelSettings_gicgb")
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Tools" type="TabBar" parent="VBoxContainer/TabContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+
+[node name="Clothes" type="TabBar" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+
+[node name="Consumables" type="TabBar" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+
+[node name="Ammunitions" type="TabBar" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+
+[node name="Miscellaneous" type="TabBar" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]

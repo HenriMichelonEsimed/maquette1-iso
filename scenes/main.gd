@@ -15,6 +15,7 @@ func _ready():
 	PlayerInventory.add($ItemClothes)
 	PlayerInventory.add($ItemConsumable)
 	for i in range(10) : PlayerInventory.add($ItemAmmunition)
+	_on_button_inventory_pressed()
 	
 func _set_player_position(pos:Vector3, rot:Vector3):
 	$Game/Player.position = pos
