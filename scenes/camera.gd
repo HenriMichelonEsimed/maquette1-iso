@@ -2,44 +2,61 @@ extends Camera3D
 
 @export var cameraPivotPath: NodePath
 @export var objectToFollowPath: NodePath
-@onready var cameraPivot = get_node(cameraPivotPath)
-@onready var objectToFollow = get_node(objectToFollowPath)
+
 signal view_rotate(view:int)
 
-var accel = 2
-const defaultSize = 30
 const positions = [ Vector3(-50, 70, 50), Vector3(-50,70,-50), Vector3(50,70,-50), Vector3(50,70,50) ]
 const rotations = [ Vector3(-45, -45, 0), Vector3(-45,-135,0), Vector3(-45,-225,0), Vector3(-45,45,0) ]
-var current_view = 0
+const accel = 2
+var camera_pivot
+var object_to_follow
+var state = CameraState.new()
 
 func _ready():
-	size = defaultSize
-	_rotate_view(current_view)
+	camera_pivot = get_node(cameraPivotPath)
+	object_to_follow = get_node(objectToFollowPath)
+	StateSaver.loadState(state)
+	_zoom_view()
+	_rotate_view()
 
 func move(pos):
-	cameraPivot.position = pos
+	camera_pivot.position = pos
 
 func _process(delta):
-	cameraPivot.position = cameraPivot.position.lerp(objectToFollow.position, delta * accel)
+	camera_pivot.position = camera_pivot.position.lerp(object_to_follow.position, delta * accel)
 	if Input.is_action_pressed("view_zoomin") or Input.is_action_just_released("view_zoomin"):
-		size -= 1
+		state.size -= 1
+		_zoom_view()
 	elif Input.is_action_pressed("view_zoomout") or Input.is_action_just_released("view_zoomout"):
-		size += 1
-	if (size < 10): 
-		size = 10
-	elif (size > 60):
-		size = 60
+		state.size += 1
+		_zoom_view()
 	if Input.is_action_just_released("view_rotate_left"):
-		current_view += 1
-		if (current_view > 3) : current_view = 0
-		_rotate_view(current_view)
+		state.view += 1
+		_rotate_view()
 	elif Input.is_action_just_released("view_rotate_right"):
-		current_view -= 1
-		if (current_view < 0) : current_view = 3
-		_rotate_view(current_view)
+		state.view -= 1
+		_rotate_view()
+		
+func _zoom_view():
+	if (state.size < 10): 
+		state.size = 10
+	elif (state.size > 60):
+		state.size = 60
+	size = state.size
+	StateSaver.saveState(state)
 
-func _rotate_view(view:int):
-	current_view = view
-	position = positions[current_view]
-	rotation_degrees = rotations[current_view]
-	view_rotate.emit(current_view)
+func _rotate_view():
+	if (state.view > 3): 
+		state.view = 0
+	elif (state.view < 0):
+		state.view = 3
+	position = positions[state.view]
+	rotation_degrees = rotations[state.view]
+	view_rotate.emit(state.view)
+	StateSaver.saveState(state)
+
+class CameraState extends State:
+	var size:int = 30
+	var view:int = 0
+	func _init():
+		super("camera")
