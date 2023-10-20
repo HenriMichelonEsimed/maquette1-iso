@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgen42rr1eia1"]
+
+[ext_resource type="Script" path="res://props/common/zone_change.gd" id="1_mruye"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qxt7s"]
+size = Vector3(4, 2, 0.25)
+
+[node name="ZoneChange" type="StaticBody3D" groups=["triggers"]]
+script = ExtResource("1_mruye")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+use_collision = true
+size = Vector3(4, 0.25, 4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3.56)
+shape = SubResource("BoxShape3D_qxt7s")

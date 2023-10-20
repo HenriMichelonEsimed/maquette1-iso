@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bui56f6v53gx4"]
+
+[ext_resource type="Material" uid="uid://k5r36wixdaow" path="res://materials/Dark Texture.tres" id="1_4mir4"]
+
+[node name="Ground" type="CSGCombiner3D"]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+size = Vector3(50, 4, 50)
+material = ExtResource("1_4mir4")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+operation = 2
+size = Vector3(45, 3, 45)
+material = ExtResource("1_4mir4")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7501, 0.50576, 20.4964)
+operation = 2
+size = Vector3(3, 3, 4)
+material = ExtResource("1_4mir4")

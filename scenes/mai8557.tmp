@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyj5pxcv4nq84"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_4sx3e"]
+[ext_resource type="PackedScene" uid="uid://drr16dfcqhfyw" path="res://scenes/player.tscn" id="1_hswq3"]
+[ext_resource type="Script" path="res://scenes/camera.gd" id="2_b0j3s"]
+[ext_resource type="Environment" uid="uid://730uhqlxrn44" path="res://env.tres" id="2_dhum8"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_4sx3e")
+
+[node name="Player" parent="." instance=ExtResource("1_hswq3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.87189, 0.489702, 0, -0.489702, 0.87189, -25.492, 7.255, 13.5761)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_dhum8")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+
+[node name="Camera" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -50, 70, 50)
+projection = 1
+current = true
+size = 30.0
+far = 1500.0
+script = ExtResource("2_b0j3s")
+cameraPivotPath = NodePath("..")
+objectToFollowPath = NodePath("../../Player")

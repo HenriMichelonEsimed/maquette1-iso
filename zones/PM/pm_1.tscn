@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0cir47ek00ym"]
+
+[ext_resource type="Script" path="res://lib/spawn_point.gd" id="1_1chcy"]
+[ext_resource type="PackedScene" uid="uid://bui56f6v53gx4" path="res://zones/PM/ground.tscn" id="1_e58tr"]
+[ext_resource type="Script" path="res://zones/PM/pm_1.gd" id="1_oo6bp"]
+[ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://materials/Orange Texture.tres" id="2_i5k24"]
+[ext_resource type="PackedScene" uid="uid://bqqwxekreebdl" path="res://props/common/interiors/stair.tscn" id="3_xmas2"]
+[ext_resource type="PackedScene" uid="uid://cgen42rr1eia1" path="res://props/common/zone_change.tscn" id="4_1n3s5"]
+[ext_resource type="PackedScene" uid="uid://dqqa6le6bjss6" path="res://props/common/interiors/ladder.tscn" id="4_8ega4"]
+[ext_resource type="PackedScene" uid="uid://qen4ovexpt6n" path="res://props/common/interiors/door.tscn" id="5_iomyc"]
+
+[node name="PM1" type="Node3D"]
+script = ExtResource("1_oo6bp")
+
+[node name="Ground" parent="." instance=ExtResource("1_e58tr")]
+
+[node name="Level" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.99643, 0.5, 9.67444)
+use_collision = true
+
+[node name="Box1" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.517, 0, 1.923)
+size = Vector3(1, 1, 20)
+material = ExtResource("2_i5k24")
+
+[node name="Box3" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.373, 0, 4.059)
+size = Vector3(10, 1, 1)
+material = ExtResource("2_i5k24")
+
+[node name="Box2" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.741, 0, -9.376)
+material = ExtResource("2_i5k24")
+
+[node name="Stair" parent="." instance=ExtResource("3_xmas2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.09238, 0.0131226, -7.07043)
+
+[node name="Upstair" parent="Stair" instance=ExtResource("4_1n3s5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.99843, -3.73473)
+zone_name = "PM/pm_2"
+spawnpoint_key = "stairs"
+
+[node name="Ladder" parent="." instance=ExtResource("4_8ega4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8354, 0, -17.1998)
+
+[node name="Upstair" parent="Ladder" instance=ExtResource("4_1n3s5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0047, 3.84908, 0)
+zone_name = "PM/pm_2"
+spawnpoint_key = "ladder"
+
+[node name="Door2" parent="." instance=ExtResource("5_iomyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.6276)
+
+[node name="Door3" parent="." instance=ExtResource("5_iomyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.356, 0, 0)
+
+[node name="Door" parent="." instance=ExtResource("5_iomyc")]
+
+[node name="SpawnPointDefault" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.04492, 0, -5.74768)
+script = ExtResource("1_1chcy")
+key = "default"
+
+[node name="SpawnPointStairsFromPM2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6934, 4.21909, -7.28302)
+script = ExtResource("1_1chcy")
+key = "stairs_pm2"
+
+[connection signal="triggered" from="Stair/Upstair" to="." method="on_zone_change"]
+[connection signal="triggered" from="Ladder/Upstair" to="." method="on_zone_change"]

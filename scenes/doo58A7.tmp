@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://yykbj33q183f"]
+
+[ext_resource type="Script" path="res://scenes/door.gd" id="1_tasci"]
+[ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://materials/Orange Texture.tres" id="2_akpix"]
+
+[node name="Door" type="CSGCombiner3D" groups=["doors"]]
+use_collision = true
+script = ExtResource("1_tasci")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+size = Vector3(4, 2, 0.2)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.225573, 0, 0, 0, 0.186631, 0, 0, 0, 0.180054, 1.52243, 1, 0.139404)
+material = ExtResource("2_akpix")
