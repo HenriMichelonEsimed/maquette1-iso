@@ -1,7 +1,7 @@
 extends Node
 class_name ItemsCollection
 
-var _entries =[]
+@export var _entries = []
 
 func add(item:Item):
 	if (item.type in [ Item.ItemType.ITEM_CONSUMABLES, Item.ItemType.ITEM_AMMUNITIONS, Item.ItemType.ITEM_MISCELLANEOUS ]):

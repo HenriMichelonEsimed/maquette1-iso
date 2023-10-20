@@ -4,8 +4,11 @@ class_name Saver
 const default_ext = ".state"
 const default_path = "user://datas/"
 
-const STATE_VARIANT = 0
-const STATE_USABLE = 1
+enum {
+ 	STATE_VARIANT = 0,
+	STATE_USABLE = 1,
+	STATE_STRINGARRAY = 2
+}
 
 func _ready():
 	DirAccess.make_dir_absolute(default_path)
@@ -30,6 +33,13 @@ func saveState(res:State):
 			file.store_8(STATE_VARIANT)
 			file.store_pascal_string(prop.name)
 			file.store_var(res.get(prop.name))
+		elif (prop.type == TYPE_ARRAY):
+			file.store_8(STATE_STRINGARRAY)
+			file.store_pascal_string(prop.name)
+			var arr = res.get(prop.name)
+			file.store_32(arr.size())
+			for v in arr:
+				file.store_pascal_string(v)
 	file.close()
 	
 func loadState(res:State):
@@ -40,13 +50,19 @@ func loadState(res:State):
 	while (!file.eof_reached()):
 		var entry_type = file.get_8()
 		var entry_name = file.get_pascal_string()
-		var entry_value = file.get_var()
 		if (entry_type == STATE_VARIANT):
-			res.set(entry_name, entry_value)
+			res.set(entry_name, file.get_var())
 		elif (parent != null and entry_type == STATE_USABLE):
-			if (entry_value):
+			if (file.get_var()):
 				var usable = parent.get_node_or_null(entry_name)
 				if (usable != null):
 					usable.use()
+		elif (parent != null and entry_type == STATE_STRINGARRAY):
+			var count = file.get_32()
+			var arr = []
+			for i in range(count):
+				arr.push_back(file.get_pascal_string())
+			res.set(entry_name, arr)
+				
 	file.close()
 		

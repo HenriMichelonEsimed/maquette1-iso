@@ -16,9 +16,12 @@ func _set_player_position(pos:Vector3, rot:Vector3):
 
 func _on_change_zonelevel(zone_name:String, spawnpoint_key:String, save:bool=true):
 	state.zone_name = zone_name
-	if (current_scene != null): $Game.remove_child(current_scene)
+	if (current_scene != null): 
+		$Player.disconnect("item_collected", current_scene.on_item_collected)
+		$Game.remove_child(current_scene)
 	current_scene = load("res://zones/" + zone_name + ".tscn").instantiate()
 	current_scene.connect("change_zone", _on_change_zonelevel)
+	$Game/Player.connect("item_collected", current_scene.on_item_collected)
 	$Game.add_child(current_scene)
 	for node in current_scene.get_children():
 		if (node is SpawnPoint and node.key == spawnpoint_key):
@@ -64,7 +67,6 @@ class MainState extends State:
 func _on_player_item_collectable(item:Item):
 	$Game/UI/LabelItem.visible = true
 	$Game/UI/LabelItem.text = item.label
-
 
 func _on_player_item_collectable_reset():
 	$Game/UI/LabelItem.visible = false

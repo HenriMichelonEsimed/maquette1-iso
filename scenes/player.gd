@@ -9,6 +9,7 @@ var current_view = 0
 var item_to_collect:Item = null
 signal item_collectable(item:Item)
 signal item_collectable_reset()
+signal item_collected(item:Item)
 
 const directions = {
 	"forward" : 	[  { 'x':  1, 'z': -1 },  { 'x':  1, 'z':  1 },  { 'x': -1, 'z':  1 },  { 'x': -1, 'z': -1 } ],
@@ -18,9 +19,10 @@ const directions = {
 }
 
 func _process(delta):
+	if (GameState.paused): return
 	if (item_to_collect != null and Input.is_action_just_pressed("player_use")):
 		PlayerInventory.add(item_to_collect.duplicate())
-		item_to_collect.queue_free()
+		item_collected.emit(item_to_collect)
 
 func _physics_process(delta):
 	if (GameState.paused): return
@@ -67,7 +69,6 @@ func _physics_process(delta):
 		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
 	if is_on_floor() and Input.is_action_just_pressed("player_jump") and !no_jump:
 		target_velocity.y = jump_impulse
-	
 	velocity = target_velocity
 	move_and_slide()
 

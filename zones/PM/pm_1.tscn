@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0cir47ek00ym"]
+[gd_scene load_steps=9 format=3 uid="uid://b0cir47ek00ym"]
 
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="1_1chcy"]
 [ext_resource type="PackedScene" uid="uid://bui56f6v53gx4" path="res://zones/PM/ground.tscn" id="1_e58tr"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bqqwxekreebdl" path="res://props/common/interiors/stair.tscn" id="3_xmas2"]
 [ext_resource type="PackedScene" uid="uid://cgen42rr1eia1" path="res://props/common/zone_change.tscn" id="4_1n3s5"]
 [ext_resource type="PackedScene" uid="uid://dqqa6le6bjss6" path="res://props/common/interiors/ladder.tscn" id="4_8ega4"]
-[ext_resource type="PackedScene" uid="uid://qen4ovexpt6n" path="res://props/common/interiors/door.tscn" id="5_iomyc"]
 [ext_resource type="PackedScene" uid="uid://c2020jb1cp5mf" path="res://props/items/tools/iron_bar_1.tscn" id="9_c6hly"]
 
 [node name="PM1" type="Node3D"]
@@ -49,9 +48,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8354, 0, -17.1998)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0047, 3.84908, 0)
 zone_name = "PM/pm_2"
 spawnpoint_key = "ladder"
-
-[node name="Door2" parent="." instance=ExtResource("5_iomyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.6276)
 
 [node name="SpawnPointDefault" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.04492, 0, -5.74768)
