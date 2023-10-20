@@ -5,44 +5,66 @@ var state = MainState.new()
 
 func _ready():
 	StateSaver.loadState(state)
-	_on_change_zonelevel(state.current_zone_name, "default", false)
-	if (state.current_position != Vector3.ZERO):
-		_set_player_position(state.current_position, state.current_rotation)
+	_on_change_zonelevel(state.zone_name, "default", false)
+	if (state.position != Vector3.ZERO):
+		_set_player_position(state.position, state.rotation)
 	PlayerInventory.add($ItemMiscellaneous)
 	PlayerInventory.add($ItemMiscellaneous)
 	PlayerInventory.add($ItemTool)
 	PlayerInventory.add($ItemTool)
+	PlayerInventory.add($ItemClothes)
+	PlayerInventory.add($ItemConsumable)
+	for i in range(10) : PlayerInventory.add($ItemAmmunition)
 	
 func _set_player_position(pos:Vector3, rot:Vector3):
-	$Player.position = pos
-	$Player.rotation = rot
-	$CameraPivot/Camera.move(pos)
+	$Game/Player.position = pos
+	$Game/Player.rotation = rot
+	$Game/CameraPivot/Camera.move(pos)
 
 func _on_change_zonelevel(zone_name:String, spawnpoint_key:String, save:bool=true):
-	state.current_zone_name = zone_name
-	if (current_scene != null): remove_child(current_scene)
+	state.zone_name = zone_name
+	if (current_scene != null): $Game.remove_child(current_scene)
 	current_scene = load("res://zones/" + zone_name + ".tscn").instantiate()
 	current_scene.connect("change_zone", _on_change_zonelevel)
-	add_child(current_scene)
+	$Game.add_child(current_scene)
 	for node in current_scene.get_children():
 		if (node is SpawnPoint and node.key == spawnpoint_key):
 			_set_player_position(node.position, node.rotation)
 			break
 	if (save): _save()
-	
+
+func _save():
+	state.position = $Game/Player.position
+	state.rotation = $Game/Player.rotation
+	StateSaver.saveState(state)
+	current_scene.save()
+
 func _on_button_quit_pressed():
 	_save()
 	get_tree().quit()
 
-func _save():
-	state.current_position = $Player.position
-	state.current_rotation = $Player.rotation
-	StateSaver.saveState(state)
-	current_scene.save()
+func _on_button_inventory_pressed():
+	_on_pause()
+	var scene = load("res://scenes/inventory_screen.tscn").instantiate()
+	add_child(scene)
+	scene.connect("close", _on_resume)
+	
+	
+func _on_pause():
+	GameState.paused = true
+	_save()
+	$Game/UI.visible = false
+	$Game.visible = false
+	
+func _on_resume(from:Node):
+	remove_child(from)
+	$Game/UI.visible = true
+	$Game.visible = true
+	GameState.paused = false
 
 class MainState extends State:
-	var current_zone_name:String = "PM/pm_1"
-	var current_position:Vector3 = Vector3.ZERO
-	var current_rotation:Vector3 = Vector3.ZERO
+	var zone_name:String = "PM/pm_1"
+	var position:Vector3 = Vector3.ZERO
+	var rotation:Vector3 = Vector3.ZERO
 	func _init():
 		super("main")

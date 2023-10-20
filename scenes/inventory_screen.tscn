@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://bamoxutsna6sx"]
+
+[ext_resource type="Script" path="res://scenes/inventory_screen.gd" id="1_0hce1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gicgb"]
+font_size = 34
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0hce1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 4.0
+offset_right = 315.0
+offset_bottom = 59.0
+text = "Inventory"
+label_settings = SubResource("LabelSettings_gicgb")
+
+[node name="ButtonBack" type="Button" parent="."]
+layout_mode = 0
+offset_right = 78.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 34
+text = "<-"
+
+[connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]

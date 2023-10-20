@@ -15,6 +15,7 @@ const directions = {
 }
 
 func _physics_process(delta):
+	if (GameState.paused): return
 	var no_jump = false
 	var direction = Vector3.ZERO
 	if Input.is_action_pressed("player_right"):
