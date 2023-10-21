@@ -36,10 +36,25 @@ func saveState(file:FileAccess):
 			file.store_8(entry.item.wear)
 	
 func loadState(file:FileAccess):
-	pass
-	
-
-
-
-
-
+	var count = file.get_64()
+	for i in range(count):
+		var qty = file.get_64()
+		var type = file.get_8()
+		var key = file.get_pascal_string()
+		var path = 'res://props/items/' + Item.scenes_path[type] + '/' + key + '.tscn'
+		var packed_scene = load(path)
+		if (packed_scene == null):
+			_skip_item(file, type)
+			continue
+		var item = packed_scene.instanciate()
+		if (item is ItemUnique):
+			item.label = file.get_pascal_string()
+			item.weight = file.get_16()
+			item.wear = file.get_8()
+		entries.push_back(ItemEntry.new(item, qty))
+		
+func _skip_item(file:FileAccess, type:int):
+	if (type in [Item.ItemType.ITEM_TOOL, Item.ItemType.ITEM_CLOTHES]):
+		file.get_pascal_string()
+		file.get_16()
+		file.get_8()

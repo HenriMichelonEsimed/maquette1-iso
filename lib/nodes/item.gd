@@ -2,12 +2,13 @@ extends CharacterBody3D
 class_name Item
 
 enum ItemType {
-	ITEM_TOOL			= 1,
-	ITEM_CLOTHES 		= 2,
-	ITEM_CONSUMABLES	= 3,
-	ITEM_AMMUNITIONS	= 4,
-	ITEM_MISCELLANEOUS	= 5
+	ITEM_TOOL			= 0,
+	ITEM_CLOTHES 		= 1,
+	ITEM_CONSUMABLES	= 2,
+	ITEM_AMMUNITIONS	= 3,
+	ITEM_MISCELLANEOUS	= 4
 	}
+const scenes_path = [ 'tools', 'clothes', 'consum', 'ammos', 'misc']
 
 @export var key:String
 @export var label:String
