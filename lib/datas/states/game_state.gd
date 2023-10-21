@@ -5,7 +5,7 @@ signal saving_end()
 
 var paused:bool = false
 var current_state_path = "autosave"
-var current_scene:Zone
+var current_zone:Zone
 var location = LocationState.new()
 var camera = CameraState.new()
 var inventory = ItemsCollection.new()
@@ -22,7 +22,7 @@ func saveGame():
 	StateSaver.saveState(location)
 	StateSaver.saveState(camera)
 	StateSaver.saveState(InventoryState.new(inventory))
-	StateSaver.saveState(current_scene.state)
+	StateSaver.saveState(current_zone.state)
 	saving_end.emit()
 	
 func loadGame():

@@ -9,7 +9,7 @@ func _ready():
 	_on_change_zonelevel(GameState.location.zone_name, "default", false)
 	if (GameState.location.position != Vector3.ZERO):
 		_set_player_position(GameState.location.position, GameState.location.rotation)
-	_on_button_inventory_pressed()
+	#_on_button_inventory_pressed()
 	
 func _process(delta):
 	if (GameState.paused): return
@@ -24,14 +24,14 @@ func _set_player_position(pos:Vector3, rot:Vector3):
 func _on_change_zonelevel(zone_name:String, spawnpoint_key:String, save:bool=true):
 	if (save): GameState.saveGame()
 	GameState.location.zone_name = zone_name
-	if (GameState.current_scene != null): 
-		GameState.player.disconnect("item_collected", GameState.current_scene.on_item_collected)
-		GameState.current_scene.queue_free()
-	GameState.current_scene = load("res://zones/" + zone_name + ".tscn").instantiate()
-	GameState.current_scene.connect("change_zone", _on_change_zonelevel)
-	GameState.player.connect("item_collected", GameState.current_scene.on_item_collected)
-	$Game.add_child(GameState.current_scene)
-	for node in GameState.current_scene.get_children():
+	if (GameState.current_zone != null): 
+		GameState.player.disconnect("item_collected", GameState.current_zone.on_item_collected)
+		GameState.current_zone.queue_free()
+	GameState.current_zone = load("res://zones/" + zone_name + ".tscn").instantiate()
+	GameState.current_zone.connect("change_zone", _on_change_zonelevel)
+	GameState.player.connect("item_collected", GameState.current_zone.on_item_collected)
+	$Game.add_child(GameState.current_zone)
+	for node in GameState.current_zone.get_children():
 		if (node is SpawnPoint and node.key == spawnpoint_key):
 			_set_player_position(node.position, node.rotation)
 			break

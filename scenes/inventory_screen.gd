@@ -6,6 +6,7 @@ class InventoryScreenState extends State:
 		super("inventory_screen")
 
 signal close(node:Node)
+signal item_dropped(item:Item)
 
 @export var tabs:TabContainer
 @export var list_tools:ItemList
@@ -42,6 +43,7 @@ func _ready():
 	StateSaver.loadState(state)
 	tabs.current_tab = state.tab
 	for type in list_content: _fill_list(type, list_content[type])
+	connect("item_dropped", GameState.current_zone.on_item_dropped)
 		
 func _on_button_back_pressed():
 	close.emit(self)
@@ -121,7 +123,8 @@ func _on_drop_pressed():
 	_fill_list(item.type, list_content[item.type])
 	item_content.visible = false
 	item.position = GameState.player.position
-	GameState.current_scene.add_child(item)
+	item.rotation = GameState.player.rotation
+	item_dropped.emit(item)
 	
 func _on_tabs_tab_selected(tab):
 	list = list_content[tab_order[tab]]
