@@ -28,7 +28,7 @@ func getall_bytype(type:Item.ItemType) -> Array:
 	return entries.filter(func(e) : return e.item.type == type)
 	
 func getone_bytype(index:int, type:Item.ItemType) -> ItemEntry:
-	return entries.filter(func(e) : return e.item.type == type)[index-1]
+	return entries.filter(func(e) : return e.item.type == type)[index]
 	
 func count():
 	return entries.size()

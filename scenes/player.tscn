@@ -11,7 +11,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_87ru7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_de22c"]
-size = Vector3(1.00647, 1.04662, 1.01722)
+size = Vector3(1.00647, 1.04662, 1.31316)
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_7my55")

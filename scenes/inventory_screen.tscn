@@ -149,6 +149,7 @@ size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_cq1op")
 
 [node name="Content" type="VBoxContainer" parent="Content/Body/Content/PanelItem"]
+visible = false
 layout_mode = 2
 
 [node name="Title" type="Label" parent="Content/Body/Content/PanelItem/Content"]
@@ -183,6 +184,7 @@ layout_mode = 2
 text = "Drop"
 
 [connection signal="pressed" from="Content/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
-[connection signal="tab_clicked" from="Content/Body/Content/Tabs" to="." method="_on_tabs_tab_clicked"]
+[connection signal="tab_changed" from="Content/Body/Content/Tabs" to="." method="_on_tabs_tab_changed"]
+[connection signal="tab_selected" from="Content/Body/Content/Tabs" to="." method="_on_tabs_tab_selected"]
 [connection signal="item_selected" from="Content/Body/Content/Tabs/Tools/ListTools" to="." method="_on_list_tools_item_selected"]
 [connection signal="pressed" from="Content/Body/Content/PanelItem/Content/Actions/Drop" to="." method="_on_drop_pressed"]
