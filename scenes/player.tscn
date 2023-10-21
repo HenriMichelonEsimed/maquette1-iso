@@ -30,12 +30,12 @@ shape = SubResource("CapsuleShape3D_wn53i")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.446956, -0.773112)
 shape = SubResource("SphereShape3D_87ru7")
 
-[node name="CollectItemAera" type="Area3D" parent="."]
-collision_mask = 2
+[node name="CollectAndUseArea" type="Area3D" parent="."]
+collision_mask = 6
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CollectItemAera"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollectAndUseArea"]
 transform = Transform3D(1, 0, 0, 0, 2.12122, 0, 0, 0, 1, 0, 0.190775, -0.724337)
 shape = SubResource("BoxShape3D_de22c")
 
-[connection signal="body_entered" from="CollectItemAera" to="." method="_on_collect_item_aera_body_entered"]
-[connection signal="body_exited" from="CollectItemAera" to="." method="_on_collect_item_aera_body_exited"]
+[connection signal="body_entered" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_entered"]
+[connection signal="body_exited" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_exited"]

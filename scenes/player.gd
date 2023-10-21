@@ -75,10 +75,12 @@ func _physics_process(delta):
 func _on_camera_view_rotate(view:int):
 	current_view = view
 
-func _on_collect_item_aera_body_entered(item):
-	item_to_collect = item
-	item_collectable.emit(item)
+func _on_collect_item_aera_body_entered(node:Node):
+	if (node is Item):
+		item_to_collect = node
+		item_collectable.emit(node)
 
-func _on_collect_item_aera_body_exited(body):
-	item_to_collect = null
-	item_collectable_reset.emit()
+func _on_collect_item_aera_body_exited(node:Node):
+	if (node is Item):
+		item_to_collect = null
+		item_collectable_reset.emit()

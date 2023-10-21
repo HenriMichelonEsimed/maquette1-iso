@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bamoxutsna6sx"]
+[gd_scene load_steps=6 format=3 uid="uid://bamoxutsna6sx"]
 
 [ext_resource type="Script" path="res://scenes/inventory_screen.gd" id="1_0hce1"]
 
@@ -6,8 +6,12 @@
 button_index = 1
 pressed = true
 
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_xglff"]
+button_index = 4
+pressed = true
+
 [sub_resource type="Shortcut" id="Shortcut_ptj7n"]
-events = [SubResource("InputEventJoypadButton_fyb42")]
+events = [SubResource("InputEventJoypadButton_fyb42"), SubResource("InputEventJoypadButton_xglff")]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gicgb"]
 font_size = 34
@@ -122,3 +126,4 @@ grow_vertical = 2
 max_columns = 2
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="tab_changed" from="VBoxContainer/Tabs" to="." method="_on_tabs_tab_changed"]

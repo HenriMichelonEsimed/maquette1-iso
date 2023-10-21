@@ -57,13 +57,6 @@ func _on_resume(from:Node):
 	$Game.visible = true
 	GameState.paused = false
 
-class MainState extends State:
-	var zone_name:String = "PM/pm_1"
-	var position:Vector3 = Vector3.ZERO
-	var rotation:Vector3 = Vector3.ZERO
-	func _init():
-		super("main")
-
 func _on_player_item_collectable(item:Item):
 	$Game/UI/LabelItem.visible = true
 	$Game/UI/LabelItem.text = item.label
@@ -71,3 +64,10 @@ func _on_player_item_collectable(item:Item):
 func _on_player_item_collectable_reset():
 	$Game/UI/LabelItem.visible = false
 	$Game/UI/LabelItem.text = ''
+
+class MainState extends State:
+	var zone_name:String = "PM/pm_1"
+	var position:Vector3 = Vector3.ZERO
+	var rotation:Vector3 = Vector3.ZERO
+	func _init():
+		super("main")
