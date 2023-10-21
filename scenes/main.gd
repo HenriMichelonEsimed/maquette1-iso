@@ -10,6 +10,11 @@ func _ready():
 	if (GameState.location.position != Vector3.ZERO):
 		_set_player_position(GameState.location.position, GameState.location.rotation)
 	
+func _process(delta):
+	if (GameState.paused): return
+	if Input.is_action_just_pressed("player_inventory"):
+		_on_button_inventory_pressed()
+	
 func _set_player_position(pos:Vector3, rot:Vector3):
 	GameState.player.position = pos
 	GameState.player.rotation = rot

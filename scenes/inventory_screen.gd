@@ -23,8 +23,9 @@ func _on_button_back_pressed():
 	queue_free()
 
 func _process(_delta):
-	if (Input.is_action_just_pressed("cancel")):
+	if (Input.is_action_just_pressed("player_inventory")):
 		_on_button_back_pressed()
+		return
 	state.tab = $VBoxContainer/Tabs.current_tab
 	if Input.is_action_just_pressed("shortcut_left"):
 		state.tab -= 1

@@ -29,42 +29,56 @@ objectToFollowPath = NodePath("../../Player")
 
 [node name="UI" type="Control" parent="Game"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Game/UI"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="TopMenu" type="HBoxContainer" parent="Game/UI"]
+layout_mode = 2
+offset_right = 177.0
+offset_bottom = 31.0
+size_flags_horizontal = 0
+theme_override_constants/separation = 20
 
-[node name="ButtonQuit" type="Button" parent="Game/UI/HBoxContainer"]
+[node name="ButtonQuit" type="Button" parent="Game/UI/TopMenu"]
 layout_mode = 2
 text = "Save&Quit"
 
-[node name="ButtonInventory" type="Button" parent="Game/UI/HBoxContainer"]
+[node name="ButtonInventory" type="Button" parent="Game/UI/TopMenu"]
 layout_mode = 2
 text = "Inventory"
 
 [node name="LabelInfo" type="Label" parent="Game/UI"]
 visible = false
-layout_mode = 0
-offset_left = 484.0
-offset_top = 564.0
-offset_right = 733.0
-offset_bottom = 598.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -37.0
+offset_right = 23.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_font_sizes/font_size = 24
+text = "Info"
+horizontal_alignment = 1
 
 [node name="LabelSaving" type="Label" parent="Game/UI"]
 visible = false
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 3.404
-anchor_bottom = 2.436
-offset_left = 1208.0
-offset_top = 570.0
-offset_right = 1135.84
-offset_bottom = 498.56
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -26.0
+grow_horizontal = 0
+grow_vertical = 0
 text = "Saving..."
 
 [node name="Timer" type="Timer" parent="Game/UI/LabelSaving"]
@@ -77,6 +91,6 @@ environment = ExtResource("2_dhum8")
 [connection signal="display_info" from="Game/Player" to="." method="_on_display_info"]
 [connection signal="hide_info" from="Game/Player" to="." method="_on_hide_info"]
 [connection signal="view_rotate" from="Game/CameraPivot/Camera" to="Game/Player" method="_on_camera_view_rotate"]
-[connection signal="pressed" from="Game/UI/HBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
-[connection signal="pressed" from="Game/UI/HBoxContainer/ButtonInventory" to="." method="_on_button_inventory_pressed"]
+[connection signal="pressed" from="Game/UI/TopMenu/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="Game/UI/TopMenu/ButtonInventory" to="." method="_on_button_inventory_pressed"]
 [connection signal="timeout" from="Game/UI/LabelSaving/Timer" to="." method="_on_saving_timer_timeout"]

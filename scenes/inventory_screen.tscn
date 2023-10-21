@@ -1,13 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bamoxutsna6sx"]
+[gd_scene load_steps=3 format=3 uid="uid://bamoxutsna6sx"]
 
 [ext_resource type="Script" path="res://scenes/inventory_screen.gd" id="1_0hce1"]
-
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_xglff"]
-button_index = 4
-pressed = true
-
-[sub_resource type="Shortcut" id="Shortcut_ptj7n"]
-events = [SubResource("InputEventJoypadButton_xglff")]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gicgb"]
 font_size = 34
@@ -45,7 +38,6 @@ theme_override_constants/separation = 20
 [node name="ButtonBack" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
-shortcut = SubResource("Shortcut_ptj7n")
 text = "<-"
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
