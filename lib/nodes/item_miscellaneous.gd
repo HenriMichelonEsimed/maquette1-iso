@@ -1,4 +1,4 @@
-extends Item
+extends ItemMultiple
 class_name ItemMiscellaneous
 
 func _init():

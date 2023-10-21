@@ -1,48 +1,39 @@
 extends Node
 class_name ItemsCollection
 
-class ItemEntry:
-	var item:Item
-	var quantity:int
-	func _init(_item, _qty):
-		item = _item
-		quantity = _qty
-
-@export var entries = []
+@export var items = []
 
 func add(item:Item):
 	if (item.type in [ Item.ItemType.ITEM_CONSUMABLES, Item.ItemType.ITEM_AMMUNITIONS, Item.ItemType.ITEM_MISCELLANEOUS ]):
-		var found = entries.filter(func(entry): return entry.item.key == item.key)
+		var found = items.filter(func(item): return item.key == item.key)
 		if (found.size() > 0):
 			found[0].quantity += 1
 			return
-	entries.push_back(ItemEntry.new(item, 1))
+	items.push_back(item)
 	
 func remove(item:Item):
-	for entry in entries:
-		if (entry.item == item): 
-			entries.erase(entry)
-			return
+	items.erase(item)
 	
 func getall_bytype(type:Item.ItemType) -> Array:
-	return entries.filter(func(e) : return e.item.type == type)
+	return items.filter(func(item) : return item.type == type)
 	
-func getone_bytype(index:int, type:Item.ItemType) -> ItemEntry:
-	return entries.filter(func(e) : return e.item.type == type)[index]
+func getone_bytype(index:int, type:Item.ItemType) -> Item:
+	return items.filter(func(item) : return item.type == type)[index]
 	
 func count():
-	return entries.size()
+	return items.size()
 
 func saveState(file:FileAccess):
-	file.store_64(entries.size())
-	for entry in entries:
-		file.store_64(entry.quantity)
-		file.store_8(entry.item.type)
-		file.store_pascal_string(entry.item.key)
-		if entry.item is ItemUnique:
-			file.store_pascal_string(entry.item.label)
-			file.store_16(entry.item.weight)
-			file.store_8(entry.item.wear)
+	file.store_64(items.size())
+	for item in items:
+		file.store_8(item.type)
+		file.store_pascal_string(item.key)
+		if item is ItemUnique:
+			file.store_pascal_string(item.label)
+			file.store_16(item.weight)
+			file.store_8(item.wear)
+		elif item is ItemMultiple:
+			file.store_64(item.quantity)
 	
 func loadState(file:FileAccess):
 	for i in range(file.get_64()):
@@ -59,10 +50,14 @@ func loadState(file:FileAccess):
 			item.label = file.get_pascal_string()
 			item.weight = file.get_16()
 			item.wear = file.get_8()
-		entries.push_back(ItemEntry.new(item, qty))
+		elif (item is ItemMultiple):
+			item.quantity = file.get_64()
+		items.push_back(item)
 		
 func _skip_item(file:FileAccess, type:int):
 	if (type in [Item.ItemType.ITEM_TOOLS, Item.ItemType.ITEM_CLOTHES]):
 		file.get_pascal_string()
 		file.get_16()
 		file.get_8()
+	else:
+		file.get_64()

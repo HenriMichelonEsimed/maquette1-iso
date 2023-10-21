@@ -12,8 +12,8 @@ func _ready():
 	if (state == null) : state = ZoneState.new(zone_name, self)
 	StateSaver.loadState(state)
 	for item_path in state.items_removed: get_node(item_path).queue_free()
-	for entry in state.items_added.entries: 
-		add_child(entry.item)
+	for item in state.items_added.items: 
+		add_child(item)
 	_zone_ready()
 
 func _zone_ready():

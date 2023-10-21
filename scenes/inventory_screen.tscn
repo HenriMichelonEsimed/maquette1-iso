@@ -85,7 +85,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-max_columns = 2
 
 [node name="Clothes" type="Control" parent="Content/Body/Content/Tabs"]
 visible = false
@@ -102,7 +101,6 @@ grow_vertical = 2
 [node name="ListClothes" type="ItemList" parent="Content/Body/Content/Tabs/Clothes/HBoxContainer"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-max_columns = 2
 
 [node name="Consumables" type="Control" parent="Content/Body/Content/Tabs"]
 visible = false
@@ -115,7 +113,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-max_columns = 2
 
 [node name="Ammunitions" type="Control" parent="Content/Body/Content/Tabs"]
 visible = false
@@ -128,7 +125,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-max_columns = 2
 
 [node name="Miscellaneous" type="Control" parent="Content/Body/Content/Tabs"]
 visible = false
@@ -141,7 +137,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-max_columns = 2
 
 [node name="PanelItem" type="PanelContainer" parent="Content/Body/Content"]
 layout_mode = 2

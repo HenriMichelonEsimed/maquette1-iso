@@ -52,9 +52,9 @@ func _on_button_back_pressed():
 func _on_list_tools_item_selected(index):
 	_item_details(GameState.inventory.getone_bytype((index-1)/2, Item.ItemType.ITEM_TOOLS), index)
 	
-func _item_details(entry, index):
+func _item_details(_item, index):
 	selected = index
-	item = entry.item
+	item = _item
 	item_title.text = item.label
 	weigth_value.text = str(item.weight)
 	item_content.visible = true
@@ -83,7 +83,7 @@ func _next_item():
 	if (item == null):
 		index = 1
 	else:
-		index = selected + 2
+		index = selected + 1
 	if (index > list.item_count): index = 1
 	list.deselect_all()
 	list.select(index)
@@ -95,7 +95,7 @@ func _previous_item():
 	if (item == null):
 		index = list.item_count - 1
 	else:
-		index = selected - 2
+		index = selected - 1
 		if (index < 0): index = list.item_count - 1
 	list.deselect_all()
 	list.select(index)
@@ -110,9 +110,11 @@ func _set_tab():
 	#tabs.get_child(state.tab).get_child(0).grab_focus()
 
 func _fill_list(type:Item.ItemType, list:ItemList):
-	for entry in GameState.inventory.getall_bytype(type):
-		list.add_item(str(entry.quantity), null, false)
-		list.add_item(entry.item.label)
+	for item in GameState.inventory.getall_bytype(type):
+		if (item is ItemMultiple):
+			list.add_item(str(item.quantity) + " x " + item.label)
+		else:
+			list.add_item(item.label)
 
 func _on_drop_pressed():
 	if (item == null): return
