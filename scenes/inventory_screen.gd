@@ -39,7 +39,7 @@ func _set_tab():
 	$VBoxContainer/Tabs.current_tab = state.tab
 
 func _fill_list(list:ItemList, type:Item.ItemType):
-	for entry in PlayerInventory.get_bytype(type):
+	for entry in GlobalState.player_inventory.get_bytype(type):
 		list.add_item(str(entry.quantity))
 		list.add_item(entry.item.label)
 		if (entry.item is ItemCanWearOut):

@@ -19,7 +19,7 @@ func _set_player_position(pos:Vector3, rot:Vector3):
 func _on_change_zonelevel(zone_name:String, spawnpoint_key:String, save:bool=true):
 	state.zone_name = zone_name
 	if (current_scene != null): 
-		$Player.disconnect("item_collected", current_scene.on_item_collected)
+		$Game/Player.disconnect("item_collected", current_scene.on_item_collected)
 		$Game.remove_child(current_scene)
 	current_scene = load("res://zones/" + zone_name + ".tscn").instantiate()
 	current_scene.connect("change_zone", _on_change_zonelevel)
@@ -48,7 +48,7 @@ func _on_button_inventory_pressed():
 	scene.connect("close", _on_resume)
 	
 func _on_pause():
-	GameState.paused = true
+	GlobalState.paused = true
 	_save()
 	$Game/UI.visible = false
 	$Game.visible = false
@@ -57,7 +57,7 @@ func _on_resume(from:Node):
 	remove_child(from)
 	$Game/UI.visible = true
 	$Game.visible = true
-	GameState.paused = false
+	GlobalState.paused = false
 
 func _on_display_info(label:String):
 	labelInfo.visible = true

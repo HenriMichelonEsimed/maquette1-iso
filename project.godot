@@ -19,8 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 StateSaver="*res://lib/tools/state_saver.gd"
-GameState="*res://lib/datas/game_state.gd"
-PlayerInventory="*res://lib/datas/items_collection.gd"
+GlobalState="*res://lib/datas/running_state.gd"
 
 [display]
 

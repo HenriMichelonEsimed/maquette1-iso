@@ -23,7 +23,7 @@ func move(pos):
 	camera_pivot.position = pos
 
 func _process(delta):
-	if (GameState.paused): return
+	if (GlobalState.paused): return
 	camera_pivot.position = camera_pivot.position.lerp(object_to_follow.position, delta * accel)
 	if Input.is_action_pressed("view_zoomin") or Input.is_action_just_released("view_zoomin"):
 		state.size -= 1

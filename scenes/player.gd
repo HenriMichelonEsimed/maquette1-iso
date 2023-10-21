@@ -20,17 +20,17 @@ const directions = {
 }
 
 func _process(delta):
-	if (GameState.paused): return
+	if (GlobalState.paused): return
 	if Input.is_action_just_pressed("player_use"):
 		if (node_to_use != null):
 			node_to_use.use()
 		elif (item_to_collect != null):
-			PlayerInventory.add(item_to_collect.duplicate())
+			GlobalState.player_inventory.add(item_to_collect.duplicate())
 			item_collected.emit(item_to_collect)
 			item_to_collect = null
 
 func _physics_process(delta):
-	if (GameState.paused): return
+	if (GlobalState.paused): return
 	var no_jump = false
 	var direction = Vector3.ZERO
 	if Input.is_action_pressed("player_right"):
