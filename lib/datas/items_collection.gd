@@ -18,8 +18,17 @@ func add(item:Item):
 			return
 	entries.push_back(ItemEntry.new(item, 1))
 	
-func get_bytype(type:Item.ItemType) -> Array:
+func remove(item:Item):
+	for entry in entries:
+		if (entry.item == item): 
+			entries.erase(entry)
+			return
+	
+func getall_bytype(type:Item.ItemType) -> Array:
 	return entries.filter(func(e) : return e.item.type == type)
+	
+func getone_bytype(index:int, type:Item.ItemType) -> ItemEntry:
+	return entries.filter(func(e) : return e.item.type == type)[index-1]
 	
 func count():
 	return entries.size()
@@ -53,7 +62,7 @@ func loadState(file:FileAccess):
 		entries.push_back(ItemEntry.new(item, qty))
 		
 func _skip_item(file:FileAccess, type:int):
-	if (type in [Item.ItemType.ITEM_TOOL, Item.ItemType.ITEM_CLOTHES]):
+	if (type in [Item.ItemType.ITEM_TOOLS, Item.ItemType.ITEM_CLOTHES]):
 		file.get_pascal_string()
 		file.get_16()
 		file.get_8()

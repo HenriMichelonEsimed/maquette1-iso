@@ -9,6 +9,7 @@ func _ready():
 	_on_change_zonelevel(GameState.location.zone_name, "default", false)
 	if (GameState.location.position != Vector3.ZERO):
 		_set_player_position(GameState.location.position, GameState.location.rotation)
+	_on_button_inventory_pressed()
 	
 func _process(delta):
 	if (GameState.paused): return

@@ -2,7 +2,7 @@ extends CharacterBody3D
 class_name Item
 
 enum ItemType {
-	ITEM_TOOL			= 0,
+	ITEM_TOOLS			= 0,
 	ITEM_CLOTHES 		= 1,
 	ITEM_CONSUMABLES	= 2,
 	ITEM_AMMUNITIONS	= 3,

@@ -1,11 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bamoxutsna6sx"]
+[gd_scene load_steps=4 format=3 uid="uid://bamoxutsna6sx"]
 
 [ext_resource type="Script" path="res://scenes/inventory_screen.gd" id="1_0hce1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gicgb"]
 font_size = 34
 
-[node name="Control" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cq1op"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.247059, 0.247059, 0.247059, 1)
+
+[node name="Control" type="Control" node_paths=PackedStringArray("tabs", "list_tools", "list_clothes", "list_consumables", "list_ammunitions", "list_miscellaneous")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +20,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0hce1")
+tabs = NodePath("Content/Body/Content/Tabs")
+list_tools = NodePath("Content/Body/Content/Tabs/Tools/ListTools")
+list_clothes = NodePath("Content/Body/Content/Tabs/Clothes/HBoxContainer/ListClothes")
+list_consumables = NodePath("Content/Body/Content/Tabs/Consumables/ListConsumables")
+list_ammunitions = NodePath("Content/Body/Content/Tabs/Ammunitions/ListAmmunitions")
+list_miscellaneous = NodePath("Content/Body/Content/Tabs/Miscellaneous/ListMiscellaneous")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -23,7 +36,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.137255, 0.313726, 0.380392, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Content" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,54 +44,41 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Content"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="ButtonBack" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="ButtonBack" type="Button" parent="Content/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
 text = "<-"
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Content/HBoxContainer"]
 layout_mode = 2
 text = "Inventory"
 label_settings = SubResource("LabelSettings_gicgb")
 
-[node name="Tabs" type="TabContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 500)
+[node name="Body" type="MarginContainer" parent="Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Content" type="HBoxContainer" parent="Content/Body"]
 layout_mode = 2
 
-[node name="Tools" type="Control" parent="VBoxContainer/Tabs"]
+[node name="Tabs" type="TabContainer" parent="Content/Body/Content"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Tools" type="Control" parent="Content/Body/Content/Tabs"]
 layout_mode = 2
 
-[node name="List" type="ItemList" parent="VBoxContainer/Tabs/Tools"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-max_columns = 3
-
-[node name="Clothes" type="Control" parent="VBoxContainer/Tabs"]
-visible = false
-layout_mode = 2
-
-[node name="List" type="ItemList" parent="VBoxContainer/Tabs/Clothes"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-max_columns = 3
-
-[node name="Consumables" type="Control" parent="VBoxContainer/Tabs"]
-visible = false
-layout_mode = 2
-
-[node name="List" type="ItemList" parent="VBoxContainer/Tabs/Consumables"]
+[node name="ListTools" type="ItemList" parent="Content/Body/Content/Tabs/Tools"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -87,11 +87,28 @@ grow_horizontal = 2
 grow_vertical = 2
 max_columns = 2
 
-[node name="Ammunitions" type="Control" parent="VBoxContainer/Tabs"]
+[node name="Clothes" type="Control" parent="Content/Body/Content/Tabs"]
 visible = false
 layout_mode = 2
 
-[node name="List" type="ItemList" parent="VBoxContainer/Tabs/Ammunitions"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/Body/Content/Tabs/Clothes"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ListClothes" type="ItemList" parent="Content/Body/Content/Tabs/Clothes/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+max_columns = 2
+
+[node name="Consumables" type="Control" parent="Content/Body/Content/Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="ListConsumables" type="ItemList" parent="Content/Body/Content/Tabs/Consumables"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,11 +117,11 @@ grow_horizontal = 2
 grow_vertical = 2
 max_columns = 2
 
-[node name="Miscellaneous" type="Control" parent="VBoxContainer/Tabs"]
+[node name="Ammunitions" type="Control" parent="Content/Body/Content/Tabs"]
 visible = false
 layout_mode = 2
 
-[node name="List" type="ItemList" parent="VBoxContainer/Tabs/Miscellaneous"]
+[node name="ListAmmunitions" type="ItemList" parent="Content/Body/Content/Tabs/Ammunitions"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -113,5 +130,59 @@ grow_horizontal = 2
 grow_vertical = 2
 max_columns = 2
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
-[connection signal="tab_changed" from="VBoxContainer/Tabs" to="." method="_on_tabs_tab_changed"]
+[node name="Miscellaneous" type="Control" parent="Content/Body/Content/Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="ListMiscellaneous" type="ItemList" parent="Content/Body/Content/Tabs/Miscellaneous"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_columns = 2
+
+[node name="PanelItem" type="PanelContainer" parent="Content/Body/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_cq1op")
+
+[node name="Content" type="VBoxContainer" parent="Content/Body/Content/PanelItem"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Content/Body/Content/PanelItem/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WeightLine" type="HBoxContainer" parent="Content/Body/Content/PanelItem/Content"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Content/Body/Content/PanelItem/Content/WeightLine"]
+layout_mode = 2
+text = "Weigth :"
+
+[node name="Value" type="Label" parent="Content/Body/Content/PanelItem/Content/WeightLine"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "XX"
+
+[node name="Specific" type="MarginContainer" parent="Content/Body/Content/PanelItem/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Actions" type="HBoxContainer" parent="Content/Body/Content/PanelItem/Content"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Drop" type="Button" parent="Content/Body/Content/PanelItem/Content/Actions"]
+layout_mode = 2
+text = "Drop"
+
+[connection signal="pressed" from="Content/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="tab_clicked" from="Content/Body/Content/Tabs" to="." method="_on_tabs_tab_clicked"]
+[connection signal="item_selected" from="Content/Body/Content/Tabs/Tools/ListTools" to="." method="_on_list_tools_item_selected"]
+[connection signal="pressed" from="Content/Body/Content/PanelItem/Content/Actions/Drop" to="." method="_on_drop_pressed"]
