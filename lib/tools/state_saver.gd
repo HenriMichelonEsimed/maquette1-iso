@@ -38,8 +38,7 @@ func saveState(res:State):
 			file.store_pascal_string(prop.name)
 			var arr = res.get(prop.name)
 			file.store_32(arr.size())
-			for v in arr:
-				file.store_pascal_string(v)
+			for v in arr: file.store_pascal_string(v)
 	file.close()
 	
 func loadState(res:State):
@@ -55,13 +54,11 @@ func loadState(res:State):
 		elif (parent != null and entry_type == STATE_USABLE):
 			if (file.get_var()):
 				var usable = parent.get_node_or_null(entry_name)
-				if (usable != null):
-					usable.use()
+				if (usable != null): usable.use()
 		elif (parent != null and entry_type == STATE_STRINGARRAY):
 			var count = file.get_32()
 			var arr = []
-			for i in range(count):
-				arr.push_back(file.get_pascal_string())
+			for i in range(count): arr.push_back(file.get_pascal_string())
 			res.set(entry_name, arr)
 				
 	file.close()

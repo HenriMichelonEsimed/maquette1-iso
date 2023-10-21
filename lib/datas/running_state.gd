@@ -2,7 +2,8 @@ extends Node
 class_name RunningState
 
 var paused:bool = false
-var player_inventory:ItemsCollection
+var current_scene:Zone
+var game = GameState.new()
 
 func _ready():
-	player_inventory = ItemsCollection.new()
+	StateSaver.loadState(game)

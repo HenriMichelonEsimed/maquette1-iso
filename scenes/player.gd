@@ -25,7 +25,7 @@ func _process(delta):
 		if (node_to_use != null):
 			node_to_use.use()
 		elif (item_to_collect != null):
-			GlobalState.player_inventory.add(item_to_collect.duplicate())
+			GlobalState.game.player_inventory.add(item_to_collect.duplicate())
 			item_collected.emit(item_to_collect)
 			item_to_collect = null
 
