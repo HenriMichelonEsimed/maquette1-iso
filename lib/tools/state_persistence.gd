@@ -48,7 +48,9 @@ func saveState(res:State):
 			file.store_32(value.size())
 			for v in value: file.store_pascal_string(v)
 		elif value is ItemsCollection:
-			pass
+			file.store_8(STATE_ITEMS)
+			file.store_pascal_string(prop.name)
+			value.saveState(file)
 	file.close()
 	
 func loadState(res:State):
@@ -70,6 +72,10 @@ func loadState(res:State):
 			var arr = []
 			for i in range(count): arr.push_back(file.get_pascal_string())
 			res.set(entry_name, arr)
+		elif (entry_type == STATE_ITEMS):
+			var items:ItemsCollection = res.get(entry_name)
+			items.loadState(file)
+			
 				
 	file.close()
 		

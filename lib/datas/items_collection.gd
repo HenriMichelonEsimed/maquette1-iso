@@ -36,8 +36,7 @@ func saveState(file:FileAccess):
 			file.store_8(entry.item.wear)
 	
 func loadState(file:FileAccess):
-	var count = file.get_64()
-	for i in range(count):
+	for i in range(file.get_64()):
 		var qty = file.get_64()
 		var type = file.get_8()
 		var key = file.get_pascal_string()
@@ -46,7 +45,7 @@ func loadState(file:FileAccess):
 		if (packed_scene == null):
 			_skip_item(file, type)
 			continue
-		var item = packed_scene.instanciate()
+		var item = packed_scene.instantiate()
 		if (item is ItemUnique):
 			item.label = file.get_pascal_string()
 			item.weight = file.get_16()

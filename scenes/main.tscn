@@ -1,16 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyj5pxcv4nq84"]
+[gd_scene load_steps=5 format=3 uid="uid://dyj5pxcv4nq84"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_4sx3e"]
 [ext_resource type="PackedScene" uid="uid://drr16dfcqhfyw" path="res://scenes/player.tscn" id="1_hswq3"]
 [ext_resource type="Script" path="res://scenes/camera.gd" id="2_b0j3s"]
 [ext_resource type="Environment" uid="uid://730uhqlxrn44" path="res://env.tres" id="2_dhum8"]
-
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_eow7v"]
-button_index = 4
-pressed = true
-
-[sub_resource type="Shortcut" id="Shortcut_v3gv7"]
-events = [SubResource("InputEventJoypadButton_eow7v")]
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("labelInfo")]
 script = ExtResource("1_4sx3e")
@@ -51,7 +44,6 @@ text = "Save&Quit"
 
 [node name="ButtonInventory" type="Button" parent="Game/UI/HBoxContainer"]
 layout_mode = 2
-shortcut = SubResource("Shortcut_v3gv7")
 text = "Inventory"
 
 [node name="LabelInfo" type="Label" parent="Game/UI"]
