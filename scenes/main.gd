@@ -20,7 +20,7 @@ func _on_change_zonelevel(zone_name:String, spawnpoint_key:String, save:bool=tru
 	GameState.location.zone_name = zone_name
 	if (GameState.current_scene != null): 
 		GameState.player.disconnect("item_collected", GameState.current_scene.on_item_collected)
-		$Game.remove_child(GameState.current_scene)
+		GameState.current_scene.queue_free()
 	GameState.current_scene = load("res://zones/" + zone_name + ".tscn").instantiate()
 	GameState.current_scene.connect("change_zone", _on_change_zonelevel)
 	GameState.player.connect("item_collected", GameState.current_scene.on_item_collected)

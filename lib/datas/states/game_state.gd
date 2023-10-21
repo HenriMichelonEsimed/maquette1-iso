@@ -4,8 +4,8 @@ signal saving_start()
 signal saving_end()
 
 var paused:bool = false
-var current_scene:Zone
 var current_state_path = "autosave"
+var current_scene:Zone
 var location = LocationState.new()
 var camera = CameraState.new()
 var inventory = ItemsCollection.new()

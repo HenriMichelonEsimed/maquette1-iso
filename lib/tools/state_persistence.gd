@@ -2,7 +2,7 @@ extends Node
 class_name StatePersistence
 
 const default_ext = ".state"
-const default_path = "user://datas/"
+const default_path = "user://savegames/"
 
 enum {
  	STATE_VARIANT 		= 0,
@@ -14,11 +14,11 @@ enum {
 var path = default_path
 
 func _ready():
-	DirAccess.make_dir_absolute(path)
+	DirAccess.make_dir_recursive_absolute(path)
 	
 func set_path(_path:String):
 	path = default_path + _path + "/"
-	DirAccess.make_dir_absolute(path)
+	DirAccess.make_dir_recursive_absolute(path)
 
 func saveState(res:State):
 	var file = FileAccess.open(path + res.name + default_ext, FileAccess.WRITE)
