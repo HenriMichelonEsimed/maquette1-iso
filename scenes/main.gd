@@ -31,8 +31,8 @@ func _on_change_zonelevel(zone_name:String, spawnpoint_key:String, save:bool=tru
 	GameState.current_zone.connect("change_zone", _on_change_zonelevel)
 	GameState.player.connect("item_collected", GameState.current_zone.on_item_collected)
 	$Game.add_child(GameState.current_zone)
-	for node in GameState.current_zone.get_children():
-		if (node is SpawnPoint and node.key == spawnpoint_key):
+	for node in GameState.current_zone.find_children("*", "SpawnPoint", false, true):
+		if (node.key == spawnpoint_key):
 			_set_player_position(node.position, node.rotation)
 			break
 

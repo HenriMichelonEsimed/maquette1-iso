@@ -38,7 +38,7 @@ material = ExtResource("2_i5k24")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.09238, 0.0131226, -7.07043)
 
 [node name="ZoneChange" parent="Stair" instance=ExtResource("4_1n3s5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.90961, -4.61246)
 zone_name = "PM/pm_2"
 spawnpoint_key = "stairs"
 
@@ -46,14 +46,15 @@ spawnpoint_key = "stairs"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8354, 0, -17.1998)
 
 [node name="SpawnPointDefault" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.04492, 0, -5.74768)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48712, 0, -5.74768)
 script = ExtResource("1_1chcy")
 key = "default"
 
 [node name="SpawnPointStairsFromPM2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8875, 4.35239, -7.28302)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8429, 4.02425, -7.28302)
 script = ExtResource("1_1chcy")
 key = "stairs_pm2"
+metadata/_edit_group_ = true
 
 [node name="IronBar1" parent="." instance=ExtResource("8_8xxjk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6)
