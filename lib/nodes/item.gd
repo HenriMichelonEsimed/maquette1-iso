@@ -13,8 +13,8 @@ enum ItemType {
 @export var label:String
 @export var weight:int
 @export var indestructible = false
+@export var type:ItemType
 
-var type:ItemType
 var fall_acceleration = 40
 var target_velocity = Vector3.ZERO
 
@@ -26,4 +26,4 @@ func _physics_process(delta):
 	if not is_on_floor():
 		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
 		velocity = target_velocity
-	move_and_slide()
+		move_and_slide()

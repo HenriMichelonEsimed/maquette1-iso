@@ -1,4 +1,4 @@
 extends Item
-class_name ItemCanWearOut
+class_name ItemUnique
 
 @export var wear:int = 0

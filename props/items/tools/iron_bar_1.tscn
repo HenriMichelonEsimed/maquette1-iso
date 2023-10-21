@@ -11,9 +11,9 @@ height = 1.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_dmcqr"]
 
-[node name="ItemTool" type="CharacterBody3D"]
+[node name="IronBar1" type="CharacterBody3D"]
 script = ExtResource("1_2su7a")
-key = "ironbar1"
+key = "iron_bar_1"
 label = "Iron Bar"
 weight = 2
 

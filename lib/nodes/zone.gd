@@ -18,20 +18,9 @@ func _ready():
 func _zone_ready():
 	pass
 	
-func _save():
-	pass
-	
 func on_zone_change(zonechange:ZoneChange):
-	save()
 	change_zone.emit(zonechange.zone_name, zonechange.spawnpoint_key)
-	pass
 	
 func on_item_collected(item:Item):
 	state.item_removed.push_back(item.get_path())
 	item.queue_free()
-
-func save():
-	if (state != null):
-		_save()
-		StateSaver.saveState(state)
-		

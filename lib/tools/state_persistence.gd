@@ -1,20 +1,27 @@
 extends Node
-class_name Saver
+class_name StatePersistence
 
 const default_ext = ".state"
 const default_path = "user://datas/"
 
 enum {
- 	STATE_VARIANT = 0,
-	STATE_USABLE = 1,
-	STATE_STRINGARRAY = 2
+ 	STATE_VARIANT 		= 0,
+	STATE_USABLE 		= 1,
+	STATE_STRINGARRAY 	= 2,
+	STATE_ITEMS			= 3
 }
 
+var path = default_path
+
 func _ready():
-	DirAccess.make_dir_absolute(default_path)
+	DirAccess.make_dir_absolute(path)
+	
+func set_path(_path:String):
+	path = default_path + _path + "/"
+	DirAccess.make_dir_absolute(path)
 
 func saveState(res:State):
-	var file = FileAccess.open(default_path + res.name + default_ext, FileAccess.WRITE)
+	var file = FileAccess.open(path + res.name + default_ext, FileAccess.WRITE)
 	for prop in res.get_property_list():
 		if (prop.name == "name"): continue
 		if (prop.name == "parent"):
@@ -25,25 +32,28 @@ func saveState(res:State):
 						file.store_8(STATE_USABLE)
 						file.store_pascal_string(usable.get_path())
 						file.store_var(usable.is_used)
-		elif (prop.type == TYPE_STRING 
-				or prop.type == TYPE_BOOL
-				or prop.type == TYPE_FLOAT
-				or prop.type == TYPE_VECTOR3
-				or prop.type == TYPE_INT):
+			continue
+		var value = res.get(prop.name)
+		if (prop.type == TYPE_STRING 
+			or prop.type == TYPE_BOOL
+			or prop.type == TYPE_FLOAT
+			or prop.type == TYPE_VECTOR3
+			or prop.type == TYPE_INT):
 			file.store_8(STATE_VARIANT)
 			file.store_pascal_string(prop.name)
-			file.store_var(res.get(prop.name))
+			file.store_var(value)
 		elif (prop.type == TYPE_ARRAY):
 			file.store_8(STATE_STRINGARRAY)
 			file.store_pascal_string(prop.name)
-			var arr = res.get(prop.name)
-			file.store_32(arr.size())
-			for v in arr: file.store_pascal_string(v)
+			file.store_32(value.size())
+			for v in value: file.store_pascal_string(v)
+		elif value is ItemsCollection:
+			pass
 	file.close()
 	
 func loadState(res:State):
 	var parent:Node = res.get("parent")
-	var file = FileAccess.open(default_path + res.name + default_ext, FileAccess.READ)
+	var file = FileAccess.open(path + res.name + default_ext, FileAccess.READ)
 	if (file == null):
 		return null
 	while (!file.eof_reached()):

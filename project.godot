@@ -18,8 +18,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-StateSaver="*res://lib/tools/state_saver.gd"
-GameState="*res://lib/datas/running_state.gd"
+GameState="*res://lib/datas/states/game_state.gd"
+StateSaver="*res://lib/tools/state_persistence.gd"
 
 [display]
 

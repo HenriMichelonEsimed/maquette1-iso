@@ -42,7 +42,7 @@ func _fill_list(list:ItemList, type:Item.ItemType):
 	for entry in GameState.inventory.get_bytype(type):
 		list.add_item(str(entry.quantity))
 		list.add_item(entry.item.label)
-		if (entry.item is ItemCanWearOut):
+		if (entry.item is ItemUnique):
 			list.add_item(str(100 - entry.item.wear) + '%')
 
 func _on_tabs_tab_changed(tab):

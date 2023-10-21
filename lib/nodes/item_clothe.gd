@@ -1,4 +1,4 @@
-extends ItemCanWearOut
+extends ItemUnique
 class_name ItemClothes
 
 func _init():

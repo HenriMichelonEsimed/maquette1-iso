@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 
 var speed = 12
 var jump_impulse = 15
