@@ -9,6 +9,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wn53i"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_87ru7"]
+radius = 0.295612
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_de22c"]
 size = Vector3(1.00647, 1.04662, 1.31316)
@@ -20,14 +21,14 @@ script = ExtResource("1_7my55")
 mesh = SubResource("CapsuleMesh_rrh3m")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.446956, -0.773112)
+transform = Transform3D(0.492047, 0, 0, 0, 0.628952, 0, 0, 0, 0.732431, 0, 0.446956, -0.636151)
 mesh = SubResource("SphereMesh_oryx5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_wn53i")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.446956, -0.773112)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00238132, 0.446956, -0.673023)
 shape = SubResource("SphereShape3D_87ru7")
 
 [node name="CollectAndUseArea" type="Area3D" parent="."]
@@ -36,6 +37,9 @@ collision_mask = 6
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollectAndUseArea"]
 transform = Transform3D(1, 0, 0, 0, 2.12122, 0, 0, 0, 1, 0, 0.0674314, -0.765561)
 shape = SubResource("BoxShape3D_de22c")
+
+[node name="ToolAnchor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.296903, 0, -0.587012)
 
 [connection signal="body_entered" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_entered"]
 [connection signal="body_exited" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_exited"]

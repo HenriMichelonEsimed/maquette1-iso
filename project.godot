@@ -24,7 +24,7 @@ StateSaver="*res://lib/tools/state_persistence.gd"
 [display]
 
 window/size/viewport_width=1280
-window/size/viewport_height=800
+window/size/viewport_height=700
 
 [input]
 

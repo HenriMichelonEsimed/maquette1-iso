@@ -118,14 +118,12 @@ func _fill_list(type:Item.ItemType, list:ItemList):
 
 func _on_drop_pressed():
 	if (item == null): return
-	print(GameState.inventory.count())
 	GameState.inventory.remove(item)
-	print(GameState.inventory.count())
 	list_content[item.type].clear()
 	_fill_list(item.type, list_content[item.type])
 	item_content.visible = false
-	item.position = GameState.player.position
-	item.rotation = GameState.player.rotation
+	item.position = GameState.player.find_child("ToolAnchor").global_position
+	#item.global_rotation = GameState.player.global_rotation
 	item_dropped.emit(item)
 	
 func _on_tabs_tab_selected(tab):

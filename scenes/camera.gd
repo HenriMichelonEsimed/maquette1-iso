@@ -16,6 +16,8 @@ var _view = 0
 func _ready():
 	camera_pivot = get_node(cameraPivotPath)
 	object_to_follow = get_node(objectToFollowPath)
+	_size = GameState.camera.size
+	_view = GameState.camera.view
 	_zoom_view()
 	_rotate_view()
 

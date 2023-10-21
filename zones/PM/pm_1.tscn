@@ -27,7 +27,7 @@ material = ExtResource("2_i5k24")
 
 [node name="Box3" type="CSGBox3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.373, 0, 4.059)
-size = Vector3(10, 1, 1)
+size = Vector3(10, 1, 10)
 material = ExtResource("2_i5k24")
 
 [node name="Box2" type="CSGBox3D" parent="Level"]
@@ -61,7 +61,7 @@ script = ExtResource("1_1chcy")
 key = "stairs_pm2"
 
 [node name="IronBar1" parent="." instance=ExtResource("8_8xxjk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6)
 
 [connection signal="triggered" from="Stair/Upstair" to="." method="on_zone_change"]
 [connection signal="triggered" from="Ladder/Upstair" to="." method="on_zone_change"]

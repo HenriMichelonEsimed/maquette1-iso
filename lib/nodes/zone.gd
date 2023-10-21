@@ -11,8 +11,14 @@ func _init(_state:ZoneState=null):
 func _ready():
 	if (state == null) : state = ZoneState.new(zone_name, self)
 	StateSaver.loadState(state)
-	for item_path in state.items_removed: get_node(item_path).queue_free()
+	for item in state.items_removed.items: 
+		for node in find_children("*", "Item", true, true):
+			if (node.type == item.type 
+			and node.key == item.key 
+			and node.position == node.position):
+				node.queue_free()
 	for item in state.items_added.items: 
+		print(item.position)
 		add_child(item)
 	_zone_ready()
 
@@ -23,9 +29,13 @@ func on_zone_change(zonechange:ZoneChange):
 	change_zone.emit(zonechange.zone_name, zonechange.spawnpoint_key)
 	
 func on_item_dropped(item:Item):
-	state.items_added.add(item)
 	add_child(item)
+	state.items_added.add(item)
 	
 func on_item_collected(item:Item):
-	state.items_removed.push_back(item.get_path())
-	item.queue_free()
+	if (item.owner != null):
+		remove_child(item)
+		state.items_removed.add(item)
+	else:
+		state.items_added.remove(item)
+		item.queue_free()

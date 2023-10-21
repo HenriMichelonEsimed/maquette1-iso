@@ -1,10 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2020jb1cp5mf"]
+[gd_scene load_steps=4 format=3 uid="uid://c2020jb1cp5mf"]
 
 [ext_resource type="Script" path="res://lib/nodes/item_tool.gd" id="1_2su7a"]
-[ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://materials/Orange Texture.tres" id="2_qo3qq"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ox2lj"]
-material = ExtResource("2_qo3qq")
 top_radius = 0.01
 bottom_radius = 0.01
 height = 1.0

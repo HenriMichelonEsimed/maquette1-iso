@@ -28,6 +28,9 @@ func saveState(file:FileAccess):
 	for item in items:
 		file.store_8(item.type)
 		file.store_pascal_string(item.key)
+		print(item.position)
+		file.store_var(item.position)
+		file.store_var(item.rotation)
 		if item is ItemUnique:
 			file.store_pascal_string(item.label)
 			file.store_16(item.weight)
@@ -37,7 +40,6 @@ func saveState(file:FileAccess):
 	
 func loadState(file:FileAccess):
 	for i in range(file.get_64()):
-		var qty = file.get_64()
 		var type = file.get_8()
 		var key = file.get_pascal_string()
 		var path = 'res://props/items/' + Item.scenes_path[type] + '/' + key + '.tscn'
@@ -46,6 +48,8 @@ func loadState(file:FileAccess):
 			_skip_item(file, type)
 			continue
 		var item = packed_scene.instantiate()
+		item.position = file.get_var()
+		item.rotation = file.get_var()
 		if (item is ItemUnique):
 			item.label = file.get_pascal_string()
 			item.weight = file.get_16()
@@ -55,6 +59,8 @@ func loadState(file:FileAccess):
 		items.push_back(item)
 		
 func _skip_item(file:FileAccess, type:int):
+	file.get_var()
+	file.get_var()
 	if (type in [Item.ItemType.ITEM_TOOLS, Item.ItemType.ITEM_CLOTHES]):
 		file.get_pascal_string()
 		file.get_16()

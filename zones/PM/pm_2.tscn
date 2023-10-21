@@ -32,11 +32,12 @@ material = ExtResource("2_laehp")
 
 [node name="Box3" type="CSGBox3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8685, 0, 16.3954)
-size = Vector3(10, 1, 1)
+size = Vector3(10, 1, 2.25956)
 material = ExtResource("2_laehp")
 
 [node name="Box2" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.741, 0, -9.376)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.739816, 0, 4.57291)
+size = Vector3(5.16939, 1, 7.13362)
 material = ExtResource("2_laehp")
 
 [node name="SpawnPointFromPM1Stairs" type="Node3D" parent="."]
