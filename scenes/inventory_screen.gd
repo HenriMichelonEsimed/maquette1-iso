@@ -5,7 +5,6 @@ class InventoryScreenState extends State:
 	func _init():
 		super("inventory_screen")
 
-
 signal close(node:Node)
 var state = InventoryScreenState.new()
 
@@ -39,6 +38,7 @@ func _set_tab():
 	elif (state.tab > 4):
 		state.tab = 0
 	$VBoxContainer/Tabs.current_tab = state.tab
+	$VBoxContainer/Tabs.get_child(state.tab).get_child(0).grab_focus()
 
 func _fill_list(list:ItemList, type:Item.ItemType):
 	for entry in GameState.inventory.get_bytype(type):
