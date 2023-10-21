@@ -7,6 +7,7 @@
 
 [node name="Door" type="StaticBody3D" groups=["usables"]]
 script = ExtResource("1_n7xup")
+label = "Door"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(3.22589, 0, 0, 0, 1.83261, 0, 0, 0, 0.174899, 2.00223, 1.40967, 0.175179)

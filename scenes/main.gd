@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var labelInfo:Label
+
 var current_scene:Zone
 var state = MainState.new()
 
@@ -57,13 +59,13 @@ func _on_resume(from:Node):
 	$Game.visible = true
 	GameState.paused = false
 
-func _on_player_item_collectable(item:Item):
-	$Game/UI/LabelItem.visible = true
-	$Game/UI/LabelItem.text = item.label
+func _on_display_info(label:String):
+	labelInfo.visible = true
+	labelInfo.text = label
 
-func _on_player_item_collectable_reset():
-	$Game/UI/LabelItem.visible = false
-	$Game/UI/LabelItem.text = ''
+func _on_hide_info():
+	labelInfo.visible = false
+	labelInfo.text = ''
 
 class MainState extends State:
 	var zone_name:String = "PM/pm_1"

@@ -11,7 +11,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_87ru7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_de22c"]
-size = Vector3(1.78383, 1.18377, 1.52022)
+size = Vector3(1.00647, 1.04662, 1.01722)
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_7my55")
@@ -34,7 +34,7 @@ shape = SubResource("SphereShape3D_87ru7")
 collision_mask = 6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollectAndUseArea"]
-transform = Transform3D(1, 0, 0, 0, 2.12122, 0, 0, 0, 1, 0, 0.190775, -0.724337)
+transform = Transform3D(1, 0, 0, 0, 2.12122, 0, 0, 0, 1, 0, 0.0674314, -0.765561)
 shape = SubResource("BoxShape3D_de22c")
 
 [connection signal="body_entered" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0cir47ek00ym"]
+[gd_scene load_steps=10 format=3 uid="uid://b0cir47ek00ym"]
 
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="1_1chcy"]
 [ext_resource type="PackedScene" uid="uid://bui56f6v53gx4" path="res://zones/PM/ground.tscn" id="1_e58tr"]
@@ -8,12 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://cgen42rr1eia1" path="res://props/common/zone_change.tscn" id="4_1n3s5"]
 [ext_resource type="PackedScene" uid="uid://dqqa6le6bjss6" path="res://props/common/interiors/ladder.tscn" id="4_8ega4"]
 [ext_resource type="PackedScene" uid="uid://c2020jb1cp5mf" path="res://props/items/tools/iron_bar_1.tscn" id="9_c6hly"]
+[ext_resource type="PackedScene" uid="uid://qen4ovexpt6n" path="res://props/common/interiors/door.tscn" id="9_twk18"]
 
 [node name="PM1" type="Node3D"]
 script = ExtResource("1_oo6bp")
 zone_name = "pm_pm_1"
 
 [node name="Ground" parent="." instance=ExtResource("1_e58tr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="Level" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.99643, 0.5, 9.67444)
@@ -61,6 +63,10 @@ key = "stairs_pm2"
 
 [node name="ItemTool" parent="." instance=ExtResource("9_c6hly")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.531677, 0)
+
+[node name="Door" parent="." instance=ExtResource("9_twk18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -1, -2)
+label = "La porte"
 
 [connection signal="triggered" from="Stair/Upstair" to="." method="on_zone_change"]
 [connection signal="triggered" from="Ladder/Upstair" to="." method="on_zone_change"]

@@ -12,8 +12,9 @@ pressed = true
 [sub_resource type="Shortcut" id="Shortcut_v3gv7"]
 events = [SubResource("InputEventJoypadButton_eow7v")]
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("labelInfo")]
 script = ExtResource("1_4sx3e")
+labelInfo = NodePath("Game/UI/LabelInfo")
 
 [node name="Game" type="Node3D" parent="."]
 
@@ -53,7 +54,7 @@ layout_mode = 2
 shortcut = SubResource("Shortcut_v3gv7")
 text = "Inventory"
 
-[node name="LabelItem" type="Label" parent="Game/UI"]
+[node name="LabelInfo" type="Label" parent="Game/UI"]
 visible = false
 layout_mode = 0
 offset_left = 484.0
@@ -65,8 +66,8 @@ theme_override_font_sizes/font_size = 24
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_dhum8")
 
-[connection signal="item_collectable" from="Game/Player" to="." method="_on_player_item_collectable"]
-[connection signal="item_collectable_reset" from="Game/Player" to="." method="_on_player_item_collectable_reset"]
+[connection signal="display_info" from="Game/Player" to="." method="_on_display_info"]
+[connection signal="hide_info" from="Game/Player" to="." method="_on_hide_info"]
 [connection signal="view_rotate" from="Game/CameraPivot/Camera" to="Game/Player" method="_on_camera_view_rotate"]
 [connection signal="pressed" from="Game/UI/HBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
 [connection signal="pressed" from="Game/UI/HBoxContainer/ButtonInventory" to="." method="_on_button_inventory_pressed"]

@@ -7,8 +7,9 @@ var target_velocity = Vector3.ZERO
 var last_collision = null
 var current_view = 0
 var item_to_collect:Item = null
-signal item_collectable(item:Item)
-signal item_collectable_reset()
+var node_to_use:Usable = null
+signal display_info(label:String)
+signal hide_info()
 signal item_collected(item:Item)
 
 const directions = {
@@ -20,9 +21,13 @@ const directions = {
 
 func _process(delta):
 	if (GameState.paused): return
-	if (item_to_collect != null and Input.is_action_just_pressed("player_use")):
-		PlayerInventory.add(item_to_collect.duplicate())
-		item_collected.emit(item_to_collect)
+	if Input.is_action_just_pressed("player_use"):
+		if (node_to_use != null):
+			node_to_use.use()
+		elif (item_to_collect != null):
+			PlayerInventory.add(item_to_collect.duplicate())
+			item_collected.emit(item_to_collect)
+			item_to_collect = null
 
 func _physics_process(delta):
 	if (GameState.paused): return
@@ -53,17 +58,11 @@ func _physics_process(delta):
 			elif collider.is_in_group("ladders") and Input.is_action_pressed("player_jump"):
 				target_velocity.y = 12
 				no_jump = true
-			elif collider.is_in_group("usables"):
-				last_collision = collision
 			elif collider.is_in_group("triggers"):
 				collider.call("trigger")
 			
 	target_velocity.x = direction.x * speed
 	target_velocity.z = direction.z * speed
-	
-	if (last_collision != null) and Input.is_action_pressed("player_use"):
-		last_collision.get_collider().call("use")
-		last_collision = null
 	
 	if not is_on_floor():
 		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
@@ -78,9 +77,11 @@ func _on_camera_view_rotate(view:int):
 func _on_collect_item_aera_body_entered(node:Node):
 	if (node is Item):
 		item_to_collect = node
-		item_collectable.emit(node)
+	elif (node is Usable):
+		node_to_use = node
+	display_info.emit(node.label)
 
 func _on_collect_item_aera_body_exited(node:Node):
-	if (node is Item):
-		item_to_collect = null
-		item_collectable_reset.emit()
+	item_to_collect = null
+	node_to_use = null
+	hide_info.emit()
