@@ -32,7 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00238132, 0.446956, -0.673
 shape = SubResource("SphereShape3D_87ru7")
 
 [node name="CollectAndUseArea" type="Area3D" parent="."]
-collision_mask = 6
+collision_mask = 14
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollectAndUseArea"]
 transform = Transform3D(1, 0, 0, 0, 2.12122, 0, 0, 0, 1, 0, 0.0674314, -0.765561)

@@ -139,6 +139,7 @@ inventory_drop={
 
 3d_physics/layer_2="collect"
 3d_physics/layer_3="use"
+3d_physics/layer_4="trigger"
 
 [rendering]
 

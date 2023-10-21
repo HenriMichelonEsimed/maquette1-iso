@@ -59,8 +59,6 @@ func _physics_process(delta):
 			elif collider.is_in_group("ladders") and Input.is_action_pressed("player_jump"):
 				target_velocity.y = 12
 				no_jump = true
-			elif collider.is_in_group("triggers"):
-				collider.call("trigger")
 			
 	target_velocity.x = direction.x * speed
 	target_velocity.z = direction.z * speed
@@ -78,9 +76,12 @@ func _on_camera_view_rotate(view:int):
 func _on_collect_item_aera_body_entered(node:Node):
 	if (node is Item):
 		item_to_collect = node
+		display_info.emit(node.label)
 	elif (node is Usable):
 		node_to_use = node
-	display_info.emit(node.label)
+		display_info.emit(node.label)
+	elif (node is Trigger):
+		node.trigger()
 
 func _on_collect_item_aera_body_exited(node:Node):
 	item_to_collect = null

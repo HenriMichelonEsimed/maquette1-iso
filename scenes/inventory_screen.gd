@@ -122,7 +122,7 @@ func _on_drop_pressed():
 	list_content[item.type].clear()
 	_fill_list(item.type, list_content[item.type])
 	item_content.visible = false
-	item.position = GameState.player.find_child("ToolAnchor").global_position
+	item.position = GameState.player.global_position
 	#item.global_rotation = GameState.player.global_rotation
 	item_dropped.emit(item)
 	

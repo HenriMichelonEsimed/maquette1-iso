@@ -5,7 +5,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxt7s"]
 size = Vector3(4, 2, 0.25)
 
-[node name="ZoneChange" type="StaticBody3D" groups=["triggers"]]
+[node name="ZoneChange" type="StaticBody3D"]
 script = ExtResource("1_mruye")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]

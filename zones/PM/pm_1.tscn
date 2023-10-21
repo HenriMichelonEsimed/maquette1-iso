@@ -37,18 +37,13 @@ material = ExtResource("2_i5k24")
 [node name="Stair" parent="." instance=ExtResource("3_xmas2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.09238, 0.0131226, -7.07043)
 
-[node name="Upstair" parent="Stair" instance=ExtResource("4_1n3s5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.99843, -3.73473)
+[node name="ZoneChange" parent="Stair" instance=ExtResource("4_1n3s5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -4)
 zone_name = "PM/pm_2"
 spawnpoint_key = "stairs"
 
 [node name="Ladder" parent="." instance=ExtResource("4_8ega4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8354, 0, -17.1998)
-
-[node name="Upstair" parent="Ladder" instance=ExtResource("4_1n3s5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0047, 3.84908, 0)
-zone_name = "PM/pm_2"
-spawnpoint_key = "ladder"
 
 [node name="SpawnPointDefault" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.04492, 0, -5.74768)
@@ -56,12 +51,9 @@ script = ExtResource("1_1chcy")
 key = "default"
 
 [node name="SpawnPointStairsFromPM2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6934, 4.21909, -7.28302)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8875, 4.35239, -7.28302)
 script = ExtResource("1_1chcy")
 key = "stairs_pm2"
 
 [node name="IronBar1" parent="." instance=ExtResource("8_8xxjk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6)
-
-[connection signal="triggered" from="Stair/Upstair" to="." method="on_zone_change"]
-[connection signal="triggered" from="Ladder/Upstair" to="." method="on_zone_change"]

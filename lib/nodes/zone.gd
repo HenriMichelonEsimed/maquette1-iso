@@ -18,8 +18,9 @@ func _ready():
 			and node.position == node.position):
 				node.queue_free()
 	for item in state.items_added.items: 
-		print(item.position)
 		add_child(item)
+	for zone_change in find_children("*", "ZoneChange", true, true):
+		zone_change.connect("triggered", on_zone_change)
 	_zone_ready()
 
 func _zone_ready():
