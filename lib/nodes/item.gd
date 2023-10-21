@@ -22,7 +22,7 @@ func _ready():
 	set_collision_layer_value(2, true)
 
 func _physics_process(delta):
-	if (GlobalState.paused): return
+	if (GameState.paused): return
 	if not is_on_floor():
 		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
 		velocity = target_velocity

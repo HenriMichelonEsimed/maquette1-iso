@@ -3,7 +3,8 @@ class_name RunningState
 
 var paused:bool = false
 var current_scene:Zone
-var game = GameState.new()
+var location = LocationState.new()
+var inventory = ItemsCollection.new()
 
 func _ready():
-	StateSaver.loadState(game)
+	StateSaver.loadState(location)
