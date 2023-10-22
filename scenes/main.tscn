@@ -85,11 +85,70 @@ text = "Saving..."
 wait_time = 0.5
 one_shot = true
 
+[node name="CollectDialog" type="Control" parent="Game/UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -196.5
+offset_top = -66.5
+offset_right = 196.5
+offset_bottom = 66.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Game/UI/CollectDialog"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.486275, 0.486275, 0.486275, 1)
+
+[node name="Content" type="MarginContainer" parent="Game/UI/CollectDialog"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Body" type="VBoxContainer" parent="Game/UI/CollectDialog/Content"]
+layout_mode = 2
+
+[node name="LabelName" type="Label" parent="Game/UI/CollectDialog/Content/Body"]
+layout_mode = 2
+text = "XXX"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Game/UI/CollectDialog/Content/Body"]
+layout_mode = 2
+text = "How many ?"
+
+[node name="SliderQuantity" type="HSlider" parent="Game/UI/CollectDialog/Content/Body"]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+
+[node name="LabelQuantity" type="Label" parent="Game/UI/CollectDialog/Content/Body"]
+layout_mode = 2
+text = "XXX"
+horizontal_alignment = 1
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_dhum8")
 
 [connection signal="display_info" from="Game/Player" to="." method="_on_display_info"]
 [connection signal="hide_info" from="Game/Player" to="." method="_on_hide_info"]
+[connection signal="item_collected" from="Game/Player" to="." method="_on_player_item_collected"]
 [connection signal="view_rotate" from="Game/CameraPivot/Camera" to="Game/Player" method="_on_camera_view_rotate"]
 [connection signal="pressed" from="Game/UI/TopMenu/ButtonQuit" to="." method="_on_button_quit_pressed"]
 [connection signal="pressed" from="Game/UI/TopMenu/ButtonInventory" to="." method="_on_button_inventory_pressed"]

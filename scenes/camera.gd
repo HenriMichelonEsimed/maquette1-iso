@@ -41,8 +41,8 @@ func _process(delta):
 		_rotate_view()
 		
 func _zoom_view():
-	if (_size < 10): 
-		_size = 10
+	if (_size < 5): 
+		_size = 5
 	elif (_size > 60):
 		_size = 60
 	size = _size

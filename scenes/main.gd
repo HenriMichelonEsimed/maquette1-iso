@@ -11,7 +11,7 @@ func _ready():
 		_set_player_position(GameState.location.position, GameState.location.rotation)
 	#_on_button_inventory_pressed()
 	
-func _process(delta):
+func _process(_delta):
 	if (GameState.paused): return
 	if Input.is_action_just_pressed("player_inventory"):
 		_on_button_inventory_pressed()
@@ -74,3 +74,5 @@ func _on_hide_info():
 	labelInfo.visible = false
 	labelInfo.text = ''
 
+func _on_player_item_collected(item):
+	GameState.inventory.add(item.duplicate())

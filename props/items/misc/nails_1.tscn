@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkty22aenfm0p"]
+
+[ext_resource type="Script" path="res://lib/nodes/item_miscellaneous.gd" id="1_8de1x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_33qxj"]
+size = Vector3(0.299255, 0.0991887, 0.102241)
+
+[node name="Nails" type="CharacterBody3D"]
+script = ExtResource("1_8de1x")
+quantity = 100
+key = "nails_1"
+label = "Nails"
+weight = 1
+type = 4
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+use_collision = true
+size = Vector3(0.2, 0.1, 0.1)
+
+[node name="Label3D" type="Label3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0513153)
+double_sided = false
+text = "Nails"
+font_size = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_33qxj")

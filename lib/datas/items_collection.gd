@@ -5,9 +5,9 @@ class_name ItemsCollection
 
 func add(item:Item):
 	if (item.type in [ Item.ItemType.ITEM_CONSUMABLES, Item.ItemType.ITEM_AMMUNITIONS, Item.ItemType.ITEM_MISCELLANEOUS ]):
-		var found = items.filter(func(item): return item.key == item.key)
+		var found = items.filter(func(i): return i.key == item.key)
 		if (found.size() > 0):
-			found[0].quantity += 1
+			found[0].quantity += item.quantity
 			return
 	items.push_back(item)
 	

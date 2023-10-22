@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0cir47ek00ym"]
+[gd_scene load_steps=11 format=3 uid="uid://b0cir47ek00ym"]
 
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="1_1chcy"]
 [ext_resource type="PackedScene" uid="uid://bui56f6v53gx4" path="res://zones/PM/ground.tscn" id="1_e58tr"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://btdkocrw70s4u" path="res://lib/nodes/zone_change_trigger.tscn" id="5_xbmvl"]
 [ext_resource type="PackedScene" uid="uid://c2020jb1cp5mf" path="res://props/items/tools/iron_bar_1.tscn" id="8_8xxjk"]
 [ext_resource type="PackedScene" uid="uid://0jalcx6ipydc" path="res://props/common/interiors/orange_button.tscn" id="8_ufg3l"]
+[ext_resource type="PackedScene" uid="uid://bkty22aenfm0p" path="res://props/items/misc/nails_1.tscn" id="10_hadd0"]
 
 [node name="PM1" type="Node3D"]
 script = ExtResource("1_oo6bp")
@@ -56,6 +57,12 @@ label = "Button 1"
 [node name="OrangeButton2" parent="." instance=ExtResource("8_ufg3l")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 0, 5)
 label = "Button 2"
+
+[node name="nails" parent="." instance=ExtResource("10_hadd0")]
+transform = Transform3D(0.817014, 0, -0.576618, 0, 1, 0, 0.576618, 0, 0.817014, 0, 0, 3.8844)
+
+[node name="Nails" parent="." instance=ExtResource("10_hadd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4)
 
 [connection signal="using" from="OrangeButton" to="." method="_on_orange_button_using"]
 [connection signal="using" from="OrangeButton2" to="." method="_on_orange_button_2_using"]

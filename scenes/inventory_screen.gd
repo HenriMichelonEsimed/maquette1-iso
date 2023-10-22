@@ -107,6 +107,7 @@ func _set_tab():
 	elif (state.tab > 4):
 		state.tab = 0
 	tabs.current_tab = state.tab
+	StateSaver.saveState(state)
 	#tabs.get_child(state.tab).get_child(0).grab_focus()
 
 func _fill_list(type:Item.ItemType, list:ItemList):
