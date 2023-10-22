@@ -3,9 +3,9 @@ class_name Usable
 
 signal using(is_used:bool)
 @export var label:String
+@export var save:bool = true
 
 var is_used:bool = false
-var save:bool
 var animation:AnimationPlayer
 
 func _init(_save:bool = true):

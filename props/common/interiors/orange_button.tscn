@@ -9,6 +9,7 @@ size = Vector3(0.391447, 0.912578, 0.149281)
 [node name="OrangeButton" type="StaticBody3D"]
 script = ExtResource("1_8bnjw")
 label = "Button"
+save = false
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 use_collision = true
