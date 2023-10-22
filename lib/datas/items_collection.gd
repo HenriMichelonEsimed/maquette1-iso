@@ -4,7 +4,7 @@ class_name ItemsCollection
 @export var items = []
 
 func add(item:Item):
-	if (item.type in [ Item.ItemType.ITEM_CONSUMABLES, Item.ItemType.ITEM_AMMUNITIONS, Item.ItemType.ITEM_MISCELLANEOUS ]):
+	if (item is ItemMultiple):
 		var found = items.filter(func(i): return i.key == item.key)
 		if (found.size() > 0):
 			found[0].quantity += item.quantity
@@ -12,6 +12,11 @@ func add(item:Item):
 	items.push_back(item)
 	
 func remove(item:Item):
+	if (item is ItemMultiple):
+		var found = items.filter(func(i): return i.key == item.key)
+		if (found.size() > 0):
+			found[0].quantity -= item.quantity
+			if (found[0].quantity > 0): return
 	items.erase(item)
 	
 func getall_bytype(type:Item.ItemType) -> Array:

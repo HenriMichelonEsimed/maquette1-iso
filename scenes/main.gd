@@ -66,9 +66,9 @@ func _on_saving_end():
 func _on_saving_timer_timeout():
 	$Game/UI/LabelSaving.visible = false
 
-func _on_display_info(label:String):
+func _on_display_info(node:Node3D):
+	labelInfo.text = str(node)
 	labelInfo.visible = true
-	labelInfo.text = label
 
 func _on_hide_info():
 	labelInfo.visible = false

@@ -37,7 +37,8 @@ const tab_order = [
 var state = InventoryScreenState.new()
 var item:Item
 var list:ItemList
-var selected = 1
+var selected = 0
+var slide_pressed = 0
 
 func _ready():
 	StateSaver.loadState(state)
@@ -50,7 +51,10 @@ func _on_button_back_pressed():
 	queue_free()
 	
 func _on_list_tools_item_selected(index):
-	_item_details(GameState.inventory.getone_bytype((index-1)/2, Item.ItemType.ITEM_TOOLS), index)
+	_item_details(GameState.inventory.getone_bytype(index, Item.ItemType.ITEM_TOOLS), index)
+	
+func _on_list_miscellaneous_item_selected(index):
+	_item_details(GameState.inventory.getone_bytype(index, Item.ItemType.ITEM_MISCELLANEOUS), index)
 	
 func _item_details(_item, index):
 	selected = index
@@ -60,6 +64,22 @@ func _item_details(_item, index):
 	item_content.visible = true
 
 func _process(_delta):
+	if ($DropDialog.visible):
+		if (slide_pressed > 10):
+			if Input.is_action_pressed("shortcut_left"):
+				$DropDialog/Content/Body/SliderQuantity.value -= 1
+			elif Input.is_action_pressed("shortcut_right"):
+				$DropDialog/Content/Body/SliderQuantity.value += 1
+		else :
+			if Input.is_action_pressed("shortcut_left") or Input.is_action_pressed("shortcut_right"):
+				slide_pressed += 1
+		if Input.is_action_just_released("shortcut_left"):
+			$DropDialog/Content/Body/SliderQuantity.value -= 1
+			slide_pressed = 0
+		elif Input.is_action_just_released("shortcut_right"):
+			$DropDialog/Content/Body/SliderQuantity.value += 1
+			slide_pressed = 0
+		return
 	if (Input.is_action_just_pressed("player_inventory")):
 		_on_button_back_pressed()
 		return
@@ -81,10 +101,10 @@ func _next_item():
 	if (list == null): return
 	var index
 	if (item == null):
-		index = 1
+		index = 0
 	else:
 		index = selected + 1
-	if (index > list.item_count): index = 1
+	if (index >= list.item_count): index = 0
 	list.deselect_all()
 	list.select(index)
 	list.item_selected.emit(index)
@@ -96,7 +116,7 @@ func _previous_item():
 		index = list.item_count - 1
 	else:
 		index = selected - 1
-		if (index < 0): index = list.item_count - 1
+	if (index < 0): index = list.item_count - 1
 	list.deselect_all()
 	list.select(index)
 	list.item_selected.emit(index)
@@ -112,13 +132,20 @@ func _set_tab():
 
 func _fill_list(type:Item.ItemType, list:ItemList):
 	for item in GameState.inventory.getall_bytype(type):
-		if (item is ItemMultiple):
-			list.add_item(str(item.quantity) + " x " + item.label)
-		else:
-			list.add_item(item.label)
+		list.add_item(str(item))
 
 func _on_drop_pressed():
 	if (item == null): return
+	if (item is ItemMultiple):
+		$DropDialog/Content/Body/LabelName.text = item.label
+		$DropDialog/Content/Body/SliderQuantity.max_value = item.quantity
+		$DropDialog/Content/Body/SliderQuantity.value = item.quantity
+		$DropDialog/Content/Body/LabelQuantity.text = str($DropDialog/Content/Body/SliderQuantity.value)
+		$DropDialog.visible = true
+	else:
+		_drop()
+		
+func _drop():
 	GameState.inventory.remove(item)
 	list_content[item.type].clear()
 	_fill_list(item.type, list_content[item.type])
@@ -132,3 +159,16 @@ func _on_tabs_tab_selected(tab):
 	if (tab == state.tab): return
 	state.tab = tab
 	StateSaver.saveState(state)
+
+func _on_button_cancel_drop_pressed():
+	$DropDialog.visible = false
+
+func _on_button_drop_pressed():
+	var qty = $DropDialog/Content/Body/SliderQuantity.value
+	item = item.duplicate()
+	item.quantity = qty
+	_on_button_cancel_drop_pressed()
+	_drop()
+
+func _on_slider_quantity_value_changed(value):
+	$DropDialog/Content/Body/LabelQuantity.text = str($DropDialog/Content/Body/SliderQuantity.value)

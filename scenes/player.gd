@@ -9,7 +9,7 @@ var last_collision = null
 var current_view = 0
 var item_to_collect:Item = null
 var node_to_use:Usable = null
-signal display_info(label:String)
+signal display_info(node:Node3D)
 signal hide_info()
 signal item_collected(item:Item)
 
@@ -75,10 +75,10 @@ func _on_camera_view_rotate(view:int):
 func _on_collect_item_aera_body_entered(node:Node):
 	if (node is Item):
 		item_to_collect = node
-		display_info.emit(node.label)
+		display_info.emit(node)
 	elif (node is Usable):
 		node_to_use = node
-		display_info.emit(node.label)
+		display_info.emit(node)
 	elif (node is Trigger):
 		node.trigger()
 

@@ -21,4 +21,7 @@ var target_velocity = Vector3.ZERO
 func _ready():
 	set_collision_layer_value(1, false)
 	set_collision_layer_value(2, true)
+	
+func _to_string():
+	return label
 
