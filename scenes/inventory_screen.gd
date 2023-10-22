@@ -67,9 +67,9 @@ func _process(_delta):
 	if ($DropDialog.visible):
 		if (slide_pressed > 10):
 			if Input.is_action_pressed("shortcut_left"):
-				$DropDialog/Content/Body/SliderQuantity.value -= 1
+				$DropDialog/Content/Body/SliderQuantity.value -= 5
 			elif Input.is_action_pressed("shortcut_right"):
-				$DropDialog/Content/Body/SliderQuantity.value += 1
+				$DropDialog/Content/Body/SliderQuantity.value += 5
 		else :
 			if Input.is_action_pressed("shortcut_left") or Input.is_action_pressed("shortcut_right"):
 				slide_pressed += 1

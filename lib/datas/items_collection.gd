@@ -2,9 +2,13 @@ extends Node
 class_name ItemsCollection
 
 @export var items = []
+var add_multiples:bool
+
+func _init(add:bool=true):
+	add_multiples = add
 
 func add(item:Item):
-	if (item is ItemMultiple):
+	if add_multiples and (item is ItemMultiple):
 		var found = items.filter(func(i): return i.key == item.key)
 		if (found.size() > 0):
 			found[0].quantity += item.quantity
@@ -12,7 +16,7 @@ func add(item:Item):
 	items.push_back(item)
 	
 func remove(item:Item):
-	if (item is ItemMultiple):
+	if add_multiples and (item is ItemMultiple):
 		var found = items.filter(func(i): return i.key == item.key)
 		if (found.size() > 0):
 			found[0].quantity -= item.quantity
