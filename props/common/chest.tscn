@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cayys5oa8sj6b"]
 
-[ext_resource type="Script" path="res://lib/nodes/usable.gd" id="1_cpnl4"]
+[ext_resource type="Script" path="res://props/common/chest.gd" id="1_y0w7d"]
 [ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://materials/Orange Texture.tres" id="2_hn8md"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7jpjp"]
@@ -68,8 +68,9 @@ _data = {
 }
 
 [node name="Chest" type="StaticBody3D"]
-script = ExtResource("1_cpnl4")
+script = ExtResource("1_y0w7d")
 label = "Chest"
+save = false
 
 [node name="Body" type="CSGCombiner3D" parent="."]
 use_collision = true
