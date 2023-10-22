@@ -6,7 +6,7 @@
 [ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://materials/Orange Texture.tres" id="2_laehp"]
 [ext_resource type="PackedScene" uid="uid://btdkocrw70s4u" path="res://lib/nodes/zone_change_trigger.tscn" id="3_uqtx8"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="6_vjmli"]
-[ext_resource type="PackedScene" uid="uid://dupdl54osf1df" path="res://props/common/interiors/distant_door.tscn" id="7_w1x48"]
+[ext_resource type="PackedScene" uid="uid://dupdl54osf1df" path="res://props/common/interiors/distant_door1.tscn" id="7_w1x48"]
 
 [node name="PM2" type="Node3D"]
 script = ExtResource("1_8y2xd")
