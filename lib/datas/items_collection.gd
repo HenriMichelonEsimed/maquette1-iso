@@ -28,7 +28,6 @@ func saveState(file:FileAccess):
 	for item in items:
 		file.store_8(item.type)
 		file.store_pascal_string(item.key)
-		print(item.position)
 		file.store_var(item.position)
 		file.store_var(item.rotation)
 		if item is ItemUnique:

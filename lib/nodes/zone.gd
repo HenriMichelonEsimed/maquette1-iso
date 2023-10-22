@@ -11,32 +11,27 @@ func _init(_state:ZoneState=null):
 func _ready():
 	if (state == null) : state = ZoneState.new(zone_name, self)
 	StateSaver.loadState(state)
-	for item in state.items_removed.items: 
-		for node in find_children("*", "Item", true, true):
-			if (node.type == item.type 
-			and node.key == item.key 
-			and node.position == node.position):
-				node.queue_free()
+	for i in range(state.items_removed.size()):
+		get_node(state.items_removed[i]).queue_free()
 	for item in state.items_added.items: 
 		add_child(item)
-	for zone_change in find_children("*", "ZoneChange", true, true):
-		zone_change.connect("triggered", on_zone_change)
+	for trigger in find_children("*", "ZoneChangeTrigger", true, true):
+		trigger.connect("triggered", on_zone_change)
 	_zone_ready()
 
 func _zone_ready():
 	pass
 	
-func on_zone_change(zonechange:ZoneChange):
-	change_zone.emit(zonechange.zone_name, zonechange.spawnpoint_key)
+func on_zone_change(trigger:ZoneChangeTrigger):
+	change_zone.emit(trigger.zone_name, trigger.spawnpoint_key)
 	
 func on_item_dropped(item:Item):
 	add_child(item)
 	state.items_added.add(item)
 	
 func on_item_collected(item:Item):
-	if (item.owner != null):
-		remove_child(item)
-		state.items_removed.add(item)
+	if (item.owner != null): # items from scene
+		state.items_removed.append(item.get_path())
 	else:
 		state.items_added.remove(item)
-		item.queue_free()
+	item.queue_free()

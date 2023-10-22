@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bui56f6v53gx4" path="res://zones/PM/ground.tscn" id="1_eawe5"]
 [ext_resource type="PackedScene" uid="uid://qen4ovexpt6n" path="res://props/common/interiors/door.tscn" id="2_4epon"]
 [ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://materials/Orange Texture.tres" id="2_laehp"]
-[ext_resource type="PackedScene" uid="uid://cgen42rr1eia1" path="res://props/common/zone_change.tscn" id="3_jl4re"]
+[ext_resource type="PackedScene" uid="uid://btdkocrw70s4u" path="res://lib/nodes/zone_change_trigger.tscn" id="3_uqtx8"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="6_vjmli"]
 
 [node name="PM2" type="Node3D"]
@@ -12,14 +12,14 @@ script = ExtResource("1_8y2xd")
 zone_name = "pm_pm_2"
 
 [node name="Door" parent="." instance=ExtResource("2_4epon")]
-transform = Transform3D(0.0499131, 0, -0.998754, 0, 1, 0, 0.998754, 0, 0.0499131, -15.4474, 0, 17.686)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15.4474, 0, 18.686)
 
-[node name="Ground" parent="." instance=ExtResource("1_eawe5")]
-
-[node name="Upstair" parent="Ground" instance=ExtResource("3_jl4re")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25.0477, -0.0037936, 20.0411)
+[node name="ZoneChangeTrigger" parent="." instance=ExtResource("3_uqtx8")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25, 0.0273514, 20.5176)
 zone_name = "PM/pm_1"
 spawnpoint_key = "stairs_pm2"
+
+[node name="Ground" parent="." instance=ExtResource("1_eawe5")]
 
 [node name="Level" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -31,7 +31,7 @@ size = Vector3(1, 1, 20)
 material = ExtResource("2_laehp")
 
 [node name="Box3" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8685, 0, 16.3954)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8685, 0, 17.3954)
 size = Vector3(10, 1, 2.25956)
 material = ExtResource("2_laehp")
 
@@ -49,5 +49,3 @@ key = "stairs"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5254, 0, -15.9841)
 script = ExtResource("6_vjmli")
 key = "ladder"
-
-[connection signal="triggered" from="Ground/Upstair" to="." method="on_zone_change"]

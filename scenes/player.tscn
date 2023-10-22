@@ -12,7 +12,7 @@
 radius = 0.295612
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_de22c"]
-size = Vector3(1.00647, 1.04662, 1.31316)
+size = Vector3(1.60408, 1.04662, 1.24203)
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_7my55")
@@ -35,7 +35,7 @@ shape = SubResource("SphereShape3D_87ru7")
 collision_mask = 14
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollectAndUseArea"]
-transform = Transform3D(1, 0, 0, 0, 2.12122, 0, 0, 0, 1, 0, 0.0674314, -0.765561)
+transform = Transform3D(1, 0, 0, 0, 2.12122, 0, 0, 0, 1, 0, 0.0674314, -0.61018)
 shape = SubResource("BoxShape3D_de22c")
 
 [node name="ToolAnchor" type="Node3D" parent="."]

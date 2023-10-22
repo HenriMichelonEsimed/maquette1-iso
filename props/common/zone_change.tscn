@@ -1,18 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgen42rr1eia1"]
+[gd_scene load_steps=4 format=3 uid="uid://cotmappybvtp1"]
 
-[ext_resource type="Script" path="res://props/common/zone_change.gd" id="1_mruye"]
+[sub_resource type="GDScript" id="GDScript_pmqbi"]
+script/source = "extends Trigger
+class_name ZoneChange
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qxt7s"]
-size = Vector3(4, 3.45712, 0.413455)
+@export var zone_name:String
+@export var spawnpoint_key:String
+"
+
+[sub_resource type="BoxMesh" id="BoxMesh_ki8id"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kcy7r"]
 
 [node name="ZoneChange" type="StaticBody3D"]
-script = ExtResource("1_mruye")
+script = SubResource("GDScript_pmqbi")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78842, -0.189846)
-use_collision = true
-size = Vector3(4, 3.67213, 0.380106)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ki8id")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67978, -0.196013)
-shape = SubResource("BoxShape3D_qxt7s")
+shape = SubResource("BoxShape3D_kcy7r")

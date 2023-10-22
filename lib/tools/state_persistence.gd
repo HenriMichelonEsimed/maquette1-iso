@@ -42,11 +42,10 @@ func saveState(res:State):
 			file.store_8(STATE_VARIANT)
 			file.store_pascal_string(prop.name)
 			file.store_var(value)
-		elif (prop.type == TYPE_ARRAY):
+		elif (value is PackedStringArray):
 			file.store_8(STATE_STRINGARRAY)
 			file.store_pascal_string(prop.name)
-			file.store_32(value.size())
-			for v in value: file.store_pascal_string(v)
+			file.store_var(value)
 		elif value is ItemsCollection:
 			file.store_8(STATE_ITEMS)
 			file.store_pascal_string(prop.name)
@@ -61,17 +60,12 @@ func loadState(res:State):
 	while (!file.eof_reached()):
 		var entry_type = file.get_8()
 		var entry_name = file.get_pascal_string()
-		if (entry_type == STATE_VARIANT):
+		if (entry_type in [STATE_VARIANT, STATE_STRINGARRAY]):
 			res.set(entry_name, file.get_var())
 		elif (parent != null and entry_type == STATE_USABLE):
 			if (file.get_var()):
 				var usable = parent.get_node_or_null(entry_name)
 				if (usable != null): usable.use()
-		elif (parent != null and entry_type == STATE_STRINGARRAY):
-			var count = file.get_32()
-			var arr = []
-			for i in range(count): arr.push_back(file.get_pascal_string())
-			res.set(entry_name, arr)
 		elif (entry_type == STATE_ITEMS):
 			var items:ItemsCollection = res.get(entry_name)
 			items.loadState(file)
