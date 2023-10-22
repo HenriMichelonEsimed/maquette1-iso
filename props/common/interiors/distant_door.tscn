@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dupdl54osf1df"]
+
+[ext_resource type="Script" path="res://props/common/interiors/distant_door.gd" id="1_f4uiw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gliie"]
+size = Vector3(1.24352, 1.68327, 1)
+
+[node name="DistantDoor" type="StaticBody3D" groups=["usables"]]
+script = ExtResource("1_f4uiw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(3.22589, 0, 0, 0, 1.83261, 0, 0, 0, 0.174899, 2.00223, 1.49365, 0.00618792)
+shape = SubResource("BoxShape3D_gliie")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, 0)
+size = Vector3(4, 3, 0.2)

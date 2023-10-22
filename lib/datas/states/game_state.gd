@@ -9,6 +9,7 @@ var current_zone:Zone
 var location = LocationState.new()
 var camera = CameraState.new()
 var inventory = ItemsCollection.new()
+var events_queue = EventsQueue.new()
 var player:Player
 
 func _ready():
@@ -29,6 +30,7 @@ func loadGame():
 	StateSaver.loadState(location)
 	StateSaver.loadState(camera)
 	StateSaver.loadState(InventoryState.new(inventory))
+
 	
 class InventoryState extends State:
 	var inventory:ItemsCollection

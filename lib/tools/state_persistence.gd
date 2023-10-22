@@ -7,8 +7,9 @@ const default_path = "user://savegames/"
 enum {
  	STATE_VARIANT 		= 0,
 	STATE_USABLE 		= 1,
-	STATE_STRINGARRAY 	= 2,
-	STATE_ITEMS			= 3
+	STATE_FUNCTIONAL	= 2,
+	STATE_STRINGARRAY 	= 3,
+	STATE_ITEMS			= 4
 }
 
 var path = default_path
@@ -27,11 +28,16 @@ func saveState(res:State):
 		if (prop.name == "parent"):
 			var parent:Node = res.get("parent")
 			if (parent != null):
-				for usable in parent.find_children("*", "Usable", true):
-					if (usable.save):
+				for node in parent.find_children("*", "Usable", true, true):
+					if (node.save):
 						file.store_8(STATE_USABLE)
-						file.store_pascal_string(usable.get_path())
-						file.store_var(usable.is_used)
+						file.store_pascal_string(node.get_path())
+						file.store_var(node.is_used)
+				for node in parent.find_children("*", "Functional", true, true):
+					if (node.save):
+						file.store_8(STATE_FUNCTIONAL)
+						file.store_pascal_string(node.get_path())
+						file.store_var(node.is_used)
 			continue
 		var value = res.get(prop.name)
 		if (prop.type == TYPE_STRING 
@@ -62,7 +68,8 @@ func loadState(res:State):
 		var entry_name = file.get_pascal_string()
 		if (entry_type in [STATE_VARIANT, STATE_STRINGARRAY]):
 			res.set(entry_name, file.get_var())
-		elif (parent != null and entry_type == STATE_USABLE):
+		elif (parent != null 
+			and entry_type in [STATE_USABLE, STATE_FUNCTIONAL]):
 			if (file.get_var()):
 				var usable = parent.get_node_or_null(entry_name)
 				if (usable != null): usable.use()
