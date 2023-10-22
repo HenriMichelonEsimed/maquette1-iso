@@ -17,6 +17,12 @@ func _ready():
 		add_child(item)
 	for trigger in find_children("*", "ZoneChangeTrigger", true, true):
 		trigger.connect("triggered", on_zone_change)
+	var event = GameState.events_queue.getNextEvent(zone_name)
+	while (event != null):
+		var node = get_node(event.target)
+		if (node != null):
+			node.call(event.event)
+		event = GameState.events_queue.getNextEvent(zone_name)
 	_zone_ready()
 
 func _zone_ready():

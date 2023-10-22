@@ -23,6 +23,7 @@ func saveGame():
 	StateSaver.saveState(location)
 	StateSaver.saveState(camera)
 	StateSaver.saveState(InventoryState.new(inventory))
+	StateSaver.saveState(EventsQueueState.new(events_queue))
 	StateSaver.saveState(current_zone.state)
 	saving_end.emit()
 	
@@ -30,10 +31,16 @@ func loadGame():
 	StateSaver.loadState(location)
 	StateSaver.loadState(camera)
 	StateSaver.loadState(InventoryState.new(inventory))
+	StateSaver.loadState(EventsQueueState.new(events_queue))
 
-	
 class InventoryState extends State:
 	var inventory:ItemsCollection
 	func _init(_inv):
 		super("inventory")
 		inventory = _inv
+
+class EventsQueueState extends State:
+	var queue:EventsQueue
+	func _init(_queue):
+		super("events_queue")
+		queue = _queue

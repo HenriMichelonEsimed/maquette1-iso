@@ -9,7 +9,8 @@ enum {
 	STATE_USABLE 		= 1,
 	STATE_FUNCTIONAL	= 2,
 	STATE_STRINGARRAY 	= 3,
-	STATE_ITEMS			= 4
+	STATE_ITEMS			= 4,
+	STATE_EVENTS		= 5
 }
 
 var path = default_path
@@ -56,6 +57,10 @@ func saveState(res:State):
 			file.store_8(STATE_ITEMS)
 			file.store_pascal_string(prop.name)
 			value.saveState(file)
+		elif value is EventsQueue:
+			file.store_8(STATE_EVENTS)
+			file.store_pascal_string(prop.name)
+			value.saveState(file)
 	file.close()
 	
 func loadState(res:State):
@@ -76,7 +81,8 @@ func loadState(res:State):
 		elif (entry_type == STATE_ITEMS):
 			var items:ItemsCollection = res.get(entry_name)
 			items.loadState(file)
-			
-				
+		elif (entry_type == STATE_EVENTS):
+			var queue:EventsQueue = res.get(entry_name)
+			queue.loadState(file)
 	file.close()
 		
