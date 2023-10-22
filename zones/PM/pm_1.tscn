@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b0cir47ek00ym"]
+[gd_scene load_steps=12 format=3 uid="uid://b0cir47ek00ym"]
 
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="1_1chcy"]
 [ext_resource type="PackedScene" uid="uid://bui56f6v53gx4" path="res://zones/PM/ground.tscn" id="1_e58tr"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c2020jb1cp5mf" path="res://props/items/tools/iron_bar_1.tscn" id="8_8xxjk"]
 [ext_resource type="PackedScene" uid="uid://0jalcx6ipydc" path="res://props/common/interiors/orange_button.tscn" id="8_ufg3l"]
 [ext_resource type="PackedScene" uid="uid://bkty22aenfm0p" path="res://props/items/misc/nails_1.tscn" id="10_hadd0"]
+[ext_resource type="PackedScene" uid="uid://cayys5oa8sj6b" path="res://props/common/chest.tscn" id="11_lgl1t"]
 
 [node name="PM1" type="Node3D"]
 script = ExtResource("1_oo6bp")
@@ -63,6 +64,9 @@ transform = Transform3D(0.817014, 0, -0.576618, 0, 1, 0, 0.576618, 0, 0.817014, 
 
 [node name="Nails" parent="." instance=ExtResource("10_hadd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4)
+
+[node name="Chest" parent="." instance=ExtResource("11_lgl1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.28589, -0.633301, -6.2356)
 
 [connection signal="using" from="OrangeButton" to="." method="_on_orange_button_using"]
 [connection signal="using" from="OrangeButton2" to="." method="_on_orange_button_2_using"]

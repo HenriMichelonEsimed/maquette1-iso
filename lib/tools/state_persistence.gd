@@ -29,12 +29,12 @@ func saveState(res:State):
 		if (prop.name == "parent"):
 			var parent:Node = res.get("parent")
 			if (parent != null):
-				for node in parent.find_children("*", "Usable", true, true):
+				for node in parent.find_children("*", "Usable", true, false):
 					if (node.save):
 						file.store_8(STATE_USABLE)
 						file.store_pascal_string(node.get_path())
 						file.store_var(node.is_used)
-				for node in parent.find_children("*", "Functional", true, true):
+				for node in parent.find_children("*", "Functional", true, false):
 					if (node.save):
 						file.store_8(STATE_FUNCTIONAL)
 						file.store_pascal_string(node.get_path())
@@ -77,7 +77,7 @@ func loadState(res:State):
 			and entry_type in [STATE_USABLE, STATE_FUNCTIONAL]):
 			if (file.get_var()):
 				var usable = parent.get_node_or_null(entry_name)
-				if (usable != null): usable.use()
+				if (usable != null): usable.use(true)
 		elif (entry_type == STATE_ITEMS):
 			var items:ItemsCollection = res.get(entry_name)
 			items.loadState(file)
