@@ -1,0 +1,90 @@
+[gd_scene load_steps=2 format=3 uid="uid://dujfl0ljogwbx"]
+
+[ext_resource type="Script" path="res://scenes/dialogs/items_transfert_dialog.gd" id="1_b1cra"]
+
+[node name="ItemsTransfertDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -560.5
+offset_top = -295.5
+offset_right = 460.5
+offset_bottom = 281.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b1cra")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.423529, 0.423529, 0.423529, 1)
+
+[node name="Content" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Content/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ButtonClose" type="Button" parent="Content/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "X"
+
+[node name="Lists" type="HBoxContainer" parent="Content/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ListContainer" type="ItemList" parent="Content/VBoxContainer/Lists"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_right = NodePath("../ListInventory")
+focus_next = NodePath("../ListInventory")
+
+[node name="Middle" type="PanelContainer" parent="Content/VBoxContainer/Lists"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="ButtonDrop" type="Button" parent="Content/VBoxContainer/Lists/Middle"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "<-"
+
+[node name="ButtonPick" type="Button" parent="Content/VBoxContainer/Lists/Middle"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "->"
+
+[node name="ListInventory" type="ItemList" parent="Content/VBoxContainer/Lists"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../ListContainer")
+focus_next = NodePath("../ListContainer")
+
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
+[connection signal="pressed" from="Content/VBoxContainer/HBoxContainer/ButtonClose" to="." method="_on_close"]
+[connection signal="child_exiting_tree" from="Content/VBoxContainer/Lists/ListContainer" to="." method="_on_list_container_child_exiting_tree"]
+[connection signal="focus_entered" from="Content/VBoxContainer/Lists/ListContainer" to="." method="_on_list_container_focus_entered"]
+[connection signal="ready" from="Content/VBoxContainer/Lists/ListContainer" to="." method="_on_list_container_ready"]
+[connection signal="focus_entered" from="Content/VBoxContainer/Lists/ListInventory" to="." method="_on_list_inventory_focus_entered"]

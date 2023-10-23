@@ -92,10 +92,10 @@ func _process(_delta):
 	elif Input.is_action_just_pressed("shortcut_right"):
 		state.tab += 1
 		_set_tab()
-	elif Input.is_action_just_pressed("shortcut_down"):
-		_next_item()
-	elif Input.is_action_just_pressed("shortcut_up"):
-		_previous_item()
+	#elif Input.is_action_just_pressed("shortcut_down"):
+	#	_next_item()
+	#elif Input.is_action_just_pressed("shortcut_up"):
+	#	_previous_item()
 	
 func _next_item():
 	if (list == null) or (list.item_count == 0): return

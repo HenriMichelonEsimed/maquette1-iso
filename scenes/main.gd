@@ -1,9 +1,7 @@
 extends Node3D
 
 @export var labelInfo:Label
-@onready var items_transfert_dialog = $ItemsTransfertDialog
-@onready var items_transfert_list_container = $ItemsTransfertDialog/Content/VBoxContainer/Lists/ListContainer
-@onready var items_transfert_list_inventory = $ItemsTransfertDialog/Content/VBoxContainer/Lists/ListInventory
+var items_transfert_dialog:ItemsTransfertDialog
 
 func _ready():
 	GameState.connect("saving_start", _on_saving_start)
@@ -12,14 +10,13 @@ func _ready():
 	_on_change_zonelevel(GameState.location.zone_name, "default", false)
 	if (GameState.location.position != Vector3.ZERO):
 		_set_player_position(GameState.location.position, GameState.location.rotation)
+	items_transfert_dialog = load("res://scenes/dialogs/items_transfert_dialog.tscn").instantiate()
+	items_transfert_dialog.connect("close", _on_storage_close)
+	items_transfert_dialog.connect("item_collected", _on_player_item_collected)
 	#_on_button_inventory_pressed()
 	
 func _process(_delta):
-	if (GameState.paused): 
-		if Input.is_action_just_pressed("cancel"):
-			if (items_transfert_dialog.visible):
-				_on_storage_close()
-		return
+	if (GameState.paused): return
 	if Input.is_action_just_pressed("player_inventory"):
 		_on_button_inventory_pressed()
 	
@@ -47,15 +44,11 @@ func _on_change_zonelevel(zone_name:String, spawnpoint_key:String, save:bool=tru
 			
 func _on_storage_open(node:Storage):
 	_on_pause(false)
-	items_transfert_dialog.visible = true
-	for item in node.items.items:
-		items_transfert_list_container.add_item(str(item))
-	items_transfert_list_container.grab_focus()
+	add_child(items_transfert_dialog)
+	items_transfert_dialog.open(node)
 	
 func _on_storage_close():
-	items_transfert_dialog.visible = false
-	items_transfert_list_container.clear()
-	items_transfert_list_inventory.clear()
+	remove_child(items_transfert_dialog)
 	_on_resume()
 
 func _on_button_quit_pressed():

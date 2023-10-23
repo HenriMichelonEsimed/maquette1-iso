@@ -13,6 +13,7 @@ func _ready():
 	if (items != null):
 		for item in items.find_children("*", "Item"):
 			item.set_collision_layer_value(2, false)
+			item.visible = false
 			items.add(item)
 	
 func _use():
