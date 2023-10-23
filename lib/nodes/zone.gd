@@ -16,7 +16,7 @@ func _ready():
 		if (item.get_parent() is Storage):
 			item.get_parent().items.remove(item)
 		item.queue_free()
-	for item in state.items_added.items: 
+	for item in state.items_added.getall(): 
 		if item.has_meta("storage"):
 			var path = item.get_meta("storage").replace(str(get_path()) + "/", '')
 			var parent = find_child(path)
@@ -43,15 +43,16 @@ func on_zone_change(trigger:ZoneChangeTrigger):
 	change_zone.emit(trigger.zone_name, trigger.spawnpoint_key)
 	
 func on_item_dropped(item:Item):
-	if (item.get_parent() == null):
-		add_child(item)
-	state.items_added.add(item)
+	#if (item.get_parent() == null):
+	#	add_child(item)
+	#state.items_added.add(item)
+	pass
 	
 func on_item_collected(item:Item):
+	var new_item = item.duplicate()
 	if (item.owner != null): # items from scene
 		state.items_removed.append(item.get_path())
-	else:
-		state.items_added.remove(item)
-	if (item.get_parent() != null): 
-		item.get_parent().remove_child(item)
+	item.get_parent().remove_child(item)
+	state.items_added.remove(item)
+	GameState.inventory.add(new_item)
 	

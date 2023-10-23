@@ -1,7 +1,7 @@
 extends Node
 class_name ItemsCollection
 
-var items = []
+var _items = []
 var add_multiples:bool
 
 func _init(_add:bool=true):
@@ -13,36 +13,40 @@ func new(type:int,_name:String):
 
 func add(item:Item):
 	if add_multiples and (item is ItemMultiple):
-		var found = items.filter(func(i): return i.key == item.key)
+		var found = _items.filter(func(i): return i.key == item.key)
 		if (found.size() > 0):
-			found[0].quantity += item.quantity
-			return
-	items.push_back(item)
+			item.quantity += found[0].quantity
+			_items.erase(found[0])
+	_items.push_back(item)
 	
 func remove(item:Item):
 	if add_multiples and (item is ItemMultiple):
-		var found = items.filter(func(i): return i.key == item.key)
+		var found = _items.filter(func(i): return i.key == item.key)
 		if (found.size() > 0):
 			found[0].quantity -= item.quantity
 			if (found[0].quantity <= 0): 
-				items.erase(found)
-	items.erase(item)
+				_items.erase(found[0])
+			return
+	_items.erase(item)
+	
+func getall() -> Array:
+	return _items
 	
 func getall_bytype(type:Item.ItemType) -> Array:
-	return items.filter(func(item) : return item.type == type)
+	return _items.filter(func(item) : return item.type == type)
 	
 func getone(index:int) -> Item:
-	return items[index]
+	return _items[index]
 	
 func getone_bytype(index:int, type:Item.ItemType) -> Item:
-	return items.filter(func(item) : return item.type == type)[index]
+	return _items.filter(func(item) : return item.type == type)[index]
 	
-func count():
-	return items.size()
+func count() -> int:
+	return _items.size()
 
 func saveState(file:FileAccess):
-	file.store_64(items.size())
-	for item in items:
+	file.store_64(_items.size())
+	for item in _items:
 		file.store_8(item.type)
 		file.store_pascal_string(item.key)
 		var is_stored = item.has_meta("storage")
@@ -80,7 +84,7 @@ func loadState(file:FileAccess):
 			item.wear = file.get_8()
 		elif (item is ItemMultiple):
 			item.quantity = file.get_64()
-		items.push_back(item)
+		_items.push_back(item)
 		
 func _skip_item(file:FileAccess, type:int):
 	file.get_var()

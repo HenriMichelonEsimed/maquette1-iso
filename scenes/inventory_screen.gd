@@ -106,13 +106,14 @@ func _on_drop_pressed():
 		_drop()
 		
 func _drop():
-	GameState.inventory.remove(item)
-	list_content[item.type].clear()
-	_fill_list(item.type, list_content[item.type])
-	item_content.visible = false
-	item.position = GameState.player.global_position
-	#item.global_rotation = GameState.player.global_rotation
-	item_dropped.emit(item)
+	#GameState.inventory.remove(item)
+	#list_content[item.type].clear()
+	#_fill_list(item.type, list_content[item.type])
+	#item_content.visible = false
+	#item.position = GameState.player.global_position
+	#item.rotation = GameState.player.global_rotation
+	#item_dropped.emit(item)
+	pass
 	
 func _on_tabs_tab_selected(tab):
 	list = list_content[tab_order[tab]]
