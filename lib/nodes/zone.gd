@@ -54,10 +54,20 @@ func on_item_dropped(item:Item,quantity:int):
 		add_child(new_item)
 	state.items_added.add(new_item)
 	
-func on_item_collected(item:Item):
+func on_item_collected(item:Item,quantity:int):
 	var new_item = item.duplicate()
-	if (item.owner != null): # items from scene
-		state.items_removed.append(item.get_path())
+	if (item is ItemMultiple):
+		new_item.quantity = quantity
+		var old_item = item.duplicate()
+		old_item.quantity -= quantity
+		if (item.owner != null):
+			state.items_removed.append(item.get_path())
+		state.items_added.add(old_item)
+		if (old_item.get_parent() == null):
+			add_child(old_item)
+	else:
+		if (item.owner != null): # items from scene
+			state.items_removed.append(item.get_path())
 	item.get_parent().remove_child(item)
 	state.items_added.remove(item)
 	GameState.inventory.add(new_item)

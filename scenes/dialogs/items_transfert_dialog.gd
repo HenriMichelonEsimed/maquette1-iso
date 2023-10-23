@@ -28,7 +28,7 @@ func _process(delta):
 func _transfert():
 	if (list_container.has_focus()):
 		for i in list_container.get_selected_items():
-			#var item = storage.items.items[i];
+			var item = storage.items.items[i];
 			#if (item is ItemMultiple):
 			#	container2inventory = true
 			#	transfered_item = item
@@ -38,7 +38,7 @@ func _transfert():
 			break
 	else:
 		for i in list_inventory.get_selected_items():
-			#var item = GameState.inventory.getone(i)
+			var item = GameState.inventory.getone(i)
 			#if (item is ItemMultiple):
 			#	container2inventory = false
 			#	transfered_item = item
