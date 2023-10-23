@@ -38,7 +38,6 @@ var state = InventoryScreenState.new()
 var item:Item
 var list:ItemList
 var selected = 0
-var slide_pressed = 0
 
 func _ready():
 	StateSaver.loadState(state)
@@ -64,21 +63,7 @@ func _item_details(_item, index):
 	item_content.visible = true
 
 func _process(_delta):
-	if ($DropDialog.visible):
-		if (slide_pressed > 10):
-			if Input.is_action_pressed("shortcut_left"):
-				$DropDialog/Content/Body/SliderQuantity.value -= 1
-			elif Input.is_action_pressed("shortcut_right"):
-				$DropDialog/Content/Body/SliderQuantity.value += 1
-		else :
-			if Input.is_action_pressed("shortcut_left") or Input.is_action_pressed("shortcut_right"):
-				slide_pressed += 1
-		if Input.is_action_just_released("shortcut_left"):
-			$DropDialog/Content/Body/SliderQuantity.value -= 1
-			slide_pressed = 0
-		elif Input.is_action_just_released("shortcut_right"):
-			$DropDialog/Content/Body/SliderQuantity.value += 1
-			slide_pressed = 0
+	if ($SelectQuantityDialog.visible):
 		return
 	if (Input.is_action_just_pressed("cancel")):
 		_on_button_back_pressed()
@@ -116,11 +101,7 @@ func _fill_list(type:Item.ItemType, list:ItemList):
 func _on_drop_pressed():
 	if (item == null): return
 	if (item is ItemMultiple):
-		$DropDialog/Content/Body/LabelName.text = item.label
-		$DropDialog/Content/Body/SliderQuantity.max_value = item.quantity
-		$DropDialog/Content/Body/SliderQuantity.value = item.quantity
-		$DropDialog/Content/Body/LabelQuantity.text = str($DropDialog/Content/Body/SliderQuantity.value)
-		$DropDialog.visible = true
+		$SelectQuantityDialog.open(item)
 	else:
 		_drop()
 		
@@ -139,15 +120,7 @@ func _on_tabs_tab_selected(tab):
 	state.tab = tab
 	StateSaver.saveState(state)
 
-func _on_button_cancel_drop_pressed():
-	$DropDialog.visible = false
-
-func _on_button_drop_pressed():
-	var qty = $DropDialog/Content/Body/SliderQuantity.value
+func _on_drop_quantity_pressed(quantity:int):
 	item = item.duplicate()
-	item.quantity = qty
-	_on_button_cancel_drop_pressed()
+	item.quantity = quantity
 	_drop()
-
-func _on_slider_quantity_value_changed(value):
-	$DropDialog/Content/Body/LabelQuantity.text = str($DropDialog/Content/Body/SliderQuantity.value)

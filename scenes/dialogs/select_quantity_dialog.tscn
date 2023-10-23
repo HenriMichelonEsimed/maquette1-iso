@@ -1,0 +1,102 @@
+[gd_scene load_steps=8 format=3 uid="uid://dytjnya7i6c47"]
+
+[ext_resource type="Script" path="res://scenes/dialogs/select_quantity_dialog.gd" id="1_44m4o"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_xhls3"]
+pressed = true
+
+[sub_resource type="InputEventKey" id="InputEventKey_408ou"]
+device = -1
+keycode = 88
+unicode = 120
+
+[sub_resource type="Shortcut" id="Shortcut_1mmb2"]
+events = [SubResource("InputEventJoypadButton_xhls3"), SubResource("InputEventKey_408ou")]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_337nw"]
+button_index = 1
+pressed = true
+
+[sub_resource type="InputEventKey" id="InputEventKey_acdtc"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_4bhli"]
+events = [SubResource("InputEventJoypadButton_337nw"), SubResource("InputEventKey_acdtc")]
+
+[node name="SelectQuantityDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -196.0
+offset_top = -66.0
+offset_right = 197.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_44m4o")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.486275, 0.486275, 0.486275, 1)
+
+[node name="Content" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Body" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="LabelName" type="Label" parent="Content/Body"]
+layout_mode = 2
+text = "XXX"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Content/Body"]
+layout_mode = 2
+text = "How many ?"
+
+[node name="SliderQuantity" type="HSlider" parent="Content/Body"]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+
+[node name="LabelQuantity" type="Label" parent="Content/Body"]
+layout_mode = 2
+text = "XXX"
+horizontal_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="Content/Body"]
+layout_mode = 2
+alignment = 1
+
+[node name="ButtonDrop" type="Button" parent="Content/Body/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+shortcut = SubResource("Shortcut_1mmb2")
+text = "Drop"
+
+[node name="ButtonCancel" type="Button" parent="Content/Body/Buttons"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_4bhli")
+text = "Cancel"
+
+[connection signal="value_changed" from="Content/Body/SliderQuantity" to="." method="_on_slider_quantity_value_changed"]
+[connection signal="pressed" from="Content/Body/Buttons/ButtonDrop" to="." method="_on_button_drop_pressed"]
+[connection signal="pressed" from="Content/Body/Buttons/ButtonCancel" to="." method="_on_button_cancel_pressed"]
