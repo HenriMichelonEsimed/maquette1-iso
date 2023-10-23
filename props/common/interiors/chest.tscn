@@ -1,7 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://cayys5oa8sj6b"]
+[gd_scene load_steps=12 format=3 uid="uid://b4bb0em6i4goc"]
 
-[ext_resource type="Script" path="res://props/common/chest.gd" id="1_y0w7d"]
-[ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://materials/Orange Texture.tres" id="2_hn8md"]
+[ext_resource type="Script" path="res://lib/nodes/storage.gd" id="1_obymx"]
+[ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://materials/Orange Texture.tres" id="2_c8evl"]
+[ext_resource type="Texture2D" uid="uid://ckvm8nths5jfv" path="res://assets/Orange Texture.png" id="2_n3fwf"]
+[ext_resource type="Script" path="res://lib/datas/items_collection.gd" id="3_is88v"]
+[ext_resource type="PackedScene" uid="uid://bkty22aenfm0p" path="res://props/items/misc/nails_1.tscn" id="4_r3cpj"]
+[ext_resource type="PackedScene" uid="uid://c2020jb1cp5mf" path="res://props/items/tools/iron_bar_1.tscn" id="5_8boc3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nxvlv"]
+albedo_texture = ExtResource("2_n3fwf")
 
 [sub_resource type="Animation" id="Animation_8a0jt"]
 length = 0.001
@@ -64,13 +71,12 @@ _data = {
 "use": SubResource("Animation_u5nsx")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7jpjp"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_jsci6"]
 size = Vector3(1.84948, 0.598133, 0.0415103)
 
 [node name="Chest" type="StaticBody3D"]
-script = ExtResource("1_y0w7d")
-label = "Chest"
-save = false
+script = ExtResource("1_obymx")
+label = "Storage Chest"
 
 [node name="Body" type="CSGCombiner3D" parent="."]
 use_collision = true
@@ -82,6 +88,7 @@ size = Vector3(2, 0.5, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0563354, 0)
 operation = 2
 size = Vector3(1.8, 0.4, 0.8)
+material = SubResource("StandardMaterial3D_nxvlv")
 
 [node name="Top" type="CSGCombiner3D" parent="."]
 use_collision = true
@@ -89,7 +96,7 @@ use_collision = true
 [node name="CSGBox3D" type="CSGBox3D" parent="Top"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.297989, 0)
 size = Vector3(2, 0.1, 1)
-material = ExtResource("2_hn8md")
+material = ExtResource("2_c8evl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -97,5 +104,13 @@ libraries = {
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 6.94739, 0, 0.0802002, -0.3843)
-shape = SubResource("BoxShape3D_7jpjp")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5.97157, 0, 0.0802002, -0.3843)
+shape = SubResource("BoxShape3D_jsci6")
+
+[node name="ItemsCollection" type="Node" parent="."]
+script = ExtResource("3_is88v")
+
+[node name="IronBar1" parent="ItemsCollection" instance=ExtResource("5_8boc3")]
+
+[node name="Nails" parent="ItemsCollection" instance=ExtResource("4_r3cpj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.348389, 0, -0.16748)

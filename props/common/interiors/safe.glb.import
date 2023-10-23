@@ -4,16 +4,16 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dwnk8igwy501b"
-path="res://.godot/imported/coffre.glb-f07542dd6b2df9b8527dfb0e14453038.scn"
+path="res://.godot/imported/safe.glb-a6433428aad90c2f5939bb199fb86a67.scn"
 
 [deps]
 
-source_file="res://props/common/interiors/coffre.glb"
-dest_files=["res://.godot/imported/coffre.glb-f07542dd6b2df9b8527dfb0e14453038.scn"]
+source_file="res://props/common/interiors/safe.glb"
+dest_files=["res://.godot/imported/safe.glb-a6433428aad90c2f5939bb199fb86a67.scn"]
 
 [params]
 
-nodes/root_type="Usable"
+nodes/root_type="Storage"
 nodes/root_name="Scene Root"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

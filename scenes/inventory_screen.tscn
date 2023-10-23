@@ -66,19 +66,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Content"]
+[node name="MarginContainer" type="MarginContainer" parent="Content"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="ButtonBack" type="Button" parent="Content/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 34
-text = "<-"
-
-[node name="Label" type="Label" parent="Content/HBoxContainer"]
+[node name="Label" type="Label" parent="Content/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "Inventory"
 label_settings = SubResource("LabelSettings_gicgb")
+
+[node name="Control" type="Control" parent="Content/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ButtonBack" type="Button" parent="Content/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "X"
 
 [node name="Body" type="MarginContainer" parent="Content"]
 layout_mode = 2
@@ -273,7 +284,7 @@ layout_mode = 2
 shortcut = SubResource("Shortcut_4bhli")
 text = "Cancel"
 
-[connection signal="pressed" from="Content/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="pressed" from="Content/MarginContainer/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
 [connection signal="tab_changed" from="Content/Body/Content/Tabs" to="." method="_on_tabs_tab_changed"]
 [connection signal="tab_selected" from="Content/Body/Content/Tabs" to="." method="_on_tabs_tab_selected"]
 [connection signal="item_selected" from="Content/Body/Content/Tabs/Tools/ListTools" to="." method="_on_list_tools_item_selected"]

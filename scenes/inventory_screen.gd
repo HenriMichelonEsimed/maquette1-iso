@@ -80,7 +80,7 @@ func _process(_delta):
 			$DropDialog/Content/Body/SliderQuantity.value += 1
 			slide_pressed = 0
 		return
-	if (Input.is_action_just_pressed("player_inventory")):
+	if (Input.is_action_just_pressed("cancel")):
 		_on_button_back_pressed()
 		return
 	if (Input.is_action_just_pressed("inventory_drop")):
@@ -98,7 +98,7 @@ func _process(_delta):
 		_previous_item()
 	
 func _next_item():
-	if (list == null): return
+	if (list == null) or (list.item_count == 0): return
 	var index
 	if (item == null):
 		index = 0
@@ -110,7 +110,7 @@ func _next_item():
 	list.item_selected.emit(index)
 	
 func _previous_item():
-	if (list == null): return
+	if (list == null) or (list.item_count == 0): return
 	var index
 	if (item == null):
 		index = list.item_count - 1

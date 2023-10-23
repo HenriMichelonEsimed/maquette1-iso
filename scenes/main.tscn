@@ -89,22 +89,25 @@ text = "Saving..."
 wait_time = 0.5
 one_shot = true
 
-[node name="ItemsTransfertDialog" type="Control" parent="Game/UI"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_dhum8")
+
+[node name="ItemsTransfertDialog" type="Control" parent="."]
 visible = false
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -510.5
-offset_top = -288.5
-offset_right = 510.5
-offset_bottom = 288.5
+offset_left = -560.5
+offset_top = -295.5
+offset_right = 460.5
+offset_bottom = 281.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Game/UI/ItemsTransfertDialog"]
+[node name="ColorRect" type="ColorRect" parent="ItemsTransfertDialog"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -113,45 +116,61 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.423529, 0.423529, 0.423529, 1)
 
-[node name="Content" type="MarginContainer" parent="Game/UI/ItemsTransfertDialog"]
+[node name="Content" type="MarginContainer" parent="ItemsTransfertDialog"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
-[node name="Lists" type="HBoxContainer" parent="Game/UI/ItemsTransfertDialog/Content"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ItemsTransfertDialog/Content"]
 layout_mode = 2
 
-[node name="ListContainer" type="ItemList" parent="Game/UI/ItemsTransfertDialog/Content/Lists"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ItemsTransfertDialog/Content/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="ItemsTransfertDialog/Content/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Middle" type="PanelContainer" parent="Game/UI/ItemsTransfertDialog/Content/Lists"]
+[node name="ButtonClose" type="Button" parent="ItemsTransfertDialog/Content/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "X"
+
+[node name="Lists" type="HBoxContainer" parent="ItemsTransfertDialog/Content/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ListContainer" type="ItemList" parent="ItemsTransfertDialog/Content/VBoxContainer/Lists"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_right = NodePath("../ListInventory")
+focus_next = NodePath("../ListInventory")
+
+[node name="Middle" type="PanelContainer" parent="ItemsTransfertDialog/Content/VBoxContainer/Lists"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
-[node name="ButtonDrop" type="Button" parent="Game/UI/ItemsTransfertDialog/Content/Lists/Middle"]
+[node name="ButtonDrop" type="Button" parent="ItemsTransfertDialog/Content/VBoxContainer/Lists/Middle"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "<-"
 
-[node name="ButtonPick" type="Button" parent="Game/UI/ItemsTransfertDialog/Content/Lists/Middle"]
+[node name="ButtonPick" type="Button" parent="ItemsTransfertDialog/Content/VBoxContainer/Lists/Middle"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "->"
 
-[node name="ListInventory" type="ItemList" parent="Game/UI/ItemsTransfertDialog/Content/Lists"]
+[node name="ListInventory" type="ItemList" parent="ItemsTransfertDialog/Content/VBoxContainer/Lists"]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("2_dhum8")
+focus_neighbor_left = NodePath("../ListContainer")
+focus_next = NodePath("../ListContainer")
 
 [connection signal="display_info" from="Game/Player" to="." method="_on_display_info"]
 [connection signal="hide_info" from="Game/Player" to="." method="_on_hide_info"]
@@ -160,3 +179,4 @@ environment = ExtResource("2_dhum8")
 [connection signal="pressed" from="Game/UI/TopMenu/ButtonQuit" to="." method="_on_button_quit_pressed"]
 [connection signal="pressed" from="Game/UI/TopMenu/ButtonInventory" to="." method="_on_button_inventory_pressed"]
 [connection signal="timeout" from="Game/UI/LabelSaving/Timer" to="." method="_on_saving_timer_timeout"]
+[connection signal="pressed" from="ItemsTransfertDialog/Content/VBoxContainer/HBoxContainer/ButtonClose" to="." method="_on_storage_close"]

@@ -17,7 +17,8 @@ func _ready():
 	set_collision_layer_value(3, true)
 
 func use(startup:bool=false):
-	if (!is_used):
+	is_used = !is_used
+	if (is_used):
 		if (animation != null): 
 			animation.play("use")
 			if (startup): animation.seek(10)
@@ -27,7 +28,6 @@ func use(startup:bool=false):
 			animation.play_backwards("use")
 			if (startup): animation.seek(10)
 		_unuse()
-	is_used = !is_used
 	using.emit(is_used)
 		
 func _use():

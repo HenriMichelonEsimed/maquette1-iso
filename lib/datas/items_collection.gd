@@ -1,11 +1,15 @@
 extends Node
 class_name ItemsCollection
 
-@export var items = []
+var items = []
 var add_multiples:bool
 
-func _init(add:bool=true):
-	add_multiples = add
+func _init(_add:bool=true):
+	add_multiples = _add
+
+func new(type:int,_name:String):
+	var item = load("res://props/items/" + Item.scenes_path[type] + "/" + _name + ".tscn")
+	if (item != null) : add(item)
 
 func add(item:Item):
 	if add_multiples and (item is ItemMultiple):
