@@ -194,4 +194,4 @@ layout_mode = 1
 [connection signal="item_selected" from="Content/Body/Content/Tabs/Tools/List" to="." method="_on_list_tools_item_selected"]
 [connection signal="item_selected" from="Content/Body/Content/Tabs/Miscellaneous/List" to="." method="_on_list_miscellaneous_item_selected"]
 [connection signal="pressed" from="Content/Body/Content/PanelItem/Content/Actions/Drop" to="." method="_on_drop_pressed"]
-[connection signal="drop" from="SelectQuantityDialog" to="." method="_on_drop_quantity_pressed"]
+[connection signal="drop" from="SelectQuantityDialog" to="." method="_drop"]

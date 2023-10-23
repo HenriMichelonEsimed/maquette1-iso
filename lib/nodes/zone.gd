@@ -42,11 +42,17 @@ func _zone_ready():
 func on_zone_change(trigger:ZoneChangeTrigger):
 	change_zone.emit(trigger.zone_name, trigger.spawnpoint_key)
 	
-func on_item_dropped(item:Item):
-	#if (item.get_parent() == null):
-	#	add_child(item)
-	#state.items_added.add(item)
-	pass
+func on_item_dropped(item:Item,quantity:int):
+	var new_item = item.duplicate()
+	new_item.position = GameState.player.global_position
+	if (item is ItemMultiple):
+		new_item.quantity = quantity
+		GameState.inventory.remove(new_item)
+	else:
+		GameState.inventory.remove(item)
+	if (new_item.get_parent() == null):
+		add_child(new_item)
+	state.items_added.add(new_item)
 	
 func on_item_collected(item:Item):
 	var new_item = item.duplicate()
