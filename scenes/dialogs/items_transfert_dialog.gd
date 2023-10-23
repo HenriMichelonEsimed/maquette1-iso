@@ -44,7 +44,7 @@ func _transfert():
 				inventory_to_container(item)
 			break
 	
-func _on_select_quantity_dialog_drop(quantity):
+func _on_select_quantity_dialog_quantity(quantity):
 	if (current_list == list_container):
 		container_to_inventory(transfered_item,quantity)
 	else:
@@ -56,6 +56,7 @@ func inventory_to_container(item:Item,quantity:int=-1):
 	_refresh()
 	
 func container_to_inventory(item:Item,quantity:int=-1):
+	item.set_meta("storage", storage)
 	item_collected.emit(item,quantity)
 	_refresh()
 		
@@ -89,4 +90,3 @@ func _on_list_inventory_focus_entered():
 	current_list = list_inventory
 	$Content/VBoxContainer/Lists/Middle/ButtonDrop.visible = true
 	$Content/VBoxContainer/Lists/Middle/ButtonPick.visible = false
-

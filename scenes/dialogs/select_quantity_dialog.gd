@@ -1,6 +1,6 @@
 extends Control
 
-signal drop(quantity:int)
+signal quantity(quantity:int)
 var slide_pressed = 0
 
 func _process(_delta):
@@ -20,7 +20,8 @@ func _process(_delta):
 			$Content/Body/SliderQuantity.value += 1
 			slide_pressed = 0
 
-func open(item:Item):
+func open(item:Item, label:String="Transfert"):
+	$Content/Body/Buttons/ButtonDrop.text = label
 	$Content/Body/LabelName.text = item.label
 	$Content/Body/SliderQuantity.max_value = item.quantity
 	$Content/Body/SliderQuantity.value = item.quantity
@@ -35,5 +36,5 @@ func _on_button_cancel_pressed():
 
 func _on_button_drop_pressed():
 	visible = false
-	drop.emit($Content/Body/SliderQuantity.value)
+	quantity.emit($Content/Body/SliderQuantity.value)
 

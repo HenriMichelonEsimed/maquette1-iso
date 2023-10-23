@@ -95,4 +95,4 @@ layout_mode = 1
 [connection signal="pressed" from="Content/VBoxContainer/Lists/Middle/ButtonDrop" to="." method="_transfert"]
 [connection signal="pressed" from="Content/VBoxContainer/Lists/Middle/ButtonPick" to="." method="_transfert"]
 [connection signal="focus_entered" from="Content/VBoxContainer/Lists/ListInventory" to="." method="_on_list_inventory_focus_entered"]
-[connection signal="drop" from="SelectQuantityDialog" to="." method="_on_select_quantity_dialog_drop"]
+[connection signal="quantity" from="SelectQuantityDialog" to="." method="_on_select_quantity_dialog_quantity"]

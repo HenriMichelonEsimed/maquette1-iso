@@ -102,7 +102,7 @@ func _fill_list(type:Item.ItemType, list:ItemList):
 func _on_drop_pressed():
 	if (item == null): return
 	if (item is ItemMultiple):
-		$SelectQuantityDialog.open(item)
+		$SelectQuantityDialog.open(item, "Drop")
 	else:
 		_drop()
 		
@@ -119,3 +119,5 @@ func _on_tabs_tab_selected(tab):
 	if (tab == state.tab): return
 	state.tab = tab
 	StateSaver.saveState(state)
+
+

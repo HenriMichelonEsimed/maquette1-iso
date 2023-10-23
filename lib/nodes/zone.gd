@@ -13,8 +13,6 @@ func _ready():
 	StateSaver.loadState(state)
 	for i in range(state.items_removed.size()):
 		var item = get_node(state.items_removed[i])
-		if (item.get_parent() is Storage):
-			item.get_parent().items.remove(item)
 		item.queue_free()
 	for item in state.items_added.getall(): 
 		if item.has_meta("storage_path"):
@@ -59,6 +57,7 @@ func on_item_dropped(item:Item,quantity:int):
 func on_item_collected(item:Item,quantity:int):
 	var new_item = item.duplicate()
 	new_item.remove_meta("storage")
+	new_item.enable()
 	if (quantity > 0 and (item is ItemMultiple) and (item.quantity != quantity)):
 		new_item.quantity = quantity
 		var old_item = item.duplicate()
