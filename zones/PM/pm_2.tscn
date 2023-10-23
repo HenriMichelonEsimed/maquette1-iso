@@ -1,19 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0vpf3eqny3vx"]
+[gd_scene load_steps=5 format=3 uid="uid://c0vpf3eqny3vx"]
 
 [ext_resource type="Script" path="res://zones/PM/pm_2.gd" id="1_8y2xd"]
 [ext_resource type="PackedScene" uid="uid://bui56f6v53gx4" path="res://zones/PM/ground.tscn" id="1_eawe5"]
-[ext_resource type="PackedScene" uid="uid://qen4ovexpt6n" path="res://props/common/interiors/door.tscn" id="2_4epon"]
-[ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://materials/Orange Texture.tres" id="2_laehp"]
 [ext_resource type="PackedScene" uid="uid://btdkocrw70s4u" path="res://lib/nodes/zone_change_trigger.tscn" id="3_uqtx8"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="6_vjmli"]
-[ext_resource type="PackedScene" uid="uid://dupdl54osf1df" path="res://props/common/interiors/distant_door1.tscn" id="7_w1x48"]
 
 [node name="PM2" type="Node3D"]
 script = ExtResource("1_8y2xd")
 zone_name = "pm_pm_2"
-
-[node name="Door" parent="." instance=ExtResource("2_4epon")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -14.0361, 0, 18.5491)
 
 [node name="ZoneChangeTrigger" parent="." instance=ExtResource("3_uqtx8")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25, 0.0273514, 20.5176)
@@ -21,25 +15,6 @@ zone_name = "PM/pm_1"
 spawnpoint_key = "stairs_pm2"
 
 [node name="Ground" parent="." instance=ExtResource("1_eawe5")]
-
-[node name="Level" type="CSGCombiner3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-use_collision = true
-
-[node name="Box1" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7673, 0, 7.00833)
-size = Vector3(1, 1, 20)
-material = ExtResource("2_laehp")
-
-[node name="Box3" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8685, 0, 17.3954)
-size = Vector3(10, 1, 2.25956)
-material = ExtResource("2_laehp")
-
-[node name="Box2" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.739816, 0, 4.57291)
-size = Vector3(5.16939, 1, 7.13362)
-material = ExtResource("2_laehp")
 
 [node name="SpawnPointFromPM1Stairs" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0598, 0.357203, 20.3449)
@@ -50,6 +25,3 @@ key = "stairs"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5254, 0, -15.9841)
 script = ExtResource("6_vjmli")
 key = "ladder"
-
-[node name="DistantDoor" parent="." instance=ExtResource("7_w1x48")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.3418, -0.0647888, 18.5153)

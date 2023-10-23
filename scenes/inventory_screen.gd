@@ -127,6 +127,7 @@ func _set_tab():
 	elif (state.tab > 4):
 		state.tab = 0
 	tabs.current_tab = state.tab
+	item_content.visible = false
 	StateSaver.saveState(state)
 	#tabs.get_child(state.tab).get_child(0).grab_focus()
 

@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c2020jb1cp5mf" path="res://props/items/tools/iron_bar_1.tscn" id="8_8xxjk"]
 [ext_resource type="PackedScene" uid="uid://0jalcx6ipydc" path="res://props/common/interiors/orange_button.tscn" id="8_ufg3l"]
 [ext_resource type="PackedScene" uid="uid://bkty22aenfm0p" path="res://props/items/misc/nails_1.tscn" id="10_hadd0"]
-[ext_resource type="PackedScene" uid="uid://cayys5oa8sj6b" path="res://props/common/chest.tscn" id="11_lgl1t"]
+[ext_resource type="PackedScene" uid="uid://cmia7g5a3x0ys" path="res://props/common/interiors/coffre.tscn" id="11_376qs"]
 
 [node name="PM1" type="Node3D"]
 script = ExtResource("1_oo6bp")
@@ -49,24 +49,19 @@ script = ExtResource("1_1chcy")
 key = "stairs_pm2"
 
 [node name="IronBar1" parent="." instance=ExtResource("8_8xxjk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.977692, 8)
 
 [node name="OrangeButton" parent="." instance=ExtResource("8_ufg3l")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 0, 2)
 label = "Button 1"
 
-[node name="OrangeButton2" parent="." instance=ExtResource("8_ufg3l")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 0, 5)
-label = "Button 2"
-
 [node name="nails" parent="." instance=ExtResource("10_hadd0")]
-transform = Transform3D(0.817014, 0, -0.576618, 0, 1, 0, 0.576618, 0, 0.817014, 0, 0, 3.8844)
+transform = Transform3D(0.817014, 0, -0.576618, 0, 1, 0, 0.576618, 0, 0.817014, 0, -0.971863, 3.8844)
 
 [node name="Nails" parent="." instance=ExtResource("10_hadd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.945923, 4)
 
-[node name="Chest" parent="." instance=ExtResource("11_lgl1t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.28589, -0.633301, -6.2356)
+[node name="coffre" parent="." instance=ExtResource("11_376qs")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0, 0.203278, 0)
 
 [connection signal="using" from="OrangeButton" to="." method="_on_orange_button_using"]
-[connection signal="using" from="OrangeButton2" to="." method="_on_orange_button_2_using"]

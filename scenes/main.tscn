@@ -90,6 +90,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="ItemsTransfertDialog" type="Control" parent="Game/UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

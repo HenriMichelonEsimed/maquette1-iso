@@ -3,9 +3,6 @@
 [ext_resource type="Script" path="res://props/common/chest.gd" id="1_y0w7d"]
 [ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://materials/Orange Texture.tres" id="2_hn8md"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7jpjp"]
-size = Vector3(1.84948, 0.598133, 0.0783154)
-
 [sub_resource type="Animation" id="Animation_8a0jt"]
 length = 0.001
 tracks/0/type = "value"
@@ -67,6 +64,9 @@ _data = {
 "use": SubResource("Animation_u5nsx")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_7jpjp"]
+size = Vector3(1.84948, 0.598133, 0.0415103)
+
 [node name="Chest" type="StaticBody3D"]
 script = ExtResource("1_y0w7d")
 label = "Chest"
@@ -84,17 +84,18 @@ operation = 2
 size = Vector3(1.8, 0.4, 0.8)
 
 [node name="Top" type="CSGCombiner3D" parent="."]
+use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Top"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.297989, 0)
 size = Vector3(2, 0.1, 1)
 material = ExtResource("2_hn8md")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0505371, -0.465416)
-shape = SubResource("BoxShape3D_7jpjp")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_xuj73")
 }
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 6.94739, 0, 0.0802002, -0.3843)
+shape = SubResource("BoxShape3D_7jpjp")
