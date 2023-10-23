@@ -58,14 +58,17 @@ func on_item_dropped(item:Item,quantity:int):
 	
 func on_item_collected(item:Item,quantity:int):
 	var new_item = item.duplicate()
-	if (quantity > 0 and (item is ItemMultiple)):
+	new_item.remove_meta("storage")
+	if (quantity > 0 and (item is ItemMultiple) and (item.quantity != quantity)):
 		new_item.quantity = quantity
 		var old_item = item.duplicate()
 		old_item.quantity -= quantity
 		if (item.owner != null):
 			state.items_removed.append(item.get_path())
 		state.items_added.add(old_item)
-		if (old_item.get_parent() == null):
+		if (item.has_meta("storage")):
+			item.get_meta("storage").add_child(old_item)
+		else:
 			add_child(old_item)
 	else:
 		if (item.owner != null): # items from scene

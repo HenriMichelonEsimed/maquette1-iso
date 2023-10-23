@@ -8,7 +8,6 @@ var list_container:ItemList
 var list_inventory:ItemList
 var current_list:ItemList
 var storage:Storage
-var container2inventory:bool
 var transfered_item:Item
 
 func _ready():
@@ -26,36 +25,38 @@ func _process(delta):
 		_transfert()
 		
 func _transfert():
-	if (list_container.has_focus()):
+	if (current_list == list_container):
 		for i in list_container.get_selected_items():
-			var item = storage.items.items[i];
-			#if (item is ItemMultiple):
-			#	container2inventory = true
-			#	transfered_item = item
-			#	$SelectQuantityDialog.open(item)
-			#else:
-			#	container_to_inventory(item)
+			var item = storage.get_items()[i];
+			if (item is ItemMultiple) and (item.quantity > 1):
+				transfered_item = item
+				$SelectQuantityDialog.open(item)
+			else:
+				container_to_inventory(item)
 			break
 	else:
 		for i in list_inventory.get_selected_items():
 			var item = GameState.inventory.getone(i)
-			#if (item is ItemMultiple):
-			#	container2inventory = false
-			#	transfered_item = item
-			#	$SelectQuantityDialog.open(item)
-			#else:
-			inventory_to_container(item)
+			if (item is ItemMultiple) and (item.quantity > 1):
+				transfered_item = item
+				$SelectQuantityDialog.open(item)
+			else:
+				inventory_to_container(item)
 			break
 	
 func _on_select_quantity_dialog_drop(quantity):
-	pass
+	if (current_list == list_container):
+		container_to_inventory(transfered_item,quantity)
+	else:
+		inventory_to_container(transfered_item,quantity)
 
-func inventory_to_container(item:Item):
+func inventory_to_container(item:Item,quantity:int=-1):
 	item.set_meta("storage", storage)
-	item_dropped.emit(item, -1)
+	item_dropped.emit(item, quantity)
 	_refresh()
 	
-func container_to_inventory(item:Item):
+func container_to_inventory(item:Item,quantity:int=-1):
+	item_collected.emit(item,quantity)
 	_refresh()
 		
 func open(node:Storage):
