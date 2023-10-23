@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4mbdc0ejm2ot"]
+
+[ext_resource type="Script" path="res://scenes/view_pivot.gd" id="1_krmyh"]
+
+[node name="ViewPivot" type="Node3D"]
+script = ExtResource("1_krmyh")

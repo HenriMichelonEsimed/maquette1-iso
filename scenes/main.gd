@@ -7,6 +7,7 @@ func _ready():
 	GameState.connect("saving_start", _on_saving_start)
 	GameState.connect("saving_end", _on_saving_end)
 	GameState.player = $Game/Player
+	GameState.view_pivot = $Game/ViewPivot
 	_on_change_zonelevel(GameState.location.zone_name, "default", false)
 	if (GameState.location.position != Vector3.ZERO):
 		_set_player_position(GameState.location.position, GameState.location.rotation)

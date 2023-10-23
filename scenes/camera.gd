@@ -7,7 +7,7 @@ signal view_rotate(view:int)
 
 const positions = [ Vector3(-50, 70, 50), Vector3(-50,70,-50), Vector3(50,70,-50),  Vector3(50,70,50) ]
 const rotations = [ Vector3(-45, -45, 0), Vector3(-45,-135,0), Vector3(-45,-225,0), Vector3(-45,45,0) ]
-const accel = 2
+const accel = 4
 var camera_pivot
 var object_to_follow
 var _size = 30
@@ -27,24 +27,24 @@ func move(pos):
 func _process(delta):
 	if (GameState.paused): return
 	camera_pivot.position = camera_pivot.position.lerp(object_to_follow.position, delta * accel)
-	if Input.is_action_pressed("view_zoomin") or (Input.is_action_pressed("view_modifier") and Input.is_action_pressed("player_forward")):
+	if Input.is_action_pressed("view_zoomin") or (Input.is_action_pressed("view_modifier") and Input.is_action_pressed("view_up")):
 		_size -= 1
 		_zoom_view()
-	elif Input.is_action_pressed("view_zoomout") or (Input.is_action_pressed("view_modifier") and Input.is_action_pressed("player_backward")):
+	elif Input.is_action_pressed("view_zoomout") or (Input.is_action_pressed("view_modifier") and Input.is_action_pressed("view_down")):
 		_size += 1
 		_zoom_view()
-	if Input.is_action_just_released("view_rotate_left") or (Input.is_action_pressed("view_modifier") and Input.is_action_just_released("player_left")):
+	if Input.is_action_just_released("view_rotate_left") or (Input.is_action_pressed("view_modifier") and Input.is_action_just_released("view_left")):
 		_view += 1
 		_rotate_view()
-	elif Input.is_action_just_released("view_rotate_right") or (Input.is_action_pressed("view_modifier") and Input.is_action_just_released("player_right")):
+	elif Input.is_action_just_released("view_rotate_right") or (Input.is_action_pressed("view_modifier") and Input.is_action_just_released("view_right")):
 		_view -= 1
 		_rotate_view()
 		
 func _zoom_view():
 	if (_size < 5): 
 		_size = 5
-	elif (_size > 60):
-		_size = 60
+	elif (_size > 100):
+		_size = 100
 	size = _size
 	GameState.camera.size = _size
 

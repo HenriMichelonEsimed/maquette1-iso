@@ -37,34 +37,33 @@ func _physics_process(delta):
 	if (GameState.paused or just_resumed): return
 	var no_jump = false
 	var direction = Vector3.ZERO
-	if !Input.is_action_pressed("view_modifier"):
-		if Input.is_action_pressed("player_right"):
-			direction.x += directions["right"][current_view].x
-			direction.z += directions["right"][current_view].z
-		if Input.is_action_pressed("player_left"):
-			direction.x += directions["left"][current_view].x
-			direction.z += directions["left"][current_view].z
-		if Input.is_action_pressed("player_backward"):
-			direction.x += directions["backward"][current_view].x
-			direction.z += directions["backward"][current_view].z
-		if Input.is_action_pressed("player_forward"):
-			direction.x += directions["forward"][current_view].x
-			direction.z += directions["forward"][current_view].z
-		if direction != Vector3.ZERO:
-			direction = direction.normalized()
-			look_at(position + direction, Vector3.UP)
-			for index in range(get_slide_collision_count()):
-				var collision = get_slide_collision(index)
-				var collider = collision.get_collider()
-				if collider == null:
-					continue
-				if collider.is_in_group("stairs"):
-					target_velocity.y = 5
-				elif collider.is_in_group("ladders") and Input.is_action_pressed("player_jump"):
-					target_velocity.y = 12
-					no_jump = true
-		target_velocity.x = direction.x * speed
-		target_velocity.z = direction.z * speed
+	if Input.is_action_pressed("player_right"):
+		direction.x += directions["right"][current_view].x
+		direction.z += directions["right"][current_view].z
+	if Input.is_action_pressed("player_left"):
+		direction.x += directions["left"][current_view].x
+		direction.z += directions["left"][current_view].z
+	if Input.is_action_pressed("player_backward"):
+		direction.x += directions["backward"][current_view].x
+		direction.z += directions["backward"][current_view].z
+	if Input.is_action_pressed("player_forward"):
+		direction.x += directions["forward"][current_view].x
+		direction.z += directions["forward"][current_view].z
+	if direction != Vector3.ZERO:
+		direction = direction.normalized()
+		look_at(position + direction, Vector3.UP)
+		for index in range(get_slide_collision_count()):
+			var collision = get_slide_collision(index)
+			var collider = collision.get_collider()
+			if collider == null:
+				continue
+			if collider.is_in_group("stairs"):
+				target_velocity.y = 5
+			elif collider.is_in_group("ladders") and Input.is_action_pressed("player_jump"):
+				target_velocity.y = 12
+				no_jump = true
+	target_velocity.x = direction.x * speed
+	target_velocity.z = direction.z * speed
 	
 	if not is_on_floor():
 		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
@@ -72,6 +71,8 @@ func _physics_process(delta):
 		target_velocity.y = jump_impulse
 	velocity = target_velocity
 	move_and_slide()
+	if direction != Vector3.ZERO:
+		GameState.view_pivot.position = position
 
 func _on_camera_view_rotate(view:int):
 	current_view = view

@@ -11,6 +11,7 @@ var camera = CameraState.new()
 var inventory = ItemsCollection.new()
 var events_queue = EventsQueue.new()
 var player:Player
+var view_pivot:ViewPivot
 
 func _ready():
 	StateSaver.set_path(current_state_path)
