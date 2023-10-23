@@ -63,19 +63,28 @@ size_flags_horizontal = 3
 focus_neighbor_right = NodePath("../ListInventory")
 focus_next = NodePath("../ListInventory")
 
-[node name="Middle" type="PanelContainer" parent="Content/VBoxContainer/Lists"]
+[node name="Buttons" type="VBoxContainer" parent="Content/VBoxContainer/Lists"]
+layout_mode = 2
+
+[node name="ButtonAll" type="Button" parent="Content/VBoxContainer/Lists/Buttons"]
+layout_mode = 2
+text = ">>"
+
+[node name="Middle" type="PanelContainer" parent="Content/VBoxContainer/Lists/Buttons"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
 
-[node name="ButtonDrop" type="Button" parent="Content/VBoxContainer/Lists/Middle"]
+[node name="ButtonDrop" type="Button" parent="Content/VBoxContainer/Lists/Buttons/Middle"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "<-"
+text = "<"
 
-[node name="ButtonPick" type="Button" parent="Content/VBoxContainer/Lists/Middle"]
+[node name="ButtonPick" type="Button" parent="Content/VBoxContainer/Lists/Buttons/Middle"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "->"
+text = ">"
 
 [node name="ListInventory" type="ItemList" parent="Content/VBoxContainer/Lists"]
 layout_mode = 2
@@ -87,12 +96,14 @@ focus_next = NodePath("../ListContainer")
 visible = false
 layout_mode = 1
 
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="pressed" from="Content/VBoxContainer/HBoxContainer/ButtonClose" to="." method="_on_close"]
 [connection signal="child_exiting_tree" from="Content/VBoxContainer/Lists/ListContainer" to="." method="_on_list_container_child_exiting_tree"]
 [connection signal="focus_entered" from="Content/VBoxContainer/Lists/ListContainer" to="." method="_on_list_container_focus_entered"]
 [connection signal="ready" from="Content/VBoxContainer/Lists/ListContainer" to="." method="_on_list_container_ready"]
-[connection signal="pressed" from="Content/VBoxContainer/Lists/Middle/ButtonDrop" to="." method="_transfert"]
-[connection signal="pressed" from="Content/VBoxContainer/Lists/Middle/ButtonPick" to="." method="_transfert"]
+[connection signal="pressed" from="Content/VBoxContainer/Lists/Buttons/ButtonAll" to="." method="_on_button_all_pressed"]
+[connection signal="pressed" from="Content/VBoxContainer/Lists/Buttons/Middle/ButtonDrop" to="." method="_transfert"]
+[connection signal="pressed" from="Content/VBoxContainer/Lists/Buttons/Middle/ButtonPick" to="." method="_transfert"]
 [connection signal="focus_entered" from="Content/VBoxContainer/Lists/ListInventory" to="." method="_on_list_inventory_focus_entered"]
 [connection signal="quantity" from="SelectQuantityDialog" to="." method="_on_select_quantity_dialog_quantity"]

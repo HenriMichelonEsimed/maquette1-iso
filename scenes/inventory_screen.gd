@@ -63,12 +63,11 @@ func _item_details(_item, index):
 	item_content.visible = true
 
 func _process(_delta):
-	if ($SelectQuantityDialog.visible):
-		return
+	if ($SelectQuantityDialog.visible): return
 	if (Input.is_action_just_pressed("cancel") or Input.is_action_just_pressed("player_inventory")):
 		_on_button_back_pressed()
 		return
-	elif (Input.is_action_just_pressed("player_use")):
+	elif Input.is_action_just_pressed("player_use"):
 		_on_drop_pressed()
 		return
 	state.tab = tabs.current_tab
@@ -106,7 +105,6 @@ func _on_drop_pressed():
 		$SelectQuantityDialog.open(item, "Drop")
 	else:
 		_drop()
-		
 func _drop(quantity:int=0):
 	item_dropped.emit(item, quantity)
 	_refresh()

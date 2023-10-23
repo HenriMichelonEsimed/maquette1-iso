@@ -72,7 +72,7 @@ func on_item_collected(item:Item,quantity:int):
 	else:
 		if (item.owner != null): # items from scene
 			state.items_removed.append(item.get_path())
-	item.get_parent().remove_child(item)
+	if (item.get_parent() != null): item.get_parent().remove_child(item)
 	state.items_added.remove(item)
 	GameState.inventory.add(new_item)
 	
