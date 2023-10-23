@@ -45,7 +45,6 @@ func on_zone_change(trigger:ZoneChangeTrigger):
 func on_item_dropped(item:Item):
 	if (item.get_parent() == null):
 		add_child(item)
-	print(item.get_meta("storage"))
 	state.items_added.add(item)
 	
 func on_item_collected(item:Item):
@@ -53,5 +52,6 @@ func on_item_collected(item:Item):
 		state.items_removed.append(item.get_path())
 	else:
 		state.items_added.remove(item)
-	item.get_parent().remove_child(item)
+	if (item.get_parent() != null): 
+		item.get_parent().remove_child(item)
 	

@@ -9,9 +9,8 @@ func _init():
 
 func _ready():
 	set_collision_layer_value(3, true)
-	for item in find_children("*", "Item"):
-		item.set_collision_layer_value(2, false)
-		item.visible = false
+	for item in find_children("*", "Item", true, true):
+		item.disable()
 		items.add(item)
 	
 func _use():

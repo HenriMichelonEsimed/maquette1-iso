@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dujfl0ljogwbx"]
+[gd_scene load_steps=3 format=3 uid="uid://dujfl0ljogwbx"]
 
 [ext_resource type="Script" path="res://scenes/dialogs/items_transfert_dialog.gd" id="1_b1cra"]
+[ext_resource type="PackedScene" uid="uid://dytjnya7i6c47" path="res://scenes/dialogs/select_quantity_dialog.tscn" id="2_ahwut"]
 
 [node name="ItemsTransfertDialog" type="Control"]
 layout_mode = 3
@@ -82,9 +83,14 @@ size_flags_horizontal = 3
 focus_neighbor_left = NodePath("../ListContainer")
 focus_next = NodePath("../ListContainer")
 
+[node name="SelectQuantityDialog" parent="." instance=ExtResource("2_ahwut")]
+visible = false
+layout_mode = 1
+
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="pressed" from="Content/VBoxContainer/HBoxContainer/ButtonClose" to="." method="_on_close"]
 [connection signal="child_exiting_tree" from="Content/VBoxContainer/Lists/ListContainer" to="." method="_on_list_container_child_exiting_tree"]
 [connection signal="focus_entered" from="Content/VBoxContainer/Lists/ListContainer" to="." method="_on_list_container_focus_entered"]
 [connection signal="ready" from="Content/VBoxContainer/Lists/ListContainer" to="." method="_on_list_container_ready"]
 [connection signal="focus_entered" from="Content/VBoxContainer/Lists/ListInventory" to="." method="_on_list_inventory_focus_entered"]
+[connection signal="drop" from="SelectQuantityDialog" to="." method="_on_select_quantity_dialog_drop"]

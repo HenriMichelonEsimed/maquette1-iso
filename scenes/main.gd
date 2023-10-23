@@ -12,7 +12,6 @@ func _ready():
 		_set_player_position(GameState.location.position, GameState.location.rotation)
 	items_transfert_dialog = load("res://scenes/dialogs/items_transfert_dialog.tscn").instantiate()
 	items_transfert_dialog.connect("close", _on_storage_close)
-	items_transfert_dialog.connect("item_collected", _on_player_item_collected)
 	#_on_button_inventory_pressed()
 	
 func _process(_delta):
@@ -89,5 +88,3 @@ func _on_hide_info():
 	labelInfo.visible = false
 	labelInfo.text = ''
 
-func _on_player_item_collected(item):
-	GameState.inventory.add(item.duplicate())

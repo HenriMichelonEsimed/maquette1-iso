@@ -26,6 +26,7 @@ func _process(_delta):
 		if (node_to_use != null):
 			node_to_use.use()
 		elif (item_to_collect != null):
+			GameState.inventory.add(item_to_collect.duplicate())
 			item_collected.emit(item_to_collect)
 			item_to_collect = null
 

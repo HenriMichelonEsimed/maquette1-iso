@@ -24,7 +24,8 @@ func remove(item:Item):
 		var found = items.filter(func(i): return i.key == item.key)
 		if (found.size() > 0):
 			found[0].quantity -= item.quantity
-			if (found[0].quantity > 0): return
+			if (found[0].quantity <= 0): 
+				items.erase(found)
 	items.erase(item)
 	
 func getall_bytype(type:Item.ItemType) -> Array:
