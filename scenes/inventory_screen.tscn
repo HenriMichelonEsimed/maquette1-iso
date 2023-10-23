@@ -43,11 +43,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0hce1")
 tabs = NodePath("Content/Body/Content/Tabs")
-list_tools = NodePath("Content/Body/Content/Tabs/Tools/ListTools")
-list_clothes = NodePath("Content/Body/Content/Tabs/Clothes/HBoxContainer/ListClothes")
-list_consumables = NodePath("Content/Body/Content/Tabs/Consumables/ListConsumables")
-list_ammunitions = NodePath("Content/Body/Content/Tabs/Ammunitions/ListAmmunitions")
-list_miscellaneous = NodePath("Content/Body/Content/Tabs/Miscellaneous/ListMiscellaneous")
+list_tools = NodePath("Content/Body/Content/Tabs/Tools/List")
+list_clothes = NodePath("Content/Body/Content/Tabs/Clothes/List")
+list_consumables = NodePath("Content/Body/Content/Tabs/Consumables/List")
+list_ammunitions = NodePath("Content/Body/Content/Tabs/Ammunitions/List")
+list_miscellaneous = NodePath("Content/Body/Content/Tabs/Miscellaneous/List")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -110,7 +110,7 @@ size_flags_horizontal = 0
 [node name="Tools" type="Control" parent="Content/Body/Content/Tabs"]
 layout_mode = 2
 
-[node name="ListTools" type="ItemList" parent="Content/Body/Content/Tabs/Tools"]
+[node name="List" type="ItemList" parent="Content/Body/Content/Tabs/Tools"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -123,23 +123,17 @@ grow_vertical = 2
 visible = false
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Content/Body/Content/Tabs/Clothes"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ListClothes" type="ItemList" parent="Content/Body/Content/Tabs/Clothes/HBoxContainer"]
+[node name="List" type="ItemList" parent="Content/Body/Content/Tabs/Clothes"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+offset_left = -250.0
+offset_right = 250.0
 
 [node name="Consumables" type="Control" parent="Content/Body/Content/Tabs"]
 visible = false
 layout_mode = 2
 
-[node name="ListConsumables" type="ItemList" parent="Content/Body/Content/Tabs/Consumables"]
+[node name="List" type="ItemList" parent="Content/Body/Content/Tabs/Consumables"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -151,7 +145,7 @@ grow_vertical = 2
 visible = false
 layout_mode = 2
 
-[node name="ListAmmunitions" type="ItemList" parent="Content/Body/Content/Tabs/Ammunitions"]
+[node name="List" type="ItemList" parent="Content/Body/Content/Tabs/Ammunitions"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -163,7 +157,7 @@ grow_vertical = 2
 visible = false
 layout_mode = 2
 
-[node name="ListMiscellaneous" type="ItemList" parent="Content/Body/Content/Tabs/Miscellaneous"]
+[node name="List" type="ItemList" parent="Content/Body/Content/Tabs/Miscellaneous"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -287,8 +281,8 @@ text = "Cancel"
 [connection signal="pressed" from="Content/MarginContainer/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
 [connection signal="tab_changed" from="Content/Body/Content/Tabs" to="." method="_on_tabs_tab_changed"]
 [connection signal="tab_selected" from="Content/Body/Content/Tabs" to="." method="_on_tabs_tab_selected"]
-[connection signal="item_selected" from="Content/Body/Content/Tabs/Tools/ListTools" to="." method="_on_list_tools_item_selected"]
-[connection signal="item_selected" from="Content/Body/Content/Tabs/Miscellaneous/ListMiscellaneous" to="." method="_on_list_miscellaneous_item_selected"]
+[connection signal="item_selected" from="Content/Body/Content/Tabs/Tools/List" to="." method="_on_list_tools_item_selected"]
+[connection signal="item_selected" from="Content/Body/Content/Tabs/Miscellaneous/List" to="." method="_on_list_miscellaneous_item_selected"]
 [connection signal="pressed" from="Content/Body/Content/PanelItem/Content/Actions/Drop" to="." method="_on_drop_pressed"]
 [connection signal="value_changed" from="DropDialog/Content/Body/SliderQuantity" to="." method="_on_slider_quantity_value_changed"]
 [connection signal="pressed" from="DropDialog/Content/Body/Buttons/ButtonDrop" to="." method="_on_button_drop_pressed"]

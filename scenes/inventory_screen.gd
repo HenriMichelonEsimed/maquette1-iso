@@ -67,9 +67,9 @@ func _process(_delta):
 	if ($DropDialog.visible):
 		if (slide_pressed > 10):
 			if Input.is_action_pressed("shortcut_left"):
-				$DropDialog/Content/Body/SliderQuantity.value -= 5
+				$DropDialog/Content/Body/SliderQuantity.value -= 1
 			elif Input.is_action_pressed("shortcut_right"):
-				$DropDialog/Content/Body/SliderQuantity.value += 5
+				$DropDialog/Content/Body/SliderQuantity.value += 1
 		else :
 			if Input.is_action_pressed("shortcut_left") or Input.is_action_pressed("shortcut_right"):
 				slide_pressed += 1
@@ -92,34 +92,13 @@ func _process(_delta):
 	elif Input.is_action_just_pressed("shortcut_right"):
 		state.tab += 1
 		_set_tab()
-	#elif Input.is_action_just_pressed("shortcut_down"):
-	#	_next_item()
-	#elif Input.is_action_just_pressed("shortcut_up"):
-	#	_previous_item()
-	
-func _next_item():
-	if (list == null) or (list.item_count == 0): return
-	var index
-	if (item == null):
-		index = 0
-	else:
-		index = selected + 1
-	if (index >= list.item_count): index = 0
-	list.deselect_all()
-	list.select(index)
-	list.item_selected.emit(index)
-	
-func _previous_item():
-	if (list == null) or (list.item_count == 0): return
-	var index
-	if (item == null):
-		index = list.item_count - 1
-	else:
-		index = selected - 1
-	if (index < 0): index = list.item_count - 1
-	list.deselect_all()
-	list.select(index)
-	list.item_selected.emit(index)
+	elif Input.is_action_just_pressed("shortcut_down"):
+		var list = tabs.get_current_tab_control().find_child("List")
+		if (!list.has_focus()): 
+			list.grab_focus()
+			if (list.item_count > 0):
+				list.select(0)
+				list.item_selected.emit(0)
 	
 func _set_tab():
 	if (state.tab < 0):
@@ -129,7 +108,6 @@ func _set_tab():
 	tabs.current_tab = state.tab
 	item_content.visible = false
 	StateSaver.saveState(state)
-	#tabs.get_child(state.tab).get_child(0).grab_focus()
 
 func _fill_list(type:Item.ItemType, list:ItemList):
 	for item in GameState.inventory.getall_bytype(type):
