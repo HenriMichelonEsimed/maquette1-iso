@@ -20,7 +20,15 @@ var target_velocity = Vector3.ZERO
 
 func _ready():
 	set_collision_layer_value(1, false)
+	enable()
+	
+func disable():
+	set_collision_layer_value(2, false)
+	visible = false
+	
+func enable():
 	set_collision_layer_value(2, true)
+	visible = true
 	
 func _to_string():
 	return label

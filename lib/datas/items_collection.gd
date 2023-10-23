@@ -44,10 +44,10 @@ func saveState(file:FileAccess):
 	for item in items:
 		file.store_8(item.type)
 		file.store_pascal_string(item.key)
-		var is_stored = item.get_parent() is Storage
+		var is_stored = item.has_meta("storage")
 		file.store_8(1 if is_stored else 0)
 		if (is_stored):
-			file.store_pascal_string(item.get_parent().get_path())
+			file.store_pascal_string(item.get_meta("storage"))
 		file.store_var(item.position)
 		file.store_var(item.rotation)
 		if item is ItemUnique:
@@ -70,7 +70,7 @@ func loadState(file:FileAccess):
 		var is_stored = file.get_8() == 1
 		if (is_stored):
 			var parent_path = file.get_pascal_string()
-			item.set_meta("parent", parent_path)
+			item.set_meta("storage", parent_path)
 		item.position = file.get_var()
 		item.rotation = file.get_var()
 		if (item is ItemUnique):

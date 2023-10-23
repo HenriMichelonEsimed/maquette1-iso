@@ -27,9 +27,11 @@ func _transfert():
 	if (list_container.has_focus()):
 		for i in list_container.get_selected_items():
 			var item = storage.items.items[i];
-			item.set_collision_layer_value(2, true)
-			item.visible = true
+			item.enable()
 			item_collected.emit(item)
+			if (item.owner != null):
+				item.set_meta("storage", storage.get_path())
+				item.owner = null
 			storage.remove_child(item)
 			storage.items.remove(item)
 	else:
@@ -37,8 +39,8 @@ func _transfert():
 			var item = GameState.inventory.getone(i)
 			var new_item = item.duplicate()
 			GameState.inventory.remove(item)
-			new_item.set_collision_layer_value(2, false)
-			new_item.visible = false
+			new_item.disable()
+			new_item.set_meta("storage", storage.get_path())
 			storage.add_child(new_item)
 			storage.items.add(new_item)
 			item_dropped.emit(new_item)

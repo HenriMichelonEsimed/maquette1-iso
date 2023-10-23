@@ -1,11 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4bb0em6i4goc"]
+[gd_scene load_steps=9 format=3 uid="uid://b4bb0em6i4goc"]
 
 [ext_resource type="Script" path="res://lib/nodes/storage.gd" id="1_obymx"]
 [ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://materials/Orange Texture.tres" id="2_c8evl"]
 [ext_resource type="Texture2D" uid="uid://ckvm8nths5jfv" path="res://assets/Orange Texture.png" id="2_n3fwf"]
-[ext_resource type="Script" path="res://lib/datas/items_collection.gd" id="3_is88v"]
-[ext_resource type="PackedScene" uid="uid://bkty22aenfm0p" path="res://props/items/misc/nails_1.tscn" id="4_r3cpj"]
-[ext_resource type="PackedScene" uid="uid://c2020jb1cp5mf" path="res://props/items/tools/iron_bar_1.tscn" id="5_8boc3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nxvlv"]
 albedo_texture = ExtResource("2_n3fwf")
@@ -106,11 +103,3 @@ libraries = {
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5.97157, 0, 0.0802002, -0.3843)
 shape = SubResource("BoxShape3D_jsci6")
-
-[node name="ItemsCollection" type="Node" parent="."]
-script = ExtResource("3_is88v")
-
-[node name="IronBar1" parent="ItemsCollection" instance=ExtResource("5_8boc3")]
-
-[node name="Nails" parent="ItemsCollection" instance=ExtResource("4_r3cpj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.348389, 0, -0.16748)

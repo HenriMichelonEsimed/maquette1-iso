@@ -13,16 +13,17 @@ func _ready():
 	StateSaver.loadState(state)
 	for i in range(state.items_removed.size()):
 		var item = get_node(state.items_removed[i])
-		if (item.owner is Storage):
-			item.owner.items.remove(item)
+		if (item.get_parent() is Storage):
+			item.get_parent().items.remove(item)
 		item.queue_free()
 	for item in state.items_added.items: 
-		if item.has_meta("parent"):
-			var path = item.get_meta("parent").replace(str(get_path()) + "/", '')
+		if item.has_meta("storage"):
+			var path = item.get_meta("storage").replace(str(get_path()) + "/", '')
 			var parent = find_child(path)
 			if (parent != null) and (parent is Storage):
 				parent.add_child(item)
 				parent.items.add(item)
+				item.disable()
 		else:
 			add_child(item)
 	for trigger in find_children("*", "ZoneChangeTrigger", true, true):
@@ -44,6 +45,7 @@ func on_zone_change(trigger:ZoneChangeTrigger):
 func on_item_dropped(item:Item):
 	if (item.get_parent() == null):
 		add_child(item)
+	print(item.get_meta("storage"))
 	state.items_added.add(item)
 	
 func on_item_collected(item:Item):
@@ -51,4 +53,5 @@ func on_item_collected(item:Item):
 		state.items_removed.append(item.get_path())
 	else:
 		state.items_added.remove(item)
-	item.queue_free()
+	item.get_parent().remove_child(item)
+	
