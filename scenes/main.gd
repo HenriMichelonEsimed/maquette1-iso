@@ -24,6 +24,7 @@ func _set_player_position(pos:Vector3, rot:Vector3):
 	GameState.player.position = pos
 	GameState.player.rotation = rot
 	$Game/CameraPivot/Camera.move(pos)
+	GameState.view_pivot.position = pos
 
 func _on_change_zonelevel(zone_name:String, spawnpoint_key:String, save:bool=true):
 	if (save): GameState.saveGame()
@@ -52,6 +53,7 @@ func _on_storage_close():
 	_on_resume()
 
 func _on_button_quit_pressed():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	GameState.saveGame()
 	get_tree().quit()
 

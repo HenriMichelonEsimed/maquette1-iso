@@ -27,11 +27,17 @@ func move(pos):
 func _process(delta):
 	if (GameState.paused): return
 	camera_pivot.position = camera_pivot.position.lerp(object_to_follow.position, delta * accel)
-	if Input.is_action_pressed("view_zoomin") or (Input.is_action_pressed("view_modifier") and Input.is_action_pressed("view_up")):
+	if  Input.is_action_pressed("view_zoomin") or (Input.is_action_pressed("view_modifier") and Input.is_action_pressed("view_up")):
 		_size -= 1
 		_zoom_view()
-	elif Input.is_action_pressed("view_zoomout") or (Input.is_action_pressed("view_modifier") and Input.is_action_pressed("view_down")):
+	elif Input.is_action_just_pressed("view_zoomin"):
+		_size -= 4
+		_zoom_view()
+	elif Input.is_action_just_pressed("view_zoomout") or Input.is_action_pressed("view_zoomout") or (Input.is_action_pressed("view_modifier") and Input.is_action_pressed("view_down")):
 		_size += 1
+		_zoom_view()
+	elif Input.is_action_just_pressed("view_zoomout"):
+		_size -= 4
 		_zoom_view()
 	if Input.is_action_just_released("view_rotate_left") or (Input.is_action_pressed("view_modifier") and Input.is_action_just_released("view_left")):
 		_view += 1
