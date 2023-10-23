@@ -17,13 +17,13 @@ func _ready():
 			item.get_parent().items.remove(item)
 		item.queue_free()
 	for item in state.items_added.getall(): 
-		if item.has_meta("storage"):
-			var path = item.get_meta("storage").replace(str(get_path()) + "/", '')
+		if item.has_meta("storage_path"):
+			var path = item.get_meta("storage_path").replace(str(get_path()) + "/", '')
 			var parent = find_child(path)
 			if (parent != null) and (parent is Storage):
 				parent.add_child(item)
-				parent.items.add(item)
-				item.disable()
+				item.set_meta("storage", parent)
+				item.remove_meta("storage_path")
 		else:
 			add_child(item)
 	for trigger in find_children("*", "ZoneChangeTrigger", true, true):
@@ -50,13 +50,15 @@ func on_item_dropped(item:Item,quantity:int):
 		GameState.inventory.remove(new_item)
 	else:
 		GameState.inventory.remove(item)
-	if (new_item.get_parent() == null):
+	if (item.has_meta("storage")):
+		item.get_meta("storage").add_child(new_item)
+	else:
 		add_child(new_item)
 	state.items_added.add(new_item)
 	
 func on_item_collected(item:Item,quantity:int):
 	var new_item = item.duplicate()
-	if (item is ItemMultiple):
+	if (quantity > 0 and (item is ItemMultiple)):
 		new_item.quantity = quantity
 		var old_item = item.duplicate()
 		old_item.quantity -= quantity

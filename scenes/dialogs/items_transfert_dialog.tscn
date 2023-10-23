@@ -92,5 +92,7 @@ layout_mode = 1
 [connection signal="child_exiting_tree" from="Content/VBoxContainer/Lists/ListContainer" to="." method="_on_list_container_child_exiting_tree"]
 [connection signal="focus_entered" from="Content/VBoxContainer/Lists/ListContainer" to="." method="_on_list_container_focus_entered"]
 [connection signal="ready" from="Content/VBoxContainer/Lists/ListContainer" to="." method="_on_list_container_ready"]
+[connection signal="pressed" from="Content/VBoxContainer/Lists/Middle/ButtonDrop" to="." method="_transfert"]
+[connection signal="pressed" from="Content/VBoxContainer/Lists/Middle/ButtonPick" to="." method="_transfert"]
 [connection signal="focus_entered" from="Content/VBoxContainer/Lists/ListInventory" to="." method="_on_list_inventory_focus_entered"]
 [connection signal="drop" from="SelectQuantityDialog" to="." method="_on_select_quantity_dialog_drop"]

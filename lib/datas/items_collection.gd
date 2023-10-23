@@ -52,7 +52,7 @@ func saveState(file:FileAccess):
 		var is_stored = item.has_meta("storage")
 		file.store_8(1 if is_stored else 0)
 		if (is_stored):
-			file.store_pascal_string(item.get_meta("storage"))
+			file.store_pascal_string(item.get_meta("storage").get_path())
 		file.store_var(item.position)
 		file.store_var(item.rotation)
 		if item is ItemUnique:
@@ -74,8 +74,7 @@ func loadState(file:FileAccess):
 		var item = packed_scene.instantiate()
 		var is_stored = file.get_8() == 1
 		if (is_stored):
-			var parent_path = file.get_pascal_string()
-			item.set_meta("storage", parent_path)
+			item.set_meta("storage_path", file.get_pascal_string())
 		item.position = file.get_var()
 		item.rotation = file.get_var()
 		if (item is ItemUnique):

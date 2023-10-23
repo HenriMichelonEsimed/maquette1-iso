@@ -11,7 +11,7 @@ var item_to_collect:Item = null
 var node_to_use:Usable = null
 signal display_info(node:Node3D)
 signal hide_info()
-signal item_collected(item:Item)
+signal item_collected(item:Item,quantity:int)
 
 const directions = {
 	"forward" : 	[  { 'x':  1, 'z': -1 },  { 'x':  1, 'z':  1 },  { 'x': -1, 'z':  1 },  { 'x': -1, 'z': -1 } ],
@@ -26,7 +26,7 @@ func _process(_delta):
 		if (node_to_use != null):
 			node_to_use.use()
 		elif (item_to_collect != null):
-			item_collected.emit(item_to_collect)
+			item_collected.emit(item_to_collect,-1)
 			item_to_collect = null
 
 func _physics_process(delta):

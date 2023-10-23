@@ -2,8 +2,8 @@ extends Control
 class_name ItemsTransfertDialog
 
 signal close
-signal item_collected(item:Item)
-signal item_dropped(item:Item)
+signal item_collected(item:Item,quantity:int)
+signal item_dropped(item:Item,quantity:int)
 var list_container:ItemList
 var list_inventory:ItemList
 var current_list:ItemList
@@ -44,13 +44,15 @@ func _transfert():
 			#	transfered_item = item
 			#	$SelectQuantityDialog.open(item)
 			#else:
-			#	inventory_to_container(item)
+			inventory_to_container(item)
 			break
 	
 func _on_select_quantity_dialog_drop(quantity):
 	pass
 
 func inventory_to_container(item:Item):
+	item.set_meta("storage", storage)
+	item_dropped.emit(item, -1)
 	_refresh()
 	
 func container_to_inventory(item:Item):
@@ -66,9 +68,9 @@ func open(node:Storage):
 func _refresh():
 	list_container.clear()
 	list_inventory.clear()
-	for item in storage.items.items:
+	for item in storage.get_items():
 		list_container.add_item(str(item))
-	for item in GameState.inventory.items:
+	for item in GameState.inventory.getall():
 		list_inventory.add_item(str(item))
 	current_list.grab_focus()
 
@@ -79,7 +81,11 @@ func _on_close():
 
 func _on_list_container_focus_entered():
 	current_list = list_container
+	$Content/VBoxContainer/Lists/Middle/ButtonDrop.visible = false
+	$Content/VBoxContainer/Lists/Middle/ButtonPick.visible = true
 	
 func _on_list_inventory_focus_entered():
 	current_list = list_inventory
+	$Content/VBoxContainer/Lists/Middle/ButtonDrop.visible = true
+	$Content/VBoxContainer/Lists/Middle/ButtonPick.visible = false
 
