@@ -69,6 +69,7 @@ func _on_resume(from:Node=null):
 	if (from != null): remove_child(from)
 	$Game/UI.visible = true
 	$Game.visible = true
+	GameState.player.just_resumed = true
 	GameState.paused = false
 	
 func _on_saving_start():

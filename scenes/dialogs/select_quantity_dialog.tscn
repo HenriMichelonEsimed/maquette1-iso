@@ -1,28 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dytjnya7i6c47"]
+[gd_scene load_steps=2 format=3 uid="uid://dytjnya7i6c47"]
 
 [ext_resource type="Script" path="res://scenes/dialogs/select_quantity_dialog.gd" id="1_44m4o"]
-
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_xhls3"]
-pressed = true
-
-[sub_resource type="InputEventKey" id="InputEventKey_408ou"]
-device = -1
-keycode = 88
-unicode = 120
-
-[sub_resource type="Shortcut" id="Shortcut_1mmb2"]
-events = [SubResource("InputEventJoypadButton_xhls3"), SubResource("InputEventKey_408ou")]
-
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_337nw"]
-button_index = 1
-pressed = true
-
-[sub_resource type="InputEventKey" id="InputEventKey_acdtc"]
-device = -1
-keycode = 4194305
-
-[sub_resource type="Shortcut" id="Shortcut_4bhli"]
-events = [SubResource("InputEventJoypadButton_337nw"), SubResource("InputEventKey_acdtc")]
 
 [node name="SelectQuantityDialog" type="Control"]
 layout_mode = 3
@@ -89,12 +67,10 @@ alignment = 1
 [node name="ButtonDrop" type="Button" parent="Content/Body/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
-shortcut = SubResource("Shortcut_1mmb2")
 text = "Drop"
 
 [node name="ButtonCancel" type="Button" parent="Content/Body/Buttons"]
 layout_mode = 2
-shortcut = SubResource("Shortcut_4bhli")
 text = "Cancel"
 
 [connection signal="value_changed" from="Content/Body/SliderQuantity" to="." method="_on_slider_quantity_value_changed"]

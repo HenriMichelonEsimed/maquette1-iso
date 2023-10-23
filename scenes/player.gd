@@ -1,6 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
+var just_resumed = false
 var speed = 12
 var jump_impulse = 15
 var fall_acceleration = 80
@@ -22,6 +23,9 @@ const directions = {
 
 func _process(_delta):
 	if (GameState.paused): return
+	if (just_resumed):
+		just_resumed = false
+		return
 	if Input.is_action_just_pressed("player_use"):
 		if (node_to_use != null):
 			node_to_use.use()
@@ -30,7 +34,7 @@ func _process(_delta):
 			item_to_collect = null
 
 func _physics_process(delta):
-	if (GameState.paused): return
+	if (GameState.paused or just_resumed): return
 	var no_jump = false
 	var direction = Vector3.ZERO
 	if !Input.is_action_pressed("view_modifier"):

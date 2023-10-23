@@ -65,19 +65,20 @@ func _item_details(_item, index):
 func _process(_delta):
 	if ($SelectQuantityDialog.visible):
 		return
-	if (Input.is_action_just_pressed("cancel")):
+	if (Input.is_action_just_pressed("cancel") or Input.is_action_just_pressed("player_inventory")):
 		_on_button_back_pressed()
 		return
-	if (Input.is_action_just_pressed("inventory_drop")):
+	elif (Input.is_action_just_pressed("player_use")):
 		_on_drop_pressed()
+		return
 	state.tab = tabs.current_tab
-	if Input.is_action_just_pressed("shortcut_left"):
+	if Input.is_action_just_pressed("shortcut_left") or Input.is_action_just_pressed("player_left"):
 		state.tab -= 1
 		_set_tab()
-	elif Input.is_action_just_pressed("shortcut_right"):
+	elif Input.is_action_just_pressed("shortcut_right") or Input.is_action_just_pressed("player_right"):
 		state.tab += 1
 		_set_tab()
-	elif Input.is_action_just_pressed("shortcut_down"):
+	elif Input.is_action_just_pressed("shortcut_down") or Input.is_action_just_pressed("player_backward"):
 		var list = tabs.get_current_tab_control().find_child("List")
 		if (!list.has_focus()): 
 			list.grab_focus()
