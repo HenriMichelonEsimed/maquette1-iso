@@ -24,7 +24,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.09238, -0.566406, -7.07043)
 
 [node name="DistantDoor" parent="Stair" instance=ExtResource("5_1c4de")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35266, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.67871, 1.35266, 8.19739)
 
 [node name="ZoneChangeTrigger" parent="Stair" instance=ExtResource("5_xbmvl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.00952, -4.88068)

@@ -7,14 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://c4mbdc0ejm2ot" path="res://scenes/view_pivot.tscn" id="3_7bgj5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqsoe"]
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
+draw_center = false
 border_width_bottom = 2
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
 expand_margin_left = 10.0
 expand_margin_right = 10.0
 
@@ -68,19 +62,20 @@ layout_mode = 2
 text = "Inventory"
 
 [node name="LabelInfo" type="Label" parent="Game/UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -23.0
-offset_top = -24.0
-offset_right = 4.0
+offset_left = -25.0
+offset_top = -22.0
+offset_right = 25.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 12
 theme_override_styles/normal = SubResource("StyleBoxFlat_sqsoe")
 text = "Info"
 horizontal_alignment = 1

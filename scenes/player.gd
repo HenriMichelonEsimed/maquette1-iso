@@ -3,8 +3,7 @@ class_name Player
 
 const walking_speed = 6
 const running_speed = 12
-const walking_jump_impulse = 15
-const running_jump_impulse = 20
+const walking_jump_impulse = 20
 
 signal player_moving()
 signal reset_position()
@@ -15,7 +14,7 @@ signal item_collected(item:Item,quantity:int)
 
 var just_resumed = false
 var speed = 0
-var fall_acceleration = 80
+var fall_acceleration = 200
 var target_velocity = Vector3.ZERO
 var last_collision = null
 var current_view = 0
@@ -44,11 +43,11 @@ func _process(_delta):
 
 func _physics_process(delta):
 	if (GameState.paused or just_resumed): return
-	if (position.y < -100) :
+	if (position.y < -10) :
 		reset_position.emit()
 		return
 	var no_jump = false
-	var on_floor = $RayCastToGround.is_colliding()
+	var on_floor = is_on_floor_only() #$RayCastToGround.is_colliding()
 	var direction = Vector3.ZERO
 	if Input.is_action_pressed("player_right"):
 		direction.x += directions["right"][current_view].x
@@ -68,10 +67,10 @@ func _physics_process(delta):
 		if Input.is_action_pressed("modifier"):
 			if (anim.current_animation != "running"):
 				speed = running_speed
-				anim.play("running" if on_floor else "jumping")
+				anim.play("running")
 		else:
 			speed = walking_speed
-			anim.play("walking" if on_floor else "jumping")
+			anim.play("walking")
 		if !anim.is_playing():
 			anim.play()
 		for index in range(get_slide_collision_count()):
@@ -81,10 +80,12 @@ func _physics_process(delta):
 				continue
 			if collider.is_in_group("stairs"):
 				target_velocity.y = 5
+				no_jump = true
 			elif collider.is_in_group("ladders") and Input.is_action_pressed("player_jump"):
 				target_velocity.y = 12
 				no_jump = true
 	else:
+		target_velocity.y = 0
 		anim.play("standing")
 	target_velocity.x = direction.x * speed
 	target_velocity.z = direction.z * speed
@@ -92,8 +93,8 @@ func _physics_process(delta):
 	if not on_floor:
 		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
 	if on_floor and Input.is_action_just_pressed("player_jump") and !no_jump:
-		target_velocity.y = running_jump_impulse if Input.is_action_pressed("player_run") else walking_jump_impulse
-		anim.play("jumping")
+		target_velocity.y = walking_jump_impulse
+		#anim.play("jumping")
 	velocity = target_velocity
 	move_and_slide()
 	if direction != Vector3.ZERO:

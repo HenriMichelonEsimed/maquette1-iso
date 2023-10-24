@@ -1,34 +1,34 @@
-[gd_scene load_steps=18 format=3 uid="uid://ddgx2nfdx80by"]
+[gd_scene load_steps=18 format=3 uid="uid://dboialknk0g54"]
 
-[ext_resource type="Texture2D" uid="uid://hn1mjnguw62i" path="res://characters/player/textures/casual_man_color.png" id="2_7orf0"]
-[ext_resource type="Texture2D" uid="uid://b614ycfa0a0qg" path="res://characters/player/textures/casual_man_occ.png" id="3_ql8l5"]
-[ext_resource type="Texture2D" uid="uid://nbcna0mmyl2k" path="res://characters/player/textures/casual_man_metalness.png" id="4_pdvuc"]
-[ext_resource type="Texture2D" uid="uid://by7focyjyt8vr" path="res://characters/player/textures/casual_man_normal.png" id="5_jbew4"]
-[ext_resource type="Texture2D" uid="uid://diuniscdtbrvp" path="res://characters/player/textures/casual_man_roughness.png" id="6_1f05h"]
-[ext_resource type="Animation" uid="uid://b5jhaqbrmqssc" path="res://characters/player/anims/crouched_walking.anim" id="7_w06mc"]
-[ext_resource type="Animation" uid="uid://df72se2biys48" path="res://characters/player/anims/dying_backwards.anim" id="8_rm6rx"]
-[ext_resource type="Animation" uid="uid://it5wl4qs8n0w" path="res://characters/player/anims/jumping.anim" id="9_ae6y3"]
-[ext_resource type="Animation" uid="uid://cwxji78smnel6" path="res://characters/player/anims/running.anim" id="10_i7cmb"]
-[ext_resource type="Animation" uid="uid://ds1csqxlw26wr" path="res://characters/player/anims/t-pose.anim" id="11_ui0ng"]
-[ext_resource type="Animation" uid="uid://qeogd7hwud5e" path="res://characters/player/anims/walking.anim" id="12_5f5ch"]
-[ext_resource type="Animation" uid="uid://di0jtcbwxbr8b" path="res://characters/player/anims/standing.res" id="12_24dfo"]
+[ext_resource type="Texture2D" uid="uid://hn1mjnguw62i" path="res://characters/player/textures/casual_man_color.png" id="1_plyj3"]
+[ext_resource type="Texture2D" uid="uid://b614ycfa0a0qg" path="res://characters/player/textures/casual_man_occ.png" id="2_6uyvo"]
+[ext_resource type="Texture2D" uid="uid://nbcna0mmyl2k" path="res://characters/player/textures/casual_man_metalness.png" id="3_qnv6p"]
+[ext_resource type="Texture2D" uid="uid://by7focyjyt8vr" path="res://characters/player/textures/casual_man_normal.png" id="4_6wgo8"]
+[ext_resource type="Texture2D" uid="uid://diuniscdtbrvp" path="res://characters/player/textures/casual_man_roughness.png" id="5_4g1ow"]
+[ext_resource type="Animation" uid="uid://b5jhaqbrmqssc" path="res://characters/player/anims/crouched_walking.anim" id="6_ixqyf"]
+[ext_resource type="Animation" uid="uid://df72se2biys48" path="res://characters/player/anims/dying_backwards.anim" id="7_1724f"]
+[ext_resource type="Animation" uid="uid://it5wl4qs8n0w" path="res://characters/player/anims/jumping.anim" id="8_2blhu"]
+[ext_resource type="Animation" uid="uid://cwxji78smnel6" path="res://characters/player/anims/running.anim" id="9_ybvom"]
+[ext_resource type="Animation" uid="uid://di0jtcbwxbr8b" path="res://characters/player/anims/standing.res" id="10_5it34"]
+[ext_resource type="Animation" uid="uid://ds1csqxlw26wr" path="res://characters/player/anims/t-pose.anim" id="11_mvd17"]
+[ext_resource type="Animation" uid="uid://qeogd7hwud5e" path="res://characters/player/anims/walking.anim" id="12_0xwub"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6mhso"]
 resource_name = "DefaultMaterial"
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.735357, 0.735357, 0.735357, 1)
-albedo_texture = ExtResource("2_7orf0")
+albedo_texture = ExtResource("1_plyj3")
 metallic = 1.0
 metallic_specular = 0.0
-metallic_texture = ExtResource("4_pdvuc")
+metallic_texture = ExtResource("3_qnv6p")
 metallic_texture_channel = 4
-roughness_texture = ExtResource("6_1f05h")
+roughness_texture = ExtResource("5_4g1ow")
 roughness_texture_channel = 4
 normal_enabled = true
 normal_scale = 0.5
-normal_texture = ExtResource("5_jbew4")
+normal_texture = ExtResource("4_6wgo8")
 ao_enabled = true
-ao_texture = ExtResource("3_ql8l5")
+ao_texture = ExtResource("2_6uyvo")
 ao_texture_channel = 4
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_o5efn"]
@@ -671,13 +671,13 @@ tracks/64/keys = PackedFloat32Array(0, 1, 8.88279e-10, 4.99817e-17, -4.43977e-26
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_icpfl"]
 _data = {
 "RESET": SubResource("Animation_prdsq"),
-"crouched_walking": ExtResource("7_w06mc"),
-"dying_backwards": ExtResource("8_rm6rx"),
-"jumping": ExtResource("9_ae6y3"),
-"running": ExtResource("10_i7cmb"),
-"standing": ExtResource("12_24dfo"),
-"t-pose": ExtResource("11_ui0ng"),
-"walking": ExtResource("12_5f5ch")
+"crouched_walking": ExtResource("6_ixqyf"),
+"dying_backwards": ExtResource("7_1724f"),
+"jumping": ExtResource("8_2blhu"),
+"running": ExtResource("9_ybvom"),
+"standing": ExtResource("10_5it34"),
+"t-pose": ExtResource("11_mvd17"),
+"walking": ExtResource("12_0xwub")
 }
 
 [node name="Character" type="Node3D"]

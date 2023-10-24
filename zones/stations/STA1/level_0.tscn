@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxjd3ds5cnkxv"]
+[gd_scene load_steps=14 format=3 uid="uid://bxjd3ds5cnkxv"]
 
 [ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_hcncu"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_io6ya"]
@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://b0ub6utr3bc7c" path="res://materials/stations/wall1.tres" id="4_xm0aq"]
 [ext_resource type="PackedScene" uid="uid://c1uhwiv84wjfn" path="res://props/common/interiors/safe.tscn" id="6_3o0xd"]
 [ext_resource type="PackedScene" uid="uid://b4bb0em6i4goc" path="res://props/common/interiors/chest.tscn" id="6_4f3qn"]
+[ext_resource type="PackedScene" uid="uid://bqqwxekreebdl" path="res://props/common/interiors/stair.tscn" id="6_q5imp"]
 [ext_resource type="Texture2D" uid="uid://dhdamavoe50rk" path="res://assets/Scifi_Grid_01/Scifi_Grid_01_normal.jpg" id="7_cix0j"]
 [ext_resource type="Material" uid="uid://w807iftwc2a" path="res://materials/stations/Scifi_Grid_01.tres" id="7_e2vbs"]
 [ext_resource type="PackedScene" uid="uid://c2020jb1cp5mf" path="res://props/items/tools/iron_bar_1.tscn" id="7_wktuc"]
@@ -126,6 +127,9 @@ material = ExtResource("7_e2vbs")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 1, -11)
 size = Vector3(0.1, 2.5, 18)
 material = ExtResource("7_e2vbs")
+
+[node name="Stair" parent="Structure/Hall" instance=ExtResource("6_q5imp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.51797, 0.320177, -0.250647)
 
 [node name="A" type="CSGBox3D" parent="Structure"]
 transform = Transform3D(0.999987, -0.00192869, 0.00463405, 0.00194766, 0.99999, -0.00408611, -0.00462611, 0.0040951, 0.999981, 0, 0, -43)
