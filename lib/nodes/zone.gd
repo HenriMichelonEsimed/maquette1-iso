@@ -49,7 +49,11 @@ func on_item_dropped(item:Item,quantity:int):
 	else:
 		GameState.inventory.remove(item)
 	if (item.has_meta("storage")):
-		item.get_meta("storage").add_child(new_item)
+		var storage = item.get_meta("storage")
+		storage.add_child(new_item)
+		var drop_point = storage.find_child("DropPoint")
+		if (drop_point != null):
+			new_item.position = drop_point.position
 	else:
 		add_child(new_item)
 	state.items_added.add(new_item)

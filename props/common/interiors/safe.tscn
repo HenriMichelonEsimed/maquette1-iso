@@ -135,3 +135,6 @@ libraries = {
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65332, 0, 0)
 shape = SubResource("BoxShape3D_wwdd3")
+
+[node name="DropPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0817871, -0.640503, 0)

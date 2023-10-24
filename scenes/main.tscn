@@ -75,8 +75,8 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -23.0
-offset_top = -37.0
-offset_right = 23.0
+offset_top = -24.0
+offset_right = 4.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -84,6 +84,7 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_sqsoe")
 text = "Info"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LabelSaving" type="Label" parent="Game/UI"]
 visible = false

@@ -104,4 +104,3 @@ func _on_display_info(node:Node3D):
 func _on_hide_info():
 	labelInfo.visible = false
 	labelInfo.text = ''
-
