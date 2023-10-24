@@ -7,6 +7,7 @@ const walking_jump_impulse = 15
 const running_jump_impulse = 20
 
 signal player_moving()
+signal reset_position()
 signal display_info(node:Node3D)
 signal hide_info()
 signal item_collected(item:Item,quantity:int)
@@ -43,6 +44,9 @@ func _process(_delta):
 
 func _physics_process(delta):
 	if (GameState.paused or just_resumed): return
+	if (position.y < -100) :
+		reset_position.emit()
+		return
 	var no_jump = false
 	var on_floor = $RayCastToGround.is_colliding()
 	var direction = Vector3.ZERO

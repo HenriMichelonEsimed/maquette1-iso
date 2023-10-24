@@ -2,6 +2,7 @@ extends Node3D
 
 @export var labelInfo:Label
 var items_transfert_dialog:ItemsTransfertDialog
+var last_spawnpoint:String
 
 func _ready():
 	GameState.connect("saving_start", _on_saving_start)
@@ -40,13 +41,20 @@ func _on_change_zonelevel(zone_name:String, spawnpoint_key:String, save:bool=tru
 	GameState.current_zone.connect("change_zone", _on_change_zonelevel)
 	GameState.player.connect("item_collected", GameState.current_zone.on_item_collected)
 	$Game.add_child(GameState.current_zone)
+	_spawn_player(spawnpoint_key)
+	for node in GameState.current_zone.find_children("*", "Storage", true, true):
+		node.connect("open", _on_storage_open)
+
+func _on_player_reset_position():
+	_spawn_player(last_spawnpoint)
+
+func _spawn_player(spawnpoint_key:String):
 	for node in GameState.current_zone.find_children("*", "SpawnPoint", false, true):
 		if (node.key == spawnpoint_key):
 			_set_player_position(node.position, node.rotation)
 			break
-	for node in GameState.current_zone.find_children("*", "Storage", true, true):
-		node.connect("open", _on_storage_open)
-			
+	last_spawnpoint = spawnpoint_key
+
 func _on_storage_open(node:Storage):
 	_on_pause(false)
 	add_child(items_transfert_dialog)
