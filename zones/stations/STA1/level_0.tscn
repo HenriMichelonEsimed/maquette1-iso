@@ -1,17 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://bxjd3ds5cnkxv"]
 
-[ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_krfnp"]
-[ext_resource type="Material" uid="uid://7nu217rg8dxx" path="res://materials/stations/floor1.tres" id="2_bsny7"]
-[ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="3_474kh"]
-[ext_resource type="Material" uid="uid://b0ub6utr3bc7c" path="res://materials/stations/wall1.tres" id="3_f88so"]
+[ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_hcncu"]
+[ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_io6ya"]
+[ext_resource type="Material" uid="uid://7nu217rg8dxx" path="res://materials/stations/floor1.tres" id="3_a0hll"]
+[ext_resource type="Material" uid="uid://b0ub6utr3bc7c" path="res://materials/stations/wall1.tres" id="4_xm0aq"]
 
 [node name="Level0" type="Node3D"]
-script = ExtResource("1_krfnp")
+script = ExtResource("1_hcncu")
 zone_name = "sta_sta1_level_0"
 
 [node name="SpawnPointDefault" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00208, 4.38785)
-script = ExtResource("3_474kh")
+script = ExtResource("2_io6ya")
 key = "default"
 
 [node name="Structure" type="CSGCombiner3D" parent="."]
@@ -19,74 +19,74 @@ use_collision = true
 
 [node name="Entrace" type="CSGBox3D" parent="Structure"]
 size = Vector3(4, 0.5, 12)
-material = ExtResource("2_bsny7")
+material = ExtResource("3_a0hll")
 
 [node name="Wall1" type="CSGBox3D" parent="Structure/Entrace"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0)
 size = Vector3(0.1, 2.5, 12)
-material = ExtResource("3_f88so")
+material = ExtResource("4_xm0aq")
 
 [node name="Wall2" type="CSGBox3D" parent="Structure/Entrace"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0)
 size = Vector3(0.1, 2.5, 12)
-material = ExtResource("3_f88so")
+material = ExtResource("4_xm0aq")
 
 [node name="Corridor" type="CSGBox3D" parent="Structure"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -30)
 size = Vector3(4, 0.5, 52)
-material = ExtResource("2_bsny7")
+material = ExtResource("3_a0hll")
 
 [node name="Hall" type="CSGBox3D" parent="Structure"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17)
 size = Vector3(20, 0.5, 22)
-material = ExtResource("2_bsny7")
+material = ExtResource("3_a0hll")
 
 [node name="Wall1" type="CSGBox3D" parent="Structure/Hall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 0)
 size = Vector3(0.1, 2.5, 22)
-material = ExtResource("3_f88so")
+material = ExtResource("4_xm0aq")
 
 [node name="Wall2" type="CSGBox3D" parent="Structure/Hall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 0)
 size = Vector3(0.1, 2.5, 22)
-material = ExtResource("3_f88so")
+material = ExtResource("4_xm0aq")
 
 [node name="Wall3" type="CSGBox3D" parent="Structure/Hall"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 1, 11)
 size = Vector3(0.1, 2.5, 8)
-material = ExtResource("3_f88so")
+material = ExtResource("4_xm0aq")
 
 [node name="Wall4" type="CSGBox3D" parent="Structure/Hall"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, 1, 11)
 size = Vector3(0.1, 2.5, 8)
-material = ExtResource("3_f88so")
+material = ExtResource("4_xm0aq")
 
 [node name="Wall5" type="CSGBox3D" parent="Structure/Hall"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 1, -11)
 size = Vector3(0.1, 2.5, 18)
-material = ExtResource("3_f88so")
+material = ExtResource("4_xm0aq")
 
 [node name="A" type="CSGBox3D" parent="Structure"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -43)
 size = Vector3(20, 0.5, 22)
-material = ExtResource("2_bsny7")
+material = ExtResource("3_a0hll")
 
 [node name="Wall1" type="CSGBox3D" parent="Structure/A"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 0)
 size = Vector3(0.1, 2.5, 22)
-material = ExtResource("3_f88so")
+material = ExtResource("4_xm0aq")
 
 [node name="Wall2" type="CSGBox3D" parent="Structure/A"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 0)
 size = Vector3(0.1, 2.5, 22)
-material = ExtResource("3_f88so")
+material = ExtResource("4_xm0aq")
 
 [node name="Wall4" type="CSGBox3D" parent="Structure/A"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 1, 11)
 size = Vector3(0.1, 2.5, 18)
-material = ExtResource("3_f88so")
+material = ExtResource("4_xm0aq")
 
 [node name="Wall5" type="CSGBox3D" parent="Structure/A"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 1, -11)
 size = Vector3(0.1, 2.5, 18)
-material = ExtResource("3_f88so")
+material = ExtResource("4_xm0aq")
