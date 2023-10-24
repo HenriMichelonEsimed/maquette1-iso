@@ -16,6 +16,7 @@ enum {
 var path = default_path
 
 func _ready():
+	#ProjectSettings.set_setting("application/config/use_custom_user_dir", "true")
 	DirAccess.make_dir_recursive_absolute(path)
 	
 func set_path(_path:String):
@@ -24,6 +25,7 @@ func set_path(_path:String):
 
 func saveState(res:State):
 	var file = FileAccess.open(path + res.name + default_ext, FileAccess.WRITE)
+	if (file == null): return false
 	for prop in res.get_property_list():
 		if (prop.name == "name"): continue
 		if (prop.name == "parent"):
@@ -62,6 +64,7 @@ func saveState(res:State):
 			file.store_pascal_string(prop.name)
 			value.saveState(file)
 	file.close()
+	return true
 	
 func loadState(res:State):
 	var parent:Node = res.get("parent")

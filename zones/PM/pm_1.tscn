@@ -54,16 +54,12 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 0, 
 label = "Button 1"
 
 [node name="Chest" parent="." instance=ExtResource("11_nb2hy")]
-transform = Transform3D(-0.553014, 0, -0.833172, 0, 1, 0, 0.833172, 0, -0.553014, 0, 0, -6.2041)
+transform = Transform3D(-0.553014, 0, -0.833172, 0, 1, 0, 0.833172, 0, -0.553014, 0, -0.746033, -6.2041)
 
 [node name="IronBar1" parent="Chest" instance=ExtResource("8_8xxjk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.174934, 0.360962, -0.116111)
 
 [node name="Nails" parent="Chest" instance=ExtResource("10_hadd0")]
-
-[node name="IronBar1" parent="." instance=ExtResource("8_8xxjk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73017, 0, -3.02185)
-
-[node name="Nails" parent="." instance=ExtResource("10_hadd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15839, 0, -3.1344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.486877, 0)
 
 [connection signal="using" from="OrangeButton" to="." method="_on_orange_button_using"]
