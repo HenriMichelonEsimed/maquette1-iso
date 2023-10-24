@@ -4,6 +4,7 @@ class_name Usable
 signal using(is_used:bool)
 @export var label:String
 @export var save:bool = true
+@export var player_use = true
 
 var is_used:bool = false
 var animation:AnimationPlayer
@@ -18,7 +19,8 @@ func _ready():
 		animation.connect("animation_finished", _on_animation_finished)
 	set_collision_layer_value(3, true)
 
-func use(startup:bool=false):
+func use(byplayer:bool=false,startup:bool=false):
+	if (!startup and !player_use and byplayer): return
 	is_used = !is_used
 	if (is_used):
 		if (animation != null):

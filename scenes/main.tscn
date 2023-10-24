@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyj5pxcv4nq84"]
+[gd_scene load_steps=8 format=3 uid="uid://dyj5pxcv4nq84"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_4sx3e"]
 [ext_resource type="PackedScene" uid="uid://drr16dfcqhfyw" path="res://scenes/player.tscn" id="1_hswq3"]
 [ext_resource type="Script" path="res://scenes/camera.gd" id="2_b0j3s"]
 [ext_resource type="Environment" uid="uid://730uhqlxrn44" path="res://env.tres" id="2_dhum8"]
 [ext_resource type="PackedScene" uid="uid://c4mbdc0ejm2ot" path="res://scenes/view_pivot.tscn" id="3_7bgj5"]
+
+[sub_resource type="FontVariation" id="FontVariation_y25ao"]
+variation_embolden = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqsoe"]
 draw_center = false
@@ -23,6 +26,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Light" type="DirectionalLight3D" parent="Game"]
 transform = Transform3D(1, 0, 0, 0, 0.87189, 0.489702, 0, -0.489702, 0.87189, -25.492, 7.255, 13.5761)
+light_energy = 3.0
+sky_mode = 1
 
 [node name="ViewPivot" parent="Game" instance=ExtResource("3_7bgj5")]
 
@@ -75,7 +80,11 @@ offset_right = 25.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = SubResource("FontVariation_y25ao")
+theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_sqsoe")
 text = "Info"
 horizontal_alignment = 1
@@ -107,6 +116,7 @@ environment = ExtResource("2_dhum8")
 [connection signal="player_moving" from="Game/Player" to="Game/ViewPivot" method="_on_player_player_moving"]
 [connection signal="player_moving" from="Game/Player" to="Game/CameraPivot/Camera" method="_on_player_player_moving"]
 [connection signal="reset_position" from="Game/Player" to="." method="_on_player_reset_position"]
+[connection signal="view_moving" from="Game/ViewPivot" to="." method="_on_hide_info"]
 [connection signal="view_moving" from="Game/ViewPivot" to="Game/Player" method="_on_view_pivot_view_moving"]
 [connection signal="view_moving" from="Game/ViewPivot" to="Game/CameraPivot/Camera" method="_on_view_pivot_view_moving"]
 [connection signal="view_rotate" from="Game/CameraPivot/Camera" to="Game/Player" method="_on_camera_view_rotate"]

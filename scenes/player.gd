@@ -36,7 +36,7 @@ func _process(_delta):
 		return
 	if Input.is_action_just_pressed("player_use"):
 		if (node_to_use != null):
-			node_to_use.use()
+			node_to_use.use(true)
 		elif (item_to_collect != null):
 			item_collected.emit(item_to_collect,-1)
 			item_to_collect = null

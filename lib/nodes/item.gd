@@ -28,6 +28,7 @@ func disable():
 	
 func enable():
 	set_collision_layer_value(2, true)
+	scale = Vector3(1.0, 1.0, 1.0)
 	#visible = true
 	
 func _to_string():

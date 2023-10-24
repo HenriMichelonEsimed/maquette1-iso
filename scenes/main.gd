@@ -98,7 +98,7 @@ func _on_saving_timer_timeout():
 	$Game/UI/LabelSaving.visible = false
 
 func _on_display_info(node:Node3D):
-	labelInfo.position = $Game/CameraPivot/Camera.unproject_position(GameState.player.position)
+	labelInfo.position = $Game/CameraPivot/Camera.unproject_position(node.global_position)
 	labelInfo.text = str(node)
 	labelInfo.visible = true
 

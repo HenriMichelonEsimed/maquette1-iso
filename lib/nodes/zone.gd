@@ -55,14 +55,16 @@ func on_item_dropped(item:Item,quantity:int):
 		if (drop_point != null):
 			new_item.position = drop_point.position
 			new_item.rotation = drop_point.rotation
+		new_item.disable()
 	else:
 		add_child(new_item)
+		new_item.enable()
 	state.items_added.add(new_item)
 	
 func on_item_collected(item:Item,quantity:int):
 	var new_item = item.duplicate()
 	new_item.remove_meta("storage")
-	new_item.enable()
+	new_item.disable()
 	if (quantity > 0 and (item is ItemMultiple) and (item.quantity != quantity)):
 		new_item.quantity = quantity
 		var old_item = item.duplicate()
