@@ -17,7 +17,7 @@ func _ready():
 	for item in state.items_added.getall(): 
 		if item.has_meta("storage_path"):
 			var path = item.get_meta("storage_path").replace(str(get_path()) + "/", '')
-			var parent = find_child(path)
+			var parent = get_node(path)
 			if (parent != null) and (parent is Storage):
 				parent.add_child(item)
 				item.set_meta("storage", parent)
@@ -54,6 +54,7 @@ func on_item_dropped(item:Item,quantity:int):
 		var drop_point = storage.find_child("DropPoint")
 		if (drop_point != null):
 			new_item.position = drop_point.position
+			new_item.rotation = drop_point.rotation
 	else:
 		add_child(new_item)
 	state.items_added.add(new_item)
