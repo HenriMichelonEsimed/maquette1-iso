@@ -65,11 +65,11 @@ func _physics_process(delta):
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
 		look_at(position + direction, Vector3.UP)
-		if Input.is_action_pressed("player_run"):
+		if Input.is_action_pressed("modifier"):
 			if (anim.current_animation != "running"):
 				speed = running_speed
 				anim.play("running" if on_floor else "jumping")
-		elif (anim.current_animation != "running"):
+		else:
 			speed = walking_speed
 			anim.play("walking" if on_floor else "jumping")
 		if !anim.is_playing():

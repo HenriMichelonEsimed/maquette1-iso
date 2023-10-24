@@ -14,7 +14,7 @@ dest_files=["res://.godot/imported/safe.glb-a6433428aad90c2f5939bb199fb86a67.scn
 [params]
 
 nodes/root_type="Storage"
-nodes/root_name="Scene Root"
+nodes/root_name="Safe"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 meshes/ensure_tangents=true
