@@ -1,8 +1,8 @@
 extends CharacterBody3D
 class_name Player
 
-const walking_speed = 8
-const running_speed = 16
+const walking_speed = 6
+const running_speed = 12
 const walking_jump_impulse = 15
 const running_jump_impulse = 20
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxjd3ds5cnkxv"]
+[gd_scene load_steps=13 format=3 uid="uid://bxjd3ds5cnkxv"]
 
 [ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_hcncu"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_io6ya"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://b4bb0em6i4goc" path="res://props/common/interiors/chest.tscn" id="6_4f3qn"]
 [ext_resource type="Texture2D" uid="uid://dhdamavoe50rk" path="res://assets/Scifi_Grid_01/Scifi_Grid_01_normal.jpg" id="7_cix0j"]
 [ext_resource type="Material" uid="uid://w807iftwc2a" path="res://materials/stations/Scifi_Grid_01.tres" id="7_e2vbs"]
+[ext_resource type="PackedScene" uid="uid://c2020jb1cp5mf" path="res://props/items/tools/iron_bar_1.tscn" id="7_wktuc"]
+[ext_resource type="PackedScene" uid="uid://bkty22aenfm0p" path="res://props/items/misc/nails_1.tscn" id="9_bby1k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04eq3"]
 albedo_texture = ExtResource("7_cix0j")
@@ -131,12 +133,19 @@ size = Vector3(20, 0.5, 22)
 material = ExtResource("3_a0hll")
 
 [node name="Chest" parent="Structure/A" instance=ExtResource("6_4f3qn")]
-transform = Transform3D(1.86404e-06, 0.00301688, 0.499991, -0.00106923, 0.49999, -0.00301686, -0.499999, -0.0010692, 8.40588e-06, -3.63367, 0.408973, 4.19094)
+transform = Transform3D(5.96244e-09, 0, -0.5, 0, 0.5, 0, 0.5, 0, 5.96244e-09, -3.64507, 0.419063, 6.65476)
 label = "Coffre"
 
+[node name="IronBar1" parent="Structure/A/Chest" instance=ExtResource("7_wktuc")]
+transform = Transform3D(1, 9.31323e-10, -9.31323e-10, -9.31323e-10, 1, -4.54747e-11, 0, 2.40107e-10, 1, -0.000450134, 0.11035, -0.000215054)
+
 [node name="Safe" parent="Structure/A" instance=ExtResource("6_3o0xd")]
-transform = Transform3D(0.25, 1.68711e-10, 8.14903e-10, -1.68711e-10, 0.25, -1.16415e-09, -8.14903e-10, 1.16415e-09, 0.25, -3.40777, 0.862696, 2.56187)
+transform = Transform3D(0.25, -2.26009e-10, 1.62981e-09, -1.85992e-10, 0.25, -1.16415e-09, -2.32831e-10, 1.97906e-09, 0.25, -3.66094, 0.569712, 2.55763)
 label = "Coffre fort magique"
+save = false
+
+[node name="Nails" parent="Structure/A/Safe" instance=ExtResource("9_bby1k")]
+transform = Transform3D(4, -8.8985e-09, 2.04891e-08, -6.87578e-09, 4, 1.86265e-08, -5.58794e-09, 1.49012e-08, 4, 0.417964, -0.462923, 0.0438232)
 
 [node name="Wall2" type="CSGBox3D" parent="Structure/A"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 0)

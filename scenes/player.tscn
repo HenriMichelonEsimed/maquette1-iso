@@ -1154,14 +1154,14 @@ mesh = SubResource("ArrayMesh_d0xum")
 skin = SubResource("Skin_jvwan")
 
 [node name="CollectAndUseArea" type="Area3D" parent="."]
-transform = Transform3D(1.02488, 0, 0, 0, 2, 0, 0, 0, 0.563622, 0, 0.976749, -0.316677)
+transform = Transform3D(0.878991, 0, 0, 0, 2, 0, 0, 0, 0.918106, 0, 0.976749, -0.455746)
 collision_mask = 14
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollectAndUseArea"]
 shape = SubResource("BoxShape3D_n027a")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0197144, 0.925637, -0.0302118)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00135, 0.925637, -0.0302118)
 shape = SubResource("BoxShape3D_cenw7")
 
 [node name="RayCastToGround" type="RayCast3D" parent="."]

@@ -14,22 +14,35 @@ func _init(_save:bool = true):
 func _ready():
 	if (label == null): label = get_path()
 	animation = find_child("AnimationPlayer")
+	if (animation != null):
+		animation.connect("animation_finished", _on_animation_finished)
 	set_collision_layer_value(3, true)
 
 func use(startup:bool=false):
 	is_used = !is_used
 	if (is_used):
-		if (animation != null): 
+		if (animation != null):
 			animation.play("use")
 			if (startup): animation.seek(10)
-		_use()
+		else:
+			_use()
+			using.emit(is_used)
 	else:
 		if (animation != null): 
 			animation.play_backwards("use")
 			if (startup): animation.seek(10)
+		else:
+			_unuse()
+			using.emit(is_used)
+
+func _on_animation_finished(anim_name:String):
+	if (anim_name == "use"):
+		_use()
+		using.emit(is_used)
+	else:
 		_unuse()
-	using.emit(is_used)
-		
+		using.emit(is_used)
+
 func _use():
 	pass
 

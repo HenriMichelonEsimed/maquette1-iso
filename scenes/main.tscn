@@ -1,10 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyj5pxcv4nq84"]
+[gd_scene load_steps=7 format=3 uid="uid://dyj5pxcv4nq84"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_4sx3e"]
 [ext_resource type="PackedScene" uid="uid://drr16dfcqhfyw" path="res://scenes/player.tscn" id="1_hswq3"]
 [ext_resource type="Script" path="res://scenes/camera.gd" id="2_b0j3s"]
 [ext_resource type="Environment" uid="uid://730uhqlxrn44" path="res://env.tres" id="2_dhum8"]
 [ext_resource type="PackedScene" uid="uid://c4mbdc0ejm2ot" path="res://scenes/view_pivot.tscn" id="3_7bgj5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqsoe"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 10.0
+expand_margin_right = 10.0
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("labelInfo")]
 script = ExtResource("1_4sx3e")
@@ -56,7 +68,6 @@ layout_mode = 2
 text = "Inventory"
 
 [node name="LabelInfo" type="Label" parent="Game/UI"]
-visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -68,7 +79,9 @@ offset_top = -37.0
 offset_right = 23.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_sqsoe")
 text = "Info"
 horizontal_alignment = 1
 

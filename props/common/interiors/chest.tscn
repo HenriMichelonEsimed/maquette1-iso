@@ -87,6 +87,11 @@ operation = 2
 size = Vector3(1.8, 0.4, 0.8)
 material = SubResource("StandardMaterial3D_nxvlv")
 
+[node name="CSGBox3D3" type="CSGBox3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.186707, -0.516602)
+size = Vector3(0.175586, 0.0755724, 0.0244543)
+material = ExtResource("2_c8evl")
+
 [node name="Top" type="CSGCombiner3D" parent="."]
 use_collision = true
 
@@ -101,5 +106,5 @@ libraries = {
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5.97157, 0, 0.0802002, -0.3843)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5.97157, -0.0022583, 0.0802612, -0.385521)
 shape = SubResource("BoxShape3D_jsci6")

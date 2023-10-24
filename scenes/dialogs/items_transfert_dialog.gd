@@ -1,7 +1,7 @@
 extends Control
 class_name ItemsTransfertDialog
 
-signal close
+signal close(node:Storage)
 signal item_collected(item:Item,quantity:int)
 signal item_dropped(item:Item,quantity:int)
 var list_container:ItemList
@@ -24,6 +24,8 @@ func _process(delta):
 		_on_close()
 	elif Input.is_action_just_pressed("player_use"):
 		_transfert()
+	elif Input.is_action_just_pressed("collect_all"):
+		_on_button_all_pressed()
 		
 func _transfert():
 	if (current_list == list_container):
@@ -85,7 +87,7 @@ func _refresh():
 	current_list.grab_focus()
 
 func _on_close():
-	close.emit()
+	close.emit(storage)
 
 func _on_list_container_focus_entered():
 	if ($SelectQuantityDialog.visible): 

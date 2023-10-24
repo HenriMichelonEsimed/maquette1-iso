@@ -60,9 +60,10 @@ func _on_storage_open(node:Storage):
 	add_child(items_transfert_dialog)
 	items_transfert_dialog.open(node)
 	
-func _on_storage_close():
+func _on_storage_close(node:Storage):
 	remove_child(items_transfert_dialog)
 	_on_resume()
+	node.use()
 
 func _on_button_quit_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

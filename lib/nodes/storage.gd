@@ -14,12 +14,11 @@ func _on_child_entered_tree(node:Node):
 		node.disable()
 	
 func _ready():
+	super._ready()
 	connect("child_entered_tree", _on_child_entered_tree)
-	set_collision_layer_value(3, true)
 	for item in find_children("*", "Item", true, true):
 		item.disable()
 	
 func _use():
 	if (is_used):
-		is_used = false
 		open.emit(self)
