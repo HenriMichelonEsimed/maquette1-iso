@@ -4,6 +4,7 @@ class_name ViewPivot
 signal view_moving()
 const mouse_margin = 50
 const player_maxdistance = Vector3(50.0, 0, 50.0)
+
 var current_view = 0
 var signaled = false
 
@@ -12,21 +13,22 @@ func _ready():
 	pass
 
 func _process(delta):
-	if Input.is_action_pressed("view_modifier"): return
+	if Input.is_action_pressed("modifier"): return
 	var mouse_pos = get_viewport().get_mouse_position()
 	var new_pos = position
+	var modifier = ((100 - GameState.camera.size)+5)/12.0
 	if Input.is_action_pressed("view_right"):# or (mouse_pos.x > (get_viewport().size.x - mouse_margin) and (mouse_pos.x < get_viewport().size.x+mouse_margin)):
-		new_pos.x += Player.directions["right"][current_view].x
-		new_pos.z += Player.directions["right"][current_view].z
+		new_pos.x += Player.directions["right"][current_view].x/modifier
+		new_pos.z += Player.directions["right"][current_view].z/modifier
 	if Input.is_action_pressed("view_left"):# or (mouse_pos.x < mouse_margin and mouse_pos.x > -mouse_margin):
-		new_pos.x += Player.directions["left"][current_view].x
-		new_pos.z += Player.directions["left"][current_view].z
+		new_pos.x += Player.directions["left"][current_view].x/modifier
+		new_pos.z += Player.directions["left"][current_view].z/modifier
 	if Input.is_action_pressed("view_down"):# or (mouse_pos.y > (get_viewport().size.y - mouse_margin)and (mouse_pos.y < get_viewport().size.y+mouse_margin)):
-		new_pos.x += Player.directions["backward"][current_view].x
-		new_pos.z += Player.directions["backward"][current_view].z
+		new_pos.x += Player.directions["backward"][current_view].x/modifier
+		new_pos.z += Player.directions["backward"][current_view].z/modifier
 	if Input.is_action_pressed("view_up"):# or (mouse_pos.y < mouse_margin and mouse_pos.y > -mouse_margin):
-		new_pos.x += Player.directions["forward"][current_view].x
-		new_pos.z += Player.directions["forward"][current_view].z
+		new_pos.x += Player.directions["forward"][current_view].x/modifier
+		new_pos.z += Player.directions["forward"][current_view].z/modifier
 	var player_pos = GameState.player.position
 	if (new_pos.x < (player_pos.x - player_maxdistance.x)):
 		new_pos.x = player_pos.x - player_maxdistance.x

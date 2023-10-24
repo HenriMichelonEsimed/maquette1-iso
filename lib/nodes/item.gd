@@ -24,12 +24,10 @@ func _ready():
 	
 func disable():
 	set_collision_layer_value(2, false)
-	scale = Vector3(0.5,0.5,0.5)
 	#visible = false
 	
 func enable():
 	set_collision_layer_value(2, true)
-	scale = Vector3(1,1,1)
 	#visible = true
 	
 func _to_string():

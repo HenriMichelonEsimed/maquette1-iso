@@ -12,7 +12,6 @@ var camera_pivot
 var object_to_follow
 var _size = 30
 var _view = 0
-var lerp = false
 
 func _ready():
 	camera_pivot = get_node(cameraPivotPath)
@@ -27,10 +26,7 @@ func move(pos):
 
 func _process(delta):
 	if (GameState.paused): return
-	if (lerp):
-		camera_pivot.position = camera_pivot.position.lerp(object_to_follow.position, delta * (_size/20+1))
-	else:
-		camera_pivot.position = object_to_follow.position
+	camera_pivot.position = object_to_follow.position
 	if  Input.is_action_pressed("view_zoomin") or (Input.is_action_pressed("modifier") and Input.is_action_pressed("view_up")):
 		_size -= 1
 		_zoom_view()
@@ -70,8 +66,6 @@ func _rotate_view():
 
 func _on_view_pivot_view_moving():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	lerp = true
 
 func _on_player_player_moving():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	lerp = false
