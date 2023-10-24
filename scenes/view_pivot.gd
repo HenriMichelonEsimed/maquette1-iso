@@ -1,9 +1,11 @@
 extends Node3D
 class_name ViewPivot
 
-var current_view = 0
+signal view_moving()
 const mouse_margin = 50
-const player_maxdistance = Vector3(100.0, 0, 100.0)
+const player_maxdistance = Vector3(50.0, 0, 50.0)
+var current_view = 0
+var signaled = false
 
 func _ready():
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
@@ -34,7 +36,14 @@ func _process(delta):
 		new_pos.z = player_pos.z - player_maxdistance.z
 	if (new_pos.z > (player_pos.z + player_maxdistance.z)):
 		new_pos.z = player_pos.z + player_maxdistance.z
-	position = new_pos
+	if (position != new_pos):
+		position = new_pos
+		if (!signaled) :
+			view_moving.emit()
+			signaled = true
 
 func _on_camera_view_rotate(view:int):
 	current_view = view
+
+func _on_player_player_moving():
+	signaled = false

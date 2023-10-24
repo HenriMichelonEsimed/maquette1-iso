@@ -95,6 +95,10 @@ environment = ExtResource("2_dhum8")
 
 [connection signal="display_info" from="Game/Player" to="." method="_on_display_info"]
 [connection signal="hide_info" from="Game/Player" to="." method="_on_hide_info"]
+[connection signal="player_moving" from="Game/Player" to="Game/ViewPivot" method="_on_player_player_moving"]
+[connection signal="player_moving" from="Game/Player" to="Game/CameraPivot/Camera" method="_on_player_player_moving"]
+[connection signal="view_moving" from="Game/ViewPivot" to="Game/Player" method="_on_view_pivot_view_moving"]
+[connection signal="view_moving" from="Game/ViewPivot" to="Game/CameraPivot/Camera" method="_on_view_pivot_view_moving"]
 [connection signal="view_rotate" from="Game/CameraPivot/Camera" to="Game/Player" method="_on_camera_view_rotate"]
 [connection signal="view_rotate" from="Game/CameraPivot/Camera" to="Game/ViewPivot" method="_on_camera_view_rotate"]
 [connection signal="pressed" from="Game/UI/TopMenu/ButtonQuit" to="." method="_on_button_quit_pressed"]

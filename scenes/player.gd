@@ -1,23 +1,26 @@
 extends CharacterBody3D
 class_name Player
 
-const walking_speed = 5
-const running_speed = 15
+const walking_speed = 8
+const running_speed = 16
 const walking_jump_impulse = 15
 const running_jump_impulse = 20
 
+signal player_moving()
+signal display_info(node:Node3D)
+signal hide_info()
+signal item_collected(item:Item,quantity:int)
+@onready var anim = $AnimationPlayer
+
 var just_resumed = false
-var speed = walking_speed
+var speed = 0
 var fall_acceleration = 80
 var target_velocity = Vector3.ZERO
 var last_collision = null
 var current_view = 0
 var item_to_collect:Item = null
 var node_to_use:Usable = null
-signal display_info(node:Node3D)
-signal hide_info()
-signal item_collected(item:Item,quantity:int)
-@onready var anim = $AnimationPlayer
+var signaled = false
 
 const directions = {
 	"forward" : 	[  { 'x':  1, 'z': -1 },  { 'x':  1, 'z':  1 },  { 'x': -1, 'z':  1 },  { 'x': -1, 'z': -1 } ],
@@ -41,6 +44,7 @@ func _process(_delta):
 func _physics_process(delta):
 	if (GameState.paused or just_resumed): return
 	var no_jump = false
+	var on_floor = $RayCastToGround.is_colliding()
 	var direction = Vector3.ZERO
 	if Input.is_action_pressed("player_right"):
 		direction.x += directions["right"][current_view].x
@@ -56,14 +60,16 @@ func _physics_process(delta):
 		direction.z += directions["forward"][current_view].z
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		look_at(position + direction, Vector3.UP)
-		if (Input.is_action_pressed("player_run")):
-			speed = running_speed
-			anim.play("running")
-		else:
+		if Input.is_action_pressed("player_run"):
+			if (anim.current_animation != "running"):
+				speed = running_speed
+				anim.play("running" if on_floor else "jumping")
+		elif (anim.current_animation != "running"):
 			speed = walking_speed
-			anim.play("walking")
+			anim.play("walking" if on_floor else "jumping")
+		if !anim.is_playing():
+			anim.play()
 		for index in range(get_slide_collision_count()):
 			var collision = get_slide_collision(index)
 			var collider = collision.get_collider()
@@ -75,19 +81,22 @@ func _physics_process(delta):
 				target_velocity.y = 12
 				no_jump = true
 	else:
-		anim.stop()
+		anim.pause()
 	target_velocity.x = direction.x * speed
 	target_velocity.z = direction.z * speed
 	
-	if not is_on_floor():
+	if not on_floor:
 		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
-	if is_on_floor() and Input.is_action_just_pressed("player_jump") and !no_jump:
+	if on_floor and Input.is_action_just_pressed("player_jump") and !no_jump:
 		target_velocity.y = running_jump_impulse if Input.is_action_pressed("player_run") else walking_jump_impulse
 		anim.play("jumping")
 	velocity = target_velocity
 	move_and_slide()
 	if direction != Vector3.ZERO:
 		GameState.view_pivot.position = position
+		if (!signaled) :
+			player_moving.emit()
+			signaled = true
 
 func _on_camera_view_rotate(view:int):
 	current_view = view
@@ -106,3 +115,6 @@ func _on_collect_item_aera_body_exited(_node:Node):
 	item_to_collect = null
 	node_to_use = null
 	hide_info.emit()
+
+func _on_view_pivot_view_moving():
+	signaled = false

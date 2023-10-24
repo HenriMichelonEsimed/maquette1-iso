@@ -7,11 +7,12 @@ signal view_rotate(view:int)
 
 const positions = [ Vector3(-50, 70, 50), Vector3(-50,70,-50), Vector3(50,70,-50),  Vector3(50,70,50) ]
 const rotations = [ Vector3(-45, -45, 0), Vector3(-45,-135,0), Vector3(-45,-225,0), Vector3(-45,45,0) ]
-const accel = 8
+const accel = 4
 var camera_pivot
 var object_to_follow
 var _size = 30
 var _view = 0
+var lerp = false
 
 func _ready():
 	camera_pivot = get_node(cameraPivotPath)
@@ -26,7 +27,10 @@ func move(pos):
 
 func _process(delta):
 	if (GameState.paused): return
-	camera_pivot.position = camera_pivot.position.lerp(object_to_follow.position, delta * accel)
+	if (lerp):
+		camera_pivot.position = camera_pivot.position.lerp(object_to_follow.position, delta * accel)
+	else:
+		camera_pivot.position = object_to_follow.position
 	if  Input.is_action_pressed("view_zoomin") or (Input.is_action_pressed("view_modifier") and Input.is_action_pressed("view_up")):
 		_size -= 1
 		_zoom_view()
@@ -64,3 +68,10 @@ func _rotate_view():
 	GameState.camera.view = _view
 	view_rotate.emit(_view)
 
+func _on_view_pivot_view_moving():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	lerp = true
+
+func _on_player_player_moving():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	lerp = false
