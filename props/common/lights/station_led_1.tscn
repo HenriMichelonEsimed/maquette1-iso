@@ -1,10 +1,7 @@
 [gd_scene format=3 uid="uid://brix30ocniwym"]
 
 [node name="StationLed1" type="OmniLight3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
-light_energy = 2.0
-light_indirect_energy = 2.0
-light_size = 2.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8, 0)
 shadow_enabled = true
-omni_range = 50.0
-omni_attenuation = 0.0947323
+shadow_bias = 0.2
+omni_attenuation = 0.129408

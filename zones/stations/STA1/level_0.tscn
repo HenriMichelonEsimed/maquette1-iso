@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cy10arxp2gxje"]
 
 [ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_p6qdc"]
-[ext_resource type="Material" uid="uid://yfpvo3ss4ptc" path="res://assets/materials/tiles/floors/floor_4.tres" id="2_aub2y"]
+[ext_resource type="Material" uid="uid://dxsa5cnbl5j4s" path="res://assets/materials/tiles/floors/floor_2.tres" id="2_57qvr"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_io6ya"]
 [ext_resource type="PackedScene" uid="uid://brix30ocniwym" path="res://props/common/lights/station_led_1.tscn" id="2_mjuah"]
 
@@ -11,12 +11,14 @@ script = ExtResource("1_p6qdc")
 [node name="Main" type="CSGCombiner3D" parent="."]
 use_collision = true
 
-[node name="StationLed1" parent="Main" instance=ExtResource("2_mjuah")]
+[node name="Room1" type="CSGCombiner3D" parent="Main"]
 
-[node name="Floor" type="CSGBox3D" parent="Main"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-size = Vector3(50, 0.5, 50)
-material = ExtResource("2_aub2y")
+[node name="StationLed1" parent="Main/Room1" instance=ExtResource("2_mjuah")]
+
+[node name="Floor" type="CSGBox3D" parent="Main/Room1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+size = Vector3(5, 0.5, 5)
+material = ExtResource("2_57qvr")
 
 [node name="SpawnPoint" type="Node3D" parent="."]
 script = ExtResource("2_io6ya")
