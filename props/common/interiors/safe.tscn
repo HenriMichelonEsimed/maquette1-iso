@@ -113,16 +113,17 @@ script = ExtResource("1_ta300")
 label = "Safe"
 
 [node name="Coffre" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0063448, 1.20441, 0.0587723)
 mesh = SubResource("ArrayMesh_idccf")
 skeleton = NodePath("")
 
 [node name="Porte" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0327489, 0, 0, 0, 1.19436, 0, 0, 0, 1.19345, 1.0347, 0, 0)
+transform = Transform3D(-1.4315e-09, 0, -1.19345, 0, 1.19436, 0, 0.0327489, 0, -5.21674e-08, -0.00634485, 1.20441, 1.09347)
 mesh = SubResource("ArrayMesh_x7fpc")
 skeleton = NodePath("")
 
 [node name="@StaticBody3D@22093" type="StaticBody3D" parent="."]
-transform = Transform3D(1.00167, 0, 0, 0, 1.18633, 0, 0, 0, 1.19574, -0.00112746, -0.0129051, -0.00191701)
+transform = Transform3D(-4.37844e-08, 0, -1.19574, 0, 1.18633, 0, 1.00167, 0, -5.22675e-08, -0.00442779, 1.19151, 0.0576448)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="@StaticBody3D@22093"]
 shape = SubResource("ConcavePolygonShape3D_r8rpy")
@@ -133,8 +134,8 @@ libraries = {
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65332, 0, 0)
+transform = Transform3D(-4.36764e-08, 0, -1, 0, 0.685158, 0, 0.999199, 0, -4.37114e-08, -0.00634483, 1.20441, 0.89178)
 shape = SubResource("BoxShape3D_wwdd3")
 
 [node name="DropPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0817871, -0.640503, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0063448, 0.563908, 0.140559)

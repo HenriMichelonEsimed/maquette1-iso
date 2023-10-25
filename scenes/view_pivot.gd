@@ -7,13 +7,10 @@ const player_maxdistance = Vector3(50.0, 0, 50.0)
 
 var current_view = 0
 var signaled = false
-
-func _ready():
-	#Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-	pass
+var player_moving = false
 
 func _process(delta):
-	if Input.is_action_pressed("modifier"): return
+	if Input.is_action_pressed("modifier") or player_moving : return
 	var mouse_pos = get_viewport().get_mouse_position()
 	var new_pos = position
 	var modifier = ((100 - GameState.camera.size)+5)/12.0
@@ -49,3 +46,7 @@ func _on_camera_view_rotate(view:int):
 
 func _on_player_player_moving():
 	signaled = false
+	player_moving = true
+	
+func _on_player_player_stopmoving():
+	player_moving = false

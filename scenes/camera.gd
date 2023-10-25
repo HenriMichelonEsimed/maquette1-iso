@@ -12,6 +12,7 @@ var camera_pivot
 var object_to_follow
 var _size = 30
 var _view = 0
+var player_moving = false
 
 func _ready():
 	camera_pivot = get_node(cameraPivotPath)

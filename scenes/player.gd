@@ -6,6 +6,7 @@ const running_speed = 12
 const walking_jump_impulse = 20
 
 signal player_moving()
+signal player_stopmoving()
 signal reset_position()
 signal display_info(node:Node3D)
 signal hide_info()
@@ -87,6 +88,7 @@ func _physics_process(delta):
 	else:
 		target_velocity.y = 0
 		signaled = false
+		player_stopmoving.emit()
 		anim.play("standing")
 	target_velocity.x = direction.x * speed
 	target_velocity.z = direction.z * speed

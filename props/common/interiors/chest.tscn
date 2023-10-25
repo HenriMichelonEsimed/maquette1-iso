@@ -76,6 +76,7 @@ script = ExtResource("1_obymx")
 label = "Storage Chest"
 
 [node name="Body" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.254429, 0)
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Body"]
@@ -106,8 +107,8 @@ libraries = {
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5.97157, -0.0022583, 0.0802612, -0.385521)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5.97157, -0.0022583, 0.33469, -0.385521)
 shape = SubResource("BoxShape3D_jsci6")
 
 [node name="DropPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0462799, -0.115051, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0462799, 0.139378, 0)

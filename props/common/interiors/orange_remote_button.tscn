@@ -7,10 +7,12 @@
 size = Vector3(0.503025, 0.539618, 0.149281)
 
 [node name="OrangeRemoteButton" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.397357, 0)
 script = ExtResource("1_7sftt")
 label = "Porte salle du coffre"
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.353027, 0)
 use_collision = true
 size = Vector3(0.5, 1.5, 0.2)
 
@@ -20,5 +22,5 @@ size = Vector3(0.3, 0.3, 0.1)
 material = ExtResource("2_05xqt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.222351, 0.166382)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.575378, 0.166382)
 shape = SubResource("BoxShape3D_uj21a")

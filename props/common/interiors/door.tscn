@@ -10,13 +10,13 @@ script = ExtResource("1_n7xup")
 label = "Door"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(3.22589, 0, 0, 0, 1.83261, 0, 0, 0, 0.174899, 2.00223, 1.40967, 0.175179)
+transform = Transform3D(3.22589, 0, 0, 0, 1.83261, 0, 0, 0, 0.174899, -0.000156641, 1.40967, 0.165965)
 shape = SubResource("BoxShape3D_opv68")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, 0)
-size = Vector3(4, 3, 0.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00238657, 1.5, -0.00921351)
+size = Vector3(2, 3, 0.2)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1.62165, 0, 0, 0, 0.234333, 0, 0, 0, 0.180054, 2, 1, 0.139404)
+transform = Transform3D(1.62165, 0, 0, 0, 0.234333, 0, 0, 0, 0.180054, -0.00238657, 1, 0.13019)
 material = ExtResource("2_akpix")
