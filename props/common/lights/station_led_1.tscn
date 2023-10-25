@@ -3,5 +3,4 @@
 [node name="StationLed1" type="OmniLight3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8, 0)
 shadow_enabled = true
-shadow_bias = 0.2
-omni_attenuation = 0.129408
+omni_attenuation = 0.267943
