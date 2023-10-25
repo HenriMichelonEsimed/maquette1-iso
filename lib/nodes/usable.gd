@@ -18,7 +18,7 @@ func _ready():
 	if (_animation != null):
 		_animation.connect("animation_finished", _on_animation_finished)
 
-func use(byplayer:bool=false,startup:bool=false):
+func use(_byplayer:bool=false,startup:bool=false):
 	is_used = !is_used
 	if (is_used):
 		if (_animation != null):

@@ -10,15 +10,15 @@ var current_list:ItemList
 var storage:Storage
 var transfered_item:Item
 
-func _on_child_entered_tree(node):
+func _on_child_entered_tree(_node):
 	connect("item_dropped", GameState.current_zone.on_item_dropped)
 	connect("item_collected", GameState.current_zone.on_item_collected)
 
-func _on_child_exiting_tree(node):
+func _on_child_exiting_tree(_node):
 	disconnect("item_dropped", GameState.current_zone.on_item_dropped)
 	disconnect("item_collected", GameState.current_zone.on_item_collected)
 
-func _process(delta):
+func _process(_delta):
 	if ($SelectQuantityDialog.visible): return
 	if Input.is_action_just_pressed("cancel"):
 		_on_close()

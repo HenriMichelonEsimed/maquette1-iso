@@ -9,9 +9,9 @@ var current_view = 0
 var signaled = false
 var player_moving = false
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("modifier") or player_moving : return
-	var mouse_pos = get_viewport().get_mouse_position()
+	#var mouse_pos = get_viewport().get_mouse_position()
 	var new_pos = position
 	var modifier = ((100 - GameState.camera.size)+5)/12.0
 	if Input.is_action_pressed("view_right"):# or (mouse_pos.x > (get_viewport().size.x - mouse_margin) and (mouse_pos.x < get_viewport().size.x+mouse_margin)):

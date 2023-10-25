@@ -1,29 +1,72 @@
-[gd_scene load_steps=6 format=3 uid="uid://cy10arxp2gxje"]
+[gd_scene load_steps=8 format=3 uid="uid://dl5weeg8uwspr"]
 
-[ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_p6qdc"]
-[ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_io6ya"]
-[ext_resource type="PackedScene" uid="uid://brix30ocniwym" path="res://props/common/lights/station_led_1.tscn" id="2_mjuah"]
-[ext_resource type="PackedScene" uid="uid://bqahvu70ftyqm" path="res://props/architecture/floors/floor_1.tscn" id="3_0a1xn"]
-[ext_resource type="PackedScene" uid="uid://d1imjscotbpbm" path="res://props/architecture/walls/wall_1.tscn" id="4_bcok4"]
+[ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_5pwa3"]
+[ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
+[ext_resource type="PackedScene" uid="uid://brix30ocniwym" path="res://props/lights/station_led_1.tscn" id="4_iehkx"]
+[ext_resource type="Material" uid="uid://ci4uf6g7nw4iv" path="res://assets/materials/tiles/tiles_7.tres" id="4_u21yq"]
+[ext_resource type="PackedScene" uid="uid://bqqwxekreebdl" path="res://props/architecture/stairs/stair_1.tscn" id="5_gwg4j"]
+[ext_resource type="Material" uid="uid://k5r36wixdaow" path="res://assets/materials/misc/dark.tres" id="6_4tkl8"]
+[ext_resource type="Material" uid="uid://dv0ocjnsnux40" path="res://assets/materials/tiles/tiles_8.tres" id="7_eelkf"]
 
-[node name="Level0" type="Node3D"]
-script = ExtResource("1_p6qdc")
-
-[node name="Main" type="CSGCombiner3D" parent="."]
-use_collision = true
-
-[node name="Node" type="Node" parent="Main"]
-
-[node name="StationLed1" parent="Main/Node" instance=ExtResource("2_mjuah")]
-
-[node name="Wall1" parent="Main/Node" instance=ExtResource("4_bcok4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.4)
-
-[node name="Wall2" parent="Main/Node" instance=ExtResource("4_bcok4")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.40832, 0, 0.000105143)
-
-[node name="Floor1" parent="Main/Node" instance=ExtResource("3_0a1xn")]
+[node name="level_0" type="Node3D"]
+script = ExtResource("1_5pwa3")
+zone_name = "sta1_level_0"
 
 [node name="SpawnPoint" type="Node3D" parent="."]
-script = ExtResource("2_io6ya")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+script = ExtResource("2_3hqhq")
 key = "default"
+
+[node name="Entrace" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+use_collision = true
+
+[node name="StationLed1" parent="Entrace" instance=ExtResource("4_iehkx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.8, 0)
+
+[node name="StationLed2" parent="Entrace" instance=ExtResource("4_iehkx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.8, 0)
+
+[node name="Floor" type="CSGBox3D" parent="Entrace"]
+size = Vector3(10, 0.1, 5)
+material = ExtResource("4_u21yq")
+
+[node name="Stair" parent="Entrace" instance=ExtResource("5_gwg4j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17546, -1.37245)
+
+[node name="wall1" type="CSGBox3D" parent="Entrace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.452753, -2.54926)
+size = Vector3(10, 1, 0.1)
+material = ExtResource("6_4tkl8")
+
+[node name="Hall" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Floor" type="CSGBox3D" parent="Hall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+size = Vector3(10, 0.1, 5)
+material = ExtResource("4_u21yq")
+
+[node name="StationLed1" parent="Hall" instance=ExtResource("4_iehkx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, -5)
+
+[node name="StationLed2" parent="Hall" instance=ExtResource("4_iehkx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, -5)
+
+[node name="Administration" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Floor" type="CSGBox3D" parent="Administration"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+size = Vector3(10, 0.1, 5)
+material = ExtResource("7_eelkf")
+
+[node name="StationLed1" parent="Administration" instance=ExtResource("4_iehkx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, -10)
+
+[node name="StationLed2" parent="Administration" instance=ExtResource("4_iehkx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, -10)
+
+[node name="Wall" type="CSGBox3D" parent="Administration"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45, -7.5)
+size = Vector3(10, 2.8, 0.2)
