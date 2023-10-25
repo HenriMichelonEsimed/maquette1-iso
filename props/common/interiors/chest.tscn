@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://b4bb0em6i4goc"]
 
 [ext_resource type="Script" path="res://lib/nodes/storage.gd" id="1_obymx"]
-[ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://materials/Orange Texture.tres" id="2_c8evl"]
-[ext_resource type="Texture2D" uid="uid://ckvm8nths5jfv" path="res://assets/Orange Texture.png" id="2_n3fwf"]
+[ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://assets/materials/misc/orange.tres" id="2_c8evl"]
+[ext_resource type="Texture2D" uid="uid://ckvm8nths5jfv" path="res://assets/textures/misc/orange.png" id="2_n3fwf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nxvlv"]
 albedo_texture = ExtResource("2_n3fwf")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://crwblsoe85fgb"]
 
 [ext_resource type="Script" path="res://lib/nodes/remote_action.gd" id="1_7sftt"]
-[ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://materials/Orange Texture.tres" id="2_05xqt"]
+[ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://assets/materials/misc/orange.tres" id="2_05xqt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uj21a"]
 size = Vector3(0.503025, 0.539618, 0.149281)

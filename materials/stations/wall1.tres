@@ -1,7 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b0ub6utr3bc7c"]
-
-[ext_resource type="Texture2D" uid="uid://twng5fqr1vur" path="res://assets/Wall Grime (6).png" id="1_ql15m"]
-
-[resource]
-albedo_texture = ExtResource("1_ql15m")
-uv1_triplanar = true

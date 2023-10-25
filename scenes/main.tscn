@@ -26,7 +26,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Light" type="DirectionalLight3D" parent="Game"]
 transform = Transform3D(1, 0, 0, 0, 0.87189, 0.489702, 0, -0.489702, 0.87189, -25.492, 7.255, 13.5761)
-light_energy = 3.0
+visible = false
 sky_mode = 1
 
 [node name="ViewPivot" parent="Game" instance=ExtResource("3_7bgj5")]

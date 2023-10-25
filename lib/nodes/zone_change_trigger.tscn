@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://btdkocrw70s4u"]
 
 [ext_resource type="Script" path="res://lib/nodes/zone_change_trigger.gd" id="1_birtx"]
-[ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://materials/Orange Texture.tres" id="2_s5n2t"]
+[ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://assets/materials/misc/orange.tres" id="2_s5n2t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o4vug"]
 size = Vector3(4.02476, 1.47008, 0.297535)
