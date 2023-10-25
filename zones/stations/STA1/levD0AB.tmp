@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://dhdamavoe50rk" path="res://assets/Scifi_Grid_01/Scifi_Grid_01_normal.jpg" id="7_cix0j"]
 [ext_resource type="Material" uid="uid://w807iftwc2a" path="res://materials/stations/Scifi_Grid_01.tres" id="7_e2vbs"]
 [ext_resource type="Material" uid="uid://k5r36wixdaow" path="res://materials/Dark Texture.tres" id="7_hi58p"]
-[ext_resource type="PackedScene" uid="uid://crwblsoe85fgb" path="res://props/common/interiors/orange_remote_button.tscn" id="7_qxrku"]
 [ext_resource type="PackedScene" uid="uid://c2020jb1cp5mf" path="res://props/items/tools/iron_bar_1.tscn" id="7_wktuc"]
+[ext_resource type="PackedScene" uid="uid://0jalcx6ipydc" path="res://props/common/interiors/orange_button.tscn" id="8_yucrd"]
 [ext_resource type="PackedScene" uid="uid://bkty22aenfm0p" path="res://props/items/misc/nails_1.tscn" id="9_bby1k"]
 [ext_resource type="PackedScene" uid="uid://hwa1kwe6p5nm" path="res://props/common/interiors/remote_sliding_door.tscn" id="9_oqf7r"]
 
@@ -134,9 +134,8 @@ material = ExtResource("7_e2vbs")
 [node name="Stair" parent="Structure/Hall" instance=ExtResource("6_q5imp")]
 transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -6.77118, 0.363878, -1.63764)
 
-[node name="OrangeRemoteButton" parent="Structure/Hall" node_paths=PackedStringArray("remote_node") instance=ExtResource("7_qxrku")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.74622, 1, -3.17926)
-remote_node = NodePath("../../Hall2/RemoteSlidingDoor")
+[node name="OrangeButton" parent="Structure/Hall" instance=ExtResource("8_yucrd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7, 1, -3.16772)
 
 [node name="Hall2" type="CSGBox3D" parent="Structure"]
 transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, -19.6862, 2.67419, -16.9603)

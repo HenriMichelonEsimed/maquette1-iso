@@ -86,6 +86,7 @@ func _physics_process(delta):
 				no_jump = true
 	else:
 		target_velocity.y = 0
+		signaled = false
 		anim.play("standing")
 	target_velocity.x = direction.x * speed
 	target_velocity.z = direction.z * speed

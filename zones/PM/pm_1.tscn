@@ -1,14 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://b0cir47ek00ym"]
+[gd_scene load_steps=11 format=3 uid="uid://b0cir47ek00ym"]
 
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="1_1chcy"]
 [ext_resource type="PackedScene" uid="uid://bui56f6v53gx4" path="res://zones/PM/ground.tscn" id="1_e58tr"]
 [ext_resource type="Script" path="res://zones/PM/pm_1.gd" id="1_oo6bp"]
 [ext_resource type="PackedScene" uid="uid://bqqwxekreebdl" path="res://props/common/interiors/stair.tscn" id="3_xmas2"]
 [ext_resource type="PackedScene" uid="uid://dqqa6le6bjss6" path="res://props/common/interiors/ladder.tscn" id="4_8ega4"]
-[ext_resource type="PackedScene" uid="uid://b0gdcmdc2j5hm" path="res://props/common/interiors/distant_door.tscn" id="5_1c4de"]
 [ext_resource type="PackedScene" uid="uid://btdkocrw70s4u" path="res://lib/nodes/zone_change_trigger.tscn" id="5_xbmvl"]
 [ext_resource type="PackedScene" uid="uid://c2020jb1cp5mf" path="res://props/items/tools/iron_bar_1.tscn" id="8_8xxjk"]
-[ext_resource type="PackedScene" uid="uid://0jalcx6ipydc" path="res://props/common/interiors/orange_button.tscn" id="8_ufg3l"]
+[ext_resource type="PackedScene" uid="uid://0jalcx6ipydc" path="res://props/common/interiors/orange_button_.tscn" id="8_ufg3l"]
 [ext_resource type="PackedScene" uid="uid://bkty22aenfm0p" path="res://props/items/misc/nails_1.tscn" id="10_hadd0"]
 [ext_resource type="PackedScene" uid="uid://b4bb0em6i4goc" path="res://props/common/interiors/chest.tscn" id="11_nb2hy"]
 
@@ -22,9 +21,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="Stair" parent="." instance=ExtResource("3_xmas2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.09238, -0.566406, -7.07043)
-
-[node name="DistantDoor" parent="Stair" instance=ExtResource("5_1c4de")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.67871, 1.35266, 8.19739)
 
 [node name="ZoneChangeTrigger" parent="Stair" instance=ExtResource("5_xbmvl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.00952, -4.88068)

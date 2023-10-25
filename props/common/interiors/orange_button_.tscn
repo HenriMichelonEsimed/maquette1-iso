@@ -1,15 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://0jalcx6ipydc"]
 
-[ext_resource type="Script" path="res://lib/nodes/usable.gd" id="1_8bnjw"]
+[ext_resource type="Script" path="res://lib/nodes/remote_action.gd" id="1_kup1o"]
 [ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://materials/Orange Texture.tres" id="2_cv8n4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u4326"]
 size = Vector3(0.503025, 0.539618, 0.149281)
 
 [node name="OrangeButton" type="StaticBody3D"]
-script = ExtResource("1_8bnjw")
-label = "Button"
-save = false
+script = ExtResource("1_kup1o")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 use_collision = true
