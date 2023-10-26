@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://hn1mjnguw62i"
 path.s3tc="res://.godot/imported/casual_man_color.png-f7ae1816c313b2f7591ffc415d96ad84.s3tc.ctex"
+path.etc2="res://.godot/imported/casual_man_color.png-f7ae1816c313b2f7591ffc415d96ad84.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://characters/player/textures/casual_man_color.png"
-dest_files=["res://.godot/imported/casual_man_color.png-f7ae1816c313b2f7591ffc415d96ad84.s3tc.ctex"]
+dest_files=["res://.godot/imported/casual_man_color.png-f7ae1816c313b2f7591ffc415d96ad84.s3tc.ctex", "res://.godot/imported/casual_man_color.png-f7ae1816c313b2f7591ffc415d96ad84.etc2.ctex"]
 
 [params]
 

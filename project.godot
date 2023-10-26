@@ -25,7 +25,6 @@ StateSaver="*res://lib/tools/state_persistence.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=700
-window/size/mode=3
 mouse_cursor/custom_image="res://assets/cursors/png/cursor_default.png"
 
 [input]
@@ -165,6 +164,11 @@ view_rotate_left={
 ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+pointing/size/mode=3
+
 [layer_names]
 
 3d_physics/layer_1="player"
@@ -174,4 +178,6 @@ view_rotate_left={
 
 [rendering]
 
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 1)

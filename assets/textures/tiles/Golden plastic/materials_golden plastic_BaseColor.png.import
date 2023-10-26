@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c8or2mc5gbdk2"
 path.s3tc="res://.godot/imported/materials_golden plastic_BaseColor.png-0e6a7c383a367c69610f18842667b7a4.s3tc.ctex"
+path.etc2="res://.godot/imported/materials_golden plastic_BaseColor.png-0e6a7c383a367c69610f18842667b7a4.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://assets/textures/tiles/Golden plastic/materials_golden plastic_BaseColor.png"
-dest_files=["res://.godot/imported/materials_golden plastic_BaseColor.png-0e6a7c383a367c69610f18842667b7a4.s3tc.ctex"]
+dest_files=["res://.godot/imported/materials_golden plastic_BaseColor.png-0e6a7c383a367c69610f18842667b7a4.s3tc.ctex", "res://.godot/imported/materials_golden plastic_BaseColor.png-0e6a7c383a367c69610f18842667b7a4.etc2.ctex"]
 
 [params]
 

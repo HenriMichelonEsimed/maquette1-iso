@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://qkckayiyvhkn"]
+
+[ext_resource type="Texture2D" uid="uid://d1r7esxh637qw" path="res://assets/textures/hud_move_normal.png" id="1_8yhw1"]
+[ext_resource type="Script" path="res://scenes/touch_move.gd" id="1_s8mho"]
+[ext_resource type="Texture2D" uid="uid://c3xoidbn30r61" path="res://assets/textures/hud_move_pressed.png" id="2_hilgi"]
+[ext_resource type="Texture2D" uid="uid://6xsn7o8iriqg" path="res://assets/textures/hud_move_sprite.png" id="3_yglml"]
+
+[node name="TouchMove" type="Control"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+script = ExtResource("1_s8mho")
+
+[node name="AnalogMove" type="TouchScreenButton" parent="."]
+position = Vector2(45, -224)
+texture_normal = ExtResource("1_8yhw1")
+texture_pressed = ExtResource("2_hilgi")
+
+[node name="Position" type="Sprite2D" parent="AnalogMove"]
+position = Vector2(101, 114)
+texture = ExtResource("3_yglml")
+
+[node name="Center" type="Node2D" parent="AnalogMove"]
+position = Vector2(97, 112)
+
+[connection signal="pressed" from="AnalogMove" to="." method="_on_analog_move_pressed"]
+[connection signal="released" from="AnalogMove" to="." method="_on_analog_move_released"]

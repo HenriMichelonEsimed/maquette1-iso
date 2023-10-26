@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dh627tgy23jwp"
 path.s3tc="res://.godot/imported/materials_Hexagonal_Black_perforated_Roughness.png-547cb10c091dbe57f618fa6583616926.s3tc.ctex"
+path.etc2="res://.godot/imported/materials_Hexagonal_Black_perforated_Roughness.png-547cb10c091dbe57f618fa6583616926.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://assets/textures/tiles/Hexagonal Black/materials_Hexagonal_Black_perforated_Roughness.png"
-dest_files=["res://.godot/imported/materials_Hexagonal_Black_perforated_Roughness.png-547cb10c091dbe57f618fa6583616926.s3tc.ctex"]
+dest_files=["res://.godot/imported/materials_Hexagonal_Black_perforated_Roughness.png-547cb10c091dbe57f618fa6583616926.s3tc.ctex", "res://.godot/imported/materials_Hexagonal_Black_perforated_Roughness.png-547cb10c091dbe57f618fa6583616926.etc2.ctex"]
 
 [params]
 

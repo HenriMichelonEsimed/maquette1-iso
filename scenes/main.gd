@@ -20,11 +20,11 @@ func _process(_delta):
 	if (GameState.paused): return
 	if Input.is_action_just_pressed("player_inventory"):
 		_on_button_inventory_pressed()
-		
+
 func _input(event):
 	if event is InputEventMouseMotion:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	
+
 func _set_player_position(pos:Vector3, rot:Vector3):
 	GameState.player.position = pos
 	GameState.player.rotation = rot
@@ -107,3 +107,5 @@ func _on_display_info(node:Node3D):
 func _on_hide_info():
 	labelInfo.visible = false
 	labelInfo.text = ''
+
+

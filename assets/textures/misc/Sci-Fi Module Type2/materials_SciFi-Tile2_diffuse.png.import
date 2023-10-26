@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://duema82l3kc3q"
 path.s3tc="res://.godot/imported/materials_SciFi-Tile2_diffuse.png-0f68e75e3f5b639d7298a0648157c9ca.s3tc.ctex"
+path.etc2="res://.godot/imported/materials_SciFi-Tile2_diffuse.png-0f68e75e3f5b639d7298a0648157c9ca.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://assets/textures/misc/Sci-Fi Module Type2/materials_SciFi-Tile2_diffuse.png"
-dest_files=["res://.godot/imported/materials_SciFi-Tile2_diffuse.png-0f68e75e3f5b639d7298a0648157c9ca.s3tc.ctex"]
+dest_files=["res://.godot/imported/materials_SciFi-Tile2_diffuse.png-0f68e75e3f5b639d7298a0648157c9ca.s3tc.ctex", "res://.godot/imported/materials_SciFi-Tile2_diffuse.png-0f68e75e3f5b639d7298a0648157c9ca.etc2.ctex"]
 
 [params]
 

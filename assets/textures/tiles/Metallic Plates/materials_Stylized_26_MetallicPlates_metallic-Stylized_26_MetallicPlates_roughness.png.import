@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bh2tina6la8e1"
 path.s3tc="res://.godot/imported/materials_Stylized_26_MetallicPlates_metallic-Stylized_26_MetallicPlates_roughness.png-83c317f7575aa63f64f03c8ff243cf1c.s3tc.ctex"
+path.etc2="res://.godot/imported/materials_Stylized_26_MetallicPlates_metallic-Stylized_26_MetallicPlates_roughness.png-83c317f7575aa63f64f03c8ff243cf1c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://assets/textures/tiles/Metallic Plates/materials_Stylized_26_MetallicPlates_metallic-Stylized_26_MetallicPlates_roughness.png"
-dest_files=["res://.godot/imported/materials_Stylized_26_MetallicPlates_metallic-Stylized_26_MetallicPlates_roughness.png-83c317f7575aa63f64f03c8ff243cf1c.s3tc.ctex"]
+dest_files=["res://.godot/imported/materials_Stylized_26_MetallicPlates_metallic-Stylized_26_MetallicPlates_roughness.png-83c317f7575aa63f64f03c8ff243cf1c.s3tc.ctex", "res://.godot/imported/materials_Stylized_26_MetallicPlates_metallic-Stylized_26_MetallicPlates_roughness.png-83c317f7575aa63f64f03c8ff243cf1c.etc2.ctex"]
 
 [params]
 

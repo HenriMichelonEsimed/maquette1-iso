@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://db673u0kg2d8s"
 path.s3tc="res://.godot/imported/materials_Hexagonal_silver_perforated_Normal.png-47ced1929ad8675c603c92486661bceb.s3tc.ctex"
+path.etc2="res://.godot/imported/materials_Hexagonal_silver_perforated_Normal.png-47ced1929ad8675c603c92486661bceb.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://assets/textures/tiles/Hexagonal silver/materials_Hexagonal_silver_perforated_Normal.png"
-dest_files=["res://.godot/imported/materials_Hexagonal_silver_perforated_Normal.png-47ced1929ad8675c603c92486661bceb.s3tc.ctex"]
+dest_files=["res://.godot/imported/materials_Hexagonal_silver_perforated_Normal.png-47ced1929ad8675c603c92486661bceb.s3tc.ctex", "res://.godot/imported/materials_Hexagonal_silver_perforated_Normal.png-47ced1929ad8675c603c92486661bceb.etc2.ctex"]
 
 [params]
 

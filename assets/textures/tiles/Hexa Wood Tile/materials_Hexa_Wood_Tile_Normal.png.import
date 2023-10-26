@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cfcma3wb42t0c"
 path.s3tc="res://.godot/imported/materials_Hexa_Wood_Tile_Normal.png-9ebdb1f6914dcdfecfb5c473e170174e.s3tc.ctex"
+path.etc2="res://.godot/imported/materials_Hexa_Wood_Tile_Normal.png-9ebdb1f6914dcdfecfb5c473e170174e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://assets/textures/tiles/Hexa Wood Tile/materials_Hexa_Wood_Tile_Normal.png"
-dest_files=["res://.godot/imported/materials_Hexa_Wood_Tile_Normal.png-9ebdb1f6914dcdfecfb5c473e170174e.s3tc.ctex"]
+dest_files=["res://.godot/imported/materials_Hexa_Wood_Tile_Normal.png-9ebdb1f6914dcdfecfb5c473e170174e.s3tc.ctex", "res://.godot/imported/materials_Hexa_Wood_Tile_Normal.png-9ebdb1f6914dcdfecfb5c473e170174e.etc2.ctex"]
 
 [params]
 

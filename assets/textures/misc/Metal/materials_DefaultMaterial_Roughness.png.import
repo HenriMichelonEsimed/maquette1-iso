@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://blpxiwgt4nfh"
 path.s3tc="res://.godot/imported/materials_DefaultMaterial_Roughness.png-138d46c53ac29f6d4ecadc60736f2e5c.s3tc.ctex"
+path.etc2="res://.godot/imported/materials_DefaultMaterial_Roughness.png-138d46c53ac29f6d4ecadc60736f2e5c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://assets/textures/misc/Metal/materials_DefaultMaterial_Roughness.png"
-dest_files=["res://.godot/imported/materials_DefaultMaterial_Roughness.png-138d46c53ac29f6d4ecadc60736f2e5c.s3tc.ctex"]
+dest_files=["res://.godot/imported/materials_DefaultMaterial_Roughness.png-138d46c53ac29f6d4ecadc60736f2e5c.s3tc.ctex", "res://.godot/imported/materials_DefaultMaterial_Roughness.png-138d46c53ac29f6d4ecadc60736f2e5c.etc2.ctex"]
 
 [params]
 

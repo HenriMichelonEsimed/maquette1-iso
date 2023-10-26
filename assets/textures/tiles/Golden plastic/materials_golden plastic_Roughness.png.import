@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0xy3x8bw4r3l"
 path.s3tc="res://.godot/imported/materials_golden plastic_Roughness.png-fd5e757c6a7c5e318bce4581912f994b.s3tc.ctex"
+path.etc2="res://.godot/imported/materials_golden plastic_Roughness.png-fd5e757c6a7c5e318bce4581912f994b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://assets/textures/tiles/Golden plastic/materials_golden plastic_Roughness.png"
-dest_files=["res://.godot/imported/materials_golden plastic_Roughness.png-fd5e757c6a7c5e318bce4581912f994b.s3tc.ctex"]
+dest_files=["res://.godot/imported/materials_golden plastic_Roughness.png-fd5e757c6a7c5e318bce4581912f994b.s3tc.ctex", "res://.godot/imported/materials_golden plastic_Roughness.png-fd5e757c6a7c5e318bce4581912f994b.etc2.ctex"]
 
 [params]
 

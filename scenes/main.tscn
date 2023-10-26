@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dyj5pxcv4nq84"]
+[gd_scene load_steps=9 format=3 uid="uid://dyj5pxcv4nq84"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_4sx3e"]
 [ext_resource type="PackedScene" uid="uid://drr16dfcqhfyw" path="res://scenes/player.tscn" id="1_hswq3"]
 [ext_resource type="Script" path="res://scenes/camera.gd" id="2_b0j3s"]
 [ext_resource type="Environment" uid="uid://730uhqlxrn44" path="res://env.tres" id="2_dhum8"]
 [ext_resource type="PackedScene" uid="uid://c4mbdc0ejm2ot" path="res://scenes/view_pivot.tscn" id="3_7bgj5"]
+[ext_resource type="PackedScene" uid="uid://qkckayiyvhkn" path="res://scenes/touch_move.tscn" id="5_asao4"]
 
 [sub_resource type="FontVariation" id="FontVariation_y25ao"]
 variation_embolden = 1.0
@@ -17,7 +18,7 @@ expand_margin_right = 10.0
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("labelInfo")]
 script = ExtResource("1_4sx3e")
-labelInfo = NodePath("Game/UI/LabelInfo")
+labelInfo = NodePath("")
 
 [node name="Game" type="Node3D" parent="."]
 
@@ -107,6 +108,8 @@ text = "Saving..."
 [node name="Timer" type="Timer" parent="Game/UI/LabelSaving"]
 wait_time = 0.5
 one_shot = true
+
+[node name="TouchMove" parent="." instance=ExtResource("5_asao4")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_dhum8")

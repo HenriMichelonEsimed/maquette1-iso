@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://wmutqt4wqie5"
 path.s3tc="res://.godot/imported/materials_Stylized_26_MetallicPlates_basecolor.png-0a008049f992310e2ea429953a4aea28.s3tc.ctex"
+path.etc2="res://.godot/imported/materials_Stylized_26_MetallicPlates_basecolor.png-0a008049f992310e2ea429953a4aea28.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://assets/textures/tiles/Metallic Plates/materials_Stylized_26_MetallicPlates_basecolor.png"
-dest_files=["res://.godot/imported/materials_Stylized_26_MetallicPlates_basecolor.png-0a008049f992310e2ea429953a4aea28.s3tc.ctex"]
+dest_files=["res://.godot/imported/materials_Stylized_26_MetallicPlates_basecolor.png-0a008049f992310e2ea429953a4aea28.s3tc.ctex", "res://.godot/imported/materials_Stylized_26_MetallicPlates_basecolor.png-0a008049f992310e2ea429953a4aea28.etc2.ctex"]
 
 [params]
 
