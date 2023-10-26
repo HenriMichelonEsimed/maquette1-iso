@@ -12,8 +12,10 @@ var inventory = ItemsCollection.new()
 var events_queue = EventsQueue.new()
 var player:Player
 var view_pivot:ViewPivot
+var is_mobile:bool
 
 func _ready():
+	is_mobile = OS.get_name() in ["android", "iOS"]
 	StateSaver.set_path(current_state_path)
 	loadGame()
 

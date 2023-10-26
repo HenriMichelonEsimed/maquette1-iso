@@ -24,6 +24,7 @@ func _ready():
 
 func move(pos):
 	camera_pivot.position = pos
+	
 
 func _process(_delta):
 	if (GameState.paused): return

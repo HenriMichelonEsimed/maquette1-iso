@@ -100,9 +100,9 @@ func _on_saving_timer_timeout():
 func _on_display_info(node:Node3D):
 	var label = str(node)
 	if (label.is_empty()): return
+	labelInfo.visible = true
 	labelInfo.position = $Game/CameraPivot/Camera.unproject_position(node.global_position)
 	labelInfo.text = label
-	labelInfo.visible = true
 
 func _on_hide_info():
 	labelInfo.visible = false

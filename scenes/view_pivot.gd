@@ -2,28 +2,43 @@ extends Node3D
 class_name ViewPivot
 
 signal view_moving()
-const mouse_margin = 50
 const player_maxdistance = Vector3(50.0, 0, 50.0)
+const mouse_delta = 20
 
 var current_view = 0
 var signaled = false
 var player_moving = false
+var mouse_pressed_position: Vector2
+var mouse_vector:Vector2
+
+func _input(event):
+	if mouse_pressed_position != Vector2.ZERO:
+		if event is InputEventMouseMotion:
+			mouse_vector = get_viewport().get_mouse_position() - mouse_pressed_position
 
 func _process(_delta):
 	if Input.is_action_pressed("modifier") or player_moving : return
-	#var mouse_pos = get_viewport().get_mouse_position()
+	if Input.is_action_just_pressed("view_pan"):
+		mouse_pressed_position = get_viewport().get_mouse_position()
+	elif Input.is_action_just_released("view_pan"):
+		mouse_pressed_position = Vector2.ZERO
+		mouse_vector = Vector2.ZERO
 	var new_pos = position
-	var modifier = ((100 - GameState.camera.size)+5)/12.0
-	if Input.is_action_pressed("view_right"):# or (mouse_pos.x > (get_viewport().size.x - mouse_margin) and (mouse_pos.x < get_viewport().size.x+mouse_margin)):
+	var modifier
+	if (GameState.is_mobile):
+		modifier = 0.05
+	else:
+		modifier = ((100 - GameState.camera.size)+5)/12.0
+	if Input.is_action_pressed("view_right") or mouse_vector.x < -mouse_delta:
 		new_pos.x += Player.directions["right"][current_view].x/modifier
 		new_pos.z += Player.directions["right"][current_view].z/modifier
-	if Input.is_action_pressed("view_left"):# or (mouse_pos.x < mouse_margin and mouse_pos.x > -mouse_margin):
+	if Input.is_action_pressed("view_left") or mouse_vector.x > mouse_delta:
 		new_pos.x += Player.directions["left"][current_view].x/modifier
 		new_pos.z += Player.directions["left"][current_view].z/modifier
-	if Input.is_action_pressed("view_down"):# or (mouse_pos.y > (get_viewport().size.y - mouse_margin)and (mouse_pos.y < get_viewport().size.y+mouse_margin)):
+	if Input.is_action_pressed("view_down") or mouse_vector.y < -mouse_delta:
 		new_pos.x += Player.directions["backward"][current_view].x/modifier
 		new_pos.z += Player.directions["backward"][current_view].z/modifier
-	if Input.is_action_pressed("view_up"):# or (mouse_pos.y < mouse_margin and mouse_pos.y > -mouse_margin):
+	if Input.is_action_pressed("view_up") or mouse_vector.y > mouse_delta:
 		new_pos.x += Player.directions["forward"][current_view].x/modifier
 		new_pos.z += Player.directions["forward"][current_view].z/modifier
 	var player_pos = GameState.player.position

@@ -18,7 +18,7 @@ expand_margin_right = 10.0
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("labelInfo")]
 script = ExtResource("1_4sx3e")
-labelInfo = NodePath("")
+labelInfo = NodePath("Game/UI/LabelInfo")
 
 [node name="Game" type="Node3D" parent="."]
 

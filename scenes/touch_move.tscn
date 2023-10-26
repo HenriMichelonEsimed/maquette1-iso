@@ -25,5 +25,12 @@ texture = ExtResource("3_yglml")
 [node name="Center" type="Node2D" parent="AnalogMove"]
 position = Vector2(97, 112)
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = -53.0
+offset_right = 229.0
+offset_bottom = -5.0
+
 [connection signal="pressed" from="AnalogMove" to="." method="_on_analog_move_pressed"]
 [connection signal="released" from="AnalogMove" to="." method="_on_analog_move_released"]

@@ -9,9 +9,13 @@ var analog_size:Vector2
 @onready var move_center = $AnalogMove/Center
 
 var positions : Array = [Vector2(), Vector2()]
+var left = false
+var right = false
+var forward = false
+var backward = false
 
 func _ready():
-	#if not OS.get_name() in ["android", "iOS"]:
+	#if not GameState.is_mobile:
 	#	queue_free()
 	analog_size = move.texture_normal.get_size()
 	
@@ -20,7 +24,7 @@ func _input(event):
 		positions[event.index] = event.position
 		if event.index == 1:
 			var zoom_amount = (positions[0] - positions[1]).length()
-			print(zoom_amount)
+			$Label.text = str(zoom_amount)
 
 func _process(delta):
 	if analog_pressed:
@@ -28,10 +32,14 @@ func _process(delta):
 		move_position.position = touch_position + analog_size / 2.0
 		var strength : Vector2 = touch_position / (analog_size / 2.0)
 		print(strength)
-		if (strength.x < -0.2) : Input.action_press("player_left", 1)
-		if (strength.x >  0.2) : Input.action_press("player_right", 1)
-		if (strength.y < -0.2) : Input.action_press("player_forward", 1)
-		if (strength.y >  0.2) : Input.action_press("player_backward", 1)
+		left = strength.x < -0.2
+		right = strength.x >  0.2
+		forward = strength.y < -0.2
+		backward = strength.y >  0.2
+		if (left) : Input.action_press("player_left", 1)
+		if (right) : Input.action_press("player_right", 1)
+		if (forward) : Input.action_press("player_forward", 1)
+		if (backward) : Input.action_press("player_backward", 1)
 
 func _on_analog_move_pressed():
 	analog_offset = move.get_local_mouse_position()
