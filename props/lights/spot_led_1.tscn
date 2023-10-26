@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://l542ntfrdmux"]
+
+[node name="SpotLed1" type="SpotLight3D"]
+light_energy = 2.0

@@ -25,7 +25,7 @@ func _ready():
 func move(pos):
 	camera_pivot.position = pos
 
-func _process(d_elta):
+func _process(_delta):
 	if (GameState.paused): return
 	camera_pivot.position = object_to_follow.position
 	if  Input.is_action_pressed("view_zoomin") or (Input.is_action_pressed("modifier") and Input.is_action_pressed("view_up")):

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bqqwxekreebdl"]
 
-[ext_resource type="Material" uid="uid://k5r36wixdaow" path="res://assets/materials/misc/dark.tres" id="1_8phnm"]
+[ext_resource type="Material" uid="uid://bugki4jue7ww3" path="res://assets/materials/tiles/tiles_11.tres" id="1_4d5hc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kky41"]
 size = Vector3(1.9373, 1.37179, 0.523748)
@@ -14,19 +14,19 @@ shape = SubResource("BoxShape3D_kky41")
 
 [node name="step1" type="CSGBox3D" parent="."]
 size = Vector3(3, 0.25, 0.75)
-material = ExtResource("1_8phnm")
+material = ExtResource("1_4d5hc")
 
 [node name="step2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -0.25)
 size = Vector3(3, 0.25, 0.75)
-material = ExtResource("1_8phnm")
+material = ExtResource("1_4d5hc")
 
 [node name="step3" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
 size = Vector3(3, 0.25, 0.75)
-material = ExtResource("1_8phnm")
+material = ExtResource("1_4d5hc")
 
 [node name="step4" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.75)
 size = Vector3(3, 0.25, 0.75)
-material = ExtResource("1_8phnm")
+material = ExtResource("1_4d5hc")

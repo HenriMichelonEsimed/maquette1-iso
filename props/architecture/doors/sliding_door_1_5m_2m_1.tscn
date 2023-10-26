@@ -1,0 +1,105 @@
+[gd_scene load_steps=10 format=3 uid="uid://bgqwxop1ajejp"]
+
+[ext_resource type="Script" path="res://lib/nodes/usable.gd" id="1_c8p0r"]
+[ext_resource type="Material" uid="uid://c2mgwba4bjbw6" path="res://assets/materials/misc/metal.tres" id="2_flw2h"]
+[ext_resource type="Material" uid="uid://drqe2h4tssju6" path="res://assets/materials/misc/brushed_steel.tres" id="3_mk8da"]
+[ext_resource type="PackedScene" uid="uid://bukci666s2a3m" path="res://props/common/button_sliding.tscn" id="3_sncym"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dceui"]
+size = Vector3(1.09475, 2, 0.0993331)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7q6d4"]
+size = Vector3(0.228276, 2, 0.0928806)
+
+[sub_resource type="Animation" id="Animation_rbqo1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Core:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.25035, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShapeCore:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.25035, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lylpx"]
+resource_name = "use"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Core:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.25035, 1, 0), Vector3(-1.42, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShapeCore:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.25035, 1, 0), Vector3(-1.42, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_21c3v"]
+_data = {
+"RESET": SubResource("Animation_rbqo1"),
+"use": SubResource("Animation_lylpx")
+}
+
+[node name="SlidingDoor1" type="StaticBody3D"]
+script = ExtResource("1_c8p0r")
+label = "Door"
+
+[node name="Core" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25035, 1, 0)
+size = Vector3(1.2, 2, 0.1)
+material = ExtResource("2_flw2h")
+
+[node name="CollisionShapeCore" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25035, 1, 0)
+shape = SubResource("BoxShape3D_dceui")
+
+[node name="CommandPanel" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.499886, 1, 0)
+size = Vector3(0.3, 2, 0.1)
+material = ExtResource("3_mk8da")
+
+[node name="Button sliding" parent="CommandPanel" instance=ExtResource("3_sncym")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0.0473475)
+
+[node name="Button sliding2" parent="CommandPanel" instance=ExtResource("3_sncym")]
+transform = Transform3D(-0.03, 0, -4.52987e-09, 0, 0.03, 0, 4.52987e-09, 0, -0.03, 0, 0, -0.0490075)
+
+[node name="CollisionShapePanel" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.531006, 1, 0)
+shape = SubResource("BoxShape3D_7q6d4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_21c3v")
+}

@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://dttaqc4p8jo8h"]
+
+[ext_resource type="Texture2D" uid="uid://ckel32ed345mb" path="res://assets/textures/tiles/Hexa Wood Tile dark/materials_Hexa_Wood_Tile_dark_Base_Color.png" id="1_pwjli"]
+[ext_resource type="Texture2D" uid="uid://crq7tobat4rkx" path="res://assets/textures/tiles/Hexa Wood Tile dark/materials_Hexa_Wood_Tile_dark_Normal.png" id="2_np1bj"]
+[ext_resource type="Texture2D" uid="uid://0vs51qixga4l" path="res://assets/textures/tiles/Hexagonal Wood Panel/materials_woodparquet_56_metallic-2K-2K-woodparquet_56_roughness-2K-2K.png" id="3_fg8b4"]
+
+[resource]
+albedo_texture = ExtResource("1_pwjli")
+roughness_texture = ExtResource("3_fg8b4")
+normal_enabled = true
+normal_texture = ExtResource("2_np1bj")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
