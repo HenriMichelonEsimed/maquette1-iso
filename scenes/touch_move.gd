@@ -15,16 +15,9 @@ var forward = false
 var backward = false
 
 func _ready():
-	#if not GameState.is_mobile:
-	#	queue_free()
+	if not GameState.is_mobile:
+		queue_free()
 	analog_size = move.texture_normal.get_size()
-	
-func _input(event):
-	if event is InputEventScreenTouch:
-		positions[event.index] = event.position
-		if event.index == 1:
-			var zoom_amount = (positions[0] - positions[1]).length()
-			$Label.text = str(zoom_amount)
 
 func _process(delta):
 	if analog_pressed:

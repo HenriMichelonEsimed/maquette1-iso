@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=3 uid="uid://wpu71sh5k21k"]
+
+[ext_resource type="Script" path="res://scenes/touch_view.gd" id="1_4pkba"]
+[ext_resource type="Texture2D" uid="uid://d1r7esxh637qw" path="res://assets/textures/hud_move_normal.png" id="2_huk32"]
+[ext_resource type="Texture2D" uid="uid://c3xoidbn30r61" path="res://assets/textures/hud_move_pressed.png" id="3_iau16"]
+[ext_resource type="Texture2D" uid="uid://6xsn7o8iriqg" path="res://assets/textures/hud_move_sprite.png" id="4_l13t2"]
+[ext_resource type="Texture2D" uid="uid://cmrouaw4trexl" path="res://assets/textures/hud_empty.png" id="5_1yi3i"]
+
+[node name="TouchView" type="Control"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("1_4pkba")
+
+[node name="AnalogMove" type="TouchScreenButton" parent="."]
+position = Vector2(-218, -235)
+texture_normal = ExtResource("2_huk32")
+texture_pressed = ExtResource("3_iau16")
+
+[node name="Position" type="Sprite2D" parent="AnalogMove"]
+position = Vector2(101, 114)
+texture = ExtResource("4_l13t2")
+
+[node name="Center" type="Node2D" parent="AnalogMove"]
+position = Vector2(97, 110)
+
+[node name="ZoomIn" type="TouchScreenButton" parent="."]
+position = Vector2(-381, -139)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("5_1yi3i")
+
+[node name="Label" type="Label" parent="ZoomIn"]
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 0.224
+offset_left = 80.0
+offset_top = 38.0
+offset_right = 86.0
+offset_bottom = 107.544
+theme_override_font_sizes/font_size = 80
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ZoomOut" type="TouchScreenButton" parent="."]
+position = Vector2(-492, -139)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("5_1yi3i")
+
+[node name="Label" type="Label" parent="ZoomOut"]
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 0.224
+offset_left = 80.0
+offset_top = 38.0
+offset_right = 86.0
+offset_bottom = 107.544
+theme_override_font_sizes/font_size = 80
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Use" type="TouchScreenButton" parent="."]
+position = Vector2(-118, -375)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("5_1yi3i")
+
+[node name="Label" type="Label" parent="Use"]
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 0.224
+offset_left = 74.0
+offset_top = 38.0
+offset_right = 87.0
+offset_bottom = 107.544
+theme_override_font_sizes/font_size = 80
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="AnalogMove" to="." method="_on_analog_move_pressed"]
+[connection signal="released" from="AnalogMove" to="." method="_on_analog_move_released"]
+[connection signal="pressed" from="ZoomIn" to="." method="_on_zoom_in_pressed"]
+[connection signal="released" from="ZoomIn" to="." method="_on_zoom_in_released"]
+[connection signal="pressed" from="ZoomOut" to="." method="_on_zoom_out_pressed"]
+[connection signal="released" from="ZoomOut" to="." method="_on_zoom_out_released"]
+[connection signal="pressed" from="Use" to="." method="_on_use_pressed"]
+[connection signal="released" from="Use" to="." method="_on_use_released"]

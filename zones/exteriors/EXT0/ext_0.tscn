@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8su0hf178awv"]
+
+[ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_q0b8q"]
+[ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_8ci34"]
+
+[node name="ext_0" type="Node3D"]
+script = ExtResource("1_q0b8q")
+zone_name = "ext_0"
+
+[node name="SpawnPoint" type="Node3D" parent="."]
+script = ExtResource("2_8ci34")
+key = "default"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -700.817, 149.891, 200.756)

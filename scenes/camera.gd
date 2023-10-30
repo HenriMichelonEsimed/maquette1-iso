@@ -25,7 +25,6 @@ func _ready():
 func move(pos):
 	camera_pivot.position = pos
 	
-
 func _process(_delta):
 	if (GameState.paused): return
 	camera_pivot.position = object_to_follow.position
@@ -71,3 +70,15 @@ func _on_view_pivot_view_moving():
 
 func _on_player_player_moving():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
+func _on_touch_view_rotate():
+	_view -= 1
+	_rotate_view()
+
+func _on_touch_view_view_zoomin():
+	_size -= 1
+	_zoom_view()
+
+func _on_touch_view_view_zoomout():
+	_size += 1
+	_zoom_view()

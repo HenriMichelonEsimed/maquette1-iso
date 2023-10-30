@@ -3,7 +3,7 @@ class_name ViewPivot
 
 signal view_moving()
 const player_maxdistance = Vector3(50.0, 0, 50.0)
-const mouse_delta = 20
+const mouse_delta = 0
 
 var current_view = 0
 var signaled = false
@@ -11,22 +11,31 @@ var player_moving = false
 var mouse_pressed_position: Vector2
 var mouse_vector:Vector2
 
-func _input(event):
-	if mouse_pressed_position != Vector2.ZERO:
-		if event is InputEventMouseMotion:
-			mouse_vector = get_viewport().get_mouse_position() - mouse_pressed_position
+#func _input(event):
+#	if event is InputEventScreenTouch:
+#		if( event.pressed):
+#			mouse_pressed_position = event.position
+#		else:
+#			mouse_pressed_position = Vector2.ZERO
+#			mouse_vector = Vector2.ZERO
+#	if event is InputEventScreenDrag:
+#		print(event.relative)
+#		print(event.velocity)
+#		mouse_vector = event.relative
+#	#else:
+#	#	mouse_vector = Vector2.ZERO
 
 func _process(_delta):
 	if Input.is_action_pressed("modifier") or player_moving : return
-	if Input.is_action_just_pressed("view_pan"):
-		mouse_pressed_position = get_viewport().get_mouse_position()
-	elif Input.is_action_just_released("view_pan"):
-		mouse_pressed_position = Vector2.ZERO
-		mouse_vector = Vector2.ZERO
+	#if not GameState.is_mobile and Input.is_action_just_pressed("view_pan"):
+	#	mouse_pressed_position = get_viewport().get_mouse_position()
+	#elif Input.is_action_just_released("view_pan"):
+	#	mouse_pressed_position = Vector2.ZERO
+	#	mouse_vector = Vector2.ZERO
 	var new_pos = position
 	var modifier
 	if (GameState.is_mobile):
-		modifier = 0.05
+		modifier = 1
 	else:
 		modifier = ((100 - GameState.camera.size)+5)/12.0
 	if Input.is_action_pressed("view_right") or mouse_vector.x < -mouse_delta:

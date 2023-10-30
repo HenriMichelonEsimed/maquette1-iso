@@ -27,6 +27,10 @@ window/size/viewport_width=1280
 window/size/viewport_height=700
 mouse_cursor/custom_image="res://assets/cursors/png/cursor_default.png"
 
+[filesystem]
+
+import/fbx/enabled=false
+
 [input]
 
 player_forward={
@@ -183,6 +187,5 @@ pointing/size/mode=3
 
 [rendering]
 
-renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 1)
