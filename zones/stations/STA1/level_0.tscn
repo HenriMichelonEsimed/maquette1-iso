@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=10 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_5pwa3"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -8,8 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://brix30ocniwym" path="res://props/lights/omni_led_1.tscn" id="6_jvn7r"]
 [ext_resource type="Material" uid="uid://dq4exq84axs48" path="res://assets/materials/tiles/tiles_10.tres" id="7_06jse"]
 [ext_resource type="Material" uid="uid://dttaqc4p8jo8h" path="res://assets/materials/tiles/tiles_13.tres" id="7_qhgex"]
-[ext_resource type="PackedScene" uid="uid://cmnhdnhs38ewa" path="res://props/architecture/walls/wall_1_2m_door.tscn" id="9_5ycd3"]
-[ext_resource type="PackedScene" uid="uid://bgqwxop1ajejp" path="res://props/architecture/doors/sliding_door_1_5m_2m_1.tscn" id="10_qv2xs"]
+[ext_resource type="PackedScene" uid="uid://cmnhdnhs38ewa" path="res://props/architecture/doors/sliding_door_1.tscn" id="9_llrsi"]
 
 [node name="level_0" type="Node3D"]
 script = ExtResource("1_5pwa3")
@@ -125,9 +124,5 @@ material_override = ExtResource("7_06jse")
 use_collision = true
 size = Vector3(10, 2.5, 0.1)
 
-[node name="Wall_1_5mDoor" parent="Admistration/Wall10" instance=ExtResource("9_5ycd3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
-size = Vector3(1.6, 2.2, 0.2)
-
-[node name="SlidingDoor1" parent="Admistration/Wall10" instance=ExtResource("10_qv2xs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, -0.2, 0)
+[node name="WallSlidingDoor" parent="Admistration/Wall10" instance=ExtResource("9_llrsi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)

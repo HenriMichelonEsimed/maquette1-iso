@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://cmnhdnhs38ewa"]
-
-[node name="Wall_1_5mDoor" type="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-operation = 2
-use_collision = true
-size = Vector3(1.6, 2, 0.1)
