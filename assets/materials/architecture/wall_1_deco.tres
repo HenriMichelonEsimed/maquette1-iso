@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bt7ro860t6qq8"]
+
+[ext_resource type="Texture2D" uid="uid://cy0ckd4uc64bg" path="res://assets/textures/architecture/Metal038_1K-JPG/Metal038_1K-JPG_NormalGL.jpg" id="2_h8e10"]
+[ext_resource type="Texture2D" uid="uid://3twa3p5oif7i" path="res://assets/textures/architecture/Metal038_1K-JPG/Metal038_1K-JPG_Roughness.jpg" id="3_rktgp"]
+
+[resource]
+resource_name = "wall_1_deco"
+albedo_color = Color(0.0156863, 0.0705882, 0.180392, 1)
+roughness_texture = ExtResource("3_rktgp")
+normal_enabled = true
+normal_texture = ExtResource("2_h8e10")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true

@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://chx6xt36hpbvc"]
+
+[ext_resource type="Texture2D" uid="uid://duema82l3kc3q" path="res://assets/textures/misc/Sci-Fi Module Type2/materials_SciFi-Tile2_diffuse.png" id="1_an3yn"]
+[ext_resource type="Texture2D" uid="uid://o7khvttogh71" path="res://assets/textures/misc/Sci-Fi Module Type2/materials_SciFi-Tile2_metallic-SciFi-Tile2_roughness.png" id="2_752oo"]
+[ext_resource type="Texture2D" uid="uid://3twa3p5oif7i" path="res://assets/textures/architecture/Metal038_1K-JPG/Metal038_1K-JPG_Roughness.jpg" id="3_6ck0k"]
+[ext_resource type="Texture2D" uid="uid://df44e60dvcc05" path="res://assets/textures/misc/Sci-Fi Module Type2/materials_SciFi-Tile2_normal.png" id="3_xg7s8"]
+
+[resource]
+resource_name = "wall_1_doors"
+albedo_texture = ExtResource("1_an3yn")
+metallic = 0.78
+metallic_texture = ExtResource("2_752oo")
+metallic_texture_channel = 3
+roughness_texture = ExtResource("3_6ck0k")
+normal_scale = -16.0
+normal_texture = ExtResource("3_xg7s8")
+uv1_scale = Vector3(8, 8, 8)
