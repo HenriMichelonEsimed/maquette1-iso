@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5qbxapa8a6n2"]
+
+[ext_resource type="PackedScene" uid="uid://bfg7boh8snht6" path="res://assets/models/Architecture/Wall_1/wall_1_corner.glb" id="1_yl5qr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nft64"]
+size = Vector3(1.94271, 2.9638, 0.377934)
+
+[node name="Wall_1_Corner" instance=ExtResource("1_yl5qr")]
+
+[node name="Cube" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0198908, 1.4, 0.0198913)
+shape = SubResource("BoxShape3D_nft64")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.814763, 1.4, -0.829091)
+shape = SubResource("BoxShape3D_nft64")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." index="3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.814763, 1.4, -0.829091)
+shape = SubResource("BoxShape3D_nft64")
