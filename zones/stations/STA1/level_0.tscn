@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=9 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_5pwa3"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -6,10 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bqqwxekreebdl" path="res://props/architecture/stairs/stair_1.tscn" id="5_gwg4j"]
 [ext_resource type="Material" uid="uid://bugki4jue7ww3" path="res://assets/materials/tiles/tiles_11.tres" id="6_2hohj"]
 [ext_resource type="PackedScene" uid="uid://brix30ocniwym" path="res://props/lights/omni_led_1.tscn" id="6_jvn7r"]
-[ext_resource type="Material" uid="uid://dttaqc4p8jo8h" path="res://assets/materials/tiles/tiles_13.tres" id="7_qhgex"]
-[ext_resource type="PackedScene" uid="uid://dttn0prrkygbv" path="res://props/architecture/walls/wall_1.tscn" id="9_w1jyy"]
-[ext_resource type="PackedScene" uid="uid://b5qbxapa8a6n2" path="res://props/architecture/walls/wall_1_corner.tscn" id="11_4637s"]
-[ext_resource type="PackedScene" uid="uid://cpyeydte5ljme" path="res://props/architecture/walls/wall_open_door_1.tscn" id="11_evr8w"]
+[ext_resource type="PackedScene" uid="uid://ddyyrhb7kfww7" path="res://props/architecture/walls/wall_2.tscn" id="8_sguot"]
+[ext_resource type="PackedScene" uid="uid://dlqef8tipv7p1" path="res://props/architecture/walls/wall_2_corner.tscn" id="10_uulfm"]
 
 [node name="level_0" type="Node3D"]
 script = ExtResource("1_5pwa3")
@@ -63,7 +61,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3.8, -5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 use_collision = true
 size = Vector3(10, 0.1, 5)
-material = ExtResource("7_qhgex")
+material = ExtResource("4_u21yq")
 
 [node name="OmniLed1" parent="Admistration" instance=ExtResource("6_jvn7r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3.8, -10)
@@ -71,17 +69,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3.8, -10)
 [node name="OmniLed2" parent="Admistration" instance=ExtResource("6_jvn7r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3.8, -10)
 
-[node name="Wall_1" parent="Admistration" instance=ExtResource("9_w1jyy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.5)
+[node name="Wall_2" parent="Admistration" instance=ExtResource("8_sguot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -7.5)
 
-[node name="Wall_2" parent="Admistration" instance=ExtResource("9_w1jyy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -7.5)
+[node name="Wall_3" parent="Admistration" instance=ExtResource("8_sguot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -7.5)
 
-[node name="Wall_Open_Door_1" parent="Admistration" instance=ExtResource("11_evr8w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -7.5)
+[node name="Wall_2_Corner" parent="Admistration" instance=ExtResource("10_uulfm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -7.5)
 
-[node name="Wall_1_Corner" parent="Admistration" instance=ExtResource("11_4637s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -7.5)
-
-[node name="Wall_1_Corner2" parent="Admistration" instance=ExtResource("11_4637s")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.8, 0, -8.3)
+[node name="Wall_2_Corner2" parent="Admistration" instance=ExtResource("10_uulfm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -7.5)
