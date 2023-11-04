@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://duema82l3kc3q" path="res://assets/textures/misc/Sci-Fi Module Type2/materials_SciFi-Tile2_diffuse.png" id="1_an3yn"]
 [ext_resource type="Texture2D" uid="uid://o7khvttogh71" path="res://assets/textures/misc/Sci-Fi Module Type2/materials_SciFi-Tile2_metallic-SciFi-Tile2_roughness.png" id="2_752oo"]
-[ext_resource type="Texture2D" uid="uid://3twa3p5oif7i" path="res://assets/textures/architecture/Metal038_1K-JPG/Metal038_1K-JPG_Roughness.jpg" id="3_6ck0k"]
+[ext_resource type="Texture2D" path="res://assets/textures/architecture/Metal038_1K-JPG/Metal038_1K-JPG_Roughness.jpg" id="3_6ck0k"]
 [ext_resource type="Texture2D" uid="uid://df44e60dvcc05" path="res://assets/textures/misc/Sci-Fi Module Type2/materials_SciFi-Tile2_normal.png" id="3_xg7s8"]
 
 [resource]

@@ -8,9 +8,9 @@ size = Vector3(2.12211, 2.79524, 0.344969)
 [node name="Wall_2_Corner" instance=ExtResource("1_rtbbd")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.940743, 1.39871, -0.0322399)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08768, 1.39871, -0.174353)
 shape = SubResource("BoxShape3D_g5o55")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="2"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0212226, 1.39871, -0.940598)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.16902, 1.39871, -1.07981)
 shape = SubResource("BoxShape3D_g5o55")

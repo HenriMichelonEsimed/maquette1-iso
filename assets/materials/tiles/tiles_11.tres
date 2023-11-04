@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://bugki4jue7ww3"]
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://b4exwi2bgnbom"]
 
 [ext_resource type="Texture2D" uid="uid://nym5xqst2h1v" path="res://assets/textures/tiles/Hexagonal Black/materials_Hexagonal_Black_perforated_Base_Color.png" id="1_yca2o"]
 [ext_resource type="Texture2D" uid="uid://dh627tgy23jwp" path="res://assets/textures/tiles/Hexagonal Black/materials_Hexagonal_Black_perforated_Roughness.png" id="2_3uyjf"]
