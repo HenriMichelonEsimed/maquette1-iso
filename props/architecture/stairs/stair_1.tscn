@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bqqwxekreebdl"]
 
-[ext_resource type="Material" uid="uid://bugki4jue7ww3" path="res://assets/materials/tiles/tiles_11.tres" id="1_4d5hc"]
+[ext_resource type="Material" uid="uid://b4exwi2bgnbom" path="res://assets/materials/tiles/tiles_11.tres" id="1_4d5hc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kky41"]
 size = Vector3(1.9373, 1.37179, 0.523748)
