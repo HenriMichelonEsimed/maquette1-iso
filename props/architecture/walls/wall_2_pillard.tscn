@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://g2ahjyvngjux"]
+
+[ext_resource type="PackedScene" uid="uid://bxwoti3p1yjtu" path="res://assets/models/Architecture/Wall_2/wall_2_pillard.glb" id="1_cuntj"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cv1me"]
+height = 2.78774
+radius = 0.552552
+
+[node name="Wall_2_pillard" instance=ExtResource("1_cuntj")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39255, 0)
+shape = SubResource("CylinderShape3D_cv1me")
