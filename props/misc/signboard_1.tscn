@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn6rfqgk1ac2x"]
+
+[ext_resource type="PackedScene" uid="uid://dug4t2t0td35q" path="res://assets/models/Misc/signboard_1.glb" id="1_hnxa2"]
+[ext_resource type="Script" path="res://props/misc/signboard_1.gd" id="2_whkgq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ghe1e"]
+size = Vector3(1.09616, 2.09471, 0.0895552)
+
+[node name="Signboard_1" instance=ExtResource("1_hnxa2")]
+script = ExtResource("2_whkgq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00442, 0.053733)
+shape = SubResource("BoxShape3D_ghe1e")

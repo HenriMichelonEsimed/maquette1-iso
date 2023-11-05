@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bsgj4fggm72ci"]
+
+[resource]
+resource_name = "signboard_1_border"
+transparency = 1
+albedo_color = Color(0.780392, 0.780392, 0.780392, 0.121569)

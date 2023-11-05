@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ct88qq2lg1yll"]
+
+[resource]
+resource_name = "signboard_1_core"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.447059, 0.14902, 0.0509804, 1)
+roughness = 0.5

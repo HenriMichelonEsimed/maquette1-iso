@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=19 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_5pwa3"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://dlqef8tipv7p1" path="res://props/architecture/walls/wall_2_corner.tscn" id="10_uulfm"]
 [ext_resource type="PackedScene" uid="uid://g2ahjyvngjux" path="res://props/architecture/walls/wall_2_pillard.tscn" id="14_jqayk"]
 [ext_resource type="PackedScene" uid="uid://dl1gsdyu0b06w" path="res://props/lights/omni_light_bar.tscn" id="15_5vulm"]
+[ext_resource type="PackedScene" uid="uid://dn6rfqgk1ac2x" path="res://props/misc/signboard_1.tscn" id="15_jddbe"]
+[ext_resource type="Texture2D" uid="uid://lw013fxnjxfl" path="res://assets/textures/signs/retro_space_princess_ai_render_by_torbk_dfkehcw-pre.jpg" id="16_itudf"]
+[ext_resource type="Texture2D" uid="uid://blfn13iykglcd" path="res://assets/textures/signs/espresso.jpg" id="16_yubkv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6muxl"]
 albedo_texture = ExtResource("4_28f3g")
@@ -148,6 +151,14 @@ transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 
 
 [node name="omni_light_bar3" parent="Hall" instance=ExtResource("15_5vulm")]
 transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -7.164, 1.2, -6)
+
+[node name="Signboard_1" parent="Hall" instance=ExtResource("15_jddbe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.590031, -14.6452)
+sign = ExtResource("16_itudf")
+
+[node name="Signboard_2" parent="Hall" instance=ExtResource("15_jddbe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.00037, 0.590031, -14.6452)
+sign = ExtResource("16_yubkv")
 
 [node name="Admistration" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
