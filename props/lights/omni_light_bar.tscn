@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://dl1gsdyu0b06w"]
+
+[ext_resource type="Script" path="res://props/lights/omni_light_bar.gd" id="1_p0e0v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_teybf"]
+albedo_color = Color(0.286275, 0.388235, 0.380392, 1)
+backlight = Color(0.568627, 0.568627, 0.568627, 1)
+grow_amount = -0.582
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hwwiy"]
+transparency = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_usuwu"]
+albedo_color = Color(1, 1, 1, 0)
+refraction_enabled = true
+refraction_scale = 0.03
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkft4"]
+shading_mode = 0
+
+[node name="omni_light_bar" type="Node3D"]
+script = ExtResource("1_p0e0v")
+
+[node name="Support" type="CSGBox3D" parent="."]
+size = Vector3(0.05, 1, 0.05)
+material = SubResource("StandardMaterial3D_teybf")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Support"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.01)
+operation = 2
+size = Vector3(0.04, 0.9, 0.04)
+material = SubResource("StandardMaterial3D_hwwiy")
+
+[node name="Neon" type="CSGBox3D" parent="Support"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.005)
+size = Vector3(0.04, 0.9, 0.04)
+material = SubResource("StandardMaterial3D_usuwu")
+
+[node name="Light" type="CSGBox3D" parent="Support/Neon"]
+size = Vector3(0.04, 0.9, 0.04)
+material = SubResource("StandardMaterial3D_dkft4")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Support/Neon/Light"]
+shadow_enabled = true
+omni_range = 6.0
+omni_attenuation = 0.210224

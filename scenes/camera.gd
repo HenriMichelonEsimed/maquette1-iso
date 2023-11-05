@@ -28,6 +28,14 @@ func move(pos):
 func _process(_delta):
 	if (GameState.paused): return
 	camera_pivot.position = object_to_follow.position
+	if Input.is_action_just_released("view_rotate_left") or (Input.is_action_pressed("modifier") and Input.is_action_just_released("view_left")):
+		_view += 1
+		_rotate_view()
+		return
+	elif Input.is_action_just_released("view_rotate_right") or (Input.is_action_pressed("modifier") and Input.is_action_just_released("view_right")):
+		_view -= 1
+		_rotate_view()
+		return
 	if  Input.is_action_pressed("view_zoomin") or (Input.is_action_pressed("modifier") and Input.is_action_pressed("view_up")):
 		_size -= 1
 		_zoom_view()
@@ -40,12 +48,6 @@ func _process(_delta):
 	elif Input.is_action_just_pressed("view_zoomout"):
 		_size -= 4
 		_zoom_view()
-	if Input.is_action_just_released("view_rotate_left") or (Input.is_action_pressed("modifier") and Input.is_action_just_released("view_left")):
-		_view += 1
-		_rotate_view()
-	elif Input.is_action_just_released("view_rotate_right") or (Input.is_action_pressed("modifier") and Input.is_action_just_released("view_right")):
-		_view -= 1
-		_rotate_view()
 		
 func _zoom_view():
 	if (_size < 5): 

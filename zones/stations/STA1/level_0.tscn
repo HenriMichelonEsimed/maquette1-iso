@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=15 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_5pwa3"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bb6xlwamakagk" path="res://props/architecture/walls/wall_2_ext.tscn" id="9_phh65"]
 [ext_resource type="PackedScene" uid="uid://23c376lwmywd" path="res://props/architecture/walls/wall_2_ext_corner_ext.tscn" id="10_a8eki"]
 [ext_resource type="PackedScene" uid="uid://dlqef8tipv7p1" path="res://props/architecture/walls/wall_2_corner.tscn" id="10_uulfm"]
+[ext_resource type="PackedScene" uid="uid://cpn8ejm5m2j5c" path="res://props/architecture/walls/wall_2_ext_light.tscn" id="11_lu62h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6muxl"]
 albedo_texture = ExtResource("4_28f3g")
@@ -35,157 +36,115 @@ key = "default"
 [node name="Stair" parent="Entrace" instance=ExtResource("5_gwg4j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.82454, -1.37245)
 
-[node name="Wall1" type="CSGBox3D" parent="Entrace"]
+[node name="OmniLed1" parent="Entrace" instance=ExtResource("6_jvn7r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8, 3)
+
+[node name="Architecture" type="Node3D" parent="Entrace"]
+
+[node name="Wall_2_ext" parent="Entrace/Architecture" instance=ExtResource("9_phh65")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 7.5)
+
+[node name="Wall_2_ext5" parent="Entrace/Architecture" instance=ExtResource("9_phh65")]
+transform = Transform3D(-2.98023e-08, 0, 1, 0, 1, 0, -1, 0, -2.98023e-08, -5, -1, 4.5)
+
+[node name="Wall_2_ext11" parent="Entrace/Architecture" instance=ExtResource("9_phh65")]
+transform = Transform3D(-2.98023e-08, 0, 1, 0, 1, 0, -1, 0, -2.98023e-08, -5, -1, 0.5)
+
+[node name="Wall_2_ext12" parent="Entrace/Architecture" instance=ExtResource("9_phh65")]
+transform = Transform3D(-2.98023e-08, 0, 1, 0, 1, 0, -1, 0, -2.98023e-08, -5, -1, 2.5)
+
+[node name="Wall_2_ext7" parent="Entrace/Architecture" instance=ExtResource("9_phh65")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 5, -1, 0.5)
+
+[node name="Wall_2_ext8" parent="Entrace/Architecture" instance=ExtResource("9_phh65")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 5, -1, 2.5)
+
+[node name="Wall_2_ext10" parent="Entrace/Architecture" instance=ExtResource("9_phh65")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 5, -1, 4.5)
+
+[node name="Wall_2_Ext_Corner_Ext" parent="Entrace/Architecture" instance=ExtResource("10_a8eki")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, -1, 7.5)
+
+[node name="Wall_2_Ext_Corner_Ext2" parent="Entrace/Architecture" instance=ExtResource("10_a8eki")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5, -1, 7.5)
+
+[node name="Wall_2_ext_light" parent="Entrace/Architecture" instance=ExtResource("11_lu62h")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, -1, -1.5)
+light_color = Color(0.52549, 0.823529, 0.960784, 1)
+
+[node name="Wall_2_ext_light2" parent="Entrace/Architecture" instance=ExtResource("11_lu62h")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, -1, -1.5)
+light_color = Color(0.52549, 0.823529, 0.960784, 1)
+
+[node name="Wall_2_ext_light3" parent="Entrace/Architecture" instance=ExtResource("11_lu62h")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, -1, 7.5)
+
+[node name="Wall_2_ext_light4" parent="Entrace/Architecture" instance=ExtResource("11_lu62h")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2, -1, 7.5)
+
+[node name="Wall1" type="CSGBox3D" parent="Entrace/Architecture"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.547247, -2.54926)
 size = Vector3(10, 1, 0.1)
 material = SubResource("StandardMaterial3D_6muxl")
 
-[node name="OmniLed1" parent="Entrace" instance=ExtResource("6_jvn7r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2.8, 3)
-omni_range = 8.0
-
-[node name="OmniLed2" parent="Entrace" instance=ExtResource("6_jvn7r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2.8, 3)
-omni_range = 8.0
-
-[node name="Floor" type="CSGBox3D" parent="Entrace"]
+[node name="Floor" type="CSGBox3D" parent="Entrace/Architecture"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 2.5)
 use_collision = true
 size = Vector3(10, 0.1, 10)
 material = ExtResource("8_tpi7f")
 
-[node name="Wall_2_ext" parent="Entrace" instance=ExtResource("9_phh65")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 7.5)
-
-[node name="Wall_2_ext4" parent="Entrace" instance=ExtResource("9_phh65")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, -1, 7.5)
-
-[node name="Wall_2_ext5" parent="Entrace" instance=ExtResource("9_phh65")]
-transform = Transform3D(-2.98023e-08, 0, 1, 0, 1, 0, -1, 0, -2.98023e-08, -5, -1, 4.5)
-
-[node name="Wall_2_ext6" parent="Entrace" instance=ExtResource("9_phh65")]
-transform = Transform3D(-2.98023e-08, 0, 1, 0, 1, 0, -1, 0, -2.98023e-08, -5, -1, 2.5)
-
-[node name="Wall_2_ext11" parent="Entrace" instance=ExtResource("9_phh65")]
-transform = Transform3D(-2.98023e-08, 0, 1, 0, 1, 0, -1, 0, -2.98023e-08, -5, -1, 0.5)
-
-[node name="Wall_2_ext12" parent="Entrace" instance=ExtResource("9_phh65")]
-transform = Transform3D(-2.98023e-08, 0, 1, 0, 1, 0, -1, 0, -2.98023e-08, -5, -1, -1.5)
-
-[node name="Wall_2_ext2" parent="Entrace" instance=ExtResource("9_phh65")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2, -1, 7.5)
-
-[node name="Wall_2_ext7" parent="Entrace" instance=ExtResource("9_phh65")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 5, -1, 0.5)
-
-[node name="Wall_2_ext9" parent="Entrace" instance=ExtResource("9_phh65")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 5, -1, 2.5)
-
-[node name="Wall_2_ext10" parent="Entrace" instance=ExtResource("9_phh65")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 5, -1, 4.5)
-
-[node name="Wall_2_ext8" parent="Entrace" instance=ExtResource("9_phh65")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 5, -1, -1.5)
-
-[node name="Wall_2_Ext_Corner_Ext" parent="Entrace" instance=ExtResource("10_a8eki")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, -1, 7.5)
-
-[node name="Wall_2_Ext_Corner_Ext2" parent="Entrace" instance=ExtResource("10_a8eki")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5, -1, 7.5)
-
 [node name="Hall" type="Node3D" parent="."]
 
-[node name="Floor" type="CSGBox3D" parent="Hall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+[node name="OmniLed2" parent="Hall" instance=ExtResource("6_jvn7r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8, -5)
+
+[node name="Architecture" type="Node3D" parent="Hall"]
+
+[node name="Floor" type="CSGBox3D" parent="Hall/Architecture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.5)
 use_collision = true
-size = Vector3(10, 0.1, 5)
+size = Vector3(14, 0.1, 12)
 material = ExtResource("8_tpi7f")
 
-[node name="OmniLed1" parent="Hall" instance=ExtResource("6_jvn7r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3.8, -5)
-
-[node name="OmniLed2" parent="Hall" instance=ExtResource("6_jvn7r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3.8, -5)
-
-[node name="Wall_2_ext4" parent="Hall" instance=ExtResource("9_phh65")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 5, 0, -3.5)
-
-[node name="Wall_2_ext5" parent="Hall" instance=ExtResource("9_phh65")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 5, 0, -5.5)
-
-[node name="Wall_2_ext6" parent="Hall" instance=ExtResource("9_phh65")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 5, 0, -7.5)
-
-[node name="Wall_2_ext7" parent="Hall" instance=ExtResource("9_phh65")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 5, 0, -7.5)
-
-[node name="Wall_2_ext3" parent="Hall" instance=ExtResource("9_phh65")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, -7.5)
-
-[node name="Wall_2_ext8" parent="Hall" instance=ExtResource("9_phh65")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, -5.5)
-
-[node name="Wall_2_ext9" parent="Hall" instance=ExtResource("9_phh65")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, -3.5)
-
-[node name="Wall_2_ext10" parent="Hall" instance=ExtResource("9_phh65")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 0, -2.5)
-
-[node name="Wall_2_ext11" parent="Hall" instance=ExtResource("9_phh65")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0, -2.5)
-
-[node name="Wall_2_ext12" parent="Hall" instance=ExtResource("9_phh65")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.5, 0, -2.5)
-
-[node name="Wall_2_ext13" parent="Hall" instance=ExtResource("9_phh65")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.5, 0, -2.5)
+[node name="Wall_2_Ext_Corner_Ext" parent="Hall/Architecture" instance=ExtResource("10_a8eki")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7, 0, -2.5)
 
 [node name="Admistration" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
 
-[node name="Floor" type="CSGBox3D" parent="Admistration"]
+[node name="OmniLed2" parent="Admistration" instance=ExtResource("6_jvn7r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8, -10)
+
+[node name="Architecture" type="Node3D" parent="Admistration"]
+
+[node name="Floor" type="CSGBox3D" parent="Admistration/Architecture"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 use_collision = true
 size = Vector3(10.0854, 0.1, 5)
 material = ExtResource("8_tpi7f")
 
-[node name="OmniLed1" parent="Admistration" instance=ExtResource("6_jvn7r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3.8, -10)
-
-[node name="OmniLed2" parent="Admistration" instance=ExtResource("6_jvn7r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3.8, -10)
-
-[node name="Wall_2" parent="Admistration" instance=ExtResource("8_sguot")]
+[node name="Wall_2" parent="Admistration/Architecture" instance=ExtResource("8_sguot")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -7.5)
 
-[node name="Wall_3" parent="Admistration" instance=ExtResource("8_sguot")]
+[node name="Wall_3" parent="Admistration/Architecture" instance=ExtResource("8_sguot")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -9.5)
 
-[node name="Wall_5" parent="Admistration" instance=ExtResource("8_sguot")]
+[node name="Wall_5" parent="Admistration/Architecture" instance=ExtResource("8_sguot")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0, -9.5)
 
-[node name="Wall_6" parent="Admistration" instance=ExtResource("8_sguot")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 0, -12.5)
-
-[node name="Wall_7" parent="Admistration" instance=ExtResource("8_sguot")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -12.5)
-
-[node name="Wall_8" parent="Admistration" instance=ExtResource("8_sguot")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2, 0, -12.5)
-
-[node name="Wall_9" parent="Admistration" instance=ExtResource("8_sguot")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2, 0, -12.5)
-
-[node name="Wall_4" parent="Admistration" instance=ExtResource("8_sguot")]
+[node name="Wall_4" parent="Admistration/Architecture" instance=ExtResource("8_sguot")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.5)
 
-[node name="Wall_2_Corner" parent="Admistration" instance=ExtResource("10_uulfm")]
+[node name="Wall_2_Corner" parent="Admistration/Architecture" instance=ExtResource("10_uulfm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -7.5)
 
-[node name="Wall_2_Corner2" parent="Admistration" instance=ExtResource("10_uulfm")]
+[node name="Wall_2_Corner2" parent="Admistration/Architecture" instance=ExtResource("10_uulfm")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -7.5)
 
-[node name="Wall_2_Corner3" parent="Admistration" instance=ExtResource("10_uulfm")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5, 0, -12.5)
+[node name="Wall_2_ext" parent="Admistration/Architecture" instance=ExtResource("9_phh65")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.5)
 
-[node name="Wall_2_Corner4" parent="Admistration" instance=ExtResource("10_uulfm")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 5, 0, -12.5)
+[node name="Wall_2_Ext_Corner_Ext" parent="Admistration/Architecture" instance=ExtResource("10_a8eki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -12.5)
+
+[node name="Node3D" type="Node3D" parent="."]

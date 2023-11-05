@@ -6,11 +6,12 @@
 
 [resource]
 resource_name = "wall_1_core"
+cull_mode = 2
 albedo_texture = ExtResource("1_ux3es")
 metallic = 0.5
 metallic_texture = ExtResource("2_mqu8e")
 normal_enabled = true
-normal_scale = 1.5
+normal_scale = 0.5
 normal_texture = ExtResource("3_uvssk")
 uv1_scale = Vector3(0.1, 0.1, 0.1)
 uv1_triplanar = true

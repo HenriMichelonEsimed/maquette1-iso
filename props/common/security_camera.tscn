@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://chc62gms8d81k"]
+
+[ext_resource type="PackedScene" uid="uid://byxoqm0a1n32j" path="res://assets/models/security_camera/security_camera_01_4k.glb" id="1_k6rrv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yvaec"]
+size = Vector3(0.169838, 0.276671, 0.550604)
+
+[sub_resource type="Animation" id="Animation_cgtvk"]
+resource_name = "lookdown_rotate"
+length = 24.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cam:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6, 12, 18, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.349066, 0, 0), Vector3(0.349066, -0.785398, 0), Vector3(0.349066, 0, 0), Vector3(0.349066, 0.785398, 0), Vector3(0.523599, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1t4yd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cam:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.523599, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mdly2"]
+_data = {
+"RESET": SubResource("Animation_1t4yd"),
+"lookdown_rotate": SubResource("Animation_cgtvk")
+}
+
+[node name="SecurityCamera" instance=ExtResource("1_k6rrv")]
+
+[node name="cam" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117791, -0.0246539)
+shape = SubResource("BoxShape3D_yvaec")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+autoplay = "lookdown_rotate"
+libraries = {
+"": SubResource("AnimationLibrary_mdly2")
+}

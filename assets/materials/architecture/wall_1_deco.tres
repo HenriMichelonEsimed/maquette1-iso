@@ -6,12 +6,13 @@
 
 [resource]
 resource_name = "wall_1_deco"
+cull_mode = 2
 albedo_color = Color(0.890196, 0.27451, 0.227451, 1)
 albedo_texture = ExtResource("1_rfxl6")
 metallic = 1.0
 metallic_texture = ExtResource("2_m5nno")
 normal_enabled = true
-normal_scale = 10.0
+normal_scale = 0.5
 normal_texture = ExtResource("3_y8ga1")
 uv1_scale = Vector3(0.2, 0.2, 0.2)
 uv1_triplanar = true
