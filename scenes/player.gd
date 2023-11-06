@@ -102,6 +102,7 @@ func _physics_process(delta):
 	move_and_slide()
 	if direction != Vector3.ZERO:
 		GameState.view_pivot.position = position
+		GameState.view_pivot.position.y += 1.5
 		if (!signaled) :
 			player_moving.emit()
 			signaled = true

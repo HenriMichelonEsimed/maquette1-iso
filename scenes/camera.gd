@@ -50,8 +50,8 @@ func _process(_delta):
 		_zoom_view()
 		
 func _zoom_view():
-	if (_size < 5): 
-		_size = 5
+	if (_size < 2): 
+		_size = 2
 	elif (_size > 100):
 		_size = 100
 	size = _size

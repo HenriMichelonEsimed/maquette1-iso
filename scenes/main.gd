@@ -30,6 +30,7 @@ func _set_player_position(pos:Vector3, rot:Vector3):
 	GameState.player.rotation = rot
 	$Game/CameraPivot/Camera.move(pos)
 	GameState.view_pivot.position = pos
+	GameState.view_pivot.position.y += 1.5
 
 func _on_change_zonelevel(zone_name:String, spawnpoint_key:String, save:bool=true):
 	if (save): GameState.saveGame()
