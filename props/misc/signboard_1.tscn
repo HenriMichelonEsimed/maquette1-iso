@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://props/misc/signboard_1.gd" id="2_whkgq"]
 [ext_resource type="Texture2D" uid="uid://327t15onp2t6" path="res://assets/textures/signs/retro_science_fiction_portrait_ai_render_by_torbk_dfjffm5-pre.jpg" id="3_5mso1"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nsy24"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ot14u"]
 albedo_texture = ExtResource("3_5mso1")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ghe1e"]
@@ -12,11 +12,17 @@ size = Vector3(1.09616, 2.09471, 0.0895552)
 
 [node name="Signboard_1" instance=ExtResource("1_hnxa2")]
 script = ExtResource("2_whkgq")
-sign = ExtResource("3_5mso1")
 
 [node name="Plane" parent="." index="0"]
-surface_material_override/1 = SubResource("StandardMaterial3D_nsy24")
+surface_material_override/1 = SubResource("StandardMaterial3D_ot14u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00442, 0.053733)
 shape = SubResource("BoxShape3D_ghe1e")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.601104, 0.799171, 0, -0.799171, 0.601104, 0, 1.31635, 0.0837018)
+light_energy = 0.2
+light_size = 1.0
+spot_range = 3.0
+spot_angle = 75.86
