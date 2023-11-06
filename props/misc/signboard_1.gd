@@ -1,3 +1,4 @@
+@tool
 extends StaticBody3D
 
 @export var sign:Texture2D

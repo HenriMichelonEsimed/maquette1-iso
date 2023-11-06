@@ -1,3 +1,4 @@
+@tool
 extends Node3D
 
 @export var color:Color = Color(Color.WHITE)

@@ -25,7 +25,6 @@ StateSaver="*res://lib/tools/state_persistence.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=700
-window/size/mode=3
 mouse_cursor/custom_image="res://assets/cursors/png/cursor_default.png"
 
 [filesystem]

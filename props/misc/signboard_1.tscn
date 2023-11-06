@@ -1,13 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dn6rfqgk1ac2x"]
+[gd_scene load_steps=6 format=3 uid="uid://dn6rfqgk1ac2x"]
 
 [ext_resource type="PackedScene" uid="uid://dug4t2t0td35q" path="res://assets/models/Misc/signboard_1.glb" id="1_hnxa2"]
 [ext_resource type="Script" path="res://props/misc/signboard_1.gd" id="2_whkgq"]
+[ext_resource type="Texture2D" uid="uid://327t15onp2t6" path="res://assets/textures/signs/retro_science_fiction_portrait_ai_render_by_torbk_dfjffm5-pre.jpg" id="3_5mso1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nsy24"]
+albedo_texture = ExtResource("3_5mso1")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ghe1e"]
 size = Vector3(1.09616, 2.09471, 0.0895552)
 
 [node name="Signboard_1" instance=ExtResource("1_hnxa2")]
 script = ExtResource("2_whkgq")
+sign = ExtResource("3_5mso1")
+
+[node name="Plane" parent="." index="0"]
+surface_material_override/1 = SubResource("StandardMaterial3D_nsy24")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00442, 0.053733)
