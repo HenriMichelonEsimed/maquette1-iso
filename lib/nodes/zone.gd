@@ -36,10 +36,10 @@ func _ready():
 
 func _zone_ready():
 	pass
-	
+
 func on_zone_change(trigger:ZoneChangeTrigger):
 	change_zone.emit(trigger.zone_name, trigger.spawnpoint_key)
-	
+
 func on_item_dropped(item:Item,quantity:int):
 	var new_item = item.duplicate()
 	new_item.position = GameState.player.global_position
@@ -60,7 +60,7 @@ func on_item_dropped(item:Item,quantity:int):
 		add_child(new_item)
 		new_item.enable()
 	state.items_added.add(new_item)
-	
+
 func on_item_collected(item:Item,quantity:int):
 	var new_item = item.duplicate()
 	new_item.remove_meta("storage")
@@ -82,4 +82,3 @@ func on_item_collected(item:Item,quantity:int):
 	if (item.get_parent() != null): item.get_parent().remove_child(item)
 	state.items_added.remove(item)
 	GameState.inventory.add(new_item)
-	
