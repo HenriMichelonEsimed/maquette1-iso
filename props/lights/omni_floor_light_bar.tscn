@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://blttosmy6qdp7"]
+
+[ext_resource type="Script" path="res://props/lights/omni_light_bar.gd" id="1_fjxv0"]
+[ext_resource type="Material" uid="uid://bq24ptdvoql7j" path="res://assets/materials/diamond_plate.tres" id="2_1oy4g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_usuwu"]
+albedo_color = Color(1, 1, 1, 0)
+refraction_enabled = true
+refraction_scale = 0.03
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4a4e5"]
+shading_mode = 0
+
+[node name="OmniFloorLightBar" type="Node3D"]
+script = ExtResource("1_fjxv0")
+
+[node name="Support" type="CSGBox3D" parent="."]
+size = Vector3(0.5, 1.5, 0.05)
+material = ExtResource("2_1oy4g")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Support"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.01)
+operation = 2
+size = Vector3(0.3, 1.3, 0.04)
+
+[node name="Neon" type="CSGBox3D" parent="Support"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.005)
+size = Vector3(0.3, 1.3, 0.04)
+material = SubResource("StandardMaterial3D_usuwu")
+
+[node name="Light" type="CSGBox3D" parent="Support/Neon"]
+size = Vector3(0.3, 1.3, 0.04)
+material = SubResource("StandardMaterial3D_4a4e5")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Support/Neon/Light"]
+shadow_enabled = true
