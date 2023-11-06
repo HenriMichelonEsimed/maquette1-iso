@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=21 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_5pwa3"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://blfn13iykglcd" path="res://assets/textures/signs/espresso.jpg" id="16_yubkv"]
 [ext_resource type="PackedScene" uid="uid://deju1ielorujy" path="res://props/furnitures/modern_coffee_table_1.tscn" id="17_c5dn6"]
 [ext_resource type="PackedScene" uid="uid://ce4ndj83kwu03" path="res://props/furnitures/sofa_waiting_room_1.tscn" id="18_tpw3r"]
+[ext_resource type="PackedScene" uid="uid://cyg2fntt11s3k" path="res://props/furnitures/coffee_cart_01.tscn" id="19_uwsfm"]
+[ext_resource type="PackedScene" uid="uid://d3tkl4ppb2k57" path="res://props/furnitures/ficus_concrete_pot.tscn" id="20_xyf1d"]
 
 [node name="level_0" type="Node3D"]
 script = ExtResource("1_5pwa3")
@@ -199,6 +201,18 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3, 0, 
 
 [node name="SofaWaitingRoom_4" parent="Hall" instance=ExtResource("18_tpw3r")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -7.6)
+
+[node name="CoffeeCart_01" parent="Hall" instance=ExtResource("19_uwsfm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46998, 0.040778, -13.9539)
+
+[node name="ficus_concrete_pot" parent="Hall" instance=ExtResource("20_xyf1d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7623, 0, -9)
+
+[node name="ficus_concrete_pot2" parent="Hall" instance=ExtResource("20_xyf1d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51851, 0, -9)
+
+[node name="ficus_concrete_pot3" parent="Hall" instance=ExtResource("20_xyf1d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87201, 0, -9)
 
 [node name="Admistration" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)

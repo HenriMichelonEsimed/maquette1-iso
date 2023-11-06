@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3tkl4ppb2k57"]
+
+[ext_resource type="PackedScene" uid="uid://ew6uuxyxnfp1" path="res://assets/models/Furnitures/ficus_concrete_pot/ficus_concrete_pot.glb" id="1_h5y8d"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gw35i"]
+height = 1.37786
+radius = 0.264488
+
+[node name="ficus_concrete_pot" instance=ExtResource("1_h5y8d")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.687941, 0)
+shape = SubResource("CylinderShape3D_gw35i")
