@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=19 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_5pwa3"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://lw013fxnjxfl" path="res://assets/textures/signs/retro_space_princess_ai_render_by_torbk_dfkehcw-pre.jpg" id="16_itudf"]
 [ext_resource type="PackedScene" uid="uid://chc62gms8d81k" path="res://props/common/security_camera.tscn" id="16_so1sr"]
 [ext_resource type="Texture2D" uid="uid://blfn13iykglcd" path="res://assets/textures/signs/espresso.jpg" id="16_yubkv"]
+[ext_resource type="PackedScene" uid="uid://deju1ielorujy" path="res://props/furnitures/modern_coffee_table_1.tscn" id="17_c5dn6"]
+[ext_resource type="PackedScene" uid="uid://ce4ndj83kwu03" path="res://props/furnitures/sofa_waiting_room_1.tscn" id="18_tpw3r"]
 
 [node name="level_0" type="Node3D"]
 script = ExtResource("1_5pwa3")
@@ -125,7 +127,13 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1, -0
 [node name="Hall" type="Node3D" parent="."]
 
 [node name="OmniLed2" parent="Hall" instance=ExtResource("6_jvn7r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3.8, -9)
+light_energy = 3.0
+omni_range = 10.0
+
+[node name="OmniLed3" parent="Hall" instance=ExtResource("6_jvn7r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.8, -9)
+light_energy = 3.0
 omni_range = 10.0
 
 [node name="Architecture" type="Node3D" parent="Hall"]
@@ -173,6 +181,24 @@ sign = ExtResource("16_yubkv")
 
 [node name="SecurityCamera" parent="Hall" instance=ExtResource("16_so1sr")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -4.71364, 2.5, -12.8359)
+
+[node name="ModernCoffeeTable_1" parent="Hall" instance=ExtResource("17_c5dn6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="ModernCoffeeTable_2" parent="Hall" instance=ExtResource("17_c5dn6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -9)
+
+[node name="SofaWaitingRoom_1" parent="Hall" instance=ExtResource("18_tpw3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.3)
+
+[node name="SofaWaitingRoom_2" parent="Hall" instance=ExtResource("18_tpw3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -10.3)
+
+[node name="SofaWaitingRoom_3" parent="Hall" instance=ExtResource("18_tpw3r")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3, 0, -7.6)
+
+[node name="SofaWaitingRoom_4" parent="Hall" instance=ExtResource("18_tpw3r")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -7.6)
 
 [node name="Admistration" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
