@@ -1,11 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dn6rfqgk1ac2x"]
+[gd_scene load_steps=7 format=3 uid="uid://dn6rfqgk1ac2x"]
 
 [ext_resource type="PackedScene" uid="uid://dug4t2t0td35q" path="res://assets/models/Misc/signboard_1.glb" id="1_hnxa2"]
 [ext_resource type="Script" path="res://props/misc/signboard_1.gd" id="2_whkgq"]
-[ext_resource type="Texture2D" uid="uid://327t15onp2t6" path="res://assets/textures/signs/retro_science_fiction_portrait_ai_render_by_torbk_dfjffm5-pre.jpg" id="3_5mso1"]
+[ext_resource type="Material" uid="uid://dbka4w6302ug" path="res://assets/materials/plastic_015A.tres" id="3_vb1ub"]
+[ext_resource type="Material" uid="uid://cqyagj1ply5mj" path="res://assets/materials/misc/table_glass.tres" id="3_yucwy"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ot14u"]
-albedo_texture = ExtResource("3_5mso1")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vr04"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ghe1e"]
 size = Vector3(1.09616, 2.09471, 0.0895552)
@@ -14,14 +14,16 @@ size = Vector3(1.09616, 2.09471, 0.0895552)
 script = ExtResource("2_whkgq")
 
 [node name="Plane" parent="." index="0"]
-surface_material_override/1 = SubResource("StandardMaterial3D_ot14u")
+surface_material_override/0 = ExtResource("3_vb1ub")
+surface_material_override/1 = SubResource("StandardMaterial3D_7vr04")
+surface_material_override/2 = ExtResource("3_yucwy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00442, 0.053733)
 shape = SubResource("BoxShape3D_ghe1e")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.601104, 0.799171, 0, -0.799171, 0.601104, 0, 1.31635, 0.0837018)
+transform = Transform3D(1, 0, 0, 0, 0.601104, 0.799171, 0, -0.799171, 0.601104, 0, 1.31009, 0.0837018)
 light_energy = 0.2
 light_size = 1.0
 spot_range = 3.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://deju1ielorujy"]
 
 [ext_resource type="PackedScene" uid="uid://cpow3wbmadlqy" path="res://assets/models/Tables/modern_coffee_table_01_4k.glb" id="1_kjejm"]
-[ext_resource type="Material" uid="uid://b86o0otc0cw0q" path="res://assets/materials/wood_051.tres" id="2_kahub"]
+[ext_resource type="Material" uid="uid://dqaldtwgt7dp6" path="res://assets/materials/plastic_014A.tres" id="2_s3y2e"]
 [ext_resource type="Material" uid="uid://cqyagj1ply5mj" path="res://assets/materials/misc/table_glass.tres" id="3_1ko02"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nobv0"]
@@ -10,7 +10,7 @@ size = Vector3(1.20094, 0.39053, 0.602725)
 [node name="ModernCoffeeTable_1" instance=ExtResource("1_kjejm")]
 
 [node name="modern_coffee_table_01" parent="." index="0"]
-surface_material_override/0 = ExtResource("2_kahub")
+surface_material_override/0 = ExtResource("2_s3y2e")
 surface_material_override/1 = ExtResource("3_1ko02")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]

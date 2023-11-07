@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://ce4ndj83kwu03"]
 
 [ext_resource type="PackedScene" uid="uid://derc26nth4h2u" path="res://assets/models/Furnitures/sofa_waiting_room_1/sofa_waiting_room_1.glb" id="1_2g553"]
-[ext_resource type="Material" uid="uid://b86o0otc0cw0q" path="res://assets/materials/wood_051.tres" id="2_4rdrl"]
-[ext_resource type="Material" uid="uid://lbbr25disrmy" path="res://assets/materials/leather_012.tres" id="3_6xbt3"]
+[ext_resource type="Material" uid="uid://dqaldtwgt7dp6" path="res://assets/materials/plastic_014A.tres" id="2_u5k8r"]
+[ext_resource type="Material" uid="uid://dmsw1chkcqt75" path="res://assets/materials/fabric_030.tres" id="3_erqaa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s6u6v"]
 size = Vector3(2.17082, 0.891969, 0.739777)
@@ -10,8 +10,8 @@ size = Vector3(2.17082, 0.891969, 0.739777)
 [node name="SofaWaitingRoom_1" instance=ExtResource("1_2g553")]
 
 [node name="Waiting room furniture" parent="." index="0"]
-surface_material_override/0 = ExtResource("2_4rdrl")
-surface_material_override/1 = ExtResource("3_6xbt3")
+surface_material_override/0 = ExtResource("2_u5k8r")
+surface_material_override/1 = ExtResource("3_erqaa")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45494, 0.366255)

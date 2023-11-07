@@ -182,7 +182,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.00037, 0.590031, -14.6452)
 sign = ExtResource("16_yubkv")
 
 [node name="SecurityCamera" parent="Hall" instance=ExtResource("16_so1sr")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -4.71364, 2.5, -12.8359)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -4.77172, 2.5, -12.9696)
 
 [node name="ModernCoffeeTable_1" parent="Hall" instance=ExtResource("17_c5dn6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)

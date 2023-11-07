@@ -7,7 +7,7 @@
 [resource]
 resource_name = "wall_1_deco"
 cull_mode = 2
-albedo_color = Color(0.890196, 0.27451, 0.227451, 1)
+albedo_color = Color(0.834615, 0.834614, 0.834614, 1)
 albedo_texture = ExtResource("1_rfxl6")
 metallic = 1.0
 metallic_texture = ExtResource("2_m5nno")

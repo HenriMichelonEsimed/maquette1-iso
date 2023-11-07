@@ -31,15 +31,15 @@ import_script/path=""
 _subresources={
 "materials": {
 "signboard_1_border": {
-"use_external/enabled": true,
+"use_external/enabled": false,
 "use_external/path": "res://assets/models/Misc/signboard_1_border.tres"
 },
 "signboard_1_core": {
-"use_external/enabled": true,
+"use_external/enabled": false,
 "use_external/path": "res://assets/materials/misc/signboard_1_core.tres"
 },
 "signboard_1_sign": {
-"use_external/enabled": true,
+"use_external/enabled": false,
 "use_external/path": "res://assets/materials/misc/signboard_1_sign.tres"
 }
 }
