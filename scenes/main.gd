@@ -3,6 +3,7 @@ extends Node3D
 @export var labelInfo:Label
 var items_transfert_dialog:ItemsTransfertDialog
 var last_spawnpoint:String
+var player_view = false
 
 func _ready():
 	GameState.connect("saving_start", _on_saving_start)
@@ -20,6 +21,12 @@ func _process(_delta):
 	if (GameState.paused): return
 	if Input.is_action_just_pressed("player_inventory"):
 		_on_button_inventory_pressed()
+	if Input.is_action_pressed("player_view"):
+		player_view = true
+		GameState.player.camera.current = true
+	elif player_view:
+		player_view = false
+		$Game/CameraPivot/Camera.current = true
 
 func _input(event):
 	if event is InputEventMouseMotion:

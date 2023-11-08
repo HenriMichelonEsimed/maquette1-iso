@@ -12,6 +12,7 @@ signal display_info(node:Node3D)
 signal hide_info()
 signal item_collected(item:Item,quantity:int)
 @onready var anim = $AnimationPlayer
+@onready var camera = $Camera
 
 var just_resumed = false
 var speed = 0

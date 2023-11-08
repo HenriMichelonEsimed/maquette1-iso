@@ -1191,5 +1191,8 @@ shape = SubResource("BoxShape3D_b7lxq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.189942, -0.0351233)
 shape = SubResource("BoxShape3D_vnj7x")
 
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.036499, 1.61898, -0.193546)
+
 [connection signal="body_entered" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_entered"]
 [connection signal="body_exited" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_exited"]

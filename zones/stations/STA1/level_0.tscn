@@ -226,8 +226,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3, 0, -12.818)
 [node name="Wall_2_ext" parent="Hall/Architecture" instance=ExtResource("9_phh65")]
 transform = Transform3D(-1.49628, 0, -8.75661e-08, 0, 1.00164, 0, 1.30808e-07, 0, -1.00164, -13.4953, 0.0233774, -6.35868)
 
+[node name="omni_light_bar3" parent="Hall/Architecture/Wall_2_ext" instance=ExtResource("15_5vulm")]
+transform = Transform3D(0.921634, 0, 0.098999, 0, 0.998361, 0, -0.332371, 0, 0.688261, -0.6, 1.4, 0.205)
+color = Color(0.34902, 1, 1, 1)
+
 [node name="Wall_2_ext2" parent="Hall/Architecture" instance=ExtResource("9_phh65")]
 transform = Transform3D(-1.49628, 0, -8.75661e-08, 0, 1.00164, 0, 1.30808e-07, 0, -1.00164, -13.4953, 0.0233774, -10.4203)
+
+[node name="omni_light_bar4" parent="Hall/Architecture/Wall_2_ext2" instance=ExtResource("15_5vulm")]
+transform = Transform3D(-0.976254, 0, 0.0825089, 0, 0.998359, 0, 0.0825087, 0, -0.690431, -0.600015, 1.4, -0.0149803)
+color = Color(0.34902, 1, 1, 1)
 
 [node name="ModernCoffeeTable_1" parent="Hall" instance=ExtResource("17_c5dn6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
@@ -306,3 +314,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 5, 0)
 omni_range = 10.0
 
 [node name="OmniFloorLightBar" parent="Hall2" instance=ExtResource("9_ye5f7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.5)
+
+[node name="OmniFloorLightBar2" parent="Hall2" instance=ExtResource("9_ye5f7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1.5)
