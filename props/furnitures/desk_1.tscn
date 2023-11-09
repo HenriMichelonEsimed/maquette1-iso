@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://bk2shjmvvryql"]
+
+[ext_resource type="PackedScene" uid="uid://cwgsc3kaxtxne" path="res://assets/models/Furnitures/desk_1/desk_1.glb" id="1_rucnl"]
+[ext_resource type="Material" uid="uid://bo586d5sy16ge" path="res://assets/materials/misc/glossy_white.tres" id="2_4i70a"]
+[ext_resource type="Material" uid="uid://cqyagj1ply5mj" path="res://assets/materials/misc/table_glass.tres" id="2_h8n80"]
+[ext_resource type="Material" uid="uid://dbka4w6302ug" path="res://assets/materials/plastic_015A.tres" id="4_bsccw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ixvst"]
+size = Vector3(1.56371, 1, 1.75651)
+
+[node name="Desk_1" instance=ExtResource("1_rucnl")]
+
+[node name="Office Paritions Desk" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_4i70a")
+surface_material_override/1 = ExtResource("2_h8n80")
+surface_material_override/2 = ExtResource("4_bsccw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198721, 0.5, 0.153482)
+shape = SubResource("BoxShape3D_ixvst")

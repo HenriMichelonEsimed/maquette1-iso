@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=23 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_5pwa3"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://ce4ndj83kwu03" path="res://props/furnitures/sofa_waiting_room_1.tscn" id="18_tpw3r"]
 [ext_resource type="PackedScene" uid="uid://cyg2fntt11s3k" path="res://props/furnitures/coffee_cart_01.tscn" id="19_uwsfm"]
 [ext_resource type="PackedScene" uid="uid://d3tkl4ppb2k57" path="res://props/furnitures/ficus_concrete_pot.tscn" id="20_xyf1d"]
+[ext_resource type="PackedScene" uid="uid://bk2shjmvvryql" path="res://props/furnitures/desk_1.tscn" id="22_cpw1a"]
 
 [node name="level_0" type="Node3D"]
 script = ExtResource("1_5pwa3")
@@ -266,24 +267,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5765, 0, -9)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -9)
 
 [node name="Admistration" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20.5)
 
 [node name="OmniLed2" parent="Admistration" instance=ExtResource("6_jvn7r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8, -0.5)
+omni_range = 10.0
 
 [node name="Architecture" type="Node3D" parent="Admistration"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.5)
 
 [node name="Floor" type="CSGBox3D" parent="Admistration/Architecture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.5)
 use_collision = true
-size = Vector3(10.0854, 0.1, 5)
+size = Vector3(10.0854, 0.1, 12)
 material = ExtResource("8_tpi7f")
 
 [node name="Wall_3" parent="Admistration/Architecture" instance=ExtResource("8_sguot")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -9.5)
 
 [node name="Wall_5" parent="Admistration/Architecture" instance=ExtResource("8_sguot")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0, -9.5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0, -10)
 
 [node name="Wall_2_Corner" parent="Admistration/Architecture" instance=ExtResource("10_uulfm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -7.5)
@@ -292,10 +295,53 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -7.5)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -7.5)
 
 [node name="Wall_2_Corner3" parent="Admistration/Architecture" instance=ExtResource("10_uulfm")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -7.5)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5, 0, -19.5)
 
-[node name="Wall_2_Ext_Corner_Ext" parent="Admistration/Architecture" instance=ExtResource("10_a8eki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -12.5)
+[node name="Wall_2_Corner4" parent="Admistration/Architecture" instance=ExtResource("10_uulfm")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 5, 0, -19.5)
+
+[node name="Wall_2" parent="Admistration/Architecture" instance=ExtResource("8_sguot")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -11)
+
+[node name="Wall_4" parent="Admistration/Architecture" instance=ExtResource("8_sguot")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -13)
+
+[node name="Wall_6" parent="Admistration/Architecture" instance=ExtResource("8_sguot")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -15)
+
+[node name="Wall_7" parent="Admistration/Architecture" instance=ExtResource("8_sguot")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -15.5)
+
+[node name="Wall_9" parent="Admistration/Architecture" instance=ExtResource("8_sguot")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2, 0, -19.5)
+
+[node name="Wall_10" parent="Admistration/Architecture" instance=ExtResource("8_sguot")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -19.5)
+
+[node name="Wall_11" parent="Admistration/Architecture" instance=ExtResource("8_sguot")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2, 0, -19.5)
+
+[node name="Wall_12" parent="Admistration/Architecture" instance=ExtResource("8_sguot")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 5, 0, -16.5)
+
+[node name="Wall_13" parent="Admistration/Architecture" instance=ExtResource("8_sguot")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 5, 0, -11.5)
+
+[node name="Wall_14" parent="Admistration/Architecture" instance=ExtResource("8_sguot")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 5, 0, -13.5)
+
+[node name="Wall_15" parent="Admistration/Architecture" instance=ExtResource("8_sguot")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 5, 0, -15)
+
+[node name="Wall_8" parent="Admistration/Architecture" instance=ExtResource("8_sguot")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -17)
+
+[node name="Desk_1" parent="Admistration" instance=ExtResource("22_cpw1a")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, 0.07, 2)
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="Admistration"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+max_distance = 10.0
 
 [node name="Hall2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2.8, -9)
