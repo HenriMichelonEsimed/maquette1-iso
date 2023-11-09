@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://d8f8yajiy7br"]
+
+[ext_resource type="PackedScene" uid="uid://cwfcfuay1eogl" path="res://assets/models/Furnitures/desk_file_1/desk_file_1.glb" id="1_jhab8"]
+[ext_resource type="Material" uid="uid://brvkbyogsrxsc" path="res://assets/materials/Wood_048.tres" id="2_mk4wv"]
+[ext_resource type="Material" uid="uid://bggiktfmubidg" path="res://assets/materials/Metal preto-01.tres" id="3_676r8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_edrlh"]
+size = Vector3(0.469569, 0.707382, 0.459717)
+
+[node name="DeskFile1" instance=ExtResource("1_jhab8")]
+
+[node name="File Mobile White" parent="." index="0"]
+surface_material_override/0 = ExtResource("3_676r8")
+surface_material_override/1 = ExtResource("3_676r8")
+surface_material_override/2 = ExtResource("2_mk4wv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.353421, 0.237221)
+shape = SubResource("BoxShape3D_edrlh")

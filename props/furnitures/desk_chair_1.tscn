@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyou21wk7er7g"]
+
+[ext_resource type="PackedScene" uid="uid://crk4djq6ku78" path="res://assets/models/Furnitures/desk_chair_1/desk_chair_1.glb" id="1_lkky6"]
+[ext_resource type="Material" uid="uid://dmsw1chkcqt75" path="res://assets/materials/fabric_030.tres" id="4_ojvgy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f5ai5"]
+size = Vector3(0.581899, 1.05969, 0.74798)
+
+[node name="DeskChair1" instance=ExtResource("1_lkky6")]
+
+[node name="Estelle Desk Swivel Chair" parent="." index="0"]
+surface_material_override/3 = ExtResource("4_ojvgy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00263298, 0.529234, 0.0514495)
+shape = SubResource("BoxShape3D_f5ai5")

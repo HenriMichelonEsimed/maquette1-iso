@@ -1,0 +1,39 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://crk4djq6ku78"
+path="res://.godot/imported/desk_chair_1.glb-d761ee3d1486ad7d5a66a0401ce6290a.scn"
+
+[deps]
+
+source_file="res://assets/models/Furnitures/desk_chair_1/desk_chair_1.glb"
+dest_files=["res://.godot/imported/desk_chair_1.glb-d761ee3d1486ad7d5a66a0401ce6290a.scn"]
+
+[params]
+
+nodes/root_type="StaticBody3D"
+nodes/root_name="DeskChair1"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"Metal preto-01": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/materials/Metal preto-01.tres"
+}
+}
+}
+gltf/embedded_image_handling=1

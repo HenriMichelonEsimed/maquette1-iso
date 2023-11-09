@@ -1,20 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://bk2shjmvvryql"]
+[gd_scene load_steps=8 format=3 uid="uid://bk2shjmvvryql"]
 
 [ext_resource type="PackedScene" uid="uid://cwgsc3kaxtxne" path="res://assets/models/Furnitures/desk_1/desk_1.glb" id="1_rucnl"]
-[ext_resource type="Material" uid="uid://bo586d5sy16ge" path="res://assets/materials/misc/glossy_white.tres" id="2_4i70a"]
-[ext_resource type="Material" uid="uid://cqyagj1ply5mj" path="res://assets/materials/misc/table_glass.tres" id="2_h8n80"]
-[ext_resource type="Material" uid="uid://dbka4w6302ug" path="res://assets/materials/plastic_015A.tres" id="4_bsccw"]
+[ext_resource type="Material" uid="uid://bggiktfmubidg" path="res://assets/materials/Metal preto-01.tres" id="2_klc8l"]
+[ext_resource type="Material" uid="uid://cqyagj1ply5mj" path="res://assets/materials/misc/table_glass.tres" id="3_gx7ci"]
+[ext_resource type="Material" uid="uid://dqaldtwgt7dp6" path="res://assets/materials/plastic_014A.tres" id="4_l4tn3"]
+[ext_resource type="Material" uid="uid://brvkbyogsrxsc" path="res://assets/materials/Wood_048.tres" id="5_aggny"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ixvst"]
-size = Vector3(1.56371, 1, 1.75651)
+size = Vector3(0.637688, 1.05979, 1.75651)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b3poh"]
+size = Vector3(1.54421, 1.06414, 0.510137)
 
 [node name="Desk_1" instance=ExtResource("1_rucnl")]
 
 [node name="Office Paritions Desk" parent="." index="0"]
-surface_material_override/0 = ExtResource("2_4i70a")
-surface_material_override/1 = ExtResource("2_h8n80")
-surface_material_override/2 = ExtResource("4_bsccw")
+surface_material_override/0 = ExtResource("2_klc8l")
+surface_material_override/1 = ExtResource("3_gx7ci")
+surface_material_override/2 = ExtResource("4_l4tn3")
+surface_material_override/3 = ExtResource("3_gx7ci")
+surface_material_override/4 = ExtResource("5_aggny")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198721, 0.5, 0.153482)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.252402, 0.539933, 0.153482)
 shape = SubResource("BoxShape3D_ixvst")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.197002, 0.529773, -0.473867)
+shape = SubResource("BoxShape3D_b3poh")
