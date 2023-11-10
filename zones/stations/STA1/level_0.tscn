@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=36 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_5pwa3"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -31,7 +31,10 @@
 [ext_resource type="PackedScene" uid="uid://ckkonogu6iyrf" path="res://props/furnitures/desk_chair_2.tscn" id="29_fn5gj"]
 [ext_resource type="PackedScene" uid="uid://bvmod4ptmg0r6" path="res://props/lights/floor_lamp_1.tscn" id="30_7rsgu"]
 [ext_resource type="PackedScene" uid="uid://gy2yrjoxusc2" path="res://props/lights/desk_lamp_1.tscn" id="31_cx0h5"]
-[ext_resource type="PackedScene" uid="uid://d2k24ft5g0g61" path="res://props/lights/round_table_1.tscn" id="32_ux8dj"]
+[ext_resource type="PackedScene" uid="uid://d2k24ft5g0g61" path="res://props/furnitures/round_table_1.tscn" id="32_qkjhq"]
+[ext_resource type="PackedScene" uid="uid://ddjm6m12rr6k8" path="res://props/furnitures/pencil_holder_1.tscn" id="33_1ks5q"]
+[ext_resource type="PackedScene" uid="uid://vjrmp52hspwu" path="res://props/furnitures/pencil_holder_1_empty.tscn" id="34_e5nx4"]
+[ext_resource type="PackedScene" uid="uid://clnejubd7pqjx" path="res://assets/models/Furnitures/misc/notebook_black.glb" id="35_b80n0"]
 
 [node name="level_0" type="Node3D"]
 script = ExtResource("1_5pwa3")
@@ -447,8 +450,20 @@ transform = Transform3D(-0.523584, 0, 0.851974, 0, 1, 0, -0.851974, 0, -0.523584
 [node name="DeskLamp3" parent="Admistration" instance=ExtResource("31_cx0h5")]
 transform = Transform3D(0.153917, 0, -0.988084, 0, 1, 0, 0.988084, 0, 0.153917, -1.71654, 0.697444, 5.45646)
 
-[node name="RoundTable1" parent="Admistration" instance=ExtResource("32_ux8dj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61815, 0.07, -3.63867)
+[node name="RoundTable1" parent="Admistration" instance=ExtResource("32_qkjhq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.686, 0.07, -3.721)
+
+[node name="PencilHolder1" parent="Admistration" instance=ExtResource("33_1ks5q")]
+transform = Transform3D(-0.422618, 0, 0.906308, 0, 1, 0, -0.906308, 0, -0.422618, 2.13653, 0.87, -2.166)
+
+[node name="PencilHolder2" parent="Admistration" instance=ExtResource("33_1ks5q")]
+transform = Transform3D(-0.8457, 0, -0.533659, 0, 1, 0, 0.533659, 0, -0.8457, -0.625, 0.87, 0.569)
+
+[node name="PencilHolder1Empty" parent="Admistration" instance=ExtResource("34_e5nx4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.570721, 0.869988, 1.5)
+
+[node name="NotebookBlack" parent="Admistration" instance=ExtResource("35_b80n0")]
+transform = Transform3D(-0.833972, 0, -0.551806, 0, 1, 0, 0.551806, 0, -0.833972, 2.46055, 0.871924, -2.30106)
 
 [node name="Hall2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2.8, -9)

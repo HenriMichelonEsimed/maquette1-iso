@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://vjrmp52hspwu"]
+
+[ext_resource type="PackedScene" uid="uid://6h84m1mycsjs" path="res://assets/models/Furnitures/pencil_holder_1/pencil_holder_1.glb" id="1_a51i4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rsg6n"]
+size = Vector3(0.0998807, 0.160953, 0.104813)
+
+[node name="PencilHolder1Empty" instance=ExtResource("1_a51i4")]
+
+[node name="Cylinder_001" parent="Pencil Holder" index="2"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0809844, 0)
+shape = SubResource("BoxShape3D_rsg6n")

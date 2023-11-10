@@ -684,15 +684,15 @@ _data = {
 "walking": ExtResource("12_trwab")
 }
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_noiwm"]
-height = 1.47117
-radius = 0.400665
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_b7lxq"]
 size = Vector3(0.758498, 0.502338, 0.288186)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vnj7x"]
 size = Vector3(0.412231, 0.383118, 1.17015)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_byirt"]
+radius = 0.328553
+height = 1.85556
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_7my55")
@@ -1179,10 +1179,6 @@ libraries = {
 "": SubResource("AnimationLibrary_icpfl")
 }
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.521898, 0, 1.07792, 0)
-shape = SubResource("CylinderShape3D_noiwm")
-
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 1.1, 0, 1.07333, -0.376407)
 shape = SubResource("BoxShape3D_b7lxq")
@@ -1190,6 +1186,10 @@ shape = SubResource("BoxShape3D_b7lxq")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.189942, -0.0351233)
 shape = SubResource("BoxShape3D_vnj7x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.923668, 0)
+shape = SubResource("CapsuleShape3D_byirt")
 
 [connection signal="body_entered" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_entered"]
 [connection signal="body_exited" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_exited"]
