@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=38 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_5pwa3"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -35,6 +35,8 @@
 [ext_resource type="PackedScene" uid="uid://ddjm6m12rr6k8" path="res://props/furnitures/pencil_holder_1.tscn" id="33_1ks5q"]
 [ext_resource type="PackedScene" uid="uid://vjrmp52hspwu" path="res://props/furnitures/pencil_holder_1_empty.tscn" id="34_e5nx4"]
 [ext_resource type="PackedScene" uid="uid://clnejubd7pqjx" path="res://assets/models/Furnitures/misc/notebook_black.glb" id="35_b80n0"]
+[ext_resource type="PackedScene" uid="uid://b5ugougdr4j8v" path="res://assets/models/Furnitures/misc/postit_1.glb" id="36_ebaxl"]
+[ext_resource type="PackedScene" uid="uid://x0jor5xv23n" path="res://props/furnitures/monitor_1.tscn" id="37_gthao"]
 
 [node name="level_0" type="Node3D"]
 script = ExtResource("1_5pwa3")
@@ -464,6 +466,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.570721, 0.869988, 1.5)
 
 [node name="NotebookBlack" parent="Admistration" instance=ExtResource("35_b80n0")]
 transform = Transform3D(-0.833972, 0, -0.551806, 0, 1, 0, 0.551806, 0, -0.833972, 2.46055, 0.871924, -2.30106)
+
+[node name="postit_1" parent="Admistration" instance=ExtResource("36_ebaxl")]
+transform = Transform3D(-0.991454, -9.23781e-08, -0.130457, 0.130457, -3.19329e-08, -0.991454, 8.74228e-08, -1, 4.37114e-08, -0.849902, 1.04359, 0.678257)
+
+[node name="Monitor1" parent="Admistration" instance=ExtResource("37_gthao")]
+transform = Transform3D(-0.750838, 0, 0.660487, 0, 1, 0, -0.660487, 0, -0.750838, 1.15668, 0.870046, -2.27291)
 
 [node name="Hall2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2.8, -9)
