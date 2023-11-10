@@ -1,0 +1,23 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0185cw36cxe0"]
+
+[ext_resource type="PackedScene" uid="uid://b0odcycqsbt3j" path="res://assets/models/Furnitures/desk_1/desk_1_long.glb" id="1_lwds2"]
+[ext_resource type="Material" uid="uid://bggiktfmubidg" path="res://assets/materials/Metal preto-01.tres" id="2_6rntj"]
+[ext_resource type="Material" uid="uid://cqyagj1ply5mj" path="res://assets/materials/misc/table_glass.tres" id="3_b3iiq"]
+[ext_resource type="Material" uid="uid://dqaldtwgt7dp6" path="res://assets/materials/plastic_014A.tres" id="4_7h330"]
+[ext_resource type="Material" uid="uid://brvkbyogsrxsc" path="res://assets/materials/Wood_048.tres" id="5_pgk4k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_56m6c"]
+size = Vector3(0.639826, 1.04959, 2.60426)
+
+[node name="Desk1_Long" instance=ExtResource("1_lwds2")]
+
+[node name="Office Paritions Desk" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_6rntj")
+surface_material_override/1 = ExtResource("3_b3iiq")
+surface_material_override/2 = ExtResource("4_7h330")
+surface_material_override/3 = ExtResource("3_b3iiq")
+surface_material_override/4 = ExtResource("5_pgk4k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.255404, 0.526584, 0)
+shape = SubResource("BoxShape3D_56m6c")
