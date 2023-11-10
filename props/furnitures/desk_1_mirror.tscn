@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://tpf78n87yw1h"]
+
+[ext_resource type="PackedScene" uid="uid://c1ogd4yiplmc2" path="res://assets/models/Furnitures/desk_1/desk_1_mirror.glb" id="1_ov1wj"]
+[ext_resource type="Material" uid="uid://bggiktfmubidg" path="res://assets/materials/Metal preto-01.tres" id="2_b4qhb"]
+[ext_resource type="Material" uid="uid://cqyagj1ply5mj" path="res://assets/materials/misc/table_glass.tres" id="3_derbs"]
+[ext_resource type="Material" uid="uid://dqaldtwgt7dp6" path="res://assets/materials/plastic_014A.tres" id="4_5e4p4"]
+[ext_resource type="Material" uid="uid://brvkbyogsrxsc" path="res://assets/materials/Wood_048.tres" id="5_skgq8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ig10h"]
+size = Vector3(0.635333, 1.02425, 1.75096)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_snqf1"]
+size = Vector3(0.965998, 1.08125, 0.511673)
+
+[node name="Desk1_Mirror" instance=ExtResource("1_ov1wj")]
+
+[node name="Office Paritions Desk" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_b4qhb")
+surface_material_override/1 = ExtResource("3_derbs")
+surface_material_override/2 = ExtResource("4_5e4p4")
+surface_material_override/3 = ExtResource("3_derbs")
+surface_material_override/4 = ExtResource("5_skgq8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.258423, 0.537138, -0.152716)
+visible = false
+shape = SubResource("BoxShape3D_ig10h")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.489743, 0.529239, 0.473945)
+shape = SubResource("BoxShape3D_snqf1")
