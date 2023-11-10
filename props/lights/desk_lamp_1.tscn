@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://gy2yrjoxusc2"]
+
+[ext_resource type="PackedScene" uid="uid://6ntnr674w76w" path="res://assets/models/Furnitures/desk_lamp_1/desk_lamp_1.glb" id="1_1f8qh"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_taawv"]
+height = 0.581256
+radius = 0.109257
+
+[node name="DeskLamp1" instance=ExtResource("1_1f8qh")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.295843, 0)
+shape = SubResource("CylinderShape3D_taawv")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.406896, 0.913475, 0, -0.913475, 0.406896, 0, 0.451243, -0.234999)
+spot_range = 1.0

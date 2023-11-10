@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvmod4ptmg0r6"]
+
+[ext_resource type="PackedScene" uid="uid://bc140k85ofmkf" path="res://assets/models/Furnitures/floor_lamp_1/floor_lamp_1.glb" id="1_tnu42"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_uos8t"]
+height = 1.14239
+radius = 0.117089
+
+[node name="FloorLamp1" instance=ExtResource("1_tnu42")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.572853, 0)
+shape = SubResource("CylinderShape3D_uos8t")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="2"]
+transform = Transform3D(-9.66633e-09, -0.975242, 0.22114, -4.26292e-08, 0.22114, 0.975242, -1, -1.77636e-15, -4.37114e-08, -0.219036, 1.05682, 0)
+light_color = Color(0.976471, 0.882353, 0.729412, 1)

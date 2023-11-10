@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=33 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_5pwa3"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -29,6 +29,9 @@
 [ext_resource type="PackedScene" uid="uid://tpf78n87yw1h" path="res://props/furnitures/desk_1_mirror.tscn" id="27_05vrf"]
 [ext_resource type="PackedScene" uid="uid://d0185cw36cxe0" path="res://props/furnitures/desk_1_long.tscn" id="28_8gey5"]
 [ext_resource type="PackedScene" uid="uid://ckkonogu6iyrf" path="res://props/furnitures/desk_chair_2.tscn" id="29_fn5gj"]
+[ext_resource type="PackedScene" uid="uid://bvmod4ptmg0r6" path="res://props/lights/floor_lamp_1.tscn" id="30_7rsgu"]
+[ext_resource type="PackedScene" uid="uid://gy2yrjoxusc2" path="res://props/lights/desk_lamp_1.tscn" id="31_cx0h5"]
+[ext_resource type="PackedScene" uid="uid://d2k24ft5g0g61" path="res://props/lights/round_table_1.tscn" id="32_ux8dj"]
 
 [node name="level_0" type="Node3D"]
 script = ExtResource("1_5pwa3")
@@ -272,11 +275,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20.5)
 
 [node name="OmniLed2" parent="Admistration" instance=ExtResource("6_jvn7r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8, 2.5)
-omni_range = 8.0
 
 [node name="OmniLed3" parent="Admistration" instance=ExtResource("6_jvn7r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8, -2.5)
-omni_range = 8.0
 
 [node name="Architecture" type="Node3D" parent="Admistration"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.5)
@@ -399,7 +400,7 @@ transform = Transform3D(-0.995346, -0.00144506, 0.0963509, -0.00147073, 0.999999
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.07, 1.5)
 
 [node name="ficus_concrete_pot" parent="Admistration" instance=ExtResource("20_xyf1d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2554, 0, 4.96028)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.255, 0.07, 0.959999)
 
 [node name="Desk1_Long" parent="Admistration" instance=ExtResource("28_8gey5")]
 transform = Transform3D(4.37114e-08, 0, 1, 0, 1, 0, -1, 0, 4.37114e-08, 2, 0.07, -2.5)
@@ -411,7 +412,43 @@ transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 4.64203,
 transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 4.64203, 0, 3)
 
 [node name="DeskChair5" parent="Admistration" instance=ExtResource("29_fn5gj")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.336034, 0.07, -0.15584)
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 1.5, 0, -1)
+
+[node name="DeskChair7" parent="Admistration" instance=ExtResource("29_fn5gj")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -3.11814, 0, -2.90911)
+
+[node name="DeskChair8" parent="Admistration" instance=ExtResource("29_fn5gj")]
+transform = Transform3D(-0.914713, 0, -0.404104, 0, 1, 0, 0.404104, 0, -0.914713, -1.8731, 0, -2.90911)
+
+[node name="DeskChair9" parent="Admistration" instance=ExtResource("29_fn5gj")]
+transform = Transform3D(0.976766, 0, 0.214309, 0, 1, 0, -0.214309, 0, 0.976766, -2.45718, 0, -4.58167)
+
+[node name="DeskChair6" parent="Admistration" instance=ExtResource("29_fn5gj")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 0.5, 0, 5)
+
+[node name="FloorLamp1" parent="Admistration" instance=ExtResource("30_7rsgu")]
+transform = Transform3D(-0.776805, 0, 0.629741, 0, 1, 0, -0.629741, 0, -0.776805, -3.63151, 0.07, -4.85168)
+
+[node name="FloorLamp3" parent="Admistration" instance=ExtResource("30_7rsgu")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 4, 0.07, 5)
+
+[node name="FloorLamp2" parent="Admistration" instance=ExtResource("30_7rsgu")]
+transform = Transform3D(-0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, -0.5, -4, 0.07, 5)
+
+[node name="DeskLamp1" parent="Admistration" instance=ExtResource("31_cx0h5")]
+transform = Transform3D(-0.927654, 0, 0.373441, 0, 1, 0, -0.373441, 0, -0.927654, -0.64794, 0.867946, -0.790215)
+
+[node name="DeskLamp4" parent="Admistration" instance=ExtResource("31_cx0h5")]
+transform = Transform3D(0.498609, 0, 0.866827, 0, 1, 0, -0.866827, 0, 0.498609, 3.08232, 0.867946, -2.16593)
+
+[node name="DeskLamp2" parent="Admistration" instance=ExtResource("31_cx0h5")]
+transform = Transform3D(-0.523584, 0, 0.851974, 0, 1, 0, -0.851974, 0, -0.523584, -0.64794, 0.867946, 0.967749)
+
+[node name="DeskLamp3" parent="Admistration" instance=ExtResource("31_cx0h5")]
+transform = Transform3D(0.153917, 0, -0.988084, 0, 1, 0, 0.988084, 0, 0.153917, -1.71654, 0.697444, 5.45646)
+
+[node name="RoundTable1" parent="Admistration" instance=ExtResource("32_ux8dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61815, 0.07, -3.63867)
 
 [node name="Hall2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2.8, -9)

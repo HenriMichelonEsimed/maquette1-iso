@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2k24ft5g0g61"]
+
+[ext_resource type="PackedScene" uid="uid://bxb2ahe1rqc12" path="res://assets/models/Furnitures/round_table_1/round_table_1.glb" id="1_f4ck1"]
+[ext_resource type="Material" uid="uid://bggiktfmubidg" path="res://assets/materials/Metal preto-01.tres" id="2_kpnfp"]
+[ext_resource type="Material" uid="uid://brvkbyogsrxsc" path="res://assets/materials/Wood_048.tres" id="3_g54f4"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_giaxk"]
+height = 0.741517
+radius = 0.546286
+
+[node name="RoundTable1" instance=ExtResource("1_f4ck1")]
+
+[node name="Table saarinen imbuia oval black" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_kpnfp")
+surface_material_override/1 = ExtResource("3_g54f4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.376131, 0)
+shape = SubResource("CylinderShape3D_giaxk")

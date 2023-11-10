@@ -1,11 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckkonogu6iyrf"]
+[gd_scene load_steps=5 format=3 uid="uid://ckkonogu6iyrf"]
 
 [ext_resource type="PackedScene" uid="uid://b4oegj5xko7i1" path="res://assets/models/Furnitures/desk_chair_2/desk_chair_2.glb" id="1_cw7fl"]
+[ext_resource type="Material" uid="uid://bggiktfmubidg" path="res://assets/materials/Metal preto-01.tres" id="2_qcoi3"]
+[ext_resource type="Material" uid="uid://brvkbyogsrxsc" path="res://assets/materials/Wood_048.tres" id="3_jwduy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ldlne"]
 size = Vector3(0.5, 0.796631, 0.5)
 
 [node name="DeskChair2" instance=ExtResource("1_cw7fl")]
+
+[node name="Chair" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_qcoi3")
+surface_material_override/1 = ExtResource("3_jwduy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.401723, -0.0552809)
