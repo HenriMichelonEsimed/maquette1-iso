@@ -227,7 +227,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00037, 0.590031, -0.1452)
 sign = ExtResource("16_yubkv")
 
 [node name="Wall_5" parent="Hall/Architecture" instance=ExtResource("8_sguot")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.143931, 0, -14.5)
 
 [node name="Signboard_1" parent="Hall/Architecture/Wall_5" instance=ExtResource("15_jddbe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.590031, -0.1452)
@@ -354,7 +354,7 @@ transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 5, 0, -1
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -17)
 
 [node name="door_sliding_1" parent="Admistration/Architecture" instance=ExtResource("24_brdvl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.977, 0, -7.729)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85788, 0, -7.729)
 
 [node name="Desk_1" parent="Admistration" instance=ExtResource("22_cpw1a")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0, 5)

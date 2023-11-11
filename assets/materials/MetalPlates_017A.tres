@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://mq5t0mkb6s4r"]
+
+[ext_resource type="Texture2D" uid="uid://disc02qa5bbie" path="res://assets/textures/MetalPlates017A_1K-JPG/MetalPlates017A_1K-JPG_Color.jpg" id="1_wb1mr"]
+[ext_resource type="Texture2D" uid="uid://cxc66engpqnj6" path="res://assets/textures/MetalPlates017A_1K-JPG/MetalPlates017A_1K-JPG_AmbientOcclusion.jpg" id="2_nm2yn"]
+[ext_resource type="Texture2D" uid="uid://n36nnsdfm76d" path="res://assets/textures/MetalPlates017A_1K-JPG/MetalPlates017A_1K-JPG_Metalness.jpg" id="3_imhhc"]
+[ext_resource type="Texture2D" uid="uid://18nn0xbwejb" path="res://assets/textures/MetalPlates017A_1K-JPG/MetalPlates017A_1K-JPG_NormalGL.jpg" id="4_56b0f"]
+[ext_resource type="Texture2D" uid="uid://b1thgbv85b2q8" path="res://assets/textures/MetalPlates017A_1K-JPG/MetalPlates017A_1K-JPG_Roughness.jpg" id="5_e4sju"]
+
+[resource]
+albedo_texture = ExtResource("1_wb1mr")
+metallic = 1.0
+metallic_texture = ExtResource("3_imhhc")
+roughness_texture = ExtResource("5_e4sju")
+normal_enabled = true
+normal_texture = ExtResource("4_56b0f")
+ao_enabled = true
+ao_texture = ExtResource("2_nm2yn")
+uv1_triplanar = true
