@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0b64m347r4gr"]
+
+[ext_resource type="Script" path="res://lib/nodes/usable.gd" id="1_a02bn"]
+[ext_resource type="Material" uid="uid://chx6xt36hpbvc" path="res://assets/materials/architecture/wall_1_doors.tres" id="2_ynax2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2tij4"]
+size = Vector3(1, 2.50642, 0.2)
+
+[node name="door_sliding_1" type="StaticBody3D"]
+script = ExtResource("1_a02bn")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.25, 0)
+material_override = ExtResource("2_ynax2")
+size = Vector3(1, 2.5, 0.18)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.25614, 0)
+shape = SubResource("BoxShape3D_2tij4")
