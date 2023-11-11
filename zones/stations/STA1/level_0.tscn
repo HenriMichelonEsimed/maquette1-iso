@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=42 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_5pwa3"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -37,6 +37,10 @@
 [ext_resource type="PackedScene" uid="uid://clnejubd7pqjx" path="res://assets/models/Furnitures/misc/notebook_black.glb" id="35_b80n0"]
 [ext_resource type="PackedScene" uid="uid://b5ugougdr4j8v" path="res://assets/models/Furnitures/misc/postit_1.glb" id="36_ebaxl"]
 [ext_resource type="PackedScene" uid="uid://x0jor5xv23n" path="res://props/furnitures/monitor_1.tscn" id="37_gthao"]
+[ext_resource type="Texture2D" uid="uid://dov35l3a6bcdi" path="res://assets/textures/wallpapers/rJ6eB.png" id="38_f4vvs"]
+[ext_resource type="Texture2D" uid="uid://cr6sci5gtfmil" path="res://assets/textures/wallpapers/56980209-6bcd9100-6b84-11e9-89f8-d506a8b4fbb4.png" id="39_d6ikb"]
+[ext_resource type="Texture2D" uid="uid://b08jihrifoh7l" path="res://assets/textures/wallpapers/jessie-cde-desktop.png" id="40_455d0"]
+[ext_resource type="Texture2D" uid="uid://b7m4vpkyt1kor" path="res://assets/textures/wallpapers/preferences-menu.jpg" id="41_5ny6v"]
 
 [node name="level_0" type="Node3D"]
 script = ExtResource("1_5pwa3")
@@ -393,7 +397,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.238
 transform = Transform3D(0.37729, 0.000373882, -0.926095, -0.00147073, 0.999999, -0.000195475, 0.926094, 0.00143579, 0.37729, -2.43199, 0.0485046, 4.5)
 
 [node name="DeskChair2" parent="Admistration" instance=ExtResource("24_11snd")]
-transform = Transform3D(-0.136304, -0.000394104, -0.990667, -0.00147073, 0.999999, -0.000195475, 0.990666, 0.00143037, -0.136305, -2.43199, 0.0485046, 2)
+transform = Transform3D(0.393123, 0.000398458, -0.919486, -0.00147073, 0.999999, -0.000195475, 0.919485, 0.00142916, 0.393122, -2.43199, 0.0485046, 2.35998)
 
 [node name="DeskChair3" parent="Admistration" instance=ExtResource("24_11snd")]
 transform = Transform3D(-0.0963504, -0.000336257, -0.995347, -0.00147073, 0.999999, -0.000195475, 0.995346, 0.00144506, -0.0963509, -1.93199, 0.0485046, -0.5)
@@ -467,11 +471,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.570721, 0.869988, 1.5)
 [node name="NotebookBlack" parent="Admistration" instance=ExtResource("35_b80n0")]
 transform = Transform3D(-0.833972, 0, -0.551806, 0, 1, 0, 0.551806, 0, -0.833972, 2.46055, 0.871924, -2.30106)
 
+[node name="NotebookBlack2" parent="Admistration" instance=ExtResource("35_b80n0")]
+transform = Transform3D(-0.997815, 0, 0.0660646, 0, 1, 0, -0.0660646, 0, -0.997815, -1.25749, 0.871924, 5.38962)
+
 [node name="postit_1" parent="Admistration" instance=ExtResource("36_ebaxl")]
 transform = Transform3D(-0.991454, -9.23781e-08, -0.130457, 0.130457, -3.19329e-08, -0.991454, 8.74228e-08, -1, 4.37114e-08, -0.849902, 1.04359, 0.678257)
 
 [node name="Monitor1" parent="Admistration" instance=ExtResource("37_gthao")]
-transform = Transform3D(-0.750838, 0, 0.660487, 0, 1, 0, -0.660487, 0, -0.750838, 1.15668, 0.870046, -2.27291)
+transform = Transform3D(-0.823245, 0, 0.567686, 0, 1, 0, -0.567686, 0, -0.823245, 1.15668, 0.870046, -2.27291)
+wallpaper = ExtResource("38_f4vvs")
+
+[node name="Monitor2" parent="Admistration" instance=ExtResource("37_gthao")]
+transform = Transform3D(-0.974523, 0, -0.224287, 0, 1, 0, 0.224287, 0, -0.974523, -1.51419, 0.705542, 0.413351)
+wallpaper = ExtResource("39_d6ikb")
+
+[node name="Monitor3" parent="Admistration" instance=ExtResource("37_gthao")]
+transform = Transform3D(-0.503805, 0, -0.863818, 0, 1, 0, 0.863818, 0, -0.503805, -0.793758, 0.869432, 1.92593)
+wallpaper = ExtResource("40_455d0")
+
+[node name="Monitor4" parent="Admistration" instance=ExtResource("37_gthao")]
+transform = Transform3D(-0.63854, 0, -0.769589, 0, 1, 0, 0.769589, 0, -0.63854, -0.806439, 0.869432, 5.2206)
+wallpaper = ExtResource("41_5ny6v")
 
 [node name="Hall2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2.8, -9)

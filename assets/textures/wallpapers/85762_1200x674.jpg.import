@@ -2,19 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2bvgibb2lrgh"
-path.s3tc="res://.godot/imported/materials_Metal_Base_color.png-d41b811d5f1612e563e5660236e4c72b.s3tc.ctex"
-path.etc2="res://.godot/imported/materials_Metal_Base_color.png-d41b811d5f1612e563e5660236e4c72b.etc2.ctex"
+uid="uid://bmcm883gx3so6"
+path.s3tc="res://.godot/imported/85762_1200x674.jpg-06965fa4b922f39d05481004febb4263.s3tc.ctex"
+path.etc2="res://.godot/imported/85762_1200x674.jpg-06965fa4b922f39d05481004febb4263.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 
-source_file="res://assets/textures/tiles/metal floor/materials_Metal_Base_color.png"
-dest_files=["res://.godot/imported/materials_Metal_Base_color.png-d41b811d5f1612e563e5660236e4c72b.s3tc.ctex", "res://.godot/imported/materials_Metal_Base_color.png-d41b811d5f1612e563e5660236e4c72b.etc2.ctex"]
+source_file="res://assets/textures/wallpapers/85762_1200x674.jpg"
+dest_files=["res://.godot/imported/85762_1200x674.jpg-06965fa4b922f39d05481004febb4263.s3tc.ctex", "res://.godot/imported/85762_1200x674.jpg-06965fa4b922f39d05481004febb4263.etc2.ctex"]
 
 [params]
 

@@ -1,37 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://x0jor5xv23n"]
+[gd_scene load_steps=6 format=3 uid="uid://x0jor5xv23n"]
 
 [ext_resource type="PackedScene" uid="uid://don5we0kx7635" path="res://assets/models/Furnitures/misc/monitor_1.glb" id="1_ogjph"]
 [ext_resource type="Script" path="res://props/furnitures/monitor_1.gd" id="2_qv4xi"]
-[ext_resource type="Material" uid="uid://bggiktfmubidg" path="res://assets/materials/Metal preto-01.tres" id="3_a8bd8"]
-[ext_resource type="Texture2D" uid="uid://c6osstfkglk4d" path="res://assets/textures/wallpapers/wp12411160-landscape-1920x1080-wallpapers.jpg" id="3_wyjh8"]
-[ext_resource type="Material" uid="uid://dqaldtwgt7dp6" path="res://assets/materials/plastic_014A.tres" id="4_13jwx"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxuoa"]
-albedo_texture = ExtResource("3_wyjh8")
-emission_energy_multiplier = 0.0
-normal_scale = -8.6
+[ext_resource type="Material" uid="uid://dqaldtwgt7dp6" path="res://assets/materials/plastic_014A.tres" id="3_rddky"]
+[ext_resource type="Material" uid="uid://bggiktfmubidg" path="res://assets/materials/Metal preto-01.tres" id="4_0hjw2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_etnl6"]
-size = Vector3(0.598824, 0.401249, 0.0817134)
+size = Vector3(0.639833, 0.470651, 0.0551299)
 
 [node name="Monitor1" instance=ExtResource("1_ogjph")]
 script = ExtResource("2_qv4xi")
 
-[node name="Foot" parent="Modern Monitor" index="0"]
-surface_material_override/0 = ExtResource("3_a8bd8")
+[node name="Borderr" parent="Monitor Samsung U28D590D" index="0"]
+surface_material_override/0 = ExtResource("3_rddky")
 
-[node name="Handles" parent="Modern Monitor" index="1"]
-surface_material_override/0 = ExtResource("3_a8bd8")
-
-[node name="Screen" parent="Modern Monitor" index="2"]
-surface_material_override/0 = SubResource("StandardMaterial3D_qxuoa")
-
-[node name="Screen2" parent="Modern Monitor" index="3"]
-surface_material_override/0 = ExtResource("4_13jwx")
-
-[node name="Cutter" parent="Modern Monitor/Screen2" index="0"]
-surface_material_override/0 = ExtResource("4_13jwx")
+[node name="Monitor" parent="Monitor Samsung U28D590D" index="1"]
+surface_material_override/0 = ExtResource("4_0hjw2")
+surface_material_override/1 = ExtResource("3_rddky")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.207332, 0.00853716)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.235921, -0.044557)
 shape = SubResource("BoxShape3D_etnl6")

@@ -1,13 +1,16 @@
 @tool
 extends StaticBody3D
 
-@export var sign:Texture2D
+@export var wallpaper:Texture2D
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if (sign != null):
+	if (wallpaper != null):
 		var mat = StandardMaterial3D.new()
-		mat.albedo_texture = sign
-		$"Modern Monitor/Screen".set_surface_override_material(0, mat)
+		mat.albedo_texture = wallpaper
+		mat.backlight_enabled = true
+		mat.backlight = Color.DARK_GRAY
+		mat.disable_receive_shadows = true
+		$"Monitor Samsung U28D590D/Screen".set_surface_override_material(0, mat)
 
