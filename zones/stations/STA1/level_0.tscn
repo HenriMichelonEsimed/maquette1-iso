@@ -355,6 +355,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0,
 
 [node name="door_sliding_1" parent="Admistration/Architecture" instance=ExtResource("24_brdvl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85788, 0, -7.729)
+label = "Administration"
 
 [node name="Desk_1" parent="Admistration" instance=ExtResource("22_cpw1a")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0, 5)

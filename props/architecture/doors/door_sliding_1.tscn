@@ -1,63 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0b64m347r4gr"]
+[gd_scene load_steps=10 format=3 uid="uid://c0b64m347r4gr"]
 
 [ext_resource type="Script" path="res://lib/nodes/usable.gd" id="1_a02bn"]
 [ext_resource type="Material" uid="uid://b86o0otc0cw0q" path="res://assets/materials/wood_051.tres" id="2_kyufv"]
 [ext_resource type="Material" uid="uid://dqaldtwgt7dp6" path="res://assets/materials/plastic_014A.tres" id="3_84wcp"]
 [ext_resource type="Material" uid="uid://bq24ptdvoql7j" path="res://assets/materials/diamond_plate.tres" id="3_t443d"]
+[ext_resource type="Material" uid="uid://bt7ro860t6qq8" path="res://assets/materials/architecture/wall_1_deco.tres" id="5_4ykep"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2tij4"]
 size = Vector3(1, 2.50642, 0.11741)
-
-[sub_resource type="Animation" id="Animation_prrao"]
-resource_name = "use"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Left:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.5, 1.25, 0), Vector3(-1.4, 1.25, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape3D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.5, 1.25614, 0), Vector3(-1.4, 1.256, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Right:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.5, 1.25, 0), Vector3(1.4, 1.25, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape3D2:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.5, 1.25614, 0), Vector3(1.4, 1.256, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_ju2bl"]
 length = 0.001
@@ -110,6 +60,57 @@ tracks/3/keys = {
 "values": [Vector3(0.5, 1.25614, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_prrao"]
+resource_name = "use"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Left:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.5, 1.25, 0), Vector3(-1.4, 1.25, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.5, 1.25614, 0), Vector3(-1.4, 1.256, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Right:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.5, 1.25, 0), Vector3(1.4, 1.25, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape3D2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.5, 1.25614, 0), Vector3(1.4, 1.256, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2aydg"]
 _data = {
 "RESET": SubResource("Animation_ju2bl"),
@@ -156,8 +157,24 @@ size = Vector3(2, 0.01, 0.2)
 material = ExtResource("3_t443d")
 
 [node name="Top" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.625, 0)
 size = Vector3(2, 0.35, 0.2)
+material = ExtResource("5_4ykep")
+
+[node name="Neon" type="CSGBox3D" parent="Top"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0907682)
+operation = 2
+size = Vector3(1.5, 0.2, 0.02)
+
+[node name="Text" type="Label3D" parent="Top"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00590062, 0.0822435)
+double_sided = false
+modulate = Color(0.301961, 0.517647, 0.266667, 1)
+outline_modulate = Color(1, 1, 1, 1)
+text = "Door"
+font_size = 28
+outline_size = 0
+uppercase = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
