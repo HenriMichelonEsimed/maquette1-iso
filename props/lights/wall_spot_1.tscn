@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlaaqj05tprcb"]
+
+[ext_resource type="PackedScene" uid="uid://bae0xxvtwmfjh" path="res://assets/models/Furnitures/misc/wall_spot_1.glb" id="1_6vyid"]
+[ext_resource type="Material" uid="uid://bggiktfmubidg" path="res://assets/materials/Metal preto-01.tres" id="2_0w8xy"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dxsmn"]
+height = 0.154278
+radius = 0.0614128
+
+[node name="WallSpot1" instance=ExtResource("1_6vyid")]
+
+[node name="base" parent="Wall Light" index="0"]
+surface_material_override/0 = ExtResource("2_0w8xy")
+
+[node name="light frame" parent="Wall Light" index="1"]
+surface_material_override/1 = ExtResource("2_0w8xy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.0103888, 0.0800058)
+shape = SubResource("CylinderShape3D_dxsmn")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, -0.814743, 0.579822, 0, -0.579822, -0.814743, 0, -0.0139887, 0.0599154)
+light_energy = 2.0
+spot_range = 7.0

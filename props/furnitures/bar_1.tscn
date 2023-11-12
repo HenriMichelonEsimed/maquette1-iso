@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bk120r6rxex7p"]
+
+[ext_resource type="PackedScene" uid="uid://cqimggh6ke64w" path="res://assets/models/Furnitures/bar_1/bar_1.glb" id="1_jb73h"]
+[ext_resource type="Material" uid="uid://bggiktfmubidg" path="res://assets/materials/Metal preto-01.tres" id="2_5giyc"]
+[ext_resource type="Material" uid="uid://b86o0otc0cw0q" path="res://assets/materials/wood_051.tres" id="3_jcdtx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6smry"]
+size = Vector3(3, 0.9, 1.2)
+
+[node name="Bar1" instance=ExtResource("1_jb73h")]
+
+[node name="Table Bar" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_5giyc")
+surface_material_override/1 = ExtResource("3_jcdtx")
+surface_material_override/2 = ExtResource("2_5giyc")
+
+[node name="Table Bar_001" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_5giyc")
+surface_material_override/1 = ExtResource("3_jcdtx")
+surface_material_override/2 = ExtResource("2_5giyc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46253, -0.5)
+shape = SubResource("BoxShape3D_6smry")

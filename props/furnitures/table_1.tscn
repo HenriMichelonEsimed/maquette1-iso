@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://yma7nitl272y"]
+
+[ext_resource type="PackedScene" uid="uid://c4ltsehmrcos3" path="res://assets/models/Furnitures/table_1/table_1.glb" id="1_r4b1o"]
+[ext_resource type="Material" uid="uid://cmoy05qcqcm0a" path="res://assets/materials/Wood_068.tres" id="2_8clv6"]
+[ext_resource type="Material" uid="uid://bggiktfmubidg" path="res://assets/materials/Metal preto-01.tres" id="3_xxpt5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wqhr6"]
+size = Vector3(2.43999, 0.789019, 0.934889)
+
+[node name="Table1" instance=ExtResource("1_r4b1o")]
+
+[node name="Cube_001" parent="Orion Dining Table" index="0"]
+surface_material_override/0 = ExtResource("2_8clv6")
+
+[node name="Plane" parent="Orion Dining Table" index="1"]
+surface_material_override/0 = ExtResource("3_xxpt5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.371303, 0)
+shape = SubResource("BoxShape3D_wqhr6")
