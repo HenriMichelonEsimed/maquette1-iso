@@ -1,0 +1,103 @@
+[gd_scene load_steps=10 format=3 uid="uid://cscaf0jywb13"]
+
+[ext_resource type="Script" path="res://lib/nodes/usable.gd" id="1_kdo7x"]
+[ext_resource type="Material" uid="uid://b86o0otc0cw0q" path="res://assets/materials/wood_051.tres" id="2_vje37"]
+[ext_resource type="Material" uid="uid://dqaldtwgt7dp6" path="res://assets/materials/plastic_014A.tres" id="3_titfg"]
+[ext_resource type="Material" uid="uid://bq24ptdvoql7j" path="res://assets/materials/diamond_plate.tres" id="4_wwb8s"]
+[ext_resource type="Material" uid="uid://bt7ro860t6qq8" path="res://assets/materials/architecture/wall_1_deco.tres" id="5_j8dsa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2tij4"]
+size = Vector3(1.17065, 2.50642, 0.11741)
+
+[sub_resource type="Animation" id="Animation_ju2bl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.25, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.25614, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_prrao"]
+resource_name = "use"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.25, 0), Vector3(-1.1, 1.25, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.25614, 0), Vector3(-1.1, 1.256, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2aydg"]
+_data = {
+"RESET": SubResource("Animation_ju2bl"),
+"use": SubResource("Animation_prrao")
+}
+
+[node name="door_sliding_1" type="StaticBody3D"]
+script = ExtResource("1_kdo7x")
+
+[node name="Door" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+size = Vector3(1.2, 2.5, 0.1)
+material = ExtResource("2_vje37")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Door"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.47, 0, 0)
+radius = 0.02
+height = 0.12
+sides = 32
+material = ExtResource("3_titfg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25614, 0)
+shape = SubResource("BoxShape3D_2tij4")
+
+[node name="Bottom" type="CSGBox3D" parent="."]
+size = Vector3(1.2, 0.01, 0.2)
+material = ExtResource("4_wwb8s")
+
+[node name="Top" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.625, 0)
+size = Vector3(1.2, 0.35, 0.2)
+material = ExtResource("5_j8dsa")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2aydg")
+}

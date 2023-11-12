@@ -171,7 +171,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00590062, 0.0822435)
 double_sided = false
 modulate = Color(0.301961, 0.517647, 0.266667, 1)
 outline_modulate = Color(1, 1, 1, 1)
-text = "Door"
 font_size = 28
 outline_size = 0
 uppercase = true
