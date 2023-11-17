@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmbsl3qqvgsx7"]
+
+[ext_resource type="PackedScene" uid="uid://bprbccvw74dlh" path="res://characters/1/char_1.glb" id="1_ehbtg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n2675"]
+radius = 0.3
+height = 1.8
+
+[node name="Char1" instance=ExtResource("1_ehbtg")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CapsuleShape3D_n2675")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2umsprj0ccgr"]
+
+[ext_resource type="PackedScene" uid="uid://pgpj73npbuw7" path="res://assets/models/Furnitures/misc/bench_2.glb" id="1_5qu2t"]
+[ext_resource type="Material" uid="uid://cmoy05qcqcm0a" path="res://assets/materials/Wood_068.tres" id="2_q37ab"]
+[ext_resource type="Material" uid="uid://bggiktfmubidg" path="res://assets/materials/Metal preto-01.tres" id="3_kjbs2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_phv7l"]
+size = Vector3(1.8, 0.426892, 0.457604)
+
+[node name="Bench2" instance=ExtResource("1_5qu2t")]
+
+[node name="bench02" parent="Bench" index="0"]
+surface_material_override/0 = ExtResource("2_q37ab")
+surface_material_override/1 = ExtResource("3_kjbs2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.221124, 0)
+shape = SubResource("BoxShape3D_phv7l")
