@@ -9,12 +9,15 @@ func _ready():
 	GameState.connect("saving_end", _on_saving_end)
 	GameState.player = $Game/Player
 	GameState.view_pivot = $Game/ViewPivot
+	GameState.loadGame()
 	_on_change_zonelevel(GameState.location.zone_name, "default", false)
 	if (GameState.location.position != Vector3.ZERO):
 		_set_player_position(GameState.location.position, GameState.location.rotation)
 	items_transfert_dialog = load("res://scenes/dialogs/items_transfert_dialog.tscn").instantiate()
 	items_transfert_dialog.connect("close", _on_storage_close)
+	GameState.main_quest.start()
 	#_on_button_inventory_pressed()
+	_on_button_terminal_pressed()
 	
 func _process(_delta):
 	if (GameState.paused): return

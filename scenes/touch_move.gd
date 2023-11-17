@@ -19,7 +19,7 @@ func _ready():
 		queue_free()
 	analog_size = move.texture_normal.get_size()
 
-func _process(delta):
+func _process(_delta):
 	if analog_pressed:
 		var touch_position : Vector2 = (move.get_local_mouse_position() - analog_offset).limit_length(analog_size.x / 2.0)
 		move_position.position = touch_position + analog_size / 2.0
