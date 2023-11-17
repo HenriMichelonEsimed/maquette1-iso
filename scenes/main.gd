@@ -76,6 +76,12 @@ func _on_button_inventory_pressed():
 	var scene = load("res://scenes/inventory_screen.tscn").instantiate()
 	add_child(scene)
 	scene.connect("close", _on_resume)
+
+func _on_button_terminal_pressed():
+	_on_pause()
+	var scene = load("res://scenes/terminal_screen.tscn").instantiate()
+	add_child(scene)
+	scene.connect("close", _on_resume)
 	
 func _on_pause(hidegame:bool=true):
 	GameState.paused = true
