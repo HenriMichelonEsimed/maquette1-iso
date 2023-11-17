@@ -65,6 +65,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+bbcode_enabled = true
+text = "[b]Objet du message[/b]
+Hello, bonjour !
+"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Screen/Content"]
 layout_mode = 2
@@ -94,6 +98,7 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 34
 text = "X"
 
+[connection signal="item_selected" from="Screen/Content/Control/ListMessages" to="." method="_on_list_messages_item_selected"]
 [connection signal="pressed" from="Screen/Content/HBoxContainer/ButtonMessage" to="." method="_on_button_list_messages_pressed"]
 [connection signal="pressed" from="Screen/Content/HBoxContainer2/ButtonHomeTerm" to="." method="_on_button_home_term_pressed"]
 [connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]
