@@ -19,8 +19,9 @@ func _on_button_home_term_pressed():
 	$Screen/Content/Control/ListMessages.visible = false
 	$Screen/Content/Control/LabelMessage.visible = false
 
-func _on_list_messages_item_clicked(index, at_position, mouse_button_index):
+func _on_list_messages_item_clicked(index, _at_position, _mouse_button_index):
 	var message = GameState.messages.messages[index]
+	message.read = true
 	$Screen/Content/Control/LabelMessage.clear()
 	$Screen/Content/Control/LabelMessage.append_text("[b]" + message.subject + "[/b]\n")
 	$Screen/Content/Control/LabelMessage.append_text(message.message)

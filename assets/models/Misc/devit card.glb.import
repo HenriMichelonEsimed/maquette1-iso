@@ -1,0 +1,32 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://bbwoof00vefkc"
+path="res://.godot/imported/devit card.glb-311c4cf9d630aa83bbe2e42c16b4fd61.scn"
+
+[deps]
+
+source_file="res://assets/models/Misc/devit card.glb"
+dest_files=["res://.godot/imported/devit card.glb-311c4cf9d630aa83bbe2e42c16b4fd61.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="AccessCard1"
+nodes/apply_root_scale=true
+nodes/root_scale=0.01
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={}
+gltf/embedded_image_handling=1

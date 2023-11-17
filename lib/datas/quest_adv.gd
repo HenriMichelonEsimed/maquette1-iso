@@ -23,4 +23,4 @@ func saveState(file:FileAccess):
 	file.store_8(started if 1 else 0)
 
 func loadState(file:FileAccess):
-	started = file.get_8()
+	started = file.get_8() == 1

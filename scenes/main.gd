@@ -7,6 +7,7 @@ var last_spawnpoint:String
 func _ready():
 	GameState.connect("saving_start", _on_saving_start)
 	GameState.connect("saving_end", _on_saving_end)
+	GameState.messages.connect("new_message", _on_new_message)
 	GameState.player = $Game/Player
 	GameState.view_pivot = $Game/ViewPivot
 	GameState.loadGame()
@@ -17,7 +18,7 @@ func _ready():
 	items_transfert_dialog.connect("close", _on_storage_close)
 	GameState.main_quest.start()
 	#_on_button_inventory_pressed()
-	_on_button_terminal_pressed()
+	#_on_button_terminal_pressed()
 	
 func _process(_delta):
 	if (GameState.paused): return
@@ -68,6 +69,9 @@ func _on_storage_close(node:Storage):
 	remove_child(items_transfert_dialog)
 	_on_resume()
 	node.use()
+
+func _on_new_message():
+	$Game/UI/ListNotifications.add_item("You have unread messages !")
 
 func _on_button_quit_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

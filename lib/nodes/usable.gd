@@ -20,8 +20,14 @@ func _ready():
 	_animation = find_child("AnimationPlayer")
 	if (_animation != null):
 		_animation.connect("animation_finished", _on_animation_finished)
+		
+func _check_use() -> bool:
+	return true
 
 func use(_byplayer:bool=false,startup:bool=false):
+	if (not is_used):
+		if (not _check_use()) :
+			return
 	is_used = !is_used
 	if (is_used):
 		if (_animation != null):
