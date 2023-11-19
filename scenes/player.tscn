@@ -1165,7 +1165,7 @@ skin = SubResource("Skin_jvwan")
 transform = Transform3D(0.878991, 0, 0, 0, 1.92973, 0, 0, 0, 0.918106, 0, 0.868067, -0.455746)
 visible = false
 collision_layer = 0
-collision_mask = 14
+collision_mask = 30
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollectAndUseArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0.0346919, 0)

@@ -120,6 +120,8 @@ func _on_collect_item_aera_body_entered(node:Node):
 		display_info.emit(node)
 	elif (node is Trigger):
 		node.trigger()
+	elif (node is InteractiveCharacter):
+		display_info.emit(node)
 
 func _on_collect_item_aera_body_exited(_node:Node):
 	item_to_collect = null

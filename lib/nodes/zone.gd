@@ -32,6 +32,7 @@ func _ready():
 		if (node != null):
 			node.call(event.event)
 		event = GameState.events_queue.getNextEvent(zone_name)
+	check_quest_advance()
 	_zone_ready()
 
 func _zone_ready():
@@ -39,6 +40,9 @@ func _zone_ready():
 
 func on_zone_change(trigger:ZoneChangeTrigger):
 	change_zone.emit(trigger.zone_name, trigger.spawnpoint_key)
+
+func check_quest_advance():
+	pass
 
 func on_item_dropped(item:Item,quantity:int):
 	var new_item = item.duplicate()

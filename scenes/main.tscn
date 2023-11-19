@@ -31,9 +31,8 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="Main" type="Node3D" node_paths=PackedStringArray("labelInfo")]
+[node name="Main" type="Node3D"]
 script = ExtResource("1_4sx3e")
-labelInfo = NodePath("Game/UI/LabelInfo")
 
 [node name="Game" type="Node3D" parent="."]
 

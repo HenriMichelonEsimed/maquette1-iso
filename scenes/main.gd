@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var labelInfo:Label
+@onready var labelInfo = $Game/UI/LabelInfo
 @onready var notificationsList = $Game/UI/ListNotifications
 @onready var notificationLabel = $Game/UI/LabelNotification
 @onready var notificationTimer = $Game/UI/LabelNotification/Timer
@@ -8,7 +8,7 @@ var items_transfert_dialog:ItemsTransfertDialog
 var last_spawnpoint:String
 
 func _ready():
-	NotifiManager.connect("new_notification", _on_new_notification)
+	NotifManager.connect("new_notification", _on_new_notification)
 	GameState.connect("saving_start", _on_saving_start)
 	GameState.connect("saving_end", _on_saving_end)
 	GameState.messages.connect("new_message", _on_new_message)
@@ -22,7 +22,7 @@ func _ready():
 		_set_player_position(GameState.location.position, GameState.location.rotation)
 	items_transfert_dialog = load("res://scenes/dialogs/items_transfert_dialog.tscn").instantiate()
 	items_transfert_dialog.connect("close", _on_storage_close)
-	QuestsEvents.connect("questevent", GameState.main_quest.on_new_quest_event)
+	QuestsEvents.connect("questevent", _on_new_quest_event)
 	GameState.main_quest.start()
 	#_on_button_inventory_pressed()
 	#_on_button_terminal_pressed()
@@ -57,6 +57,10 @@ func _on_change_zonelevel(zone_name:String, spawnpoint_key:String, save:bool=tru
 	for node in GameState.current_zone.find_children("*", "Storage", true, true):
 		node.connect("open", _on_storage_open)
 
+func _on_new_quest_event(type:QuestEvents.QuestEventType, event_key:String):
+	GameState.main_quest.on_new_quest_event(type, event_key)
+	GameState.current_zone.check_quest_advance()
+	
 func _on_player_reset_position():
 	_spawn_player(last_spawnpoint)
 

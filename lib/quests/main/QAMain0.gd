@@ -1,7 +1,6 @@
 extends QuestAdvancement
 class_name QAMain0
 
-
 func _init():
 	super("QAMain0", "",
 	"Read your first message on your phone")
