@@ -20,11 +20,12 @@ expand_margin_right = 10.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k30mp"]
 content_margin_left = 8.0
 content_margin_right = 8.0
-bg_color = Color(0.6, 0.6, 0.6, 0.160784)
+bg_color = Color(0.6, 0.6, 0.6, 0.721569)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
 border_blend = true
 corner_radius_top_left = 8
 corner_radius_top_right = 8
@@ -137,7 +138,6 @@ offset_right = 236.0
 grow_vertical = 0
 
 [node name="LabelNotification" type="Label" parent="Game/UI"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -156,7 +156,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="Game/UI/LabelNotification"]
-wait_time = 2.0
+wait_time = 10.0
 one_shot = true
 
 [node name="TouchMove" parent="." instance=ExtResource("5_asao4")]

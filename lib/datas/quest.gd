@@ -23,6 +23,7 @@ func on_new_quest_event(type:QuestEvents.QuestEventType, event_key:String):
 		var current_class = load_adv(next)
 		## nil GAME ERROR
 		current = current_class.new()
+		current.start()
 		
 func load_adv(adv:String):
 	return load("res://lib/quests/" + key + "/" + adv + ".gd")

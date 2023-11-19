@@ -16,6 +16,7 @@ func start():
 	if (not started):
 		_start()
 		started = true
+	NotifManager.notif(label)
 
 func _start():
 	pass
