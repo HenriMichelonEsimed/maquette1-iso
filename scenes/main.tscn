@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dyj5pxcv4nq84"]
+[gd_scene load_steps=13 format=3 uid="uid://dyj5pxcv4nq84"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_4sx3e"]
 [ext_resource type="PackedScene" uid="uid://drr16dfcqhfyw" path="res://scenes/player.tscn" id="1_hswq3"]
@@ -7,6 +7,32 @@
 [ext_resource type="PackedScene" uid="uid://c4mbdc0ejm2ot" path="res://scenes/view_pivot.tscn" id="3_7bgj5"]
 [ext_resource type="PackedScene" uid="uid://qkckayiyvhkn" path="res://scenes/touch_move.tscn" id="5_asao4"]
 [ext_resource type="PackedScene" uid="uid://wpu71sh5k21k" path="res://scenes/touch_view.tscn" id="6_essw5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rw4go"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bvso"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(0.152941, 0.152941, 0.152941, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="FontVariation" id="FontVariation_y25ao"]
 variation_embolden = 1.0
@@ -56,6 +82,40 @@ size = 30.0
 script = ExtResource("2_b0j3s")
 cameraPivotPath = NodePath("..")
 objectToFollowPath = NodePath("../../ViewPivot")
+
+[node name="TalkWindow" type="ColorRect" parent="Game"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -259.0
+offset_top = -432.0
+offset_right = 259.0
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.207843, 0.207843, 0.207843, 0.454902)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Game/TalkWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NPC" type="Label" parent="Game/TalkWindow/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_rw4go")
+
+[node name="Player" type="ItemList" parent="Game/TalkWindow/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.560784, 0.560784, 0.560784, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_7bvso")
 
 [node name="UI" type="Control" parent="Game"]
 layout_mode = 3
@@ -179,6 +239,7 @@ environment = ExtResource("2_dhum8")
 [connection signal="view_moving" from="Game/ViewPivot" to="Game/CameraPivot/Camera" method="_on_view_pivot_view_moving"]
 [connection signal="view_rotate" from="Game/CameraPivot/Camera" to="Game/Player" method="_on_camera_view_rotate"]
 [connection signal="view_rotate" from="Game/CameraPivot/Camera" to="Game/ViewPivot" method="_on_camera_view_rotate"]
+[connection signal="item_clicked" from="Game/TalkWindow/VBoxContainer/Player" to="." method="_on_player_talk_item_clicked"]
 [connection signal="pressed" from="Game/UI/TopMenu/ButtonQuit" to="." method="_on_button_quit_pressed"]
 [connection signal="pressed" from="Game/UI/TopMenu/ButtonInventory" to="." method="_on_button_inventory_pressed"]
 [connection signal="pressed" from="Game/UI/TopMenu/ButtonTerminal" to="." method="_on_button_terminal_pressed"]

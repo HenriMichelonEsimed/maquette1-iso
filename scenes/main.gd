@@ -4,8 +4,12 @@ extends Node3D
 @onready var notificationsList = $Game/UI/ListNotifications
 @onready var notificationLabel = $Game/UI/LabelNotification
 @onready var notificationTimer = $Game/UI/LabelNotification/Timer
+@onready var talkWindow = $Game/TalkWindow
+@onready var NPCPhraseLabel = $Game/TalkWindow/VBoxContainer/NPC
+@onready var playerTalkList = $Game/TalkWindow/VBoxContainer/Player
 var items_transfert_dialog:ItemsTransfertDialog
 var last_spawnpoint:String
+var talking_char:InteractiveCharacter
 
 func _ready():
 	NotifManager.connect("new_notification", _on_new_notification)
@@ -57,7 +61,9 @@ func _on_change_zonelevel(zone_name:String, spawnpoint_key:String, save:bool=tru
 	_spawn_player(spawnpoint_key)
 	for node in GameState.current_zone.find_children("*", "Storage", true, true):
 		node.connect("open", _on_storage_open)
-
+	for node in GameState.current_zone.find_children("*", "InteractiveCharacter", true, true):
+		node.connect("talk", _on_npc_talk)
+		node.connect("end_talk", _on_end_talk)
 func _on_new_quest_event(type:QuestEvents.QuestEventType, event_key:String):
 	GameState.main_quest.on_new_quest_event(type, event_key)
 	GameState.current_zone.check_quest_advance()
@@ -134,6 +140,19 @@ func _on_saving_end():
 func _on_saving_timer_timeout():
 	$Game/UI/LabelSaving.visible = false
 
+func _on_npc_talk(char:InteractiveCharacter,phrase:String, answers:Array):
+	_on_pause(false)
+	talking_char = char
+	NPCPhraseLabel.text = phrase
+	playerTalkList.clear()
+	for answer in answers:
+		playerTalkList.add_item(answer)
+	talkWindow.visible = true
+
+func _on_end_talk():
+	talkWindow.visible = false
+	_on_resume()
+
 func _on_display_info(node:Node3D):
 	var label = str(node)
 	if (label.is_empty()): return
@@ -147,3 +166,6 @@ func _on_hide_info():
 
 func _on_notification_timer_timeout():
 	notificationLabel.visible = false
+
+func _on_player_talk_item_clicked(index, at_position, mouse_button_index):
+	talking_char.answer(index)

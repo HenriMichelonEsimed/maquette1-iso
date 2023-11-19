@@ -22,6 +22,7 @@ var last_collision = null
 var current_view = 0
 var item_to_collect:Item = null
 var node_to_use:Usable = null
+var char_to_talk:InteractiveCharacter = null
 var signaled = false
 
 const directions = {
@@ -42,6 +43,8 @@ func _process(_delta):
 		elif (item_to_collect != null):
 			item_collected.emit(item_to_collect,-1)
 			item_to_collect = null
+		elif (char_to_talk != null):
+			char_to_talk.interact()
 
 func _physics_process(delta):
 	if (GameState.paused or just_resumed): return
@@ -121,11 +124,13 @@ func _on_collect_item_aera_body_entered(node:Node):
 	elif (node is Trigger):
 		node.trigger()
 	elif (node is InteractiveCharacter):
+		char_to_talk = node
 		display_info.emit(node)
 
 func _on_collect_item_aera_body_exited(_node:Node):
 	item_to_collect = null
 	node_to_use = null
+	char_to_talk = null
 	hide_info.emit()
 
 func _on_view_pivot_view_moving():
