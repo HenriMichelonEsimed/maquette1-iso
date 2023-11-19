@@ -44,17 +44,17 @@ func _ready():
 	tabs.current_tab = state.tab
 	for type in list_content: _fill_list(type, list_content[type])
 	connect("item_dropped", GameState.current_zone.on_item_dropped)
-		
+
 func _on_button_back_pressed():
 	close.emit(self)
 	queue_free()
-	
+
 func _on_list_tools_item_selected(index):
 	_item_details(GameState.inventory.getone_bytype(index, Item.ItemType.ITEM_TOOLS), index)
-	
+
 func _on_list_miscellaneous_item_selected(index):
 	_item_details(GameState.inventory.getone_bytype(index, Item.ItemType.ITEM_MISCELLANEOUS), index)
-	
+
 func _item_details(_item, index):
 	selected = index
 	item = _item
@@ -84,7 +84,7 @@ func _process(_delta):
 			if (list.item_count > 0):
 				list.select(0)
 				list.item_selected.emit(0)
-	
+
 func _set_tab():
 	if (state.tab < 0):
 		state.tab = 4

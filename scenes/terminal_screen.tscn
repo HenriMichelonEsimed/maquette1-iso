@@ -22,7 +22,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -200.0
 offset_top = -350.0
-offset_right = 200.0
+offset_right = 197.0
 offset_bottom = 354.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -42,35 +42,43 @@ grow_vertical = 2
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="Control" type="Control" parent="Screen/Content"]
+[node name="Content" type="VBoxContainer" parent="Screen/Content"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ListMessages" type="ItemList" parent="Screen/Content/Control"]
+[node name="Label" type="Label" parent="Screen/Content/Content"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Label"
+horizontal_alignment = 1
+
+[node name="Body" type="Control" parent="Screen/Content/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ListMessages" type="ItemList" parent="Screen/Content/Content/Body"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("3_18yvg")
 
-[node name="ListQuests" type="RichTextLabel" parent="Screen/Content/Control"]
+[node name="ListQuests" type="RichTextLabel" parent="Screen/Content/Content/Body"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -5.0
-offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/focus = ExtResource("3_18yvg")
 theme_override_styles/normal = ExtResource("3_18yvg")
 
-[node name="LabelMessage" type="RichTextLabel" parent="Screen/Content/Control"]
+[node name="LabelMessage" type="RichTextLabel" parent="Screen/Content/Content/Body"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -117,7 +125,7 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 34
 text = "X"
 
-[connection signal="item_clicked" from="Screen/Content/Control/ListMessages" to="." method="_on_list_messages_item_clicked"]
+[connection signal="item_clicked" from="Screen/Content/Content/Body/ListMessages" to="." method="_on_list_messages_item_clicked"]
 [connection signal="pressed" from="Screen/Content/HBoxContainer/ButtonQuests" to="." method="_on_button_quests_pressed"]
 [connection signal="pressed" from="Screen/Content/HBoxContainer/ButtonMessages" to="." method="_on_button_list_messages_pressed"]
 [connection signal="pressed" from="Screen/Content/HBoxContainer2/ButtonHomeTerm" to="." method="_on_button_home_term_pressed"]

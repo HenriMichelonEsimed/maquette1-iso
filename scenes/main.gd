@@ -30,12 +30,14 @@ func _ready():
 	QuestsEvents.connect("questevent", _on_new_quest_event)
 	GameState.main_quest.start()
 	#_on_button_inventory_pressed()
-	#_on_button_terminal_pressed()
+	_on_button_terminal_pressed()
 	
 func _process(_delta):
 	if (GameState.paused): return
 	if Input.is_action_just_pressed("player_inventory"):
 		_on_button_inventory_pressed()
+	elif Input.is_action_just_pressed("player_terminal"):
+		_on_button_terminal_pressed()
 
 func _input(event):
 	if event is InputEventMouseMotion:
