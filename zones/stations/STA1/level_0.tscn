@@ -636,7 +636,7 @@ transform = Transform3D(0.983565, 0, -0.180553, 0, 1, 0, 0.180553, 0, 0.983565, 
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 4.1, 0.2, 5.1)
 
 [node name="Hall2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2.8, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2.7, -9)
 
 [node name="Floor2" type="CSGBox3D" parent="Hall2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3, 0, 0.5)

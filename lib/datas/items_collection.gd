@@ -6,6 +6,10 @@ var add_multiples:bool
 
 func _init(_add:bool=true):
 	add_multiples = _add
+	
+func have(type:Item.ItemType, key:String) -> bool:
+	var result = _items.filter(func(it) : return it.type == type and it.key == key)
+	return result.size() > 0
 
 func new(type:int,_name:String):
 	var item = load("res://props/items/" + Item.scenes_path[type] + "/" + _name + ".tscn")

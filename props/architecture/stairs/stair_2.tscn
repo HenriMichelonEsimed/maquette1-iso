@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://bq24ptdvoql7j" path="res://assets/materials/diamond_plate.tres" id="1_q2jhp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kky41"]
-size = Vector3(4.03322, 3.8893, 0.523748)
+size = Vector3(4.03322, 3.8, 0.523748)
 
 [node name="Stair" type="StaticBody3D" groups=["stairs"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.126909, -0.250646)

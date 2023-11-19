@@ -1,10 +1,14 @@
 extends Node3D
 
 @export var labelInfo:Label
+@onready var notificationsList = $Game/UI/ListNotifications
+@onready var notificationLabel = $Game/UI/LabelNotification
+@onready var notificationTimer = $Game/UI/LabelNotification/Timer
 var items_transfert_dialog:ItemsTransfertDialog
 var last_spawnpoint:String
 
 func _ready():
+	NotifiManager.connect("new_notification", _on_new_notification)
 	GameState.connect("saving_start", _on_saving_start)
 	GameState.connect("saving_end", _on_saving_end)
 	GameState.messages.connect("new_message", _on_new_message)
@@ -71,7 +75,14 @@ func _on_storage_close(node:Storage):
 	node.use()
 
 func _on_new_message():
-	$Game/UI/ListNotifications.add_item("You have unread messages !")
+	notificationsList.add_item("You have unread messages !")
+
+func _on_new_notification(message:String):
+	if (notificationsList.get_item_text(notificationsList.item_count - 1) != message):
+		notificationsList.add_item(message)
+	notificationLabel.text = message
+	notificationLabel.visible = true
+	notificationTimer.start()
 
 func _on_button_quit_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -122,4 +133,5 @@ func _on_hide_info():
 	labelInfo.visible = false
 	labelInfo.text = ''
 
-
+func _on_notification_timer_timeout():
+	notificationLabel.visible = false
