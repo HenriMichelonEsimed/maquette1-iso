@@ -15,6 +15,8 @@ func _ready():
 	GameState.player = $Game/Player
 	GameState.view_pivot = $Game/ViewPivot
 	GameState.loadGame()
+	if (GameState.messages.have_unread()):
+		_on_new_message()
 	_on_change_zonelevel(GameState.location.zone_name, "default", false)
 	if (GameState.location.position != Vector3.ZERO):
 		_set_player_position(GameState.location.position, GameState.location.rotation)
@@ -108,6 +110,10 @@ func _on_pause(hidegame:bool=true):
 	
 func _on_resume(from:Node=null):
 	if (from != null): remove_child(from)
+	if (not GameState.messages.have_unread()):
+		for idx in range(0, notificationsList.item_count):
+			if (notificationsList.get_item_text(idx) == "You have unread messages !"):
+				notificationsList.remove_item(idx)
 	$Game/UI.visible = true
 	$Game.visible = true
 	GameState.player.just_resumed = true

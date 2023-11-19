@@ -6,6 +6,7 @@ func _init():
 
 func _start():
 	GameState.messages.add(
+		"Mysterious Man",
 		"Hello player", 
-		"Congratulation, you have read your first message !\n"
+		"Congratulation, you have read your first message !\nNow meet me in the security room"
 		)

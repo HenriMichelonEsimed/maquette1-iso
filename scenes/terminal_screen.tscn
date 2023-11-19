@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://db3pgflm4l0b4"]
+[gd_scene load_steps=4 format=3 uid="uid://db3pgflm4l0b4"]
 
 [ext_resource type="Script" path="res://scenes/terminal_screen.gd" id="1_6dr6g"]
 [ext_resource type="Texture2D" uid="uid://v01lrctiaipd" path="res://assets/textures/terminal.png" id="1_npbmo"]
+[ext_resource type="StyleBox" uid="uid://sqx2qlcw5ld1" path="res://assets/item_list_greyed.tres" id="3_18yvg"]
 
 [node name="TerminalScreen" type="Control"]
 layout_mode = 3
@@ -51,8 +52,22 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -5.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_18yvg")
+
+[node name="ListQuests" type="ItemList" parent="Screen/Content/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -5.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_18yvg")
 
 [node name="LabelMessage" type="RichTextLabel" parent="Screen/Content/Control"]
 visible = false
@@ -71,9 +86,13 @@ Hello, bonjour !
 layout_mode = 2
 alignment = 1
 
-[node name="ButtonMessage" type="Button" parent="Screen/Content/HBoxContainer"]
+[node name="ButtonMessages" type="Button" parent="Screen/Content/HBoxContainer"]
 layout_mode = 2
 text = "Messages"
+
+[node name="ButtonQuests" type="Button" parent="Screen/Content/HBoxContainer"]
+layout_mode = 2
+text = "Quests"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Screen/Content"]
 layout_mode = 2
@@ -96,6 +115,8 @@ theme_override_font_sizes/font_size = 34
 text = "X"
 
 [connection signal="item_clicked" from="Screen/Content/Control/ListMessages" to="." method="_on_list_messages_item_clicked"]
-[connection signal="pressed" from="Screen/Content/HBoxContainer/ButtonMessage" to="." method="_on_button_list_messages_pressed"]
+[connection signal="item_clicked" from="Screen/Content/Control/ListQuests" to="." method="_on_list_quests_item_clicked"]
+[connection signal="pressed" from="Screen/Content/HBoxContainer/ButtonMessages" to="." method="_on_button_list_messages_pressed"]
+[connection signal="pressed" from="Screen/Content/HBoxContainer/ButtonQuests" to="." method="_on_button_list_messages_pressed"]
 [connection signal="pressed" from="Screen/Content/HBoxContainer2/ButtonHomeTerm" to="." method="_on_button_home_term_pressed"]
 [connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]

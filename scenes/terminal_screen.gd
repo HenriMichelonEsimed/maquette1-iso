@@ -2,28 +2,43 @@ extends Control
 
 signal close(node:Node)
 
+@onready var listMessages = $Screen/Content/Control/ListMessages
+@onready var labelMessage = $Screen/Content/Control/LabelMessage
+@onready var listQuests = $Screen/Content/Control/ListQuests
+
 func _ready():
 	for message in GameState.messages.messages:
-		$Screen/Content/Control/ListMessages.add_item(message.subject)
+		listMessages.add_item(message.subject)
+		if (not message.read):
+			listMessages.set_item_custom_fg_color (listMessages.item_count-1, Color.YELLOW)
 
 func _on_button_back_pressed():
 	close.emit(self)
 	queue_free()
+	
+func _hide_all():
+	listMessages.visible = false
+	labelMessage.visible = false
+	listQuests.visible = false
 
 func _on_button_list_messages_pressed():
-	$Screen/Content/Control/ListMessages.visible = true
-	$Screen/Content/Control/LabelMessage.visible = false
-
+	_hide_all()
+	listMessages.visible = true
 
 func _on_button_home_term_pressed():
-	$Screen/Content/Control/ListMessages.visible = false
-	$Screen/Content/Control/LabelMessage.visible = false
+	_hide_all()
 
 func _on_list_messages_item_clicked(index, _at_position, _mouse_button_index):
+	_hide_all()
 	var message = GameState.messages.messages[index]
 	message.read = true
-	$Screen/Content/Control/LabelMessage.clear()
-	$Screen/Content/Control/LabelMessage.append_text("[b]" + message.subject + "[/b]\n")
-	$Screen/Content/Control/LabelMessage.append_text(message.message)
-	$Screen/Content/Control/ListMessages.visible = false
-	$Screen/Content/Control/LabelMessage.visible = true
+	labelMessage.clear()
+	labelMessage.append_text("From : [b]" + message.from + "[/b]\n")
+	labelMessage.append_text("Subject: [b]" + message.subject + "[/b]\n")
+	labelMessage.append_text(message.message)
+	message.read = true
+	labelMessage.visible = true
+
+func _on_list_quests_item_clicked(index, at_position, mouse_button_index):
+	_hide_all()
+	listQuests.visible = true

@@ -1066,3 +1066,4 @@ transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926
 
 [node name="AccessCard1" parent="." instance=ExtResource("55_wanc7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.94404, 0.392947, -8.78957)
+visible = false
