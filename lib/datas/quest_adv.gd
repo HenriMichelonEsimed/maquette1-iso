@@ -1,23 +1,30 @@
 extends Node
 class_name QuestAdvancement
 
+var key:String
 var label:String
-var parent:QuestAdvancement
-var nexts = []
+var parent:String
 var started = false
+var terminated = false
 
-func _init(_label, _parent, _nexts):
+func _init(_k, _parent, _label):
+	key = _k
 	label = _label
 	parent = _parent
-	nexts = _nexts
-	
+
 func start():
 	if (not started):
 		_start()
 		started = true
-	
+
 func _start():
 	pass
+
+func on_new_quest_event(type:QuestEvents.QuestEventType, key:String):
+	pass
+
+func success():
+	return null
 	
 func saveState(file:FileAccess):
 	file.store_8(started if 1 else 0)

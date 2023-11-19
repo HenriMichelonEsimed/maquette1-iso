@@ -22,6 +22,7 @@ func _ready():
 		_set_player_position(GameState.location.position, GameState.location.rotation)
 	items_transfert_dialog = load("res://scenes/dialogs/items_transfert_dialog.tscn").instantiate()
 	items_transfert_dialog.connect("close", _on_storage_close)
+	QuestsEvents.connect("questevent", GameState.main_quest.on_new_quest_event)
 	GameState.main_quest.start()
 	#_on_button_inventory_pressed()
 	#_on_button_terminal_pressed()
