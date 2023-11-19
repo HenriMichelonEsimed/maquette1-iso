@@ -17,6 +17,8 @@ var player_moving = false
 func _ready():
 	camera_pivot = get_node(cameraPivotPath)
 	object_to_follow = get_node(objectToFollowPath)
+	
+func init():
 	_size = GameState.camera.size
 	_view = GameState.camera.view
 	_zoom_view()

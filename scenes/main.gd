@@ -15,6 +15,7 @@ func _ready():
 	GameState.player = $Game/Player
 	GameState.view_pivot = $Game/ViewPivot
 	GameState.loadGame()
+	$Game/CameraPivot/Camera.init()
 	if (GameState.messages.have_unread()):
 		_on_new_message()
 	_on_change_zonelevel(GameState.location.zone_name, "default", false)
