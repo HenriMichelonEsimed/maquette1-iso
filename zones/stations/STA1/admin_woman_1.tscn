@@ -3,15 +3,15 @@
 [ext_resource type="Script" path="res://zones/stations/STA1/admin_woman_1.gd" id="1_c52ht"]
 [ext_resource type="PackedScene" uid="uid://05srs73auu0f" path="res://characters/2/char_2.tscn" id="2_javro"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hbmwm"]
-radius = 0.275162
-height = 1.91619
+[sub_resource type="BoxShape3D" id="BoxShape3D_nlj0n"]
+size = Vector3(0.550324, 1.62392, 1.46532)
 
 [node name="AdminWoman1" type="CharacterBody3D"]
 script = ExtResource("1_c52ht")
+label = "Administrator"
 
 [node name="char_2" parent="." instance=ExtResource("2_javro")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.901736, 0)
-shape = SubResource("CapsuleShape3D_hbmwm")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.901736, 0.48402)
+shape = SubResource("BoxShape3D_nlj0n")
