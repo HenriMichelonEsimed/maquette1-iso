@@ -769,6 +769,9 @@ label = "Restricted Area"
 transform = Transform3D(-0.0986772, 0, 0.99512, 0, 1, 0, -0.99512, 0, -0.0986772, -8.9255, 0.07392, 0.40825)
 script = ExtResource("57_k0fra")
 
+[node name="Desk1_Long" parent="Hall2" instance=ExtResource("28_8gey5")]
+transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, -8.4, 0, 0.4)
+
 [node name="ReflectionProbe" type="ReflectionProbe" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 15.5, -9)
 size = Vector3(64.5, 13.5, 38)
