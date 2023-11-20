@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=60 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_7fv8t"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -58,6 +58,7 @@
 [ext_resource type="PackedScene" uid="uid://dmbsl3qqvgsx7" path="res://props/characters/char_1.tscn" id="53_wc4gg"]
 [ext_resource type="PackedScene" uid="uid://27sty830tukx" path="res://zones/stations/STA1/mysterious_man.tscn" id="56_lehxp"]
 [ext_resource type="Script" path="res://zones/stations/STA1/mysterious_man.gd" id="57_k0fra"]
+[ext_resource type="PackedScene" uid="uid://nebo4anbesm0" path="res://props/items/misc/credit.tscn" id="58_6ad3g"]
 
 [node name="level_0" type="Node3D"]
 script = ExtResource("1_7fv8t")
@@ -997,6 +998,10 @@ transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, 10.7, 
 
 [node name="Locker3" parent="Canteen" instance=ExtResource("46_7teu8")]
 transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, 11.2, 0, 2.7)
+
+[node name="Credit" parent="Canteen/Locker3" instance=ExtResource("58_6ad3g")]
+transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, 11.2, 0, 2.70001)
+quantity = 5
 
 [node name="Box1" parent="Canteen" instance=ExtResource("47_hu7xp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.6227, 0, -4.4)

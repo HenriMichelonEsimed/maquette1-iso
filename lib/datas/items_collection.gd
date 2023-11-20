@@ -11,9 +11,11 @@ func have(type:Item.ItemType, key:String) -> bool:
 	var result = _items.filter(func(it) : return it.type == type and it.key == key)
 	return result.size() > 0
 
-func new(type:int,_name:String):
+func new(type:int,_name:String, qty:int=1):
 	var item = load("res://props/items/" + Item.scenes_path[type] + "/" + _name + ".tscn")
-	if (item != null) : add(item.instantiate())
+	if (item != null):
+		for i in range(0, qty):
+			add(item.instantiate())
 
 func add(item:Item):
 	if add_multiples and (item is ItemMultiple):

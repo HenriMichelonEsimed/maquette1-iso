@@ -43,7 +43,7 @@ var r1 = ["How can I access the restricted area ?",
 ]
 
 func a1(): 
-	GameState.inventory.new(Item.ItemType.ITEM_TOOLS, "access_card_1")
+	GameState.inventory.new(Item.ItemType.ITEM_QUEST, "access_card_1")
 	GameState.quests.advpoint("main", "lvl0_admin_woman_access_card_2")
 
 func a2(): 

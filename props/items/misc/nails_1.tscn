@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkty22aenfm0p"]
+[gd_scene load_steps=3 format=3 uid="uid://d0xfhqj4p2mth"]
 
 [sub_resource type="GDScript" id="GDScript_7mvlt"]
-script/source = "extends ItemMultiple
+script/source = "xtends ItemMultiple
 class_name ItemMiscellaneous
 
 func _init():

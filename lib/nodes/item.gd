@@ -5,10 +5,10 @@ enum ItemType {
 	ITEM_TOOLS			= 0,
 	ITEM_CLOTHES 		= 1,
 	ITEM_CONSUMABLES	= 2,
-	ITEM_AMMUNITIONS	= 3,
-	ITEM_MISCELLANEOUS	= 4
+	ITEM_MISCELLANEOUS	= 3,
+	ITEM_QUEST			= 4
 	}
-const scenes_path = [ 'tools', 'clothes', 'consum', 'ammos', 'misc']
+const scenes_path = [ 'tools', 'clothes', 'consum', 'misc', 'quest']
 
 @export var key:String
 @export var label:String
