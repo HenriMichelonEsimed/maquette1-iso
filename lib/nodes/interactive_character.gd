@@ -31,7 +31,10 @@ func end():
 	end_talk.emit()
 	
 func answer(index:int):
-	var next = current[1][index][1]
+	var next = current[1][index]
+	if (next is Callable):
+		next = next.call()
+	next = next[1]
 	if (next is Callable):
 		next.call()
 	elif next is Array:

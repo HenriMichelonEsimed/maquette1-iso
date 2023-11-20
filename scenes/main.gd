@@ -152,6 +152,8 @@ func _on_npc_talk(char:InteractiveCharacter,phrase:String, answers:Array):
 	NPCPhraseLabel.text = phrase
 	playerTalkList.clear()
 	for answer in answers:
+		if (answer is Callable):
+			answer = answer.call()
 		playerTalkList.add_item(answer[0])
 	talkWindow.visible = true
 	playerTalkList.grab_focus()
