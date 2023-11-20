@@ -13,7 +13,7 @@ func have(type:Item.ItemType, key:String) -> bool:
 
 func new(type:int,_name:String):
 	var item = load("res://props/items/" + Item.scenes_path[type] + "/" + _name + ".tscn")
-	if (item != null) : add(item)
+	if (item != null) : add(item.instantiate())
 
 func add(item:Item):
 	if add_multiples and (item is ItemMultiple):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=59 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_7fv8t"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -56,7 +56,6 @@
 [ext_resource type="PackedScene" uid="uid://bk120r6rxex7p" path="res://props/furnitures/bar_1.tscn" id="49_6p5b4"]
 [ext_resource type="PackedScene" uid="uid://c2umsprj0ccgr" path="res://props/furnitures/bench_2.tscn" id="50_vboi2"]
 [ext_resource type="PackedScene" uid="uid://dmbsl3qqvgsx7" path="res://props/characters/char_1.tscn" id="53_wc4gg"]
-[ext_resource type="PackedScene" uid="uid://cimht07s28gqk" path="res://props/items/tools/access_card_1.tscn" id="55_wanc7"]
 [ext_resource type="PackedScene" uid="uid://27sty830tukx" path="res://zones/stations/STA1/mysterious_man.tscn" id="56_lehxp"]
 [ext_resource type="Script" path="res://zones/stations/STA1/mysterious_man.gd" id="57_k0fra"]
 
@@ -1073,7 +1072,3 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.2, 
 
 [node name="Char1" parent="Canteen" instance=ExtResource("53_wc4gg")]
 transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -1.5, 0, -4.1)
-
-[node name="AccessCard1" parent="." instance=ExtResource("55_wanc7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.94404, 0.392947, -8.78957)
-visible = false
