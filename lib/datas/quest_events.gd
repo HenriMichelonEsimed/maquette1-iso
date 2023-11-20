@@ -11,3 +11,6 @@ enum QuestEventType {
 
 func event(type:QuestEventType, key:String):
 	questevent.emit(type, key)
+
+func advpoint(key:String):
+	event(QuestEventType.QUESTEVENT_ADVPOINT, key)
