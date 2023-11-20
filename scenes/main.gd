@@ -33,6 +33,10 @@ func _ready():
 	#_on_button_terminal_pressed()
 	
 func _process(_delta):
+	if (talkWindow.visible):
+		if Input.is_action_just_pressed("player_use") and playerTalkList.get_selected_items().size() > 0:
+			_on_player_talk_item_clicked(playerTalkList.get_selected_items()[0], 0, 0)
+		return
 	if (GameState.paused): return
 	if Input.is_action_just_pressed("player_inventory"):
 		_on_button_inventory_pressed()
@@ -112,7 +116,7 @@ func _on_button_inventory_pressed():
 	scene.connect("close", _on_resume)
 
 func _on_button_terminal_pressed():
-	_on_pause()
+	_on_pause(false)
 	var scene = load("res://scenes/terminal_screen.tscn").instantiate()
 	add_child(scene)
 	scene.connect("close", _on_resume)
@@ -151,6 +155,8 @@ func _on_npc_talk(char:InteractiveCharacter,phrase:String, answers:Array):
 		playerTalkList.add_item(answer)
 	talkWindow.visible = true
 	playerTalkList.grab_focus()
+	if (playerTalkList.item_count > 0):
+		playerTalkList.select(0)
 
 func _on_end_talk():
 	talkWindow.visible = false

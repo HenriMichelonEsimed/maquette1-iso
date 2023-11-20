@@ -28,7 +28,7 @@ func _process(_delta):
 		else:
 			_on_button_quests_pressed()
 	if (currentButton == buttonMessages):
-		if Input.is_action_just_pressed("player_use") and listMessages.has_focus() :
+		if Input.is_action_just_pressed("player_use") and listMessages.has_focus() and listMessages.get_selected_items().size() > 0 :
 			_on_list_messages_item_clicked(listMessages.get_selected_items()[0], 0, 0)
 
 func _update():
@@ -43,7 +43,7 @@ func _update():
 
 func _on_button_back_pressed():
 	close.emit(self)
-	queue_free()
+	visible = false
 	
 func _hide_all():
 	listMessages.visible = false

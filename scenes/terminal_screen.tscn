@@ -114,7 +114,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "•"
 
-[node name="ButtonBack" type="Button" parent="."]
+[node name="ButtonBack" type="Button" parent="Screen"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -129,4 +129,4 @@ text = "X"
 [connection signal="pressed" from="Screen/Content/HBoxContainer/ButtonQuests" to="." method="_on_button_quests_pressed"]
 [connection signal="pressed" from="Screen/Content/HBoxContainer/ButtonMessages" to="." method="_on_button_list_messages_pressed"]
 [connection signal="pressed" from="Screen/Content/HBoxContainer2/ButtonHomeTerm" to="." method="_on_button_home_term_pressed"]
-[connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="pressed" from="Screen/ButtonBack" to="." method="_on_button_back_pressed"]

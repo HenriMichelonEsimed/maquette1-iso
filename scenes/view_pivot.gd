@@ -26,6 +26,7 @@ var mouse_vector:Vector2
 #	#	mouse_vector = Vector2.ZERO
 
 func _process(_delta):
+	if (GameState.paused): return
 	if Input.is_action_pressed("modifier") or player_moving : return
 	#if not GameState.is_mobile and Input.is_action_just_pressed("view_pan"):
 	#	mouse_pressed_position = get_viewport().get_mouse_position()
