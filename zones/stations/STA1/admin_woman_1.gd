@@ -1,9 +1,26 @@
 extends InteractiveCharacter
 
-var r3 = [ "[show message on phone]",
+var d1 = []
+
+var d2 =X[ "Where is my sandwitch ?", [
+			["I'll look it up.", end],
+			["...in your dreams!", d1],
+			r5
+		]
+	]
+	
+var r6 = ["[Give sandwitch]", 
 	[
-		["Oh ok I see. Here is the access card", a1], [
-			["Thank you.", end]
+		["Thank you ! Here is the access card", a1], [
+		["Thank you.", end]
+	]
+]]
+
+var r3 = [ "[Show message on phone]",
+	[
+		["Oh ok I see. But I am very hungry and very busy. If you can bring me a sandwitch I could help you", a3], [
+			["Ok I'll look it up.", end],
+			["...in your dreams!", d1],
 		]
 	]
 ]
@@ -44,22 +61,32 @@ var r1 = ["How can I access the restricted area ?",
 
 func a1(): 
 	GameState.inventory.new(Item.ItemType.ITEM_QUEST, "access_card_1")
-	GameState.quests.advpoint("main", "lvl0_admin_woman_access_card_2")
+	GameState.quests.advpoint("main", "lvl0_admin_woman_give_access_card")
 
 func a2(): 
-	GameState.quests.advpoint("main","lvl0_admin_woman_access_card_1")
+	GameState.quests.advpoint("main","lvl0_admin_woman_have_access_card")
+
+func a3(): 
+	GameState.quests.advpoint("main","lvl0_admin_woman_want_sandwitch")
+
+func a4(): 
+	GameState.quests.advpoint("main","lvl0_admin_woman_have_sandwitch")
 
 func r4():
 	if not GameState.quests.have_advpoint("main", "lvl0_door_to_restricted_area_access_card"): return null
-	if GameState.quests.have_advpoint("main", "lvl0_admin_woman_access_card_1"):
-		if GameState.quests.have_advpoint("main", "lvl0_admin_woman_access_card_2"):
+	if GameState.quests.have_advpoint("main", "lvl0_admin_woman_have_access_card"):
+		if GameState.quests.have_advpoint("main", "lvl0_admin_woman_give_access_card"):
 			return null
 		else:
 			return r2
 	return r1
 
+func r5():
+	if GameState.inventory.have(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwitch"):
+		return r6
+	return null
+
 func _init():
-	var d1 = []
 	d1.append_array(["How can I help you ?", [
 		["Who are you ?", [
 			"I am the administrator of this station", [["Nice to meet you", d1]]

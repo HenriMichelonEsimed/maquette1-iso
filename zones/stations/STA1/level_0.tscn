@@ -55,10 +55,10 @@
 [ext_resource type="PackedScene" uid="uid://yma7nitl272y" path="res://props/furnitures/table_1.tscn" id="48_c2tmy"]
 [ext_resource type="PackedScene" uid="uid://bk120r6rxex7p" path="res://props/furnitures/bar_1.tscn" id="49_6p5b4"]
 [ext_resource type="PackedScene" uid="uid://c2umsprj0ccgr" path="res://props/furnitures/bench_2.tscn" id="50_vboi2"]
-[ext_resource type="PackedScene" uid="uid://dmbsl3qqvgsx7" path="res://props/characters/char_1.tscn" id="53_wc4gg"]
 [ext_resource type="PackedScene" uid="uid://27sty830tukx" path="res://zones/stations/STA1/mysterious_man.tscn" id="56_lehxp"]
 [ext_resource type="Script" path="res://zones/stations/STA1/mysterious_man.gd" id="57_k0fra"]
 [ext_resource type="PackedScene" uid="uid://nebo4anbesm0" path="res://props/items/misc/credit.tscn" id="58_6ad3g"]
+[ext_resource type="PackedScene" uid="uid://ctbw7kil8lw7k" path="res://zones/stations/STA1/waiter.tscn" id="59_ym5ud"]
 
 [node name="level_0" type="Node3D"]
 script = ExtResource("1_7fv8t")
@@ -1075,5 +1075,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, 6.5)
 [node name="Trash1" parent="Canteen" instance=ExtResource("24_i20hq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.2, 0, 2.7)
 
-[node name="Char1" parent="Canteen" instance=ExtResource("53_wc4gg")]
-transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -1.5, 0, -4.1)
+[node name="waiter" parent="Canteen" instance=ExtResource("59_ym5ud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26446, 0, -4.03226)
