@@ -75,6 +75,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/line_separation = 4
 theme_override_styles/focus = ExtResource("3_18yvg")
 theme_override_styles/normal = ExtResource("3_18yvg")
 
@@ -86,6 +87,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/line_separation = 4
 theme_override_styles/focus = ExtResource("3_18yvg")
 theme_override_styles/normal = ExtResource("3_18yvg")
 bbcode_enabled = true
