@@ -69,7 +69,7 @@ func saveState(res:State):
 			file.store_8(STATE_MESSAGES)
 			file.store_pascal_string(prop.name)
 			value.saveState(file)
-		elif value is Quest:
+		elif value is QuestsManager:
 			file.store_8(STATE_QUEST)
 			file.store_pascal_string(prop.name)
 			value.saveState(file)
@@ -102,7 +102,7 @@ func loadState(res:State):
 			var queue:MessagesList = res.get(entry_name)
 			queue.loadState(file)
 		elif (entry_type == STATE_QUEST):
-			var queue:Quest = res.get(entry_name)
+			var queue:QuestsManager = res.get(entry_name)
 			queue.loadState(file)
 	file.close()
 		
