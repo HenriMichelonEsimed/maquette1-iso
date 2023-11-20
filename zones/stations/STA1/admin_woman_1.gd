@@ -48,7 +48,7 @@ func a2(): QuestsEvents.event(QuestEvents.QuestEventType.QUESTEVENT_ADVPOINT, "a
 func r4():
 	if GameState.main_quest.have_advpoint("admin_woman_access_card"):
 		if GameState.inventory.have(Item.ItemType.ITEM_TOOLS, "access_card_1"):
-			return ["Thank you for the access car", end]
+			return null
 		else:
 			return r2
 	return r1

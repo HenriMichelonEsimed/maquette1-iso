@@ -151,10 +151,13 @@ func _on_npc_talk(char:InteractiveCharacter,phrase:String, answers:Array):
 	talking_char = char
 	NPCPhraseLabel.text = phrase
 	playerTalkList.clear()
-	for answer in answers:
+	for i in range(0, answers.size()):
+		var answer = answers[i]
 		if (answer is Callable):
 			answer = answer.call()
+			if (answer == null): continue
 		playerTalkList.add_item(answer[0])
+		playerTalkList.set_item_metadata(playerTalkList.item_count-1, i)
 	talkWindow.visible = true
 	playerTalkList.grab_focus()
 	if (playerTalkList.item_count > 0):
@@ -179,4 +182,4 @@ func _on_notification_timer_timeout():
 	notificationLabel.visible = false
 
 func _on_player_talk_item_clicked(index, at_position, mouse_button_index):
-	talking_char.answer(index)
+	talking_char.answer(playerTalkList.get_item_metadata(index))
