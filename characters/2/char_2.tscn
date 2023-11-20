@@ -1,9 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://05srs73auu0f"]
+[gd_scene load_steps=2 format=3 uid="uid://05srs73auu0f"]
 
 [ext_resource type="PackedScene" uid="uid://bdhile2502gle" path="res://characters/2/char_2.glb" id="1_o1pj5"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_irkup"]
-radius = 0.3
 
 [node name="char_2" instance=ExtResource("1_o1pj5")]
 
@@ -94,7 +91,3 @@ bones/63/rotation = Quaternion(0.390336, 0.06121, -0.0189793, 0.91844)
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "Armature|mixamo_com|Layer0"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
-shape = SubResource("CapsuleShape3D_irkup")
