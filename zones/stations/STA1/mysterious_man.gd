@@ -1,17 +1,24 @@
 extends InteractiveCharacter
 
-func interact():
-	say(0, "Hello.", ["Hello, nice to meet you."])
-	
-func answer(index:int):
-	if level == 0:
-		if index == 0:
-			say(1, "Congratulation, you won the game !!", ["Wow, thank you !", "Ok, bye"])
-			QuestsEvents.event(QuestEvents.QuestEventType.QUESTEVENT_TALK, "QAMain1_end")
-	elif level == 1:
-		if index == 0:
-			say(2, "You can now roam freely in the station", ["Nice. Bye."])
-		elif index == 1:
-			end()
-	elif level == 2:
-		end()
+func _init():
+	var d1 = []
+	d1.append_array([
+		["Congratulation, you won the game !!", a1], [
+			["Wow, thank you !", [
+				"You can now roam freely in the station", [
+					["Let's talk.", d1],
+					["Nice. Bye.", end]
+				]
+			]],
+			["Ok, bye", end]
+		]
+	])
+	super(
+		["Hello.", [
+			["Hello, nice to meet you.", d1]
+		]]
+	)
+
+func a1():
+	QuestsEvents.event(QuestEvents.QuestEventType.QUESTEVENT_TALK, "QAMain1_end")
+	end()

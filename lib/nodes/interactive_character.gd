@@ -5,23 +5,37 @@ class_name InteractiveCharacter
 signal talk(char:InteractiveCharacter,phrase:String, answers:Array)
 signal end_talk()
 
-var level = 0
+var discussion:Array
+var current:Array
+
+func _init(disc = ["Hello !", [["Bye.", end]] ]):
+	discussion = disc
 
 func _ready():
 	set_collision_layer_value(5, true)
 	
 func interact():
-	say(0, "Hello.", ["Bye."])
+	say(discussion)
 	
-func say(_l:int, phrase:String, answers:Array):
-	level = _l
-	talk.emit(self, phrase, answers)
+func say(disc):
+	current = disc
+	var phrase = current[0]
+	var answr = current[1]
+	if phrase is Array:
+		var fun = phrase[1]
+		phrase = phrase[0]
+		fun.call()
+	talk.emit(self, phrase, answr)
 	
 func end():
 	end_talk.emit()
 	
 func answer(index:int):
-	end()
+	var next = current[1][index][1]
+	if (next is Callable):
+		next.call()
+	elif next is Array:
+		say(next)
 
 func _to_string():
 	return label
