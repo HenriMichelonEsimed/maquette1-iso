@@ -21,7 +21,7 @@ func start():
 func _start():
 	pass
 
-func on_new_quest_event(type:QuestEvents.QuestEventType, key:String):
+func on_new_quest_event(type:Quest.QuestEventType, key:String):
 	pass
 
 func success():

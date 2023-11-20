@@ -38,8 +38,8 @@ func _update():
 		if (not message.read):
 			listMessages.set_item_custom_fg_color (listMessages.item_count-1, Color.YELLOW)
 	listQuests.clear()
-	listQuests.append_text("[b]" + GameState.main_quest.label + "[/b]\n")
-	listQuests.append_text(GameState.main_quest.current.label)
+	listQuests.append_text("[b]" + GameState.quests.label("main") + "[/b]\n")
+	listQuests.append_text(GameState.quests.current("main").label)
 
 func _on_button_back_pressed():
 	close.emit(self)
@@ -73,7 +73,7 @@ func _on_list_messages_item_clicked(index, _at_position, _mouse_button_index):
 	labelMessage.append_text(message.message)
 	message.read = true
 	labelMessage.visible = true
-	QuestsEvents.event(QuestEvents.QuestEventType.QUESTEVENT_READMESSAGE, message.key)
+	GameState.quests.event_all(Quest.QuestEventType.QUESTEVENT_READMESSAGE, message.key)
 	_update()
 	displayMessage = true
 

@@ -44,15 +44,15 @@ var r1 = ["How can I access the restricted area ?",
 
 func a1(): 
 	GameState.inventory.new(Item.ItemType.ITEM_TOOLS, "access_card_1")
-	QuestsEvents.advpoint("lvl0_admin_woman_access_card_2")
+	GameState.quests.advpoint("main", "lvl0_admin_woman_access_card_2")
 
 func a2(): 
-	QuestsEvents.advpoint("lvl0_admin_woman_access_card_1")
+	GameState.quests.advpoint("main","lvl0_admin_woman_access_card_1")
 
 func r4():
-	if not GameState.main_quest.have_advpoint("lvl0_door_to_restricted_area_access_card"): return null
-	if GameState.main_quest.have_advpoint("lvl0_admin_woman_access_card_1"):
-		if GameState.main_quest.have_advpoint("lvl0_admin_woman_access_card_2"):
+	if not GameState.quests.have_advpoint("main", "lvl0_door_to_restricted_area_access_card"): return null
+	if GameState.quests.have_advpoint("main", "lvl0_admin_woman_access_card_1"):
+		if GameState.quests.have_advpoint("main", "lvl0_admin_woman_access_card_2"):
 			return null
 		else:
 			return r2

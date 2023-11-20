@@ -27,8 +27,7 @@ func _ready():
 		_set_player_position(GameState.location.position, GameState.location.rotation)
 	items_transfert_dialog = load("res://scenes/dialogs/items_transfert_dialog.tscn").instantiate()
 	items_transfert_dialog.connect("close", _on_storage_close)
-	QuestsEvents.connect("questevent", _on_new_quest_event)
-	GameState.main_quest.start()
+	GameState.quests.start("main")
 	#_on_button_inventory_pressed()
 	#_on_button_terminal_pressed()
 	
@@ -70,10 +69,7 @@ func _on_change_zonelevel(zone_name:String, spawnpoint_key:String, save:bool=tru
 	for node in GameState.current_zone.find_children("*", "InteractiveCharacter", true, true):
 		node.connect("talk", _on_npc_talk)
 		node.connect("end_talk", _on_end_talk)
-func _on_new_quest_event(type:QuestEvents.QuestEventType, event_key:String):
-	GameState.main_quest.on_new_quest_event(type, event_key)
-	GameState.current_zone.check_quest_advance()
-	
+		
 func _on_player_reset_position():
 	_spawn_player(last_spawnpoint)
 

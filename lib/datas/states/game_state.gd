@@ -6,7 +6,7 @@ signal saving_end()
 var paused:bool = false
 var current_state_path = "autosave"
 var current_zone:Zone
-var main_quest = MainQuest.new()
+var quests = QuestsManager.new()
 var location = LocationState.new()
 var camera = CameraState.new()
 var inventory = ItemsCollection.new()
@@ -24,7 +24,7 @@ func saveGame():
 	saving_start.emit()
 	location.position = player.position
 	location.rotation = player.rotation
-	StateSaver.saveState(MainQuestState.new(main_quest))
+	StateSaver.saveState(QuestsState.new(quests))
 	StateSaver.saveState(MessagesState.new(messages))
 	StateSaver.saveState(location)
 	StateSaver.saveState(camera)
@@ -34,7 +34,7 @@ func saveGame():
 	saving_end.emit()
 
 func loadGame():
-	StateSaver.loadState(MainQuestState.new(main_quest))
+	StateSaver.loadState(QuestsState.new(quests))
 	StateSaver.loadState(MessagesState.new(messages))
 	StateSaver.loadState(location)
 	StateSaver.loadState(camera)
@@ -47,11 +47,11 @@ class MessagesState extends State:
 		super("messages")
 		messages = _inv
 
-class MainQuestState extends State:
-	var main_quest:MainQuest
+class QuestsState extends State:
+	var quests:QuestsManager
 	func _init(_inv):
-		super("main_quest")
-		main_quest = _inv
+		super("quests")
+		quests = _inv
 
 class InventoryState extends State:
 	var inventory:ItemsCollection

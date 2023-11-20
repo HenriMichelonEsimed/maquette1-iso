@@ -1,6 +1,11 @@
 extends Node
 class_name Quest
 
+enum QuestEventType {
+	QUESTEVENT_READMESSAGE	= 0,
+	QUESTEVENT_TALK			= 1,
+}
+
 var key:String
 var label:String
 var starting_point:QuestAdvancement
@@ -18,20 +23,20 @@ func start():
 	
 func have_advpoint(event_key:String):
 	return advancementPoints.find(event_key) >= 0
+	
+func add_advpoint(event_key:String):
+	if (not have_advpoint(event_key)):
+		advancementPoints.push_back(event_key)
 
-func on_new_quest_event(type:QuestEvents.QuestEventType, event_key:String):
-	if (type == QuestEvents.QuestEventType.QUESTEVENT_ADVPOINT):
-		if (not have_advpoint(event_key)):
-			advancementPoints.push_back(event_key)
-	else:
-		current.on_new_quest_event(type, event_key)
-		var next = current.success()
-		if (next != null):
-			current.terminated = true
-			var current_class = load_adv(next)
-			## nil GAME ERROR
-			current = current_class.new()
-			current.start()
+func on_new_quest_event(type:Quest.QuestEventType, event_key:String):
+	current.on_new_quest_event(type, event_key)
+	var next = current.success()
+	if (next != null):
+		current.terminated = true
+		var current_class = load_adv(next)
+		## nil GAME ERROR
+		current = current_class.new()
+		current.start()
 
 func load_adv(adv:String):
 	return load("res://lib/quests/" + key + "/" + adv + ".gd")
