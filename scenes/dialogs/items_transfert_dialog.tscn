@@ -57,11 +57,20 @@ text = "X"
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ListContainer" type="ItemList" parent="Content/VBoxContainer/Lists"]
+[node name="Left" type="VBoxContainer" parent="Content/VBoxContainer/Lists"]
 layout_mode = 2
 size_flags_horizontal = 3
-focus_neighbor_right = NodePath("../ListInventory")
-focus_next = NodePath("../ListInventory")
+
+[node name="Label" type="Label" parent="Content/VBoxContainer/Lists/Left"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="ListContainer" type="ItemList" parent="Content/VBoxContainer/Lists/Left"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_neighbor_right = NodePath("../../Right/ListInventory")
+focus_next = NodePath("../../Right/ListInventory")
 
 [node name="Buttons" type="VBoxContainer" parent="Content/VBoxContainer/Lists"]
 layout_mode = 2
@@ -86,11 +95,21 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = ">"
 
-[node name="ListInventory" type="ItemList" parent="Content/VBoxContainer/Lists"]
+[node name="Right" type="VBoxContainer" parent="Content/VBoxContainer/Lists"]
 layout_mode = 2
 size_flags_horizontal = 3
-focus_neighbor_left = NodePath("../ListContainer")
-focus_next = NodePath("../ListContainer")
+
+[node name="Label" type="Label" parent="Content/VBoxContainer/Lists/Right"]
+layout_mode = 2
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="ListInventory" type="ItemList" parent="Content/VBoxContainer/Lists/Right"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_neighbor_left = NodePath("../../Left/ListContainer")
+focus_next = NodePath("../../Left/ListContainer")
 
 [node name="SelectQuantityDialog" parent="." instance=ExtResource("2_ahwut")]
 visible = false
@@ -99,11 +118,11 @@ layout_mode = 1
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="pressed" from="Content/VBoxContainer/HBoxContainer/ButtonClose" to="." method="_on_close"]
-[connection signal="child_exiting_tree" from="Content/VBoxContainer/Lists/ListContainer" to="." method="_on_list_container_child_exiting_tree"]
-[connection signal="focus_entered" from="Content/VBoxContainer/Lists/ListContainer" to="." method="_on_list_container_focus_entered"]
-[connection signal="ready" from="Content/VBoxContainer/Lists/ListContainer" to="." method="_on_list_container_ready"]
+[connection signal="child_exiting_tree" from="Content/VBoxContainer/Lists/Left/ListContainer" to="." method="_on_list_container_child_exiting_tree"]
+[connection signal="focus_entered" from="Content/VBoxContainer/Lists/Left/ListContainer" to="." method="_on_list_container_focus_entered"]
+[connection signal="ready" from="Content/VBoxContainer/Lists/Left/ListContainer" to="." method="_on_list_container_ready"]
 [connection signal="pressed" from="Content/VBoxContainer/Lists/Buttons/ButtonAll" to="." method="_on_button_all_pressed"]
 [connection signal="pressed" from="Content/VBoxContainer/Lists/Buttons/Middle/ButtonDrop" to="." method="_transfert"]
 [connection signal="pressed" from="Content/VBoxContainer/Lists/Buttons/Middle/ButtonPick" to="." method="_transfert"]
-[connection signal="focus_entered" from="Content/VBoxContainer/Lists/ListInventory" to="." method="_on_list_inventory_focus_entered"]
+[connection signal="focus_entered" from="Content/VBoxContainer/Lists/Right/ListInventory" to="." method="_on_list_inventory_focus_entered"]
 [connection signal="quantity" from="SelectQuantityDialog" to="." method="_on_select_quantity_dialog_quantity"]
