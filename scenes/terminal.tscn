@@ -2,11 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://dwu5wwgt1i534" path="res://assets/models/terminal/terminal.glb" id="1_tumai"]
 [ext_resource type="Script" path="res://scenes/terminal.gd" id="2_q88ae"]
-[ext_resource type="StyleBox" uid="uid://sqx2qlcw5ld1" path="res://assets/item_list_greyed.tres" id="3_m2ytj"]
+[ext_resource type="PackedScene" uid="uid://db3pgflm4l0b4" path="res://scenes/terminal_screen.tscn" id="3_f3bly"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02g43"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2yyhe"]
+albedo_color = Color(0.0509804, 0.101961, 0.14902, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0wbne"]
 
@@ -29,120 +28,18 @@ script = ExtResource("2_q88ae")
 [node name="SubViewport" type="SubViewport" parent="." index="0"]
 render_target_update_mode = 4
 
-[node name="Control" type="Control" parent="SubViewport" index="0"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Content" type="VBoxContainer" parent="SubViewport/Control" index="0"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="SubViewport/Control/Content" index="0"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-
-[node name="Content" type="VBoxContainer" parent="SubViewport/Control/Content" index="1"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="SubViewport/Control/Content/Content" index="0"]
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Label"
-horizontal_alignment = 1
-
-[node name="Body" type="Control" parent="SubViewport/Control/Content/Content" index="1"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="ListMessages" type="ItemList" parent="SubViewport/Control/Content/Content/Body" index="0"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = ExtResource("3_m2ytj")
-
-[node name="ListQuests" type="RichTextLabel" parent="SubViewport/Control/Content/Content/Body" index="1"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/line_separation = 4
-theme_override_styles/focus = ExtResource("3_m2ytj")
-theme_override_styles/normal = ExtResource("3_m2ytj")
-
-[node name="LabelMessage" type="RichTextLabel" parent="SubViewport/Control/Content/Content/Body" index="2"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/line_separation = 4
-theme_override_styles/focus = ExtResource("3_m2ytj")
-theme_override_styles/normal = ExtResource("3_m2ytj")
-bbcode_enabled = true
-text = "[b]Objet du message[/b]
-Hello, bonjour !
-"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/Control/Content" index="2"]
-layout_mode = 2
-alignment = 1
-
-[node name="ButtonQuests" type="Button" parent="SubViewport/Control/Content/HBoxContainer" index="0"]
-layout_mode = 2
-text = "Quests"
-
-[node name="ButtonMessages" type="Button" parent="SubViewport/Control/Content/HBoxContainer" index="1"]
-layout_mode = 2
-text = "Messages"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="SubViewport/Control/Content" index="3"]
-layout_mode = 2
-alignment = 1
-
-[node name="ButtonHomeTerm" type="Button" parent="SubViewport/Control/Content/HBoxContainer2" index="0"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "•"
-
-[node name="ButtonBack" type="Button" parent="SubViewport/Control" index="1"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -35.0
-offset_bottom = 55.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 34
-text = "X"
+[node name="TerminalScreen" parent="SubViewport" index="0" instance=ExtResource("3_f3bly")]
 
 [node name="Iphone 15 pro max" parent="." index="1"]
 process_mode = 3
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 
 [node name="screen_001" parent="Iphone 15 pro max" index="5"]
-surface_material_override/0 = SubResource("StandardMaterial3D_02g43")
+transform = Transform3D(0.01, 0, 0, 0, 0.00999438, -0.000335299, 0, 0.000335299, 0.00999438, 0, 0.00682647, -0.00447913)
+surface_material_override/0 = SubResource("StandardMaterial3D_2yyhe")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Iphone 15 pro max/screen_001" index="0"]
-transform = Transform3D(3.40278, 0, 0, 0, 1.12461, -1.49012e-08, 0, -7.45058e-09, 7.15111, 0, 0, 0)
+transform = Transform3D(3.47669, 0, 0, 0, 1.12326, 4.47035e-08, 0, -1.11759e-08, 6.83475, -3.8743e-06, 0.418217, -0.0140307)
 mesh = SubResource("PlaneMesh_0wbne")
 surface_material_override/0 = SubResource("StandardMaterial3D_34cnq")
 

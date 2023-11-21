@@ -13,6 +13,7 @@ var last_spawnpoint:String
 var talking_char:InteractiveCharacter
 
 func _ready():
+	get_viewport().content_scale_factor = 2.5
 	NotifManager.connect("new_notification", _on_new_notification)
 	GameState.connect("saving_start", _on_saving_start)
 	GameState.connect("saving_end", _on_saving_end)

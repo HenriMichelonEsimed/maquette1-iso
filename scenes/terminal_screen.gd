@@ -2,12 +2,12 @@ extends Control
 
 signal close(node:Node)
 
-@onready var listMessages = $Screen/Content/Content/Body/ListMessages
-@onready var labelMessage = $Screen/Content/Content/Body/LabelMessage
-@onready var listQuests = $Screen/Content/Content/Body/ListQuests
-@onready var labelCurrent = $Screen/Content/Content/Label
-@onready var buttonQuests = $Screen/Content/HBoxContainer/ButtonQuests
-@onready var buttonMessages = $Screen/Content/HBoxContainer/ButtonMessages
+@onready var listMessages = $Content/Content/Body/ListMessages
+@onready var labelMessage = $Content/Content/Body/LabelMessage
+@onready var listQuests = $Content/Content/Body/ListQuests
+@onready var labelCurrent = $Content/Content/Label
+@onready var buttonQuests = $Content/HBoxContainer/ButtonQuests
+@onready var buttonMessages = $Content/HBoxContainer/ButtonMessages
 var currentButton:Button
 var displayMessage = false
 

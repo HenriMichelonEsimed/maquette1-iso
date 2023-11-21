@@ -15,14 +15,13 @@ var last_mouse_pos2D = null
 @onready var node_area = $"Iphone 15 pro max/screen_001/MeshInstance3D/Area3D"
 
 func _ready():
-	var center = Vector2.ZERO
-	center.x = get_viewport().size.x/2
-	center.y = get_viewport().size.y/2
+	var vsize = get_viewport().size / get_viewport().content_scale_factor
+	var center = vsize / 2
 	var camera = get_viewport().get_camera_3d()
-	position = camera.project_position(center, 2)
+	position = camera.project_position(center, 3)
 	var rot = ISOCamera.rotations[GameState.camera.view]
 	rotation = rot
-	scale = scale * 6
+	scale = scale * (5 + get_viewport().content_scale_factor) 
 	
 	node_area.mouse_entered.connect(self._mouse_entered_area)
 	# If the material is NOT set to use billboard settings, then avoid running billboard specific code
@@ -66,7 +65,7 @@ func handle_mouse(event):
 		is_mouse_held = event.pressed
 
 	# Find mouse position in Area3D
-	var mouse_pos3D = find_mouse(event.global_position)
+	var mouse_pos3D = find_mouse(event.position)
 
 	# Check if the mouse is outside of bounds, use last position to avoid errors
 	# NOTE: mouse_exited signal was unrealiable in this situation
@@ -101,7 +100,7 @@ func handle_mouse(event):
 
 	# Set the event's position and global position.
 	event.position = mouse_pos2D
-	event.global_position = mouse_pos2D
+	#event.global_position = mouse_pos2D
 
 	# If the event is a mouse motion event...
 	if event is InputEventMouseMotion:

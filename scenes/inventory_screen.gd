@@ -41,8 +41,10 @@ var list:ItemList
 var selected = 0
 
 func _ready():
-	size.x = get_viewport().size.x / 1.5
-	size.y = get_viewport().size.y / 1.5
+	var vsize = get_viewport().size / get_viewport().content_scale_factor
+	size = vsize / 1.5
+	position.x = (vsize.x - size.x) / 2
+	position.y = (vsize.y - size.y) / 2
 	tabs.custom_minimum_size.x = size.x/2
 	StateSaver.loadState(state)
 	tabs.current_tab = state.tab
