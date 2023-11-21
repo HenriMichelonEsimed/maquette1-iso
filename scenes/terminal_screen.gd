@@ -39,7 +39,9 @@ func _update():
 			listMessages.set_item_custom_fg_color (listMessages.item_count-1, Color.YELLOW)
 	listQuests.clear()
 	listQuests.append_text("[b]" + GameState.quests.label("main") + "[/b]\n")
-	listQuests.append_text(GameState.quests.current("main").label)
+	listQuests.append_text(GameState.quests.current("main").label + "\n")
+	for adv in GameState.quests.get_advpoints("main"):
+		listQuests.append_text("\t[i]" + adv.label + "[/i]\n")
 
 func _on_button_back_pressed():
 	close.emit(self)

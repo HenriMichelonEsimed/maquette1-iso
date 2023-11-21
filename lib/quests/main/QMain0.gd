@@ -1,8 +1,8 @@
-extends QuestAdvancement
-class_name QAMain0
+extends QuestGoal
+class_name QMain0
 
 func _init():
-	super("QAMain0", "",
+	super("QMain0", "",
 	"Read your first message on your phone")
 
 func _start():
@@ -16,6 +16,6 @@ func _start():
 func success():
 	var msg = GameState.messages.getbykey(key)
 	if (msg != null) and msg.read:
-		return "QAMain1"
+		return "QMain1"
 	return null
 

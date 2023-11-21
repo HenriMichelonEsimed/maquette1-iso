@@ -1,11 +1,10 @@
 extends Node
-class_name QuestAdvancement
+class_name QuestGoal
 
 var key:String
 var label:String
 var parent:String
 var started = false
-var terminated = false
 
 func _init(_k, _parent, _label):
 	key = _k

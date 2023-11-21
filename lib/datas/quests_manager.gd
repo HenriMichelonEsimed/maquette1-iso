@@ -8,10 +8,11 @@ var _quests = {
 func start(quest:String):
 	_quests[quest].start()
 	
-func label(quest:String):
+func label(quest:String) -> String:
 	return _quests[quest].label
 	
-func current(quest:String):
+func current(quest:String) -> QuestGoal:
+	print(_quests[quest].current.key )
 	return _quests[quest].current
 
 func event(quest:String, type:Quest.QuestEventType, event_key:String):
@@ -28,6 +29,14 @@ func advpoint(quest:String, key:String):
 	
 func have_advpoint(quest: String, key:String):
 	return _quests[quest].have_advpoint(key)
+
+func get_advpoints(quest: String):
+	return _quests[quest].get_advpoints()
+
+func finish_advpoint(quest: String, adv_key:String):
+	var adv = _quests[quest].get_advpoint(adv_key)
+	if (adv != null):
+		adv.finished = true
 
 func saveState(file:FileAccess):
 	file.store_64(_quests.size())

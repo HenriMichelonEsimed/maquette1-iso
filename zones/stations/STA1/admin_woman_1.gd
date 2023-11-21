@@ -2,14 +2,17 @@ extends InteractiveCharacter
 
 var d1 = []
 
-var r3 = [ "[Show message on phone]",
-	[
-		["Oh ok I see. But I am very hungry and very busy. If you can bring me a sandwitch I could help you", a3], [
-			["Ok I'll look it up.", end],
-			["...in your dreams!", d1],
-		]
-	]
-]
+func r3():
+	if GameState.quests.current("main").key > "QMain0":
+		return [ "[Show message on phone]",
+			[
+				["Oh ok I see. But I am very hungry and very busy. If you can bring me a sandwitch I could help you", a3], [
+					["Ok I'll look it up.", end],
+					["...in your dreams!", d1],
+					r2d
+			]
+		]]
+	return null
 
 var r2a =["Why do you need one ?", [
 		["I need to see someone", 
@@ -73,7 +76,7 @@ var r1 = ["How can I access the restricted area ?",
 func a1(item): 
 	GameState.inventory.remove(item)
 	GameState.inventory.new(Item.ItemType.ITEM_QUEST, "access_card_1")
-	GameState.quests.advpoint("main", "lvl0_admin_woman_give_access_card")
+	GameState.quests.advpoint("main", "lvl0_use_access_card")
 
 func a2(): 
 	GameState.quests.advpoint("main","lvl0_admin_woman_have_access_card")
@@ -84,7 +87,7 @@ func a3():
 func r4():
 	if not GameState.quests.have_advpoint("main", "lvl0_door_to_restricted_area_access_card"): return null
 	if GameState.quests.have_advpoint("main", "lvl0_admin_woman_have_access_card"):
-		if GameState.quests.have_advpoint("main", "lvl0_admin_woman_give_access_card"):
+		if GameState.quests.have_advpoint("main", "lvl0_use_access_card"):
 			return null
 		else:
 			return r2
