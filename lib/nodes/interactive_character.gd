@@ -23,8 +23,12 @@ func say(disc):
 	var answr = current[1]
 	if phrase is Array:
 		var fun = phrase[1]
+		if (phrase.size() == 3):
+			var param = phrase[2]
+			fun.call(param)
+		else:
+			fun.call()
 		phrase = phrase[0]
-		fun.call()
 	talk.emit(self, phrase, answr)
 	
 func end():
@@ -36,8 +40,8 @@ func answer(index:int):
 		next = next.call()
 	next = next[1]
 	if (next is Callable):
-		next.call()
-	elif next is Array:
+		next = next.call()
+	if next is Array:
 		say(next)
 
 func _to_string():

@@ -3,16 +3,15 @@
 [ext_resource type="Script" path="res://lib/nodes/interactive_character.gd" id="1_xg7ks"]
 [ext_resource type="PackedScene" uid="uid://05srs73auu0f" path="res://characters/2/char_2.tscn" id="2_iefcc"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ovehj"]
-radius = 0.360996
-height = 1.92549
+[sub_resource type="BoxShape3D" id="BoxShape3D_khdtm"]
+size = Vector3(1, 1, 1.76908)
 
 [node name="MysteriousMan" type="CharacterBody3D"]
 script = ExtResource("1_xg7ks")
-label = "Mysterious Man"
+label = "Mysterious Person"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.830146, 0.0385618)
-shape = SubResource("CapsuleShape3D_ovehj")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.830146, 0.50944)
+shape = SubResource("BoxShape3D_khdtm")
 
 [node name="char_2" parent="." instance=ExtResource("2_iefcc")]

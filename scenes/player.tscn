@@ -211,9 +211,6 @@ bind/51/name = &"mixamorig_RightHandPinky3"
 bind/51/bone = -1
 bind/51/pose = Transform3D(-0.0435159, -0.0411696, 0.166822, -0.087666, -0.142686, -0.0580811, 0.14778, -0.0967668, 0.0146681, 0.141044, 0.475047, 1.29587)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_n027a"]
-size = Vector3(1, 0.973327, 1)
-
 [sub_resource type="Animation" id="Animation_prdsq"]
 length = 0.001
 tracks/0/type = "rotation_3d"
@@ -694,6 +691,9 @@ size = Vector3(0.412231, 0.383118, 1.17015)
 radius = 0.328553
 height = 1.85556
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_n027a"]
+size = Vector3(0.78597, 1.6584, 0.931033)
+
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_7my55")
 
@@ -1161,16 +1161,6 @@ bones/64/scale = Vector3(1, 1, 1)
 mesh = SubResource("ArrayMesh_d0xum")
 skin = SubResource("Skin_jvwan")
 
-[node name="CollectAndUseArea" type="Area3D" parent="."]
-transform = Transform3D(0.878991, 0, 0, 0, 1.92973, 0, 0, 0, 0.918106, 0, 0.868067, -0.455746)
-visible = false
-collision_layer = 0
-collision_mask = 30
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CollectAndUseArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0.0346919, 0)
-shape = SubResource("BoxShape3D_n027a")
-
 [node name="RayCastToGround" type="RayCast3D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -1190,6 +1180,15 @@ shape = SubResource("BoxShape3D_vnj7x")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.923668, 0)
 shape = SubResource("CapsuleShape3D_byirt")
+
+[node name="CollectAndUseArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11161, -0.533054)
+collision_layer = 0
+collision_mask = 30
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollectAndUseArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, -0.0634052, 0.0666128)
+shape = SubResource("BoxShape3D_n027a")
 
 [connection signal="body_entered" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_entered"]
 [connection signal="body_exited" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_exited"]

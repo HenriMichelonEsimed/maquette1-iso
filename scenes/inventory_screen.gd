@@ -12,23 +12,23 @@ signal item_dropped(item:Item,quantity:int)
 @export var list_tools:ItemList
 @export var list_clothes:ItemList
 @export var list_consumables:ItemList
-@export var list_ammunitions:ItemList
+@export var list_quest:ItemList
 @export var list_miscellaneous:ItemList
 
 const tab_order = [ 
 	Item.ItemType.ITEM_TOOLS, 
 	Item.ItemType.ITEM_CLOTHES,
 	Item.ItemType.ITEM_CONSUMABLES,
-	Item.ItemType.ITEM_AMMUNITIONS,
-	Item.ItemType.ITEM_MISCELLANEOUS
+	Item.ItemType.ITEM_MISCELLANEOUS,
+	Item.ItemType.ITEM_QUEST
 ]
 
 @onready var list_content = {
 	Item.ItemType.ITEM_TOOLS : list_tools,
 	Item.ItemType.ITEM_CLOTHES : list_clothes,
 	Item.ItemType.ITEM_CONSUMABLES : list_consumables,
-	Item.ItemType.ITEM_AMMUNITIONS : list_ammunitions,
-	Item.ItemType.ITEM_MISCELLANEOUS : list_miscellaneous
+	Item.ItemType.ITEM_MISCELLANEOUS : list_miscellaneous,
+	Item.ItemType.ITEM_QUEST : list_quest
 }
 @onready var item_content = $Content/Body/Content/PanelItem/Content
 @onready var item_title = $Content/Body/Content/PanelItem/Content/Title
@@ -54,6 +54,15 @@ func _on_list_tools_item_selected(index):
 
 func _on_list_miscellaneous_item_selected(index):
 	_item_details(GameState.inventory.getone_bytype(index, Item.ItemType.ITEM_MISCELLANEOUS), index)
+
+func _on_list_item_quest_selected(index):
+	_item_details(GameState.inventory.getone_bytype(index, Item.ItemType.ITEM_QUEST), index)
+
+func _on_list_item_consumable_selected(index):
+	_item_details(GameState.inventory.getone_bytype(index, Item.ItemType.ITEM_CONSUMABLES), index)
+
+func _on_list_item_clothe_selected(index):
+	_item_details(GameState.inventory.getone_bytype(index, Item.ItemType.ITEM_CLOTHES), index)
 
 func _item_details(_item, index):
 	selected = index
@@ -118,5 +127,4 @@ func _on_tabs_tab_selected(tab):
 	if (tab == state.tab): return
 	state.tab = tab
 	StateSaver.saveState(state)
-
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=61 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_7fv8t"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -59,6 +59,7 @@
 [ext_resource type="Script" path="res://zones/stations/STA1/mysterious_man.gd" id="57_k0fra"]
 [ext_resource type="PackedScene" uid="uid://nebo4anbesm0" path="res://props/items/misc/credit.tscn" id="58_6ad3g"]
 [ext_resource type="PackedScene" uid="uid://ctbw7kil8lw7k" path="res://zones/stations/STA1/waiter.tscn" id="59_ym5ud"]
+[ext_resource type="PackedScene" uid="uid://bisthw5n1b1yg" path="res://props/items/consum/ham_sandwich_1.tscn" id="60_eky8k"]
 
 [node name="level_0" type="Node3D"]
 script = ExtResource("1_7fv8t")
@@ -418,6 +419,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0,
 [node name="door_sliding_1" parent="Admistration/Architecture" instance=ExtResource("24_brdvl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85788, 0, -7.729)
 script = ExtResource("27_vg34u")
+label = "Administration"
 
 [node name="Wall_16" parent="Admistration/Architecture" instance=ExtResource("8_sguot")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.8, 0, 2.5)
@@ -1080,3 +1082,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.2, 
 
 [node name="waiter" parent="Canteen" instance=ExtResource("59_ym5ud")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26446, 0, -4.03226)
+
+[node name="HamSandwitch1" parent="Canteen" instance=ExtResource("60_eky8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.762318, 0)

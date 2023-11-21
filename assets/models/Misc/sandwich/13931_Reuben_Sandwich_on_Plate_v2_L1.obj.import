@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dk22nwgk2q0us"
+path="res://.godot/imported/13931_Reuben_Sandwich_on_Plate_v2_L1.obj-1f5dd5cb599be34feca0a27d29e58db9.mesh"
+
+[deps]
+
+files=["res://.godot/imported/13931_Reuben_Sandwich_on_Plate_v2_L1.obj-1f5dd5cb599be34feca0a27d29e58db9.mesh"]
+
+source_file="res://assets/models/Misc/sandwich/13931_Reuben_Sandwich_on_Plate_v2_L1.obj"
+dest_files=["res://.godot/imported/13931_Reuben_Sandwich_on_Plate_v2_L1.obj-1f5dd5cb599be34feca0a27d29e58db9.mesh", "res://.godot/imported/13931_Reuben_Sandwich_on_Plate_v2_L1.obj-1f5dd5cb599be34feca0a27d29e58db9.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -152,6 +152,14 @@ func _on_npc_talk(char:InteractiveCharacter,phrase:String, answers:Array):
 		if (answer is Callable):
 			answer = answer.call()
 			if (answer == null): continue
+		#if (answer is Array):
+		#	var call = answer[1]
+		#	if (answer.size() == 3):
+		#		var param = answer[2]
+		#		call.call(param)
+		#	else:
+		#		call.call()
+		#	answer = answer[0]
 		playerTalkList.add_item(answer[0])
 		playerTalkList.set_item_metadata(playerTalkList.item_count-1, i)
 	talkWindow.visible = true

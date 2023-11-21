@@ -12,7 +12,7 @@ const scenes_path = [ 'tools', 'clothes', 'consum', 'misc', 'quest']
 
 @export var key:String
 @export var label:String
-@export var weight:int
+@export var weight:float
 @export var type:ItemType
 
 var fall_acceleration = 40

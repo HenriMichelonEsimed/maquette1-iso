@@ -13,7 +13,7 @@ content_margin_right = 10.0
 content_margin_bottom = 10.0
 bg_color = Color(0.247059, 0.247059, 0.247059, 1)
 
-[node name="Control" type="Control" node_paths=PackedStringArray("tabs", "list_tools", "list_clothes", "list_consumables", "list_ammunitions", "list_miscellaneous")]
+[node name="Control" type="Control" node_paths=PackedStringArray("tabs", "list_tools", "list_clothes", "list_consumables", "list_quest", "list_miscellaneous")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +25,7 @@ tabs = NodePath("Content/Body/Content/Tabs")
 list_tools = NodePath("Content/Body/Content/Tabs/Tools/List")
 list_clothes = NodePath("Content/Body/Content/Tabs/Clothes/List")
 list_consumables = NodePath("Content/Body/Content/Tabs/Consumables/List")
-list_ammunitions = NodePath("Content/Body/Content/Tabs/Ammunitions/List")
+list_quest = NodePath("Content/Body/Content/Tabs/Quest/List")
 list_miscellaneous = NodePath("Content/Body/Content/Tabs/Miscellaneous/List")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -120,11 +120,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Ammunitions" type="Control" parent="Content/Body/Content/Tabs"]
+[node name="Miscellaneous" type="Control" parent="Content/Body/Content/Tabs"]
 visible = false
 layout_mode = 2
 
-[node name="List" type="ItemList" parent="Content/Body/Content/Tabs/Ammunitions"]
+[node name="List" type="ItemList" parent="Content/Body/Content/Tabs/Miscellaneous"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -132,11 +132,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Miscellaneous" type="Control" parent="Content/Body/Content/Tabs"]
+[node name="Quest" type="Control" parent="Content/Body/Content/Tabs"]
 visible = false
 layout_mode = 2
 
-[node name="List" type="ItemList" parent="Content/Body/Content/Tabs/Miscellaneous"]
+[node name="List" type="ItemList" parent="Content/Body/Content/Tabs/Quest"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -192,6 +192,9 @@ layout_mode = 1
 [connection signal="tab_changed" from="Content/Body/Content/Tabs" to="." method="_on_tabs_tab_changed"]
 [connection signal="tab_selected" from="Content/Body/Content/Tabs" to="." method="_on_tabs_tab_selected"]
 [connection signal="item_selected" from="Content/Body/Content/Tabs/Tools/List" to="." method="_on_list_tools_item_selected"]
+[connection signal="item_selected" from="Content/Body/Content/Tabs/Clothes/List" to="." method="_on_list_item_clothe_selected"]
+[connection signal="item_selected" from="Content/Body/Content/Tabs/Consumables/List" to="." method="_on_list_item_consumable_selected"]
 [connection signal="item_selected" from="Content/Body/Content/Tabs/Miscellaneous/List" to="." method="_on_list_miscellaneous_item_selected"]
+[connection signal="item_selected" from="Content/Body/Content/Tabs/Quest/List" to="." method="_on_list_item_quest_selected"]
 [connection signal="pressed" from="Content/Body/Content/PanelItem/Content/Actions/Drop" to="." method="_on_drop_pressed"]
 [connection signal="quantity" from="SelectQuantityDialog" to="." method="_drop"]
