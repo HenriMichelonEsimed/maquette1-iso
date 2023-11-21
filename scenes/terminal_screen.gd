@@ -2,9 +2,9 @@ extends Control
 
 signal close(node:Node)
 
-@onready var listMessages = $Content/Content/Body/ListMessages
-@onready var labelMessage = $Content/Content/Body/LabelMessage
-@onready var listQuests = $Content/Content/Body/ListQuests
+@onready var listMessages = $Content/Content/Body/MarginContainer/ListMessages
+@onready var labelMessage = $Content/Content/Body/MarginContainer/LabelMessage
+@onready var listQuests = $Content/Content/Body/MarginContainer/ListQuests
 @onready var labelCurrent = $Content/Content/Label
 @onready var buttonQuests = $Content/HBoxContainer/ButtonQuests
 @onready var buttonMessages = $Content/HBoxContainer/ButtonMessages
@@ -38,7 +38,9 @@ func _update():
 		if (not message.read):
 			listMessages.set_item_custom_fg_color (listMessages.item_count-1, Color.YELLOW)
 	listQuests.clear()
+	listQuests.push_color(Color.YELLOW)
 	listQuests.append_text("[b]" + GameState.quests.label("main") + "[/b]\n")
+	listQuests.pop()
 	listQuests.append_text(GameState.quests.current("main").label + "\n")
 	for adv in GameState.quests.get_advpoints("main"):
 		listQuests.append_text("\t[i]" + adv.label + "[/i]\n")
@@ -68,9 +70,13 @@ func _on_list_messages_item_clicked(index, _at_position, _mouse_button_index):
 	_hide_all()
 	var message = GameState.messages.messages[index]
 	message.read = true
+	labelCurrent.text = "Message"
+	labelCurrent.visible = true
 	labelMessage.clear()
+	labelMessage.push_color(Color.YELLOW)
 	labelMessage.append_text("From : [b]" + message.from + "[/b]\n")
 	labelMessage.append_text("Subject: [b]" + message.subject + "[/b]\n")
+	labelMessage.pop()
 	labelMessage.append_text(message.message)
 	message.read = true
 	labelMessage.visible = true
@@ -84,3 +90,7 @@ func _on_button_quests_pressed():
 	currentButton = buttonQuests
 	listQuests.visible = true
 	labelCurrent.visible = true
+
+func _on_close(node):
+	close.emit(self)
+	visible = false

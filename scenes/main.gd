@@ -5,15 +5,15 @@ extends Node3D
 @onready var notificationLabel = $Game/UI/LabelNotification
 @onready var notificationTimer = $Game/UI/LabelNotification/Timer
 @onready var talkWindow = $TalkWindow
-@onready var NPCPhraseLabel = $TalkWindow/VBoxContainer/NPC
-@onready var NPCNameLabel = $TalkWindow/VBoxContainer/NPCName
-@onready var playerTalkList = $TalkWindow/VBoxContainer/Player
+@onready var NPCPhraseLabel = $TalkWindow/MarginContainer/VBoxContainer/NPC
+@onready var NPCNameLabel = $TalkWindow/MarginContainer/VBoxContainer/NPCName
+@onready var playerTalkList = $TalkWindow/MarginContainer/VBoxContainer/Player
 var items_transfert_dialog:ItemsTransfertDialog
 var last_spawnpoint:String
 var talking_char:InteractiveCharacter
 
 func _ready():
-	get_viewport().content_scale_factor = 2.5
+	get_viewport().content_scale_factor = 2
 	NotifManager.connect("new_notification", _on_new_notification)
 	GameState.connect("saving_start", _on_saving_start)
 	GameState.connect("saving_end", _on_saving_end)
@@ -31,7 +31,7 @@ func _ready():
 	items_transfert_dialog.connect("close", _on_storage_close)
 	GameState.quests.start("main")
 	#_on_button_inventory_pressed()
-	_on_button_terminal_pressed()
+	#_on_button_terminal_pressed()
 	
 func _process(_delta):
 	if (talkWindow.visible):

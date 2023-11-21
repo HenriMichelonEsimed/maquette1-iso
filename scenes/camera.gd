@@ -11,16 +11,19 @@ const rotations = [ Vector3(-45, -45, 0), Vector3(-45,-135,0), Vector3(-45,-225,
 const accel = 4
 var camera_pivot
 var object_to_follow
-var _size = 30
+var _size = -1
 var _view = 0
 var player_moving = false
 
 func _ready():
+	
 	camera_pivot = get_node(cameraPivotPath)
 	object_to_follow = get_node(objectToFollowPath)
 	
 func init():
 	_size = GameState.camera.size
+	if (_size == -1):
+		_size = 20 #30 / get_viewport().content_scale_factor
 	_view = GameState.camera.view
 	_zoom_view()
 	_rotate_view()
@@ -59,6 +62,7 @@ func _zoom_view():
 		_size = 100
 	size = _size
 	GameState.camera.size = _size
+	print(size)
 
 func _rotate_view():
 	if (_view > 3): 

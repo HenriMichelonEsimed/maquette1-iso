@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dyj5pxcv4nq84"]
+[gd_scene load_steps=16 format=3 uid="uid://dyj5pxcv4nq84"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_4sx3e"]
 [ext_resource type="PackedScene" uid="uid://drr16dfcqhfyw" path="res://scenes/player.tscn" id="1_hswq3"]
@@ -17,10 +17,20 @@ border_width_bottom = 2
 expand_margin_left = 10.0
 expand_margin_right = 10.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enm55"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.172549, 0.317647, 0.427451, 0.772549)
+corner_radius_top_right = 48
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k30mp"]
 content_margin_left = 8.0
+content_margin_top = 8.0
 content_margin_right = 8.0
-bg_color = Color(0.6, 0.6, 0.6, 0.721569)
+content_margin_bottom = 4.0
+bg_color = Color(0.172549, 0.317647, 0.427451, 0.772549)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -32,9 +42,23 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvpdd"]
+bg_color = Color(0.290196, 0.494118, 0.647059, 0.772549)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cm7j4"]
+content_margin_top = 4.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rw4go"]
-content_margin_left = 8.0
-content_margin_right = 8.0
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.505882, 0.701961, 0.854902, 0.741176)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -46,9 +70,11 @@ corner_radius_bottom_left = 4
 expand_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bvso"]
-content_margin_left = 8.0
-content_margin_right = 8.0
-bg_color = Color(0.152941, 0.152941, 0.152941, 1)
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.2, 0.364706, 0.486275, 0.92549)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -158,8 +184,11 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_top = -105.0
-offset_right = 236.0
+offset_right = 351.0
 grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/panel = SubResource("StyleBoxFlat_enm55")
 
 [node name="LabelNotification" type="Label" parent="Game/UI"]
 layout_mode = 1
@@ -180,7 +209,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="Game/UI/LabelNotification"]
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
 
 [node name="TouchMove" parent="." instance=ExtResource("5_asao4")]
@@ -189,7 +218,7 @@ visible = false
 [node name="TouchView" parent="." instance=ExtResource("6_essw5")]
 visible = false
 
-[node name="TalkWindow" type="ColorRect" parent="."]
+[node name="TalkWindow" type="Panel" parent="."]
 visible = false
 anchors_preset = 7
 anchor_left = 0.5
@@ -202,22 +231,30 @@ offset_right = 259.0
 offset_bottom = -65.0
 grow_horizontal = 2
 grow_vertical = 0
-color = Color(0.207843, 0.207843, 0.207843, 0.454902)
+theme_override_styles/panel = SubResource("StyleBoxFlat_jvpdd")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TalkWindow"]
+[node name="MarginContainer" type="MarginContainer" parent="TalkWindow"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 16
 
-[node name="NPCName" type="Label" parent="TalkWindow/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TalkWindow/MarginContainer"]
 layout_mode = 2
+
+[node name="NPCName" type="Label" parent="TalkWindow/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_cm7j4")
 text = "Name"
 horizontal_alignment = 1
 
-[node name="NPC" type="Label" parent="TalkWindow/VBoxContainer"]
+[node name="NPC" type="Label" parent="TalkWindow/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -225,10 +262,10 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_rw4go")
 text = "Text"
 autowrap_mode = 3
 
-[node name="Player" type="ItemList" parent="TalkWindow/VBoxContainer"]
+[node name="Player" type="ItemList" parent="TalkWindow/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.560784, 0.560784, 0.560784, 1)
+theme_override_colors/font_color = Color(0.764706, 0.764706, 0.764706, 1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_7bvso")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -253,4 +290,4 @@ environment = ExtResource("2_dhum8")
 [connection signal="view_rotate" from="TouchView" to="Game/CameraPivot/Camera" method="_on_touch_view_rotate"]
 [connection signal="view_zoomin" from="TouchView" to="Game/CameraPivot/Camera" method="_on_touch_view_view_zoomin"]
 [connection signal="view_zoomout" from="TouchView" to="Game/CameraPivot/Camera" method="_on_touch_view_view_zoomout"]
-[connection signal="item_clicked" from="TalkWindow/VBoxContainer/Player" to="." method="_on_player_talk_item_clicked"]
+[connection signal="item_clicked" from="TalkWindow/MarginContainer/VBoxContainer/Player" to="." method="_on_player_talk_item_clicked"]

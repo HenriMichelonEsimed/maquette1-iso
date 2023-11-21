@@ -1,28 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://db3pgflm4l0b4"]
+[gd_scene load_steps=5 format=3 uid="uid://db3pgflm4l0b4"]
 
 [ext_resource type="Script" path="res://scenes/terminal_screen.gd" id="1_6dr6g"]
-[ext_resource type="StyleBox" uid="uid://sqx2qlcw5ld1" path="res://assets/item_list_greyed.tres" id="3_18yvg"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4gva"]
-bg_color = Color(0.45098, 0.619608, 0.772549, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0ih0"]
+bg_color = Color(0.290196, 0.494118, 0.647059, 0.772549)
 corner_radius_top_left = 24
 corner_radius_top_right = 24
 corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
-expand_margin_left = 8.0
-expand_margin_top = 8.0
-expand_margin_right = 8.0
-expand_margin_bottom = 8.0
 
-[node name="TerminalScreen" type="Panel"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5ve5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ofy75"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="TerminalScreen" type="Control"]
 process_mode = 3
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_s4gva")
 script = ExtResource("1_6dr6g")
 
 [node name="Content" type="VBoxContainer" parent="."]
@@ -47,43 +48,35 @@ theme_override_font_sizes/font_size = 24
 text = "Label"
 horizontal_alignment = 1
 
-[node name="Body" type="Control" parent="Content/Content"]
+[node name="Body" type="PanelContainer" parent="Content/Content"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0ih0")
 
-[node name="ListMessages" type="ItemList" parent="Content/Content/Body"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = ExtResource("3_18yvg")
+[node name="MarginContainer" type="MarginContainer" parent="Content/Content/Body"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
 
-[node name="ListQuests" type="RichTextLabel" parent="Content/Content/Body"]
+[node name="ListMessages" type="ItemList" parent="Content/Content/Body/MarginContainer"]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hovered_color = Color(0.129412, 0.211765, 0.396078, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_q5ve5")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ofy75")
+
+[node name="ListQuests" type="RichTextLabel" parent="Content/Content/Body/MarginContainer"]
+visible = false
+layout_mode = 2
 theme_override_constants/line_separation = 4
-theme_override_styles/focus = ExtResource("3_18yvg")
-theme_override_styles/normal = ExtResource("3_18yvg")
 
-[node name="LabelMessage" type="RichTextLabel" parent="Content/Content/Body"]
+[node name="LabelMessage" type="RichTextLabel" parent="Content/Content/Body/MarginContainer"]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_constants/line_separation = 4
-theme_override_styles/focus = ExtResource("3_18yvg")
-theme_override_styles/normal = ExtResource("3_18yvg")
 bbcode_enabled = true
 text = "[b]Objet du message[/b]
 Hello, bonjour !
@@ -110,7 +103,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "x"
 
-[connection signal="item_clicked" from="Content/Content/Body/ListMessages" to="." method="_on_list_messages_item_clicked"]
+[connection signal="item_clicked" from="Content/Content/Body/MarginContainer/ListMessages" to="." method="_on_list_messages_item_clicked"]
 [connection signal="pressed" from="Content/HBoxContainer/ButtonQuests" to="." method="_on_button_quests_pressed"]
 [connection signal="pressed" from="Content/HBoxContainer/ButtonMessages" to="." method="_on_button_list_messages_pressed"]
 [connection signal="pressed" from="Content/HBoxContainer2/ButtonHomeTerm" to="." method="_on_button_back_pressed"]
