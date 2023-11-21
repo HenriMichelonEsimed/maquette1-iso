@@ -12,6 +12,7 @@ script = ExtResource("1_5p0pu")
 key = "credit"
 label = "Credit"
 type = 3
+preview_scale = 20.0
 
 [node name="GoldCoin1" parent="." instance=ExtResource("2_nwtcq")]
 

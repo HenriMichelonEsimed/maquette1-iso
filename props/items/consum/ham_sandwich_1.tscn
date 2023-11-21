@@ -6,10 +6,12 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_c6hvw"]
 size = Vector3(8.04759, 1, 1.14309)
 
-[node name="HamSandwitch1" type="CharacterBody3D"]
+[node name="HamSandwich1" type="CharacterBody3D"]
 script = ExtResource("1_jcd3k")
 key = "ham_sandwich_1"
 label = "Ham Sandwich"
+weight = 0.5
+preview_scale = 3.0
 
 [node name="HamSandwich1" parent="." instance=ExtResource("2_0d3u4")]
 

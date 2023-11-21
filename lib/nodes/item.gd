@@ -14,6 +14,7 @@ const scenes_path = [ 'tools', 'clothes', 'consum', 'misc', 'quest']
 @export var label:String
 @export var weight:float
 @export var type:ItemType
+@export var preview_scale:float = 1.0
 
 var fall_acceleration = 40
 var target_velocity = Vector3.ZERO

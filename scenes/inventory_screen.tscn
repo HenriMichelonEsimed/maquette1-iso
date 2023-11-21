@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bamoxutsna6sx"]
+[gd_scene load_steps=8 format=3 uid="uid://bamoxutsna6sx"]
 
 [ext_resource type="Script" path="res://scenes/inventory_screen.gd" id="1_0hce1"]
 [ext_resource type="PackedScene" uid="uid://dytjnya7i6c47" path="res://scenes/dialogs/select_quantity_dialog.tscn" id="2_k136o"]
+[ext_resource type="Material" uid="uid://k5r36wixdaow" path="res://assets/materials/misc/dark.tres" id="2_xv7x3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gicgb"]
 font_size = 34
@@ -13,11 +14,26 @@ content_margin_right = 10.0
 content_margin_bottom = 10.0
 bg_color = Color(0.247059, 0.247059, 0.247059, 1)
 
-[node name="Control" type="Control" node_paths=PackedStringArray("tabs", "list_tools", "list_clothes", "list_consumables", "list_quest", "list_miscellaneous")]
+[sub_resource type="Environment" id="Environment_f1hi3"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="World3D" id="World3D_tt1eo"]
+environment = SubResource("Environment_f1hi3")
+
+[node name="InventoryScreen" type="Control" node_paths=PackedStringArray("tabs", "list_tools", "list_clothes", "list_consumables", "list_quest", "list_miscellaneous")]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -350.0
+offset_right = 160.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0hce1")
@@ -45,27 +61,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Content"]
+[node name="Top" type="MarginContainer" parent="Content"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Content/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/Top"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="Content/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Content/Top/HBoxContainer"]
 layout_mode = 2
 text = "Inventory"
 label_settings = SubResource("LabelSettings_gicgb")
 
-[node name="Control" type="Control" parent="Content/MarginContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="Content/Top/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ButtonBack" type="Button" parent="Content/MarginContainer/HBoxContainer"]
+[node name="ButtonBack" type="Button" parent="Content/Top/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
 text = "X"
@@ -82,7 +98,7 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 
 [node name="Tabs" type="TabContainer" parent="Content/Body/Content"]
-custom_minimum_size = Vector2(600, 0)
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 
@@ -90,7 +106,6 @@ size_flags_horizontal = 0
 layout_mode = 2
 
 [node name="List" type="ItemList" parent="Content/Body/Content/Tabs/Tools"]
-custom_minimum_size = Vector2(500, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -103,7 +118,6 @@ visible = false
 layout_mode = 2
 
 [node name="List" type="ItemList" parent="Content/Body/Content/Tabs/Clothes"]
-custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 offset_left = -250.0
 offset_right = 250.0
@@ -172,9 +186,31 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "XX"
 
-[node name="Specific" type="MarginContainer" parent="Content/Body/Content/PanelItem/Content"]
+[node name="ViewContent" type="SubViewportContainer" parent="Content/Body/Content/PanelItem/Content"]
 layout_mode = 2
 size_flags_vertical = 3
+stretch = true
+
+[node name="3DView" type="SubViewport" parent="Content/Body/Content/PanelItem/Content/ViewContent"]
+own_world_3d = true
+world_3d = SubResource("World3D_tt1eo")
+handle_input_locally = false
+size = Vector2i(356, 402)
+render_target_update_mode = 0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Content/Body/Content/PanelItem/Content/ViewContent/3DView"]
+transform = Transform3D(1, -8.35189e-23, -4.37114e-08, 4.37114e-08, 1.91069e-15, 1, 0, -1, 1.91069e-15, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Content/Body/Content/PanelItem/Content/ViewContent/3DView"]
+transform = Transform3D(1, 0, -4.37114e-08, 4.37114e-08, 1.91069e-15, 1, 0, -1, 1.91069e-15, 0, 1, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Content/Body/Content/PanelItem/Content/ViewContent/3DView"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.05133, 0)
+size = Vector3(100, 0.1, 100)
+material = ExtResource("2_xv7x3")
+
+[node name="InsertPoint" type="Node3D" parent="Content/Body/Content/PanelItem/Content/ViewContent/3DView"]
+transform = Transform3D(0.866025, -0.5, 0, 0.433013, 0.75, 0.5, -0.25, -0.433013, 0.866025, 0, 0, 0)
 
 [node name="Actions" type="HBoxContainer" parent="Content/Body/Content/PanelItem/Content"]
 layout_mode = 2
@@ -188,7 +224,7 @@ text = "Drop"
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="Content/MarginContainer/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="pressed" from="Content/Top/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
 [connection signal="tab_changed" from="Content/Body/Content/Tabs" to="." method="_on_tabs_tab_changed"]
 [connection signal="tab_selected" from="Content/Body/Content/Tabs" to="." method="_on_tabs_tab_selected"]
 [connection signal="item_selected" from="Content/Body/Content/Tabs/Tools/List" to="." method="_on_list_tools_item_selected"]

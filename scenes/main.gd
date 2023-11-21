@@ -29,7 +29,7 @@ func _ready():
 	items_transfert_dialog = load("res://scenes/dialogs/items_transfert_dialog.tscn").instantiate()
 	items_transfert_dialog.connect("close", _on_storage_close)
 	GameState.quests.start("main")
-	#_on_button_inventory_pressed()
+	_on_button_inventory_pressed()
 	#_on_button_terminal_pressed()
 	
 func _process(_delta):
@@ -107,7 +107,7 @@ func _on_button_quit_pressed():
 	get_tree().quit()
 
 func _on_button_inventory_pressed():
-	_on_pause()
+	_on_pause(false)
 	var scene = load("res://scenes/inventory_screen.tscn").instantiate()
 	add_child(scene)
 	scene.connect("close", _on_resume)
@@ -121,7 +121,7 @@ func _on_button_terminal_pressed():
 func _on_pause(hidegame:bool=true):
 	GameState.paused = true
 	$Game/UI.visible = false
-	$Game.visible = !hidegame
+	#$Game.visible = !hidegame
 	
 func _on_resume(from:Node=null):
 	if (from != null): remove_child(from)

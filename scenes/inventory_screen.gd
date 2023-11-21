@@ -33,6 +33,7 @@ const tab_order = [
 @onready var item_content = $Content/Body/Content/PanelItem/Content
 @onready var item_title = $Content/Body/Content/PanelItem/Content/Title
 @onready var weigth_value = $Content/Body/Content/PanelItem/Content/WeightLine/Value
+@onready var node_3d = $"Content/Body/Content/PanelItem/Content/ViewContent/3DView/InsertPoint"
 
 var state = InventoryScreenState.new()
 var item:Item
@@ -40,6 +41,9 @@ var list:ItemList
 var selected = 0
 
 func _ready():
+	size.x = get_viewport().size.x / 1.5
+	size.y = get_viewport().size.y / 1.5
+	tabs.custom_minimum_size.x = size.x/2
 	StateSaver.loadState(state)
 	tabs.current_tab = state.tab
 	for type in list_content: _fill_list(type, list_content[type])
@@ -50,25 +54,51 @@ func _on_button_back_pressed():
 	queue_free()
 
 func _on_list_tools_item_selected(index):
+	list_clothes.deselect_all()
+	list_consumables.deselect_all()
+	list_miscellaneous.deselect_all()
+	list_quest.deselect_all()
 	_item_details(GameState.inventory.getone_bytype(index, Item.ItemType.ITEM_TOOLS), index)
 
 func _on_list_miscellaneous_item_selected(index):
+	list_clothes.deselect_all()
+	list_consumables.deselect_all()
+	list_quest.deselect_all()
+	list_tools.deselect_all()
 	_item_details(GameState.inventory.getone_bytype(index, Item.ItemType.ITEM_MISCELLANEOUS), index)
 
 func _on_list_item_quest_selected(index):
+	list_clothes.deselect_all()
+	list_consumables.deselect_all()
+	list_miscellaneous.deselect_all()
+	list_tools.deselect_all()
 	_item_details(GameState.inventory.getone_bytype(index, Item.ItemType.ITEM_QUEST), index)
 
 func _on_list_item_consumable_selected(index):
+	list_clothes.deselect_all()
+	list_miscellaneous.deselect_all()
+	list_quest.deselect_all()
+	list_tools.deselect_all()
 	_item_details(GameState.inventory.getone_bytype(index, Item.ItemType.ITEM_CONSUMABLES), index)
 
 func _on_list_item_clothe_selected(index):
+	list_miscellaneous.deselect_all()
+	list_consumables.deselect_all()
+	list_quest.deselect_all()
+	list_tools.deselect_all()
 	_item_details(GameState.inventory.getone_bytype(index, Item.ItemType.ITEM_CLOTHES), index)
 
-func _item_details(_item, index):
+func _item_details(_item:Item, index):
 	selected = index
 	item = _item
 	item_title.text = item.label
 	weigth_value.text = str(item.weight)
+	for c in node_3d.get_children():
+		c.queue_free()
+	var clone = _item.duplicate()
+	node_3d.add_child(clone)
+	clone.position = Vector3.ZERO
+	clone.scale = clone.scale * clone.preview_scale
 	item_content.visible = true
 
 func _process(_delta):
