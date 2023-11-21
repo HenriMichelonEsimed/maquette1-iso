@@ -4,10 +4,10 @@ extends Node3D
 @onready var notificationsList = $Game/UI/ListNotifications
 @onready var notificationLabel = $Game/UI/LabelNotification
 @onready var notificationTimer = $Game/UI/LabelNotification/Timer
-@onready var talkWindow = $Game/TalkWindow
-@onready var NPCPhraseLabel = $Game/TalkWindow/VBoxContainer/NPC
-@onready var NPCNameLabel = $Game/TalkWindow/VBoxContainer/NPCName
-@onready var playerTalkList = $Game/TalkWindow/VBoxContainer/Player
+@onready var talkWindow = $TalkWindow
+@onready var NPCPhraseLabel = $TalkWindow/VBoxContainer/NPC
+@onready var NPCNameLabel = $TalkWindow/VBoxContainer/NPCName
+@onready var playerTalkList = $TalkWindow/VBoxContainer/Player
 var items_transfert_dialog:ItemsTransfertDialog
 var last_spawnpoint:String
 var talking_char:InteractiveCharacter
@@ -29,8 +29,8 @@ func _ready():
 	items_transfert_dialog = load("res://scenes/dialogs/items_transfert_dialog.tscn").instantiate()
 	items_transfert_dialog.connect("close", _on_storage_close)
 	GameState.quests.start("main")
-	_on_button_inventory_pressed()
-	#_on_button_terminal_pressed()
+	#_on_button_inventory_pressed()
+	_on_button_terminal_pressed()
 	
 func _process(_delta):
 	if (talkWindow.visible):
@@ -114,7 +114,7 @@ func _on_button_inventory_pressed():
 
 func _on_button_terminal_pressed():
 	_on_pause(false)
-	var scene = load("res://scenes/terminal_screen.tscn").instantiate()
+	var scene = load("res://scenes/terminal.tscn").instantiate()
 	add_child(scene)
 	scene.connect("close", _on_resume)
 	
@@ -133,7 +133,7 @@ func _on_resume(from:Node=null):
 	$Game.visible = true
 	GameState.player.just_resumed = true
 	GameState.paused = false
-	
+
 func _on_saving_start():
 	$Game/UI/LabelSaving.visible = true
 

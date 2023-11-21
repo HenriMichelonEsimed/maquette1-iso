@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://db3pgflm4l0b4"]
 
 [ext_resource type="Script" path="res://scenes/terminal_screen.gd" id="1_6dr6g"]
-[ext_resource type="Texture2D" uid="uid://v01lrctiaipd" path="res://assets/textures/terminal.png" id="1_npbmo"]
+[ext_resource type="Texture2D" uid="uid://v01lrctiaipd" path="res://assets/textures/terminal.png" id="2_5hnhg"]
 [ext_resource type="StyleBox" uid="uid://sqx2qlcw5ld1" path="res://assets/item_list_greyed.tres" id="3_18yvg"]
 
 [node name="TerminalScreen" type="Control"]
@@ -26,9 +26,8 @@ offset_right = 197.0
 offset_bottom = 354.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_npbmo")
+texture = ExtResource("2_5hnhg")
 expand_mode = 4
-stretch_mode = 4
 
 [node name="Content" type="VBoxContainer" parent="Screen"]
 layout_mode = 1

@@ -1,4 +1,5 @@
 extends Camera3D
+class_name ISOCamera
 
 @export var cameraPivotPath: NodePath
 @export var objectToFollowPath: NodePath
