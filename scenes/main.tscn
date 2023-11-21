@@ -172,14 +172,12 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/font = SubResource("FontVariation_y25ao")
-theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_sqsoe")
 text = "Info"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LabelSaving" type="Label" parent="Game/UI"]
-visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0

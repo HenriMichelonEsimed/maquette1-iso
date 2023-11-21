@@ -33,6 +33,10 @@ mouse_cursor/custom_image="res://assets/cursors/png/cursor_default.png"
 
 import/fbx/enabled=false
 
+[gui]
+
+theme/custom_font="res://assets/fonts/Bebas-Regular.ttf"
+
 [input]
 
 player_forward={
