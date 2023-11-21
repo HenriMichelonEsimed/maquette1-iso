@@ -106,11 +106,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="NPCName" type="Label" parent="Game/TalkWindow/VBoxContainer"]
+layout_mode = 2
+text = "Name"
+horizontal_alignment = 1
+
 [node name="NPC" type="Label" parent="Game/TalkWindow/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_rw4go")
+text = "Text"
+autowrap_mode = 3
 
 [node name="Player" type="ItemList" parent="Game/TalkWindow/VBoxContainer"]
 layout_mode = 2

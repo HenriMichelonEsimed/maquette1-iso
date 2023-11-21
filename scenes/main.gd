@@ -6,6 +6,7 @@ extends Node3D
 @onready var notificationTimer = $Game/UI/LabelNotification/Timer
 @onready var talkWindow = $Game/TalkWindow
 @onready var NPCPhraseLabel = $Game/TalkWindow/VBoxContainer/NPC
+@onready var NPCNameLabel = $Game/TalkWindow/VBoxContainer/NPCName
 @onready var playerTalkList = $Game/TalkWindow/VBoxContainer/Player
 var items_transfert_dialog:ItemsTransfertDialog
 var last_spawnpoint:String
@@ -145,6 +146,7 @@ func _on_saving_timer_timeout():
 func _on_npc_talk(char:InteractiveCharacter,phrase:String, answers:Array):
 	_on_pause(false)
 	talking_char = char
+	NPCNameLabel.text = str(char)
 	NPCPhraseLabel.text = phrase
 	playerTalkList.clear()
 	for i in range(0, answers.size()):
