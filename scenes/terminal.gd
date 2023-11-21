@@ -1,4 +1,7 @@
 extends Node3D
+
+signal close(node:Node)
+
 # The size of the quad mesh itself.
 var quad_mesh_size
 # Used for checking if the mouse is inside the Area3D
@@ -11,8 +14,8 @@ var last_mouse_pos3D = null
 var last_mouse_pos2D = null
 
 @onready var node_viewport = $SubViewport
-@onready var node_quad = $"Iphone 15 pro max/screen_001/MeshInstance3D"
-@onready var node_area = $"Iphone 15 pro max/screen_001/MeshInstance3D/Area3D"
+@onready var node_quad = $"Iphone 15 pro max/screen_001/Screen"
+@onready var node_area = $"Iphone 15 pro max/screen_001/Screen/Area3D"
 
 func _ready():
 	var vsize = get_viewport().size / get_viewport().content_scale_factor
@@ -20,7 +23,9 @@ func _ready():
 	var camera = get_viewport().get_camera_3d()
 	position = camera.project_position(center, 3)
 	var rot = ISOCamera.rotations[GameState.camera.view]
-	rotation = rot
+	rot.y = rot.y + 5
+	rot.x = rot.x + 5
+	rotation_degrees = rot
 	scale = scale * (5 + get_viewport().content_scale_factor) 
 	
 	node_area.mouse_entered.connect(self._mouse_entered_area)
@@ -65,7 +70,7 @@ func handle_mouse(event):
 		is_mouse_held = event.pressed
 
 	# Find mouse position in Area3D
-	var mouse_pos3D = find_mouse(event.position)
+	var mouse_pos3D = find_mouse(event.global_position / get_viewport().content_scale_factor)
 
 	# Check if the mouse is outside of bounds, use last position to avoid errors
 	# NOTE: mouse_exited signal was unrealiable in this situation
@@ -79,11 +84,10 @@ func handle_mouse(event):
 		mouse_pos3D = last_mouse_pos3D
 		if mouse_pos3D == null:
 			mouse_pos3D = Vector3.ZERO
-
 	# TODO: adapt to bilboard mode or avoid completely
 
 	# convert the relative event position from 3D to 2D
-	var mouse_pos2D = Vector2(mouse_pos3D.x, -mouse_pos3D.y)
+	var mouse_pos2D = Vector2(mouse_pos3D.x, mouse_pos3D.z)
 
 	# Right now the event position's range is the following: (-quad_size/2) -> (quad_size/2)
 	# We need to convert it into the following range: 0 -> quad_size
@@ -100,7 +104,7 @@ func handle_mouse(event):
 
 	# Set the event's position and global position.
 	event.position = mouse_pos2D
-	#event.global_position = mouse_pos2D
+	event.global_position = mouse_pos2D
 
 	# If the event is a mouse motion event...
 	if event is InputEventMouseMotion:
@@ -177,3 +181,7 @@ func rotate_area_to_billboard():
 
 		# Rotate in the Z axis to compensate camera tilt
 		node_area.rotate_object_local(Vector3.BACK, camera.rotation.z)
+
+func _on_terminal_screen_close(node):
+	close.emit(self)
+	visible = false

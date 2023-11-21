@@ -45,7 +45,6 @@ func _update():
 
 func _on_button_back_pressed():
 	close.emit(self)
-	visible = false
 	
 func _hide_all():
 	listMessages.visible = false

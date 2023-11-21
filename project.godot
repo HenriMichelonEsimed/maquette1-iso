@@ -24,8 +24,8 @@ NotifManager="*res://lib/notification_manager.gd"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=700
+window/size/viewport_width=2000
+window/size/viewport_height=1000
 window/size/mode=3
 mouse_cursor/custom_image="res://assets/cursors/png/cursor_default.png"
 
@@ -187,7 +187,6 @@ player_terminal={
 
 [input_devices]
 
-pointing/emulate_touch_from_mouse=true
 pointing/size/mode=3
 
 [layer_names]

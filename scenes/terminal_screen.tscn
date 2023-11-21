@@ -15,11 +15,13 @@ expand_margin_right = 8.0
 expand_margin_bottom = 8.0
 
 [node name="TerminalScreen" type="Panel"]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_s4gva")
 script = ExtResource("1_6dr6g")
 

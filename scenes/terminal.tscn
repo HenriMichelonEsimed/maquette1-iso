@@ -17,38 +17,42 @@ resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_skbit")
+disable_receive_shadows = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1hijd"]
-size = Vector3(7.6, 1, 15.7)
+[sub_resource type="BoxShape3D" id="BoxShape3D_whqji"]
+size = Vector3(1.90883, 1, 1.88014)
 
 [node name="terminal" instance=ExtResource("1_tumai")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 script = ExtResource("2_q88ae")
 
 [node name="SubViewport" type="SubViewport" parent="." index="0"]
+gui_embed_subwindows = true
 render_target_update_mode = 4
 
 [node name="TerminalScreen" parent="SubViewport" index="0" instance=ExtResource("3_f3bly")]
 
 [node name="Iphone 15 pro max" parent="." index="1"]
 process_mode = 3
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.0336261, -0.999434, 0, 0.999434, 0.0336261, 0, 0, 0)
 
 [node name="screen_001" parent="Iphone 15 pro max" index="5"]
 transform = Transform3D(0.01, 0, 0, 0, 0.00999438, -0.000335299, 0, 0.000335299, 0.00999438, 0, 0.00682647, -0.00447913)
 surface_material_override/0 = SubResource("StandardMaterial3D_2yyhe")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Iphone 15 pro max/screen_001" index="0"]
-transform = Transform3D(3.47669, 0, 0, 0, 1.12326, 4.47035e-08, 0, -1.11759e-08, 6.83475, -3.8743e-06, 0.418217, -0.0140307)
+[node name="Screen" type="MeshInstance3D" parent="Iphone 15 pro max/screen_001" index="0"]
+transform = Transform3D(3.47669, 0, 0, 0, 1.12326, 4.48781e-08, 0, -1.12123e-08, 6.83475, -3.8743e-06, 0.437635, -0.0140288)
 mesh = SubResource("PlaneMesh_0wbne")
 surface_material_override/0 = SubResource("StandardMaterial3D_34cnq")
 
-[node name="Area3D" type="Area3D" parent="Iphone 15 pro max/screen_001/MeshInstance3D" index="0"]
-transform = Transform3D(0.293878, 0, 0, 0, 0.889194, 3.72529e-09, 0, 0, 0.139838, 0, 0, 0)
-input_capture_on_drag = true
+[node name="Area3D" type="Area3D" parent="Iphone 15 pro max/screen_001/Screen" index="0"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Iphone 15 pro max/screen_001/MeshInstance3D/Area3D" index="0"]
-shape = SubResource("BoxShape3D_1hijd")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Iphone 15 pro max/screen_001/Screen/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, -1.81899e-12, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_whqji")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="2"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 1.34)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.310639)
+sky_mode = 1
+
+[connection signal="close" from="SubViewport/TerminalScreen" to="." method="_on_terminal_screen_close"]

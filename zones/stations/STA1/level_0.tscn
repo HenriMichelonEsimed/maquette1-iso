@@ -1088,6 +1088,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26446, 0, -4.03226)
 
 [node name="HamSandwitch1" parent="Canteen" instance=ExtResource("60_eky8k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.762318, 0)
-
-[node name="HamSandwitch2" parent="Canteen" instance=ExtResource("60_eky8k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.97514, 0.0134581, 0)
