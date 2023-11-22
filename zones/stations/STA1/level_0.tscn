@@ -1,7 +1,8 @@
-[gd_scene load_steps=60 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=61 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_7fv8t"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
+[ext_resource type="Script" path="res://zones/stations/STA1/SpawnPointHallFromHall2.gd" id="3_3qva3"]
 [ext_resource type="PackedScene" uid="uid://bqqwxekreebdl" path="res://props/architecture/stairs/stair_1.tscn" id="5_gwg4j"]
 [ext_resource type="PackedScene" uid="uid://brix30ocniwym" path="res://props/lights/omni_led_1.tscn" id="6_jvn7r"]
 [ext_resource type="PackedScene" uid="uid://ddyyrhb7kfww7" path="res://props/architecture/walls/wall_2.tscn" id="8_sguot"]
@@ -62,7 +63,7 @@
 
 [node name="level_0" type="Node3D"]
 script = ExtResource("1_7fv8t")
-zone_name = "Hall"
+zone_name = "stations/STA1/level_0"
 
 [node name="SpawnPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
@@ -70,8 +71,8 @@ script = ExtResource("2_3hqhq")
 key = "default"
 
 [node name="SpawnPointFromHall2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6, 0, -8.6)
-script = ExtResource("2_3hqhq")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.473, 2.55133, -8.6)
+script = ExtResource("3_3qva3")
 key = "from_hall2"
 
 [node name="Entrace" type="Node3D" parent="."]

@@ -18,6 +18,7 @@ var items_transfert_dialog:ItemsTransfertDialog
 var last_spawnpoint:String
 var talking_char:InteractiveCharacter
 var _prev_lang:String
+var _previous_zone:Zone
 
 func _ready():
 	var os_lang = OS.get_locale_language()
@@ -38,7 +39,7 @@ func _ready():
 	$Game/CameraPivot/Camera.init()
 	if (GameState.messages.have_unread()):
 		_on_new_message()
-	_on_change_zonelevel(GameState.location.zone_name, "default", false)
+	_change_zonelevel(GameState.location.zone_name, "default")
 	if (GameState.location.position != Vector3.ZERO):
 		_set_player_position(GameState.location.position, GameState.location.rotation)
 	items_transfert_dialog = load("res://scenes/dialogs/items_transfert_dialog.tscn").instantiate()
@@ -78,14 +79,25 @@ func _set_player_position(pos:Vector3, rot:Vector3):
 	$Game/CameraPivot/Camera.move(pos)
 	GameState.view_pivot.position = pos
 	GameState.view_pivot.position.y += 1.5
-
-func _on_change_zonelevel(zone_name:String, spawnpoint_key:String, save:bool=true):
-	if (save): GameState.saveGame()
-	GameState.location.zone_name = zone_name
+	
+func _change_zonelevel(zone_name:String, spawnpoint_key:String):
+	var new_zone:Zone
+	if (_previous_zone != null) and (_previous_zone.zone_name == zone_name):
+		new_zone = _previous_zone
+	else:
+		new_zone = GameState.getZone(zone_name).instantiate()
 	if (GameState.current_zone != null): 
 		GameState.player.disconnect("item_collected", GameState.current_zone.on_item_collected)
-		GameState.current_zone.queue_free()
-	GameState.current_zone = load("res://zones/" + zone_name + ".tscn").instantiate()
+		GameState.current_zone.disconnect("change_zone", _on_change_zonelevel)
+		for node in GameState.current_zone.find_children("*", "Storage", true, true):
+			node.disconnect("open", _on_storage_open)
+		for node in GameState.current_zone.find_children("*", "InteractiveCharacter", true, true):
+			node.disconnect("talk", _on_npc_talk)
+			node.disconnect("end_talk", _on_end_talk)
+		$Game.remove_child(GameState.current_zone)
+	_previous_zone = GameState.current_zone
+	GameState.current_zone = new_zone
+	GameState.location.zone_name = zone_name
 	GameState.current_zone.connect("change_zone", _on_change_zonelevel)
 	GameState.player.connect("item_collected", GameState.current_zone.on_item_collected)
 	$Game.add_child(GameState.current_zone)
@@ -96,6 +108,13 @@ func _on_change_zonelevel(zone_name:String, spawnpoint_key:String, save:bool=tru
 		node.connect("talk", _on_npc_talk)
 		node.connect("end_talk", _on_end_talk)
 		
+func _on_change_zonelevel(trigger:ZoneChangeTrigger):
+	if (trigger.zone_name == GameState.location.zone_name): 
+		return
+	GameState.saveGame()
+	_change_zonelevel(trigger.zone_name, trigger.spawnpoint_key)
+	trigger.is_triggered = false
+
 func _on_player_reset_position():
 	_spawn_player(last_spawnpoint)
 

@@ -15,7 +15,7 @@
 [node name="Hall2" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8, -0.07, -0.6)
 script = ExtResource("1_tjs2w")
-zone_name = "Hall2"
+zone_name = "stations/STA1/level_1"
 
 [node name="OmniLed1" parent="." instance=ExtResource("2_ohn6l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, 0)
@@ -147,7 +147,7 @@ script = ExtResource("8_n57mg")
 transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, -8.4, 0, 0.4)
 
 [node name="SpawnPointHall2FromHall" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.7, 0, 0.5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.5, 0, 0.5)
 script = ExtResource("10_lbufr")
 key = "default"
 

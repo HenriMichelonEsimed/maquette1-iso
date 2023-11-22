@@ -694,8 +694,8 @@ height = 1.85556
 [sub_resource type="BoxShape3D" id="BoxShape3D_n027a"]
 size = Vector3(0.78597, 1.6584, 0.931033)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_tywyg"]
-size = Vector3(1, 1.41119, 0.144471)
+[sub_resource type="BoxShape3D" id="BoxShape3D_4xd2y"]
+size = Vector3(0.71047, 1, 0.237145)
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_7my55")
@@ -1199,8 +1199,8 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea"]
-transform = Transform3D(1, 0, 0, 0, 0.914534, 0, 0, 0, 1, 0, 0.0102848, 0.0874206)
-shape = SubResource("BoxShape3D_tywyg")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0424516)
+shape = SubResource("BoxShape3D_4xd2y")
 
 [connection signal="body_entered" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_entered"]
 [connection signal="body_exited" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_exited"]

@@ -44,6 +44,17 @@ func loadGame():
 	StateSaver.loadState(camera)
 	StateSaver.loadState(InventoryState.new(inventory))
 	StateSaver.loadState(EventsQueueState.new(events_queue))
+	
+func loadZone(zone_name:String):
+	var zone_path = "res://zones/" + zone_name + ".tscn"
+	ResourceLoader.load_threaded_request(zone_path)
+	
+func getZone(zone_name:String):
+	var zone_path = "res://zones/" + zone_name + ".tscn"
+	var _dummy = []
+	if (ResourceLoader.load_threaded_get_status(zone_path, _dummy) == ResourceLoader.THREAD_LOAD_INVALID_RESOURCE):
+		ResourceLoader.load_threaded_request(zone_path)
+	return ResourceLoader.load_threaded_get(zone_path)
 
 class MessagesState extends State:
 	var messages:MessagesList

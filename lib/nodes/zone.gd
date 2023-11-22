@@ -1,7 +1,7 @@
 extends Node3D
 class_name Zone
 
-signal change_zone(zone_name:String, spawnpoint_name:String)
+signal change_zone(trigger:ZoneChangeTrigger)
 @export var zone_name:String
 var state:ZoneState = null
 
@@ -39,7 +39,7 @@ func _zone_ready():
 	pass
 
 func on_zone_change(trigger:ZoneChangeTrigger):
-	change_zone.emit(trigger.zone_name, trigger.spawnpoint_key)
+	change_zone.emit(trigger)
 
 func check_quest_advance():
 	pass
