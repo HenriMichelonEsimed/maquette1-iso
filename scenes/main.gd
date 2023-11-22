@@ -103,6 +103,7 @@ func _spawn_player(spawnpoint_key:String):
 	for node in GameState.current_zone.find_children("*", "SpawnPoint", false, true):
 		if (node.key == spawnpoint_key):
 			_set_player_position(node.global_position, node.global_rotation)
+			node.spawn()
 			break
 	last_spawnpoint = spawnpoint_key
 

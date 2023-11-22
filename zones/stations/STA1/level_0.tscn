@@ -375,7 +375,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, -14.3)
 
 [node name="door_sliding_1" parent="Hall" instance=ExtResource("24_brdvl")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.9, 2.75429, -8.5)
-visible = false
 script = ExtResource("46_57usu")
 label = "Restricted Area"
 
@@ -995,6 +994,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.762318, 0)
 quantity = 10
 
 [node name="ZoneChangeTrigger" parent="." instance=ExtResource("59_o5rmr")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.9365, 2.8, -8.6)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.9718, 2.8, -8.6)
 zone_name = "stations/STA1/level_1"
 spawnpoint_key = "default"

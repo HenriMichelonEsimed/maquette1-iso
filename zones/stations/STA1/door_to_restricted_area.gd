@@ -1,8 +1,5 @@
 extends Usable
 
-func _use():
-	
-
 func _check_use() -> bool:
 	#var check = GameState.inventory.have(Item.ItemType.ITEM_QUEST, "access_card_1")
 	#if not check: 

@@ -7,6 +7,8 @@
 size = Vector3(4.02476, 1.47008, 0.297535)
 
 [node name="ZoneChangeTrigger" type="StaticBody3D"]
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("1_birtx")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]

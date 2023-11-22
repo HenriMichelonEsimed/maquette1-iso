@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://drr16dfcqhfyw"]
+[gd_scene load_steps=24 format=3 uid="uid://drr16dfcqhfyw"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_7my55"]
 [ext_resource type="Texture2D" uid="uid://hn1mjnguw62i" path="res://characters/player/textures/casual_man_color.png" id="2_imkcu"]
@@ -694,6 +694,9 @@ height = 1.85556
 [sub_resource type="BoxShape3D" id="BoxShape3D_n027a"]
 size = Vector3(0.78597, 1.6584, 0.931033)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_tywyg"]
+size = Vector3(1, 1.41119, 0.144471)
+
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_7my55")
 
@@ -1184,11 +1187,22 @@ shape = SubResource("CapsuleShape3D_byirt")
 [node name="CollectAndUseArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11161, -0.533054)
 collision_layer = 0
-collision_mask = 30
+collision_mask = 22
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollectAndUseArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, -0.0634052, 0.0666128)
 shape = SubResource("BoxShape3D_n027a")
 
+[node name="TriggerArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.718367, -0.214216)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea"]
+transform = Transform3D(1, 0, 0, 0, 0.914534, 0, 0, 0, 1, 0, 0.0102848, 0.0874206)
+shape = SubResource("BoxShape3D_tywyg")
+
 [connection signal="body_entered" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_entered"]
 [connection signal="body_exited" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_exited"]
+[connection signal="body_entered" from="TriggerArea" to="." method="_on_collect_item_aera_body_entered"]
+[connection signal="body_exited" from="TriggerArea" to="." method="_on_collect_item_aera_body_exited"]

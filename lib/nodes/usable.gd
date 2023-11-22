@@ -23,6 +23,15 @@ func _ready():
 		
 func _check_use() -> bool:
 	return true
+	
+func force_use():
+	is_used = true
+	if (_animation != null):
+		_animation.play("use")
+		_animation.seek(10)
+	else:
+		_use()
+		using.emit(is_used)
 
 func use(_byplayer:bool=false,startup:bool=false):
 	if (not is_used):

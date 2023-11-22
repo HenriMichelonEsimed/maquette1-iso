@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bke2hthw8fuoy"]
+[gd_scene load_steps=12 format=3 uid="uid://bke2hthw8fuoy"]
 
-[ext_resource type="Script" path="res://lib/nodes/zone_change_trigger.gd" id="1_a57ab"]
 [ext_resource type="Material" uid="uid://b4exwi2bgnbom" path="res://assets/materials/architecture/floor_2.tres" id="1_thkep"]
+[ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_tjs2w"]
 [ext_resource type="PackedScene" uid="uid://brix30ocniwym" path="res://props/lights/omni_led_1.tscn" id="2_ohn6l"]
 [ext_resource type="PackedScene" uid="uid://23c376lwmywd" path="res://props/architecture/walls/wall_2_ext_corner_ext.tscn" id="3_7soyj"]
 [ext_resource type="PackedScene" uid="uid://bb6xlwamakagk" path="res://props/architecture/walls/wall_2_ext.tscn" id="4_b2a56"]
@@ -9,11 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://27sty830tukx" path="res://zones/stations/STA1/mysterious_man.tscn" id="7_ucs8j"]
 [ext_resource type="Script" path="res://zones/stations/STA1/mysterious_man.gd" id="8_n57mg"]
 [ext_resource type="PackedScene" uid="uid://d0185cw36cxe0" path="res://props/furnitures/desk_1_long.tscn" id="9_eqq4t"]
-[ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="10_4m22p"]
+[ext_resource type="Script" path="res://zones/stations/STA1/SpawnPointHall2FromHall.gd" id="10_lbufr"]
+[ext_resource type="PackedScene" uid="uid://btdkocrw70s4u" path="res://lib/nodes/zone_change_trigger.tscn" id="11_0odjv"]
 
 [node name="Hall2" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8, -0.07, -0.6)
-script = ExtResource("1_a57ab")
+script = ExtResource("1_tjs2w")
 zone_name = "Hall2"
 
 [node name="OmniLed1" parent="." instance=ExtResource("2_ohn6l")]
@@ -25,7 +26,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8, 5, 0)
 omni_range = 10.0
 
 [node name="Architecture" type="Node3D" parent="."]
-script = ExtResource("1_a57ab")
 
 [node name="Floor2" type="CSGBox3D" parent="Architecture"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3, 0, 0.5)
@@ -136,8 +136,7 @@ transform = Transform3D(1, 0, -1.31134e-07, 0, 1, 0, 1.31134e-07, 0, 1, 0.799999
 transform = Transform3D(1, 0, -1.31134e-07, 0, 1, 0, 1.31134e-07, 0, 1, 0.799999, 0, -5.5)
 
 [node name="door_sliding_1" parent="Architecture" instance=ExtResource("5_7e415")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 0.5)
-visible = false
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1, 0, 0.5)
 label = "Hall"
 
 [node name="MysteriousMan" parent="." instance=ExtResource("7_ucs8j")]
@@ -147,7 +146,12 @@ script = ExtResource("8_n57mg")
 [node name="Desk1_Long" parent="." instance=ExtResource("9_eqq4t")]
 transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, -8.4, 0, 0.4)
 
-[node name="SpawnPoint" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.2, 0, 0.3)
-script = ExtResource("10_4m22p")
+[node name="SpawnPointHall2FromHall" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.7, 0, 0.5)
+script = ExtResource("10_lbufr")
 key = "default"
+
+[node name="ZoneChangeTrigger" parent="." instance=ExtResource("11_0odjv")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.03788, 0, 0)
+zone_name = "stations/STA1/level_0"
+spawnpoint_key = "from_hall2"
