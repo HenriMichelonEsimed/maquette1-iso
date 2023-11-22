@@ -4,10 +4,15 @@ signal close(node:Node)
 
 @onready var i18n = $Borders/Content/Panel/Borders/Settings/i18n/OptionButton
 
+func _process(_delta):
+	if (Input.is_action_just_pressed("cancel")):
+		_on_close()
+
 func _ready():
 	for i in range(0, i18n.item_count):
 		if (Settings.langs[GameState.settings.lang] == i18n.get_item_text(i)):
 			i18n.select(i)
+	i18n.grab_focus()
 
 func _on_close():
 	close.emit(self)

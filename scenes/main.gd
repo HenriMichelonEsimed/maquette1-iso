@@ -4,14 +4,20 @@ extends Node3D
 @onready var notificationsList = $Game/UI/ListNotifications
 @onready var notificationLabel = $Game/UI/LabelNotification
 @onready var notificationTimer = $Game/UI/LabelNotification/Timer
-@onready var buttonMenu = $Game/UI/MarginContainer/VBoxContainer/OptionMenu
+@onready var optionMenu = $Game/UI/MarginContainer/VBoxContainer/OptionMenu
 @onready var talkWindow = $TalkWindow
 @onready var NPCPhraseLabel = $TalkWindow/MarginContainer/VBoxContainer/NPC
 @onready var NPCNameLabel = $TalkWindow/MarginContainer/VBoxContainer/NPCName
 @onready var playerTalkList = $TalkWindow/MarginContainer/VBoxContainer/Player
+@onready var optionMenuButtons = [
+	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonParams,
+	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonSave,
+	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonExit
+]
 var items_transfert_dialog:ItemsTransfertDialog
 var last_spawnpoint:String
 var talking_char:InteractiveCharacter
+var _prev_lang:String
 
 func _ready():
 	var os_lang = OS.get_locale_language()
@@ -19,6 +25,7 @@ func _ready():
 		if (lang == os_lang):
 			GameState.settings.lang = lang
 	TranslationServer.set_locale(GameState.settings.lang)
+	_prev_lang = GameState.settings.lang
 	#get_viewport().content_scale_factor = 2
 	NotifManager.connect("new_notification", _on_new_notification)
 	GameState.connect("saving_start", _on_saving_start)
@@ -44,15 +51,22 @@ func _process(_delta):
 	if (Input.is_action_just_pressed("exit_game")):
 		_on_button_quit_pressed()
 		return
-	if (talkWindow.visible):
-		if Input.is_action_just_pressed("player_use") and playerTalkList.get_selected_items().size() > 0:
-			_on_player_talk_item_clicked(playerTalkList.get_selected_items()[0], 0, 0)
+	if (GameState.paused): 
+		if (optionMenu.visible):
+			if Input.is_action_just_pressed("cancel"):
+				optionMenu.visible = false
+				_on_resume()
+			pass
+		elif (talkWindow.visible):
+			if Input.is_action_just_pressed("player_use") and playerTalkList.get_selected_items().size() > 0:
+				_on_player_talk_item_clicked(playerTalkList.get_selected_items()[0], 0, 0)
 		return
-	if (GameState.paused): return
 	if Input.is_action_just_pressed("player_inventory"):
 		_on_button_inventory_pressed()
 	elif Input.is_action_just_pressed("player_terminal"):
 		_on_button_terminal_pressed()
+	elif Input.is_action_just_pressed("player_optionsmenu"):
+		_on_button_optionsmenu_pressed()
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -116,9 +130,14 @@ func _on_new_notification(message:String):
 	notificationLabel.visible = true
 	notificationTimer.start()
 
-
 func _on_button_menu_pressed():
-	buttonMenu.visible = not buttonMenu.visible
+	optionMenu.visible = not optionMenu.visible
+	
+func _on_button_optionsmenu_pressed():
+	_on_pause()
+	optionMenuButtons[0].grab_focus()
+	$Game/UI.visible = true
+	optionMenu.visible = true
 
 func _on_button_quit_pressed():
 	_on_pause()
@@ -130,7 +149,7 @@ func _on_button_save_pressed():
 	_on_pause()
 	GameState.saveGame()
 	_on_resume()
-	buttonMenu.visible = false
+	optionMenu.visible = false
 
 func _on_button_inventory_pressed():
 	_on_pause()
@@ -156,6 +175,9 @@ func _on_pause():
 	
 func _on_resume(from:Node=null):
 	if (from != null): remove_child(from)
+	if (GameState.settings.lang != _prev_lang):
+		_prev_lang = GameState.settings.lang
+		notificationsList.clear() 
 	if (not GameState.messages.have_unread()):
 		for idx in range(0, notificationsList.item_count):
 			if (notificationsList.get_item_text(idx) == tr("You have unread messages !")):

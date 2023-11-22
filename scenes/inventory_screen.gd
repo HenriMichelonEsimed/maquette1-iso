@@ -55,7 +55,6 @@ func _ready():
 
 func _on_button_back_pressed():
 	close.emit(self)
-	queue_free()
 
 func _on_list_tools_item_selected(index):
 	list_clothes.deselect_all()
