@@ -34,14 +34,14 @@ func _process(_delta):
 func _update():
 	listMessages.clear()
 	for message in GameState.messages.messages:
-		listMessages.add_item(message.subject)
+		listMessages.add_item(tr(message.subject))
 		if (not message.read):
 			listMessages.set_item_custom_fg_color (listMessages.item_count-1, Color.YELLOW)
 	listQuests.clear()
-	listQuests.append_text("[color=yellow]" + GameState.quests.label("main") + "[/color]\n")
-	listQuests.append_text(GameState.quests.current("main").label + "\n")
+	listQuests.append_text("[color=yellow]" + tr(GameState.quests.label("main")) + "[/color]\n")
+	listQuests.append_text(tr(GameState.quests.current("main").label) + "\n")
 	for adv in GameState.quests.get_advpoints("main"):
-		listQuests.append_text("\t[i]" + adv.label + "[/i]\n")
+		listQuests.append_text("\t[i]" + tr(adv.label) + "[/i]\n")
 
 func _on_button_back_pressed():
 	close.emit(self)
@@ -55,7 +55,7 @@ func _hide_all():
 
 func _on_button_list_messages_pressed():
 	_hide_all()
-	labelCurrent.text = "Messages"
+	labelCurrent.text = tr("Messages")
 	currentButton = buttonMessages
 	listMessages.grab_focus()
 	listMessages.visible = true
@@ -68,12 +68,14 @@ func _on_list_messages_item_clicked(index, _at_position, _mouse_button_index):
 	_hide_all()
 	var message = GameState.messages.messages[index]
 	message.read = true
-	labelCurrent.text = "Message"
+	labelCurrent.text = tr("Message")
 	labelCurrent.visible = true
 	labelMessage.clear()
-	labelMessage.append_text("From : [color=yellow]" + message.from + "[/color]\n")
-	labelMessage.append_text("Subject: [color=yellow]" + message.subject + "[/color]\n")
-	labelMessage.append_text(message.message)
+	labelMessage.append_text(tr("From"))
+	labelMessage.append_text(": [color=yellow]" + tr(message.from) + "[/color]\n")
+	labelMessage.append_text(tr("Subject"))
+	labelMessage.append_text(": [color=yellow]" + tr(message.subject) + "[/color]\n")
+	labelMessage.append_text(tr(message.message))
 	message.read = true
 	labelMessage.visible = true
 	GameState.quests.event_all(Quest.QuestEventType.QUESTEVENT_READMESSAGE, message.key)
@@ -82,7 +84,7 @@ func _on_list_messages_item_clicked(index, _at_position, _mouse_button_index):
 
 func _on_button_quests_pressed():
 	_hide_all()
-	labelCurrent.text = "Quests"
+	labelCurrent.text = tr("Quests")
 	currentButton = buttonQuests
 	listQuests.visible = true
 	labelCurrent.visible = true

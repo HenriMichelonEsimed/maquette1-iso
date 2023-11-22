@@ -32,7 +32,7 @@ const tab_order = [
 }
 @onready var item_content = $Content/Body/Content/PanelItem/Content
 @onready var item_title = $Content/Body/Content/PanelItem/Content/Title
-@onready var weigth_value = $Content/Body/Content/PanelItem/Content/WeightLine/Value
+@onready var weigth_value = $Content/Body/Content/PanelItem/Content/LabelWeight
 @onready var node_3d = $"Content/Body/Content/PanelItem/Content/ViewContent/3DView/InsertPoint"
 
 var state = InventoryScreenState.new()
@@ -96,7 +96,7 @@ func _item_details(_item:Item, index):
 	selected = index
 	item = _item
 	item_title.text = item.label
-	weigth_value.text = str(item.weight)
+	weigth_value.text = tr("Weigth : %.1f") % _item.weight
 	for c in node_3d.get_children():
 		c.queue_free()
 	var clone = _item.duplicate()
@@ -145,7 +145,7 @@ func _fill_list(type:Item.ItemType, list:ItemList):
 func _on_drop_pressed():
 	if (item == null): return
 	if (item is ItemMultiple):
-		$SelectQuantityDialog.open(item, "Drop")
+		$SelectQuantityDialog.open(item, tr("Drop"))
 	else:
 		_drop()
 func _drop(quantity:int=0):

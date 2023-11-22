@@ -82,9 +82,9 @@ func _refresh():
 	list_container.clear()
 	list_inventory.clear()
 	for item in storage.get_items():
-		list_container.add_item(str(item))
+		list_container.add_item(tr(str(item)))
 	for item in GameState.inventory.getall():
-		list_inventory.add_item(str(item))
+		list_inventory.add_item(tr(str(item)))
 	current_list.grab_focus()
 
 func _on_close():

@@ -41,6 +41,12 @@ import/fbx/enabled=false
 
 theme/custom_font="res://assets/fonts/LeagueSpartan-Bold.otf"
 
+[importer_defaults]
+
+csv_translation={
+"delimiter": 1
+}
+
 [input]
 
 ui_left={
@@ -227,6 +233,11 @@ exit_game={
 [input_devices]
 
 pointing/size/mode=3
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://assets/i18n/main.fr.translation", "res://assets/i18n/quest_main.fr.translation", "res://assets/i18n/quest_main_dialogs.fr.translation", "res://assets/i18n/items.fr.translation", "res://assets/i18n/zones.fr.translation")
+locale/test="fr"
 
 [layer_names]
 

@@ -32,8 +32,8 @@ func _process(_delta):
 
 func open(item:Item, label:String="Transfert"):
 	_just_opened = true
-	$Content/Body/Buttons/ButtonDrop.text = label
-	$Content/Body/LabelName.text = item.label
+	$Content/Body/Buttons/ButtonDrop.text = tr(label)
+	$Content/Body/LabelName.text = tr(item.label)
 	$Content/Body/SliderQuantity.max_value = item.quantity
 	$Content/Body/SliderQuantity.value = item.quantity
 	$Content/Body/LabelQuantity.text = str($Content/Body/SliderQuantity.value)

@@ -7,7 +7,7 @@ func r3():
 		return [ "[Show message on phone]",
 			[
 				["Oh ok I see. But I am very hungry and very busy. If you can bring me a ham sandwich I could help you", a3], [
-					["Ok I'll look it up.", end],
+					["I'll look it up.", end],
 					["...in your dreams!", d1],
 					r2d
 			]

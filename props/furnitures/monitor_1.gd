@@ -3,8 +3,6 @@ extends StaticBody3D
 
 @export var wallpaper:Texture2D
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	if (wallpaper != null):
 		var mat = StandardMaterial3D.new()

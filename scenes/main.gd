@@ -31,7 +31,7 @@ func _ready():
 	items_transfert_dialog = load("res://scenes/dialogs/items_transfert_dialog.tscn").instantiate()
 	items_transfert_dialog.connect("close", _on_storage_close)
 	GameState.quests.start("main")
-	_on_button_inventory_pressed()
+	#_on_button_inventory_pressed()
 	#_on_button_terminal_pressed()
 	
 func _process(_delta):
@@ -97,12 +97,13 @@ func _on_storage_close(node:Storage):
 	node.use()
 
 func _on_new_message():
-	notificationsList.add_item("You have unread messages !")
+	_on_new_notification("You have unread messages !")
 
 func _on_new_notification(message:String):
-	if (notificationsList.get_item_text(notificationsList.item_count - 1) != message):
-		notificationsList.add_item(message)
-	notificationLabel.text = message
+	var msg = tr(message)
+	if (notificationsList.get_item_text(notificationsList.item_count - 1) != msg):
+		notificationsList.add_item(msg)
+	notificationLabel.text = msg
 	notificationLabel.visible = true
 	notificationTimer.start()
 
@@ -142,7 +143,7 @@ func _on_resume(from:Node=null):
 	if (from != null): remove_child(from)
 	if (not GameState.messages.have_unread()):
 		for idx in range(0, notificationsList.item_count):
-			if (notificationsList.get_item_text(idx) == "You have unread messages !"):
+			if (notificationsList.get_item_text(idx) == tr("You have unread messages !")):
 				notificationsList.remove_item(idx)
 	$Game/UI.visible = true
 	$Game.visible = true
@@ -162,14 +163,14 @@ func _on_npc_talk(char:InteractiveCharacter,phrase:String, answers:Array):
 	_on_pause()
 	talking_char = char
 	NPCNameLabel.text = str(char)
-	NPCPhraseLabel.text = phrase
+	NPCPhraseLabel.text = tr(phrase)
 	playerTalkList.clear()
 	for i in range(0, answers.size()):
 		var answer = answers[i]
 		if (answer is Callable):
 			answer = answer.call()
 			if (answer == null): continue
-		playerTalkList.add_item(answer[0])
+		playerTalkList.add_item(tr(answer[0]))
 		playerTalkList.set_item_metadata(playerTalkList.item_count-1, i)
 	talkWindow.visible = true
 	playerTalkList.grab_focus()
@@ -181,7 +182,7 @@ func _on_end_talk():
 	_on_resume()
 
 func _on_display_info(node:Node3D):
-	var label = str(node)
+	var label = tr(str(node))
 	if (label.is_empty()): return
 	labelInfo.visible = true
 	labelInfo.position = $Game/CameraPivot/Camera.unproject_position(node.global_position)

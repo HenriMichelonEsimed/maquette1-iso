@@ -20,6 +20,7 @@ var fall_acceleration = 40
 var target_velocity = Vector3.ZERO
 
 func _ready():
+	label = tr(label)
 	set_collision_layer_value(1, false)
 	set_collision_layer_value(2, true)
 	

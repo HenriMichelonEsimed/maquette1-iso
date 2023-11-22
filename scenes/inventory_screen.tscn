@@ -81,7 +81,7 @@ tabs = NodePath("Content/Body/Content/Tabs")
 list_tools = NodePath("Content/Body/Content/Tabs/Tools/List")
 list_clothes = NodePath("Content/Body/Content/Tabs/Clothes/List")
 list_consumables = NodePath("Content/Body/Content/Tabs/Consumables/List")
-list_quest = NodePath("Content/Body/Content/Tabs/Quest/List")
+list_quest = NodePath("Content/Body/Content/Tabs/Quests/List")
 list_miscellaneous = NodePath("Content/Body/Content/Tabs/Miscellaneous/List")
 
 [node name="Panel" type="Panel" parent="."]
@@ -228,11 +228,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("6_vja64")
 
-[node name="Quest" type="Control" parent="Content/Body/Content/Tabs"]
+[node name="Quests" type="Control" parent="Content/Body/Content/Tabs"]
 visible = false
 layout_mode = 2
 
-[node name="List" type="ItemList" parent="Content/Body/Content/Tabs/Quest"]
+[node name="List" type="ItemList" parent="Content/Body/Content/Tabs/Quests"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -261,17 +261,9 @@ text = "Title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WeightLine" type="HBoxContainer" parent="Content/Body/Content/PanelItem/Content"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Content/Body/Content/PanelItem/Content/WeightLine"]
+[node name="LabelWeight" type="Label" parent="Content/Body/Content/PanelItem/Content"]
 layout_mode = 2
 text = "Weigth :"
-
-[node name="Value" type="Label" parent="Content/Body/Content/PanelItem/Content/WeightLine"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "XX"
 
 [node name="ViewContent" type="SubViewportContainer" parent="Content/Body/Content/PanelItem/Content"]
 layout_mode = 2
@@ -283,7 +275,7 @@ own_world_3d = true
 world_3d = SubResource("World3D_tt1eo")
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(496, 273)
+size = Vector2i(2, 2)
 render_target_update_mode = 0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Content/Body/Content/PanelItem/Content/ViewContent/3DView"]
@@ -333,6 +325,6 @@ layout_mode = 1
 [connection signal="item_selected" from="Content/Body/Content/Tabs/Clothes/List" to="." method="_on_list_item_clothe_selected"]
 [connection signal="item_selected" from="Content/Body/Content/Tabs/Consumables/List" to="." method="_on_list_item_consumable_selected"]
 [connection signal="item_selected" from="Content/Body/Content/Tabs/Miscellaneous/List" to="." method="_on_list_miscellaneous_item_selected"]
-[connection signal="item_selected" from="Content/Body/Content/Tabs/Quest/List" to="." method="_on_list_item_quest_selected"]
+[connection signal="item_selected" from="Content/Body/Content/Tabs/Quests/List" to="." method="_on_list_item_quest_selected"]
 [connection signal="pressed" from="Content/Body/Content/PanelItem/Content/Actions/Drop" to="." method="_on_drop_pressed"]
 [connection signal="quantity" from="SelectQuantityDialog" to="." method="_drop"]
