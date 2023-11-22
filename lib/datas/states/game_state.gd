@@ -16,13 +16,21 @@ var settings = SettingsState.new()
 var player:Player
 var view_pivot:ViewPivot
 var is_mobile:bool
+var mutex: Mutex
+var thread: Thread
 
 func _ready():
+	mutex = Mutex.new()
 	is_mobile = OS.get_name() in ["android", "iOS"]
 	StateSaver.set_path(current_state_path)
 
 func saveGame():
-	saving_start.emit()
+	thread = Thread.new()
+	thread.start(_saveGame)
+	
+func _saveGame():
+	mutex.lock()
+	call_deferred("emit_signal","saving_start")
 	StateSaver.backup()
 	location.position = player.position
 	location.rotation = player.rotation
@@ -34,7 +42,8 @@ func saveGame():
 	StateSaver.saveState(InventoryState.new(inventory))
 	StateSaver.saveState(EventsQueueState.new(events_queue))
 	StateSaver.saveState(current_zone.state)
-	saving_end.emit()
+	call_deferred("emit_signal","saving_end")
+	mutex.unlock()
 
 func loadGame():
 	StateSaver.loadState(settings)

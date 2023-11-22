@@ -118,4 +118,4 @@ func loadState(res:State):
 			var queue:QuestsManager = res.get(entry_name)
 			queue.loadState(file)
 	file.close()
-		
+

@@ -163,6 +163,7 @@ func _on_button_quit_pressed():
 	_on_pause()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	GameState.saveGame()
+	GameState.thread.wait_to_finish()
 	get_tree().quit()
 
 func _on_button_save_pressed():
