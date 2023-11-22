@@ -13,7 +13,7 @@ func _ready():
 	StateSaver.loadState(state)
 	for i in range(state.items_removed.size()):
 		var item = get_node(state.items_removed[i])
-		item.queue_free()
+		if (item != null): item.queue_free()
 	for item in state.items_added.getall(): 
 		if item.has_meta("storage_path"):
 			var path = item.get_meta("storage_path").replace(str(get_path()) + "/", '')

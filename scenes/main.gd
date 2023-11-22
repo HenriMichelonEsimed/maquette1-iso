@@ -10,8 +10,8 @@ extends Node3D
 @onready var NPCNameLabel = $TalkWindow/MarginContainer/VBoxContainer/NPCName
 @onready var playerTalkList = $TalkWindow/MarginContainer/VBoxContainer/Player
 @onready var optionMenuButtons = [
-	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonParams,
 	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonSave,
+	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonParams,
 	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonExit
 ]
 var items_transfert_dialog:ItemsTransfertDialog
@@ -102,7 +102,7 @@ func _on_player_reset_position():
 func _spawn_player(spawnpoint_key:String):
 	for node in GameState.current_zone.find_children("*", "SpawnPoint", false, true):
 		if (node.key == spawnpoint_key):
-			_set_player_position(node.position, node.rotation)
+			_set_player_position(node.global_position, node.global_rotation)
 			break
 	last_spawnpoint = spawnpoint_key
 

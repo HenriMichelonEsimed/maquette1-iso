@@ -20,7 +20,7 @@ func _ready():
 	position.y = (vsize.y - size.y) / 2
 	_update()
 	_on_button_quests_pressed()
-
+	
 func _process(_delta):
 	if Input.is_action_just_pressed("cancel") or Input.is_action_just_pressed("player_terminal"):
 		if (displayMessage):

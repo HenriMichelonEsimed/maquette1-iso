@@ -9,26 +9,27 @@ func _process(_delta):
 	if (_just_opened):
 		_just_opened = false
 		return
-	if Input.is_action_just_pressed("player_use"):
-		_on_button_drop_pressed()
-		return
-	elif Input.is_action_just_pressed("cancel"):
+	if Input.is_action_just_pressed("cancel"):
 		_on_button_cancel_pressed()
 		return
-	if (_slide_pressed > 10):
-		if Input.is_action_pressed("shortcut_left"):
-			$Content/Body/SliderQuantity.value -= 2
-		elif Input.is_action_pressed("shortcut_right"):
-			$Content/Body/SliderQuantity.value += 2
-	else :
-		if Input.is_action_pressed("shortcut_left") or Input.is_action_pressed("shortcut_right"):
-			_slide_pressed += 1
-	if Input.is_action_just_released("shortcut_left"):
-		$Content/Body/SliderQuantity.value -= 1
-		_slide_pressed = 0
-	elif Input.is_action_just_released("shortcut_right"):
-		$Content/Body/SliderQuantity.value += 1
-		_slide_pressed = 0
+	elif Input.is_action_just_pressed("delete"):
+		_on_button_drop_pressed()
+		return
+	if $Content/Body/SliderQuantity.has_focus():
+		if (_slide_pressed > 10):
+			if Input.is_action_pressed("shortcut_left"):
+				$Content/Body/SliderQuantity.value -= 2
+			elif Input.is_action_pressed("shortcut_right"):
+				$Content/Body/SliderQuantity.value += 2
+		else :
+			if Input.is_action_pressed("shortcut_left") or Input.is_action_pressed("shortcut_right"):
+				_slide_pressed += 1
+		if Input.is_action_just_released("shortcut_left"):
+			$Content/Body/SliderQuantity.value -= 1
+			_slide_pressed = 0
+		elif Input.is_action_just_released("shortcut_right"):
+			$Content/Body/SliderQuantity.value += 1
+			_slide_pressed = 0
 
 func open(item:Item, label:String="Transfert"):
 	_just_opened = true
@@ -37,6 +38,7 @@ func open(item:Item, label:String="Transfert"):
 	$Content/Body/SliderQuantity.max_value = item.quantity
 	$Content/Body/SliderQuantity.value = item.quantity
 	$Content/Body/LabelQuantity.text = str($Content/Body/SliderQuantity.value)
+	$Content/Body/SliderQuantity.grab_focus()
 	visible = true
 
 func _on_slider_quantity_value_changed(value):
