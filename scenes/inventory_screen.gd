@@ -41,8 +41,10 @@ var list:ItemList
 var selected = 0
 
 func _ready():
+	var ratio = size.x / size.y
 	var vsize = get_viewport().size / get_viewport().content_scale_factor
-	size = vsize / 1.5
+	size.x = vsize.x / 1.5
+	size.y = size.x / ratio
 	position.x = (vsize.x - size.x) / 2
 	position.y = (vsize.y - size.y) / 2
 	tabs.custom_minimum_size.x = size.x/2

@@ -1,8 +1,31 @@
-[gd_scene load_steps=8 format=3 uid="uid://bamoxutsna6sx"]
+[gd_scene load_steps=17 format=3 uid="uid://bamoxutsna6sx"]
 
 [ext_resource type="Script" path="res://scenes/inventory_screen.gd" id="1_0hce1"]
 [ext_resource type="PackedScene" uid="uid://dytjnya7i6c47" path="res://scenes/dialogs/select_quantity_dialog.tscn" id="2_k136o"]
+[ext_resource type="Texture2D" uid="uid://38qd58n3acbb" path="res://assets/textures/talkwindow.png" id="2_vaajs"]
 [ext_resource type="Material" uid="uid://k5r36wixdaow" path="res://assets/materials/misc/dark.tres" id="2_xv7x3"]
+[ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="3_q3qwn"]
+[ext_resource type="StyleBox" uid="uid://jtu3vr5o3qom" path="res://assets/button_transparent_style.tres" id="4_3yi6w"]
+[ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="5_p36nm"]
+[ext_resource type="StyleBox" uid="uid://ml3osqlkwitw" path="res://assets/tabs_tab_style.tres" id="6_1cyd3"]
+[ext_resource type="StyleBox" uid="uid://p34djr2fcs3w" path="res://assets/tabs_list_style.tres" id="6_vja64"]
+[ext_resource type="StyleBox" uid="uid://bmyh6yvafukya" path="res://assets/button_style.tres" id="9_arycq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_825ag"]
+texture = ExtResource("2_vaajs")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4plc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_gicgb"]
 font_size = 34
@@ -12,7 +35,16 @@ content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
-bg_color = Color(0.247059, 0.247059, 0.247059, 1)
+bg_color = Color(0.2, 0.364706, 0.486275, 0.792157)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="Environment" id="Environment_f1hi3"]
 background_mode = 1
@@ -32,7 +64,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -640.0
 offset_top = -350.0
-offset_right = 160.0
+offset_right = 316.0
 offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -44,20 +76,32 @@ list_consumables = NodePath("Content/Body/Content/Tabs/Consumables/List")
 list_quest = NodePath("Content/Body/Content/Tabs/Quest/List")
 list_miscellaneous = NodePath("Content/Body/Content/Tabs/Miscellaneous/List")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.137255, 0.313726, 0.380392, 1)
+theme_override_styles/panel = SubResource("StyleBoxTexture_825ag")
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q4plc")
 
 [node name="Content" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 18.0
+offset_right = -18.0
+offset_bottom = -75.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -70,29 +114,45 @@ theme_override_constants/margin_bottom = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Content/Top"]
 layout_mode = 2
-theme_override_constants/separation = 20
+
+[node name="Control" type="Control" parent="Content/Top/HBoxContainer"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
 
 [node name="Label" type="Label" parent="Content/Top/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
 text = "Inventory"
 label_settings = SubResource("LabelSettings_gicgb")
-
-[node name="Control" type="Control" parent="Content/Top/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
+horizontal_alignment = 1
 
 [node name="ButtonBack" type="Button" parent="Content/Top/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 34
-text = "X"
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_q3qwn")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("4_3yi6w")
+theme_override_styles/hover = ExtResource("4_3yi6w")
+theme_override_styles/pressed = ExtResource("4_3yi6w")
+theme_override_styles/disabled = ExtResource("4_3yi6w")
+theme_override_styles/focus = ExtResource("4_3yi6w")
+text = ""
+script = ExtResource("5_p36nm")
+icon_size = 48
+icon_name = "square-xmark"
 
 [node name="Body" type="MarginContainer" parent="Content"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_top = 34
+theme_override_constants/margin_bottom = 20
 
 [node name="Content" type="HBoxContainer" parent="Content/Body"]
 layout_mode = 2
@@ -101,6 +161,16 @@ layout_mode = 2
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hovered_color = Color(1, 1, 0, 1)
+theme_override_colors/font_unselected_color = Color(0.564706, 0.564706, 0.564706, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_styles/tab_selected = ExtResource("6_1cyd3")
+theme_override_styles/tab_hovered = ExtResource("6_1cyd3")
+theme_override_styles/tab_unselected = ExtResource("6_1cyd3")
+theme_override_styles/tab_disabled = ExtResource("6_1cyd3")
 
 [node name="Tools" type="Control" parent="Content/Body/Content/Tabs"]
 layout_mode = 2
@@ -112,6 +182,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("6_vja64")
 
 [node name="Clothes" type="Control" parent="Content/Body/Content/Tabs"]
 visible = false
@@ -121,6 +192,7 @@ layout_mode = 2
 layout_mode = 2
 offset_left = -250.0
 offset_right = 250.0
+theme_override_styles/panel = ExtResource("6_vja64")
 
 [node name="Consumables" type="Control" parent="Content/Body/Content/Tabs"]
 visible = false
@@ -133,6 +205,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("6_vja64")
 
 [node name="Miscellaneous" type="Control" parent="Content/Body/Content/Tabs"]
 visible = false
@@ -145,6 +218,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("6_vja64")
 
 [node name="Quest" type="Control" parent="Content/Body/Content/Tabs"]
 visible = false
@@ -157,6 +231,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("6_vja64")
 
 [node name="PanelItem" type="PanelContainer" parent="Content/Body/Content"]
 layout_mode = 2
@@ -164,7 +239,6 @@ size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_cq1op")
 
 [node name="Content" type="VBoxContainer" parent="Content/Body/Content/PanelItem"]
-visible = false
 layout_mode = 2
 
 [node name="Title" type="Label" parent="Content/Body/Content/PanelItem/Content"]
@@ -194,9 +268,10 @@ stretch = true
 [node name="3DView" type="SubViewport" parent="Content/Body/Content/PanelItem/Content/ViewContent"]
 own_world_3d = true
 world_3d = SubResource("World3D_tt1eo")
+transparent_bg = true
 handle_input_locally = false
-size = Vector2i(2, 2)
-render_target_update_mode = 0
+size = Vector2i(496, 277)
+render_target_update_mode = 4
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Content/Body/Content/PanelItem/Content/ViewContent/3DView"]
 transform = Transform3D(1, -8.35189e-23, -4.37114e-08, 4.37114e-08, 1.91069e-15, 1, 0, -1, 1.91069e-15, 0, 1, 0)
@@ -206,6 +281,7 @@ transform = Transform3D(1, 0, -4.37114e-08, 4.37114e-08, 1.91069e-15, 1, 0, -1, 
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Content/Body/Content/PanelItem/Content/ViewContent/3DView"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.05133, 0)
+visible = false
 size = Vector3(100, 0.1, 100)
 material = ExtResource("2_xv7x3")
 
@@ -217,8 +293,21 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="Drop" type="Button" parent="Content/Body/Content/PanelItem/Content/Actions"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-text = "Drop"
+auto_translate = false
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("3_q3qwn")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("9_arycq")
+theme_override_styles/hover = ExtResource("9_arycq")
+theme_override_styles/pressed = ExtResource("9_arycq")
+theme_override_styles/disabled = ExtResource("9_arycq")
+theme_override_styles/focus = ExtResource("9_arycq")
+text = ""
+script = ExtResource("5_p36nm")
+icon_size = 32
+icon_name = "arrow-up-from-bracket"
 
 [node name="SelectQuantityDialog" parent="." instance=ExtResource("2_k136o")]
 visible = false

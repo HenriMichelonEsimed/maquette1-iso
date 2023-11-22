@@ -151,7 +151,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("2_omh0f")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = ExtResource("5_tce7x")
 theme_override_styles/hover = ExtResource("5_tce7x")
 theme_override_styles/pressed = ExtResource("5_tce7x")
@@ -159,7 +159,7 @@ theme_override_styles/disabled = ExtResource("5_tce7x")
 theme_override_styles/focus = ExtResource("5_tce7x")
 text = ""
 script = ExtResource("3_oswt4")
-icon_size = 64
+icon_size = 48
 icon_name = "square-xmark"
 
 [connection signal="item_clicked" from="Content/Content/Body/MarginContainer/ListMessages" to="." method="_on_list_messages_item_clicked"]
