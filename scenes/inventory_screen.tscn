@@ -1,11 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://bamoxutsna6sx"]
+[gd_scene load_steps=17 format=3 uid="uid://bamoxutsna6sx"]
 
 [ext_resource type="Script" path="res://scenes/inventory_screen.gd" id="1_0hce1"]
 [ext_resource type="PackedScene" uid="uid://dytjnya7i6c47" path="res://scenes/dialogs/select_quantity_dialog.tscn" id="2_k136o"]
 [ext_resource type="Texture2D" uid="uid://38qd58n3acbb" path="res://assets/textures/talkwindow.png" id="2_vaajs"]
 [ext_resource type="Material" uid="uid://k5r36wixdaow" path="res://assets/materials/misc/dark.tres" id="2_xv7x3"]
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="3_q3qwn"]
-[ext_resource type="StyleBox" uid="uid://jtu3vr5o3qom" path="res://assets/button_transparent_style.tres" id="4_3yi6w"]
 [ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="5_p36nm"]
 [ext_resource type="StyleBox" uid="uid://ml3osqlkwitw" path="res://assets/tabs_tab_style.tres" id="6_1cyd3"]
 [ext_resource type="StyleBox" uid="uid://p34djr2fcs3w" path="res://assets/tabs_list_style.tres" id="6_vja64"]
@@ -145,16 +144,16 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("3_q3qwn")
-theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = ExtResource("4_3yi6w")
-theme_override_styles/hover = ExtResource("4_3yi6w")
-theme_override_styles/pressed = ExtResource("4_3yi6w")
-theme_override_styles/disabled = ExtResource("4_3yi6w")
-theme_override_styles/focus = ExtResource("4_3yi6w")
-text = ""
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("9_arycq")
+theme_override_styles/hover = ExtResource("9_arycq")
+theme_override_styles/pressed = ExtResource("9_arycq")
+theme_override_styles/disabled = ExtResource("9_arycq")
+theme_override_styles/focus = ExtResource("9_arycq")
+text = ""
 script = ExtResource("5_p36nm")
-icon_size = 48
-icon_name = "square-xmark"
+icon_size = 32
+icon_name = "xmark"
 
 [node name="Body" type="MarginContainer" parent="Content"]
 layout_mode = 2

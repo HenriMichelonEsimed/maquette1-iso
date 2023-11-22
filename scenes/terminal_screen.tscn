@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="2_omh0f"]
 [ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="3_oswt4"]
 [ext_resource type="StyleBox" uid="uid://ch6npjih63qbm" path="res://assets/button_terminal_style.tres" id="3_x1xen"]
-[ext_resource type="StyleBox" uid="uid://jtu3vr5o3qom" path="res://assets/button_transparent_style.tres" id="5_tce7x"]
+[ext_resource type="StyleBox" uid="uid://bmyh6yvafukya" path="res://assets/button_style.tres" id="5_cy70w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0ih0"]
 bg_color = Color(0.290196, 0.494118, 0.647059, 0.533333)
@@ -151,16 +151,16 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("2_omh0f")
-theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = ExtResource("5_tce7x")
-theme_override_styles/hover = ExtResource("5_tce7x")
-theme_override_styles/pressed = ExtResource("5_tce7x")
-theme_override_styles/disabled = ExtResource("5_tce7x")
-theme_override_styles/focus = ExtResource("5_tce7x")
-text = ""
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("5_cy70w")
+theme_override_styles/hover = ExtResource("5_cy70w")
+theme_override_styles/pressed = ExtResource("5_cy70w")
+theme_override_styles/disabled = ExtResource("5_cy70w")
+theme_override_styles/focus = ExtResource("5_cy70w")
+text = ""
 script = ExtResource("3_oswt4")
-icon_size = 48
-icon_name = "square-xmark"
+icon_size = 32
+icon_name = "xmark"
 
 [connection signal="item_clicked" from="Content/Content/Body/MarginContainer/ListMessages" to="." method="_on_list_messages_item_clicked"]
 [connection signal="pressed" from="Content/HBoxContainer/ButtonQuests" to="." method="_on_button_quests_pressed"]

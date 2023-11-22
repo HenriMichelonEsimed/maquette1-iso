@@ -73,7 +73,7 @@ func container_to_inventory(item:Item,quantity:int=-1,refresh:bool=true):
 func open(node:Storage):
 	list_container = $Content/VBoxContainer/Lists/Left/ListContainer
 	list_inventory = $Content/VBoxContainer/Lists/Right/ListInventory
-	$Content/VBoxContainer/Lists/Left/Label.text = str(node)
+	$Content/VBoxContainer/Lists/Left/Label.text = tr(str(node))
 	storage = node
 	current_list = list_container
 	_refresh()

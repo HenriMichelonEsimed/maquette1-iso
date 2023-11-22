@@ -32,7 +32,7 @@ func _ready():
 	items_transfert_dialog.connect("close", _on_storage_close)
 	GameState.quests.start("main")
 	#_on_button_inventory_pressed()
-	#_on_button_terminal_pressed()
+	_on_button_terminal_pressed()
 	
 func _process(_delta):
 	if (Input.is_action_just_pressed("exit_game")):
@@ -102,7 +102,7 @@ func _on_new_message():
 func _on_new_notification(message:String):
 	var msg = tr(message)
 	if (notificationsList.get_item_text(notificationsList.item_count - 1) != msg):
-		notificationsList.add_item(msg + str(notificationsList.item_count))
+		notificationsList.add_item(msg)
 	if (notificationsList.item_count > 5):
 		notificationsList.remove_item(0)
 	notificationLabel.text = msg

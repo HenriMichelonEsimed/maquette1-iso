@@ -1,7 +1,34 @@
-[gd_scene load_steps=3 format=3 uid="uid://dujfl0ljogwbx"]
+[gd_scene load_steps=10 format=3 uid="uid://dujfl0ljogwbx"]
 
 [ext_resource type="Script" path="res://scenes/dialogs/items_transfert_dialog.gd" id="1_b1cra"]
 [ext_resource type="PackedScene" uid="uid://dytjnya7i6c47" path="res://scenes/dialogs/select_quantity_dialog.tscn" id="2_ahwut"]
+[ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="2_xy6rd"]
+[ext_resource type="StyleBox" uid="uid://bmyh6yvafukya" path="res://assets/button_style.tres" id="3_r5p5m"]
+[ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="4_r3gtb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25hsw"]
+bg_color = Color(0.505882, 0.701961, 0.854902, 0.839216)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7d223"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.2, 0.364706, 0.486275, 0.921569)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xv2i"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxdf4"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.2, 0.364706, 0.486275, 0.921569)
 
 [node name="ItemsTransfertDialog" type="Control"]
 layout_mode = 3
@@ -18,14 +45,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b1cra")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.423529, 0.423529, 0.423529, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_25hsw")
 
 [node name="Content" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -51,7 +78,19 @@ size_flags_horizontal = 3
 
 [node name="ButtonClose" type="Button" parent="Content/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "X"
+auto_translate = false
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("2_xy6rd")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("3_r5p5m")
+theme_override_styles/hover = ExtResource("3_r5p5m")
+theme_override_styles/pressed = ExtResource("3_r5p5m")
+theme_override_styles/disabled = ExtResource("3_r5p5m")
+theme_override_styles/focus = ExtResource("3_r5p5m")
+text = ""
+script = ExtResource("4_r3gtb")
+icon_size = 32
+icon_name = "xmark"
 
 [node name="Lists" type="HBoxContainer" parent="Content/VBoxContainer"]
 layout_mode = 2
@@ -71,29 +110,63 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_neighbor_right = NodePath("../../Right/ListInventory")
 focus_next = NodePath("../../Right/ListInventory")
+theme_override_styles/panel = SubResource("StyleBoxFlat_7d223")
 
 [node name="Buttons" type="VBoxContainer" parent="Content/VBoxContainer/Lists"]
 layout_mode = 2
 
 [node name="ButtonAll" type="Button" parent="Content/VBoxContainer/Lists/Buttons"]
 layout_mode = 2
-text = ">>"
+auto_translate = false
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("2_xy6rd")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("3_r5p5m")
+theme_override_styles/hover = ExtResource("3_r5p5m")
+theme_override_styles/pressed = ExtResource("3_r5p5m")
+theme_override_styles/disabled = ExtResource("3_r5p5m")
+theme_override_styles/focus = ExtResource("3_r5p5m")
+text = ""
+script = ExtResource("4_r3gtb")
+icon_size = 32
+icon_name = "angles-right"
 
 [node name="Middle" type="PanelContainer" parent="Content/VBoxContainer/Lists/Buttons"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_3xv2i")
 
 [node name="ButtonDrop" type="Button" parent="Content/VBoxContainer/Lists/Buttons/Middle"]
 layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("2_xy6rd")
 theme_override_font_sizes/font_size = 30
-text = "<"
+theme_override_styles/normal = ExtResource("3_r5p5m")
+theme_override_styles/hover = ExtResource("3_r5p5m")
+theme_override_styles/pressed = ExtResource("3_r5p5m")
+theme_override_styles/disabled = ExtResource("3_r5p5m")
+theme_override_styles/focus = ExtResource("3_r5p5m")
+text = ""
+script = ExtResource("4_r3gtb")
+icon_name = "angle-left"
 
 [node name="ButtonPick" type="Button" parent="Content/VBoxContainer/Lists/Buttons/Middle"]
 layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("2_xy6rd")
 theme_override_font_sizes/font_size = 30
-text = ">"
+theme_override_styles/normal = ExtResource("3_r5p5m")
+theme_override_styles/hover = ExtResource("3_r5p5m")
+theme_override_styles/pressed = ExtResource("3_r5p5m")
+theme_override_styles/disabled = ExtResource("3_r5p5m")
+theme_override_styles/focus = ExtResource("3_r5p5m")
+text = ""
+script = ExtResource("4_r3gtb")
+icon_name = "angle-right"
 
 [node name="Right" type="VBoxContainer" parent="Content/VBoxContainer/Lists"]
 layout_mode = 2
@@ -110,6 +183,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_neighbor_left = NodePath("../../Left/ListContainer")
 focus_next = NodePath("../../Left/ListContainer")
+theme_override_styles/panel = SubResource("StyleBoxFlat_kxdf4")
 
 [node name="SelectQuantityDialog" parent="." instance=ExtResource("2_ahwut")]
 visible = false
