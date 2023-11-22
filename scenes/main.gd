@@ -32,7 +32,7 @@ func _ready():
 	items_transfert_dialog.connect("close", _on_storage_close)
 	GameState.quests.start("main")
 	#_on_button_inventory_pressed()
-	_on_button_terminal_pressed()
+	#_on_button_terminal_pressed()
 	
 func _process(_delta):
 	if (Input.is_action_just_pressed("exit_game")):

@@ -43,7 +43,7 @@ var selected = 0
 func _ready():
 	var ratio = size.x / size.y
 	var vsize = get_viewport().size / get_viewport().content_scale_factor
-	size.x = vsize.x / 1.5
+	size.x = vsize.x / (1.5 if vsize.x > 1200 else 1.2)
 	size.y = size.x / ratio
 	position.x = (vsize.x - size.x) / 2
 	position.y = (vsize.y - size.y) / 2
@@ -102,7 +102,7 @@ func _item_details(_item:Item, index):
 	var clone = _item.duplicate()
 	node_3d.add_child(clone)
 	clone.position = Vector3.ZERO
-	clone.scale = clone.scale * clone.preview_scale
+	clone.scale = clone.scale * (clone.preview_scale+1)
 	item_content.visible = true
 
 func _process(_delta):
@@ -140,7 +140,7 @@ func _set_tab():
 func _fill_list(type:Item.ItemType, list:ItemList):
 	list.clear()
 	for item in GameState.inventory.getall_bytype(type):
-		list.add_item(str(item))
+		list.add_item(tr(str(item)))
 
 func _on_drop_pressed():
 	if (item == null): return

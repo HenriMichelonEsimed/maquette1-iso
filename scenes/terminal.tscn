@@ -1,12 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://q1hey7m7lsk"]
+[gd_scene load_steps=12 format=3 uid="uid://q1hey7m7lsk"]
 
 [ext_resource type="Texture2D" uid="uid://e05el4xtach4" path="res://assets/textures/smartphone.png" id="1_lcryf"]
 [ext_resource type="Script" path="res://scenes/terminal.gd" id="2_q88ae"]
-[ext_resource type="PackedScene" uid="uid://db3pgflm4l0b4" path="res://scenes/terminal_screen.tscn" id="3_f3bly"]
 [ext_resource type="Texture2D" uid="uid://bytoh414hh3ly" path="res://assets/textures/terminal2.png" id="3_lb5a7"]
+[ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="4_8e451"]
+[ext_resource type="StyleBox" uid="uid://ch6npjih63qbm" path="res://assets/button_terminal_style.tres" id="5_gyggl"]
+[ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="6_i6hcg"]
+[ext_resource type="StyleBox" uid="uid://bmyh6yvafukya" path="res://assets/button_style.tres" id="7_dcejo"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2iyyh"]
 texture = ExtResource("3_lb5a7")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s55tc"]
+bg_color = Color(0.290196, 0.494118, 0.647059, 0.533333)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tccb1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7bku"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Tterminal" type="TextureRect"]
 anchors_preset = 8
@@ -24,26 +40,155 @@ texture = ExtResource("1_lcryf")
 expand_mode = 1
 script = ExtResource("2_q88ae")
 
-[node name="MarginContainer" type="Panel" parent="."]
+[node name="Borders" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 21.0
-offset_right = -27.0
-offset_bottom = -33.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Screen" type="Panel" parent="Borders"]
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2iyyh")
 
-[node name="TerminalScreen" parent="MarginContainer" instance=ExtResource("3_f3bly")]
-layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = 36.0
-offset_right = 460.0
-offset_bottom = 958.0
+[node name="Content" type="VBoxContainer" parent="Borders/Screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[connection signal="close" from="MarginContainer/TerminalScreen" to="." method="_on_terminal_screen_close"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Borders/Screen/Content"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Content" type="VBoxContainer" parent="Borders/Screen/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Borders/Screen/Content/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Label"
+horizontal_alignment = 1
+
+[node name="Body" type="PanelContainer" parent="Borders/Screen/Content/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_s55tc")
+
+[node name="MarginContainer" type="MarginContainer" parent="Borders/Screen/Content/Content/Body"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="ListMessages" type="ItemList" parent="Borders/Screen/Content/Content/Body/MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hovered_color = Color(0.603922, 0.815686, 0.972549, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_tccb1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o7bku")
+
+[node name="ListQuests" type="RichTextLabel" parent="Borders/Screen/Content/Content/Body/MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/line_separation = 4
+
+[node name="LabelMessage" type="RichTextLabel" parent="Borders/Screen/Content/Content/Body/MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/line_separation = 4
+bbcode_enabled = true
+text = "[b]Objet du message[/b]
+Hello, bonjour !
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Borders/Screen/Content"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="ButtonQuests" type="Button" parent="Borders/Screen/Content/HBoxContainer"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_color = Color(0.121569, 0.298039, 0.313726, 1)
+theme_override_colors/font_pressed_color = Color(0.121569, 0.298039, 0.313726, 1)
+theme_override_colors/font_hover_color = Color(0.717647, 0.717647, 0.717647, 1)
+theme_override_colors/font_focus_color = Color(0.121569, 0.298039, 0.313726, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.121569, 0.298039, 0.313726, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("4_8e451")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("5_gyggl")
+theme_override_styles/hover = ExtResource("5_gyggl")
+theme_override_styles/pressed = ExtResource("5_gyggl")
+theme_override_styles/disabled = ExtResource("5_gyggl")
+theme_override_styles/focus = ExtResource("5_gyggl")
+text = ""
+script = ExtResource("6_i6hcg")
+icon_size = 32
+icon_name = "clipboard-question"
+
+[node name="ButtonMessages" type="Button" parent="Borders/Screen/Content/HBoxContainer"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_color = Color(0.321569, 0.227451, 0.337255, 1)
+theme_override_colors/font_pressed_color = Color(0.321569, 0.227451, 0.337255, 1)
+theme_override_colors/font_hover_color = Color(0.717647, 0.717647, 0.717647, 1)
+theme_override_colors/font_focus_color = Color(0.321569, 0.227451, 0.337255, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.321569, 0.227451, 0.337255, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("4_8e451")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("5_gyggl")
+theme_override_styles/hover = ExtResource("5_gyggl")
+theme_override_styles/pressed = ExtResource("5_gyggl")
+theme_override_styles/disabled = ExtResource("5_gyggl")
+theme_override_styles/focus = ExtResource("5_gyggl")
+text = ""
+script = ExtResource("6_i6hcg")
+icon_size = 32
+icon_name = "envelope"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Borders/Screen/Content"]
+layout_mode = 2
+alignment = 1
+
+[node name="ButtonHomeTerm" type="Button" parent="Borders/Screen/Content/HBoxContainer2"]
+layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("4_8e451")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("7_dcejo")
+theme_override_styles/hover = ExtResource("7_dcejo")
+theme_override_styles/pressed = ExtResource("7_dcejo")
+theme_override_styles/disabled = ExtResource("7_dcejo")
+theme_override_styles/focus = ExtResource("7_dcejo")
+text = ""
+script = ExtResource("6_i6hcg")
+icon_size = 32
+icon_name = "xmark"
+
+[connection signal="item_clicked" from="Borders/Screen/Content/Content/Body/MarginContainer/ListMessages" to="." method="_on_list_messages_item_clicked"]
+[connection signal="pressed" from="Borders/Screen/Content/HBoxContainer/ButtonQuests" to="." method="_on_button_quests_pressed"]
+[connection signal="pressed" from="Borders/Screen/Content/HBoxContainer/ButtonMessages" to="." method="_on_button_list_messages_pressed"]
+[connection signal="pressed" from="Borders/Screen/Content/HBoxContainer2/ButtonHomeTerm" to="." method="_on_button_back_pressed"]

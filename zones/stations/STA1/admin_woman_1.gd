@@ -48,7 +48,7 @@ var r2b = [ "Where is my sandwitch ?", [
 func r2d():
 	var item = GameState.inventory.getitem(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1")
 	if item != null:
-		return ["[Give %s]" % item.label, 
+		return [tr("[Give %s]") % tr(item.label),
 		[
 			["Thank you ! Here is the access card", a1, item], [
 				["Thank you.", end]
@@ -74,7 +74,7 @@ var r1 = ["How can I access the restricted area ?",
 ]
 
 func a1(item): 
-	GameState.inventory.remove(item)
+	GameState.inventory.removeqty(item, 1)
 	GameState.inventory.new(Item.ItemType.ITEM_QUEST, "access_card_1")
 	GameState.quests.advpoint("main", "lvl0_use_access_card")
 
