@@ -12,6 +12,7 @@ var camera = CameraState.new()
 var inventory = ItemsCollection.new()
 var events_queue = EventsQueue.new()
 var messages = MessagesList.new()
+var settings = SettingsState.new()
 var player:Player
 var view_pivot:ViewPivot
 var is_mobile:bool
@@ -25,6 +26,7 @@ func saveGame():
 	StateSaver.backup()
 	location.position = player.position
 	location.rotation = player.rotation
+	StateSaver.saveState(settings)
 	StateSaver.saveState(QuestsState.new(quests))
 	StateSaver.saveState(MessagesState.new(messages))
 	StateSaver.saveState(location)
@@ -35,6 +37,7 @@ func saveGame():
 	saving_end.emit()
 
 func loadGame():
+	StateSaver.loadState(settings)
 	StateSaver.loadState(QuestsState.new(quests))
 	StateSaver.loadState(MessagesState.new(messages))
 	StateSaver.loadState(location)

@@ -14,6 +14,11 @@ var last_spawnpoint:String
 var talking_char:InteractiveCharacter
 
 func _ready():
+	var os_lang = OS.get_locale_language()
+	for lang in Settings.langs:
+		if (lang == os_lang):
+			GameState.settings.lang = lang
+	TranslationServer.set_locale(GameState.settings.lang)
 	#get_viewport().content_scale_factor = 2
 	NotifManager.connect("new_notification", _on_new_notification)
 	GameState.connect("saving_start", _on_saving_start)
@@ -22,6 +27,7 @@ func _ready():
 	GameState.player = $Game/Player
 	GameState.view_pivot = $Game/ViewPivot
 	GameState.loadGame()
+	TranslationServer.set_locale(GameState.settings.lang)
 	$Game/CameraPivot/Camera.init()
 	if (GameState.messages.have_unread()):
 		_on_new_message()
@@ -100,6 +106,7 @@ func _on_new_message():
 	_on_new_notification("You have unread messages !")
 
 func _on_new_notification(message:String):
+	notificationTimer.stop()
 	var msg = tr(message)
 	if (notificationsList.get_item_text(notificationsList.item_count - 1) != msg):
 		notificationsList.add_item(msg)
@@ -134,6 +141,12 @@ func _on_button_inventory_pressed():
 func _on_button_terminal_pressed():
 	_on_pause()
 	var scene = load("res://scenes/terminal.tscn").instantiate()
+	add_child(scene)
+	scene.connect("close", _on_resume)
+
+func _on_button_params_pressed():
+	_on_pause()
+	var scene = load("res://scenes/parameters_screen.tscn").instantiate()
 	add_child(scene)
 	scene.connect("close", _on_resume)
 	
@@ -199,3 +212,4 @@ func _on_notification_timer_timeout():
 
 func _on_player_talk_item_clicked(index, at_position, mouse_button_index):
 	talking_char.answer(playerTalkList.get_item_metadata(index))
+

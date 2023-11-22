@@ -191,6 +191,24 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 
+[node name="ButtonParams" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/OptionMenu"]
+layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("6_5m64j")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("5_ki3d2")
+theme_override_styles/hover = ExtResource("5_ki3d2")
+theme_override_styles/pressed = ExtResource("5_ki3d2")
+text = ""
+script = ExtResource("6_2kw7t")
+icon_size = 20
+icon_name = "sliders"
+
 [node name="ButtonSave" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/OptionMenu"]
 layout_mode = 2
 auto_translate = false
@@ -406,6 +424,7 @@ environment = ExtResource("2_dhum8")
 [connection signal="pressed" from="Game/UI/MarginContainer/VBoxContainer/TopMenu/ButtonMenu" to="." method="_on_button_menu_pressed"]
 [connection signal="pressed" from="Game/UI/MarginContainer/VBoxContainer/TopMenu/ButtonInventory" to="." method="_on_button_inventory_pressed"]
 [connection signal="pressed" from="Game/UI/MarginContainer/VBoxContainer/TopMenu/ButtonTerminal" to="." method="_on_button_terminal_pressed"]
+[connection signal="pressed" from="Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonParams" to="." method="_on_button_params_pressed"]
 [connection signal="pressed" from="Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonSave" to="." method="_on_button_save_pressed"]
 [connection signal="pressed" from="Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonExit" to="." method="_on_button_quit_pressed"]
 [connection signal="timeout" from="Game/UI/LabelSaving/Timer" to="." method="_on_saving_timer_timeout"]
