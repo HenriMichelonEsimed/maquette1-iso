@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dyj5pxcv4nq84"]
+[gd_scene load_steps=21 format=3 uid="uid://dyj5pxcv4nq84"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_4sx3e"]
 [ext_resource type="PackedScene" uid="uid://drr16dfcqhfyw" path="res://scenes/player.tscn" id="1_hswq3"]
@@ -6,7 +6,12 @@
 [ext_resource type="Environment" uid="uid://730uhqlxrn44" path="res://env.tres" id="2_dhum8"]
 [ext_resource type="PackedScene" uid="uid://c4mbdc0ejm2ot" path="res://scenes/view_pivot.tscn" id="3_7bgj5"]
 [ext_resource type="PackedScene" uid="uid://qkckayiyvhkn" path="res://scenes/touch_move.tscn" id="5_asao4"]
+[ext_resource type="StyleBox" uid="uid://bmyh6yvafukya" path="res://assets/button_style.tres" id="5_ki3d2"]
+[ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="6_2kw7t"]
+[ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="6_5m64j"]
 [ext_resource type="PackedScene" uid="uid://wpu71sh5k21k" path="res://scenes/touch_view.tscn" id="6_essw5"]
+[ext_resource type="Texture2D" uid="uid://38qd58n3acbb" path="res://assets/textures/talkwindow.png" id="7_le7i5"]
+[ext_resource type="Script" path="res://addons/fontawesome/FontAwesome.gd" id="8_ww8at"]
 
 [sub_resource type="FontVariation" id="FontVariation_y25ao"]
 variation_embolden = 1.0
@@ -22,28 +27,23 @@ content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.172549, 0.317647, 0.427451, 0.772549)
-corner_radius_top_right = 48
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k30mp"]
-content_margin_left = 8.0
-content_margin_top = 8.0
-content_margin_right = 8.0
-content_margin_bottom = 4.0
-bg_color = Color(0.172549, 0.317647, 0.427451, 0.772549)
-border_width_left = 1
+bg_color = Color(0.172549, 0.317647, 0.427451, 0.631373)
 border_width_top = 1
 border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0, 0, 0, 1)
+border_color = Color(0.611765, 0.611765, 0.611765, 1)
 border_blend = true
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+corner_radius_top_right = 48
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvpdd"]
-bg_color = Color(0.290196, 0.494118, 0.647059, 0.772549)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pghe6"]
+texture = ExtResource("7_le7i5")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_obcei"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 24
 corner_radius_top_right = 24
 corner_radius_bottom_right = 24
@@ -51,6 +51,7 @@ corner_radius_bottom_left = 24
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cm7j4"]
 content_margin_top = 4.0
+content_margin_bottom = 24.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rw4go"]
@@ -58,7 +59,7 @@ content_margin_left = 5.0
 content_margin_top = 5.0
 content_margin_right = 5.0
 content_margin_bottom = 5.0
-bg_color = Color(0.505882, 0.701961, 0.854902, 0.741176)
+bg_color = Color(0.505882, 0.701961, 0.854902, 0.839216)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -74,7 +75,7 @@ content_margin_left = 5.0
 content_margin_top = 5.0
 content_margin_right = 5.0
 content_margin_bottom = 5.0
-bg_color = Color(0.2, 0.364706, 0.486275, 0.92549)
+bg_color = Color(0.2, 0.364706, 0.486275, 0.921569)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -117,26 +118,114 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopMenu" type="HBoxContainer" parent="Game/UI"]
+[node name="MarginContainer" type="MarginContainer" parent="Game/UI"]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 31.0
-grow_horizontal = 2
+offset_right = 131.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Game/UI/MarginContainer"]
+layout_mode = 2
+
+[node name="TopMenu" type="HBoxContainer" parent="Game/UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 0
-theme_override_constants/separation = 20
 
-[node name="ButtonQuit" type="Button" parent="Game/UI/TopMenu"]
+[node name="ButtonMenu" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/TopMenu"]
 layout_mode = 2
-text = "Save&Quit"
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("6_5m64j")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("5_ki3d2")
+theme_override_styles/hover = ExtResource("5_ki3d2")
+theme_override_styles/pressed = ExtResource("5_ki3d2")
+text = ""
+script = ExtResource("6_2kw7t")
+icon_size = 20
+icon_name = "bars"
 
-[node name="ButtonInventory" type="Button" parent="Game/UI/TopMenu"]
+[node name="ButtonInventory" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/TopMenu"]
 layout_mode = 2
-text = "Inventory"
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("6_5m64j")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("5_ki3d2")
+theme_override_styles/hover = ExtResource("5_ki3d2")
+theme_override_styles/pressed = ExtResource("5_ki3d2")
+text = ""
+script = ExtResource("6_2kw7t")
+icon_size = 20
+icon_name = "toolbox"
 
-[node name="ButtonTerminal" type="Button" parent="Game/UI/TopMenu"]
+[node name="ButtonTerminal" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/TopMenu"]
 layout_mode = 2
-text = "Phone"
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("6_5m64j")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("5_ki3d2")
+theme_override_styles/hover = ExtResource("5_ki3d2")
+theme_override_styles/pressed = ExtResource("5_ki3d2")
+text = "	"
+script = ExtResource("6_2kw7t")
+icon_size = 20
+icon_name = "mobile"
+
+[node name="OptionMenu" type="VBoxContainer" parent="Game/UI/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ButtonSave" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/OptionMenu"]
+layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("6_5m64j")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("5_ki3d2")
+theme_override_styles/hover = ExtResource("5_ki3d2")
+theme_override_styles/pressed = ExtResource("5_ki3d2")
+text = ""
+script = ExtResource("6_2kw7t")
+icon_size = 20
+icon_name = "download"
+
+[node name="ButtonExit" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/OptionMenu"]
+layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("6_5m64j")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("5_ki3d2")
+theme_override_styles/hover = ExtResource("5_ki3d2")
+theme_override_styles/pressed = ExtResource("5_ki3d2")
+text = ""
+script = ExtResource("6_2kw7t")
+icon_size = 20
+icon_name = "person-walking-arrow-right"
 
 [node name="LabelInfo" type="Label" parent="Game/UI"]
 visible = false
@@ -152,8 +241,10 @@ offset_right = 25.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
 theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/font = SubResource("FontVariation_y25ao")
 theme_override_styles/normal = SubResource("StyleBoxFlat_sqsoe")
@@ -162,17 +253,33 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LabelSaving" type="Label" parent="Game/UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -64.0
-offset_top = -26.0
+offset_left = -96.0
+offset_top = -88.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Saving..."
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("6_5m64j")
+theme_override_font_sizes/font_size = 48
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_ww8at")
+icon_size = 48
+icon_name = "download"
 
 [node name="Timer" type="Timer" parent="Game/UI/LabelSaving"]
 wait_time = 0.5
@@ -191,6 +298,7 @@ theme_override_font_sizes/font_size = 12
 theme_override_styles/panel = SubResource("StyleBoxFlat_enm55")
 
 [node name="LabelNotification" type="Label" parent="Game/UI"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -204,7 +312,7 @@ offset_bottom = 14.4
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_k30mp")
+theme_override_styles/normal = ExtResource("5_ki3d2")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -225,31 +333,36 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -259.0
-offset_top = -432.0
-offset_right = 259.0
-offset_bottom = -65.0
+offset_left = -352.0
+offset_top = -512.0
+offset_right = 393.0
+offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_jvpdd")
+theme_override_styles/panel = SubResource("StyleBoxTexture_pghe6")
 
-[node name="MarginContainer" type="MarginContainer" parent="TalkWindow"]
+[node name="MarginContainer" type="Panel" parent="TalkWindow"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 16
+theme_override_styles/panel = SubResource("StyleBoxFlat_obcei")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TalkWindow/MarginContainer"]
 layout_mode = 2
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 737.0
+offset_bottom = 408.0
+theme_override_constants/separation = 8
 
 [node name="NPCName" type="Label" parent="TalkWindow/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
 theme_override_styles/normal = SubResource("StyleBoxFlat_cm7j4")
 text = "Name"
 horizontal_alignment = 1
@@ -258,6 +371,8 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
 theme_override_styles/normal = SubResource("StyleBoxFlat_rw4go")
 text = "Text"
 autowrap_mode = 3
@@ -265,8 +380,14 @@ autowrap_mode = 3
 [node name="Player" type="ItemList" parent="TalkWindow/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.764706, 0.764706, 0.764706, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hovered_color = Color(0.796078, 0.796078, 0.796078, 1)
+theme_override_colors/font_selected_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_7bvso")
+item_count = 1
+item_0/text = "Hello"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_dhum8")
@@ -282,9 +403,11 @@ environment = ExtResource("2_dhum8")
 [connection signal="view_moving" from="Game/ViewPivot" to="Game/CameraPivot/Camera" method="_on_view_pivot_view_moving"]
 [connection signal="view_rotate" from="Game/CameraPivot/Camera" to="Game/Player" method="_on_camera_view_rotate"]
 [connection signal="view_rotate" from="Game/CameraPivot/Camera" to="Game/ViewPivot" method="_on_camera_view_rotate"]
-[connection signal="pressed" from="Game/UI/TopMenu/ButtonQuit" to="." method="_on_button_quit_pressed"]
-[connection signal="pressed" from="Game/UI/TopMenu/ButtonInventory" to="." method="_on_button_inventory_pressed"]
-[connection signal="pressed" from="Game/UI/TopMenu/ButtonTerminal" to="." method="_on_button_terminal_pressed"]
+[connection signal="pressed" from="Game/UI/MarginContainer/VBoxContainer/TopMenu/ButtonMenu" to="." method="_on_button_menu_pressed"]
+[connection signal="pressed" from="Game/UI/MarginContainer/VBoxContainer/TopMenu/ButtonInventory" to="." method="_on_button_inventory_pressed"]
+[connection signal="pressed" from="Game/UI/MarginContainer/VBoxContainer/TopMenu/ButtonTerminal" to="." method="_on_button_terminal_pressed"]
+[connection signal="pressed" from="Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonSave" to="." method="_on_button_save_pressed"]
+[connection signal="pressed" from="Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonExit" to="." method="_on_button_quit_pressed"]
 [connection signal="timeout" from="Game/UI/LabelSaving/Timer" to="." method="_on_saving_timer_timeout"]
 [connection signal="timeout" from="Game/UI/LabelNotification/Timer" to="." method="_on_notification_timer_timeout"]
 [connection signal="view_rotate" from="TouchView" to="Game/CameraPivot/Camera" method="_on_touch_view_rotate"]

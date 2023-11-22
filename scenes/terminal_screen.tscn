@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://db3pgflm4l0b4"]
+[gd_scene load_steps=9 format=3 uid="uid://db3pgflm4l0b4"]
 
 [ext_resource type="Script" path="res://scenes/terminal_screen.gd" id="1_6dr6g"]
+[ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="2_omh0f"]
+[ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="3_oswt4"]
+[ext_resource type="StyleBox" uid="uid://ch6npjih63qbm" path="res://assets/button_terminal_style.tres" id="3_x1xen"]
+[ext_resource type="StyleBox" uid="uid://jtu3vr5o3qom" path="res://assets/button_transparent_style.tres" id="5_tce7x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0ih0"]
-bg_color = Color(0.290196, 0.494118, 0.647059, 0.772549)
+bg_color = Color(0.290196, 0.494118, 0.647059, 0.533333)
 corner_radius_top_left = 24
 corner_radius_top_right = 24
 corner_radius_bottom_right = 24
@@ -64,7 +68,7 @@ theme_override_constants/margin_bottom = 18
 visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hovered_color = Color(0.129412, 0.211765, 0.396078, 1)
+theme_override_colors/font_hovered_color = Color(0.603922, 0.815686, 0.972549, 1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_q5ve5")
 theme_override_styles/focus = SubResource("StyleBoxFlat_ofy75")
 
@@ -84,15 +88,56 @@ Hello, bonjour !
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Content"]
 layout_mode = 2
+theme_override_constants/separation = 32
 alignment = 1
 
 [node name="ButtonQuests" type="Button" parent="Content/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-text = "Quests"
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_color = Color(0.121569, 0.298039, 0.313726, 1)
+theme_override_colors/font_pressed_color = Color(0.121569, 0.298039, 0.313726, 1)
+theme_override_colors/font_hover_color = Color(0.717647, 0.717647, 0.717647, 1)
+theme_override_colors/font_focus_color = Color(0.121569, 0.298039, 0.313726, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.121569, 0.298039, 0.313726, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_omh0f")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("3_x1xen")
+theme_override_styles/hover = ExtResource("3_x1xen")
+theme_override_styles/pressed = ExtResource("3_x1xen")
+theme_override_styles/disabled = ExtResource("3_x1xen")
+theme_override_styles/focus = ExtResource("3_x1xen")
+text = ""
+script = ExtResource("3_oswt4")
+icon_size = 50
+icon_name = "clipboard-question"
 
 [node name="ButtonMessages" type="Button" parent="Content/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-text = "Messages"
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_color = Color(0.321569, 0.227451, 0.337255, 1)
+theme_override_colors/font_pressed_color = Color(0.321569, 0.227451, 0.337255, 1)
+theme_override_colors/font_hover_color = Color(0.717647, 0.717647, 0.717647, 1)
+theme_override_colors/font_focus_color = Color(0.321569, 0.227451, 0.337255, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.321569, 0.227451, 0.337255, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_omh0f")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("3_x1xen")
+theme_override_styles/hover = ExtResource("3_x1xen")
+theme_override_styles/pressed = ExtResource("3_x1xen")
+theme_override_styles/disabled = ExtResource("3_x1xen")
+theme_override_styles/focus = ExtResource("3_x1xen")
+text = ""
+script = ExtResource("3_oswt4")
+icon_size = 50
+icon_name = "envelope"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Content"]
 layout_mode = 2
@@ -100,8 +145,22 @@ alignment = 1
 
 [node name="ButtonHomeTerm" type="Button" parent="Content/HBoxContainer2"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "x"
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_omh0f")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("5_tce7x")
+theme_override_styles/hover = ExtResource("5_tce7x")
+theme_override_styles/pressed = ExtResource("5_tce7x")
+theme_override_styles/disabled = ExtResource("5_tce7x")
+theme_override_styles/focus = ExtResource("5_tce7x")
+text = ""
+script = ExtResource("3_oswt4")
+icon_size = 64
+icon_name = "square-xmark"
 
 [connection signal="item_clicked" from="Content/Content/Body/MarginContainer/ListMessages" to="." method="_on_list_messages_item_clicked"]
 [connection signal="pressed" from="Content/HBoxContainer/ButtonQuests" to="." method="_on_button_quests_pressed"]

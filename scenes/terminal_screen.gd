@@ -38,9 +38,7 @@ func _update():
 		if (not message.read):
 			listMessages.set_item_custom_fg_color (listMessages.item_count-1, Color.YELLOW)
 	listQuests.clear()
-	listQuests.push_color(Color.YELLOW)
-	listQuests.append_text("[b]" + GameState.quests.label("main") + "[/b]\n")
-	listQuests.pop()
+	listQuests.append_text("[color=yellow]" + GameState.quests.label("main") + "[/color]\n")
 	listQuests.append_text(GameState.quests.current("main").label + "\n")
 	for adv in GameState.quests.get_advpoints("main"):
 		listQuests.append_text("\t[i]" + adv.label + "[/i]\n")
@@ -73,10 +71,8 @@ func _on_list_messages_item_clicked(index, _at_position, _mouse_button_index):
 	labelCurrent.text = "Message"
 	labelCurrent.visible = true
 	labelMessage.clear()
-	labelMessage.push_color(Color.YELLOW)
-	labelMessage.append_text("From : [b]" + message.from + "[/b]\n")
-	labelMessage.append_text("Subject: [b]" + message.subject + "[/b]\n")
-	labelMessage.pop()
+	labelMessage.append_text("From : [color=yellow]" + message.from + "[/color]\n")
+	labelMessage.append_text("Subject: [color=yellow]" + message.subject + "[/color]\n")
 	labelMessage.append_text(message.message)
 	message.read = true
 	labelMessage.visible = true

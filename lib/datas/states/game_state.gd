@@ -22,6 +22,7 @@ func _ready():
 
 func saveGame():
 	saving_start.emit()
+	StateSaver.backup()
 	location.position = player.position
 	location.rotation = player.rotation
 	StateSaver.saveState(QuestsState.new(quests))

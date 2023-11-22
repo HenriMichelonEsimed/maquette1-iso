@@ -16,14 +16,27 @@ enum {
 }
 
 var path = default_path
+var backup_path = path + "/backup/"
+const max_backup = 9
 
 func _ready():
-	#ProjectSettings.set_setting("application/config/use_custom_user_dir", "true")
 	DirAccess.make_dir_recursive_absolute(path)
+	DirAccess.make_dir_recursive_absolute(backup_path)
 	
 func set_path(_path:String):
 	path = default_path + _path + "/"
 	DirAccess.make_dir_recursive_absolute(path)
+	
+func backup():
+	var dirs = DirAccess.get_directories_at(backup_path)
+	if (dirs.size() > max_backup):
+		for i in range(0, dirs.size() - max_backup):
+			var path_to_remove = backup_path + dirs[i]
+			OS.move_to_trash(ProjectSettings.globalize_path(path_to_remove))
+	var new_path = backup_path + Time.get_datetime_string_from_system().replace(":", "").replace("-", "") + "/"
+	DirAccess.make_dir_recursive_absolute(new_path)
+	for file in DirAccess.get_files_at(path):
+		DirAccess.copy_absolute(path + file, new_path + file)
 
 func saveState(res:State):
 	var file = FileAccess.open(path + res.name + default_ext, FileAccess.WRITE)

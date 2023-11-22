@@ -4,6 +4,7 @@ extends Node3D
 @onready var notificationsList = $Game/UI/ListNotifications
 @onready var notificationLabel = $Game/UI/LabelNotification
 @onready var notificationTimer = $Game/UI/LabelNotification/Timer
+@onready var buttonMenu = $Game/UI/MarginContainer/VBoxContainer/OptionMenu
 @onready var talkWindow = $TalkWindow
 @onready var NPCPhraseLabel = $TalkWindow/MarginContainer/VBoxContainer/NPC
 @onready var NPCNameLabel = $TalkWindow/MarginContainer/VBoxContainer/NPCName
@@ -13,7 +14,7 @@ var last_spawnpoint:String
 var talking_char:InteractiveCharacter
 
 func _ready():
-	get_viewport().content_scale_factor = 2
+	#get_viewport().content_scale_factor = 2
 	NotifManager.connect("new_notification", _on_new_notification)
 	GameState.connect("saving_start", _on_saving_start)
 	GameState.connect("saving_end", _on_saving_end)
@@ -31,9 +32,12 @@ func _ready():
 	items_transfert_dialog.connect("close", _on_storage_close)
 	GameState.quests.start("main")
 	#_on_button_inventory_pressed()
-	#_on_button_terminal_pressed()
+	_on_button_terminal_pressed()
 	
 func _process(_delta):
+	if (Input.is_action_just_pressed("exit_game")):
+		_on_button_quit_pressed()
+		return
 	if (talkWindow.visible):
 		if Input.is_action_just_pressed("player_use") and playerTalkList.get_selected_items().size() > 0:
 			_on_player_talk_item_clicked(playerTalkList.get_selected_items()[0], 0, 0)
@@ -83,7 +87,7 @@ func _spawn_player(spawnpoint_key:String):
 	last_spawnpoint = spawnpoint_key
 
 func _on_storage_open(node:Storage):
-	_on_pause(false)
+	_on_pause()
 	add_child(items_transfert_dialog)
 	items_transfert_dialog.open(node)
 	
@@ -102,27 +106,37 @@ func _on_new_notification(message:String):
 	notificationLabel.visible = true
 	notificationTimer.start()
 
+
+func _on_button_menu_pressed():
+	buttonMenu.visible = not buttonMenu.visible
+
 func _on_button_quit_pressed():
+	_on_pause()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	GameState.saveGame()
 	get_tree().quit()
 
+func _on_button_save_pressed():
+	_on_pause()
+	GameState.saveGame()
+	_on_resume()
+	buttonMenu.visible = false
+
 func _on_button_inventory_pressed():
-	_on_pause(false)
+	_on_pause()
 	var scene = load("res://scenes/inventory_screen.tscn").instantiate()
 	add_child(scene)
 	scene.connect("close", _on_resume)
 
 func _on_button_terminal_pressed():
-	_on_pause(false)
+	_on_pause()
 	var scene = load("res://scenes/terminal.tscn").instantiate()
 	add_child(scene)
 	scene.connect("close", _on_resume)
 	
-func _on_pause(hidegame:bool=true):
+func _on_pause():
 	GameState.paused = true
 	$Game/UI.visible = false
-	#$Game.visible = !hidegame
 	
 func _on_resume(from:Node=null):
 	if (from != null): remove_child(from)
@@ -145,7 +159,7 @@ func _on_saving_timer_timeout():
 	$Game/UI/LabelSaving.visible = false
 
 func _on_npc_talk(char:InteractiveCharacter,phrase:String, answers:Array):
-	_on_pause(false)
+	_on_pause()
 	talking_char = char
 	NPCNameLabel.text = str(char)
 	NPCPhraseLabel.text = phrase
