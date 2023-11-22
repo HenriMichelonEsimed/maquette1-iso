@@ -26,6 +26,9 @@ func _ready():
 func set_path(_path:String):
 	path = default_path + _path + "/"
 	DirAccess.make_dir_recursive_absolute(path)
+
+func _format_name(name:String):
+	return name.replace("/", "_")
 	
 func backup():
 	var dirs = DirAccess.get_directories_at(backup_path)
@@ -39,7 +42,7 @@ func backup():
 		DirAccess.copy_absolute(path + file, new_path + file)
 
 func saveState(res:State):
-	var file = FileAccess.open(path + res.name + default_ext, FileAccess.WRITE)
+	var file = FileAccess.open(path + _format_name(res.name) + default_ext, FileAccess.WRITE)
 	if (file == null): return false
 	for prop in res.get_property_list():
 		if (prop.name == "name"): continue
@@ -91,7 +94,7 @@ func saveState(res:State):
 	
 func loadState(res:State):
 	var parent:Node = res.get("parent")
-	var file = FileAccess.open(path + res.name + default_ext, FileAccess.READ)
+	var file = FileAccess.open(path + _format_name(res.name) + default_ext, FileAccess.READ)
 	if (file == null):
 		return null
 	while (!file.eof_reached()):

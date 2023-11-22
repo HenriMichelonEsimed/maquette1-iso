@@ -8,7 +8,7 @@ signal end_talk()
 var discussion:Array
 var current:Array
 
-func _init(disc = [tr("Hello !"), [[tr("Bye."), end]] ]):
+func _init(disc = ["Hello !", [["Bye.", end]] ]):
 	discussion = disc
 
 func _ready():

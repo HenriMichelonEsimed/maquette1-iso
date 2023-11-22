@@ -24,9 +24,12 @@ func _ready():
 	is_mobile = OS.get_name() in ["android", "iOS"]
 	StateSaver.set_path(current_state_path)
 
-func saveGame():
-	thread = Thread.new()
-	thread.start(_saveGame)
+func saveGame(use_thread:bool = true):
+	if use_thread:
+		thread = Thread.new()
+		thread.start(_saveGame)
+	else:
+		_saveGame()
 	
 func _saveGame():
 	mutex.lock()

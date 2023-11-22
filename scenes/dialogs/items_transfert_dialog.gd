@@ -52,6 +52,7 @@ func _on_button_all_pressed():
 
 func open_select_quantity(item:Item):
 	transfered_item = item
+	
 	$SelectQuantityDialog.open(item)
 
 func _on_select_quantity_dialog_quantity(quantity):

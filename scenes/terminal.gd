@@ -28,7 +28,7 @@ func _process(_delta):
 		else:
 			_on_button_back_pressed()
 			return
-	if Input.is_action_just_pressed("shortcut_left") or Input.is_action_just_pressed("shortcut_right"):
+	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
 		if (currentButton == buttonQuests):
 			_on_button_list_messages_pressed()
 		else:

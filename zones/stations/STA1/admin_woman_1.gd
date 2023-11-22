@@ -89,6 +89,8 @@ func r4():
 	if GameState.quests.have_advpoint("main", "lvl0_admin_woman_have_access_card"):
 		if GameState.quests.have_advpoint("main", "lvl0_use_access_card"):
 			return null
+		elif GameState.quests.have_advpoint("main", "lvl0_admin_woman_want_sandwitch"):
+			return ["About the access card...", r2e]
 		else:
 			return r2
 	return r1

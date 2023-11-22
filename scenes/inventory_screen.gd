@@ -113,13 +113,13 @@ func _process(_delta):
 		_on_drop_pressed()
 		return
 	state.tab = tabs.current_tab
-	if Input.is_action_just_pressed("shortcut_left"):
+	if Input.is_action_just_pressed("ui_left"):
 		state.tab -= 1
 		_set_tab()
-	elif Input.is_action_just_pressed("shortcut_right"):
+	elif Input.is_action_just_pressed("ui_right"):
 		state.tab += 1
 		_set_tab()
-	elif Input.is_action_just_pressed("shortcut_down"):
+	elif Input.is_action_just_pressed("ui_down"):
 		var list = tabs.get_current_tab_control().find_child("List")
 		if (!list.has_focus()): 
 			list.grab_focus()

@@ -54,7 +54,7 @@ func _process(_delta):
 		return
 	if (GameState.paused): 
 		if (optionMenu.visible):
-			if Input.is_action_just_pressed("cancel"):
+			if Input.is_action_just_pressed("cancel") or Input.is_action_just_pressed("player_optionsmenu") :
 				optionMenu.visible = false
 				_on_resume()
 			pass
@@ -85,8 +85,11 @@ func _change_zonelevel(zone_name:String, spawnpoint_key:String):
 	if (_previous_zone != null) and (_previous_zone.zone_name == zone_name):
 		new_zone = _previous_zone
 	else:
+		if (_previous_zone != null): 
+			_previous_zone.queue_free()
 		new_zone = GameState.getZone(zone_name).instantiate()
 	if (GameState.current_zone != null): 
+		
 		GameState.player.disconnect("item_collected", GameState.current_zone.on_item_collected)
 		GameState.current_zone.disconnect("change_zone", _on_change_zonelevel)
 		for node in GameState.current_zone.find_children("*", "Storage", true, true):
@@ -162,8 +165,7 @@ func _on_button_optionsmenu_pressed():
 func _on_button_quit_pressed():
 	_on_pause()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	GameState.saveGame()
-	GameState.thread.wait_to_finish()
+	GameState.saveGame(false)
 	get_tree().quit()
 
 func _on_button_save_pressed():
