@@ -75,6 +75,8 @@ func _on_list_messages_item_clicked(index, _at_position, _mouse_button_index):
 	labelMessage.append_text(": [color=yellow]" + tr(message.from) + "[/color]\n")
 	labelMessage.append_text(tr("Subject"))
 	labelMessage.append_text(": [color=yellow]" + tr(message.subject) + "[/color]\n")
+	print(message.message)
+	print(tr(message.message))
 	labelMessage.append_text(tr(message.message))
 	message.read = true
 	labelMessage.visible = true

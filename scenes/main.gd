@@ -102,7 +102,9 @@ func _on_new_message():
 func _on_new_notification(message:String):
 	var msg = tr(message)
 	if (notificationsList.get_item_text(notificationsList.item_count - 1) != msg):
-		notificationsList.add_item(msg)
+		notificationsList.add_item(msg + str(notificationsList.item_count))
+	if (notificationsList.item_count > 5):
+		notificationsList.remove_item(0)
 	notificationLabel.text = msg
 	notificationLabel.visible = true
 	notificationTimer.start()

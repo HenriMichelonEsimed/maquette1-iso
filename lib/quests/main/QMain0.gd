@@ -9,7 +9,7 @@ func _start():
 	GameState.messages.add(
 		"Mysterious Person",
 		"Hello, player",
-		"Congratulations, you have read your first message !\nNow meet me in the Restricted Area",
+		"[p]Congratulations, you have read your first message ![/p][p]Now meet me in the Restricted Area[/p]",
 		key
 		)
 

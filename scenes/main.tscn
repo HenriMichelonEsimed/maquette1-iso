@@ -24,7 +24,7 @@ expand_margin_right = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enm55"]
 content_margin_left = 4.0
-content_margin_top = 4.0
+content_margin_top = 10.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
 bg_color = Color(0.172549, 0.317647, 0.427451, 0.631373)
@@ -290,7 +290,7 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -105.0
+offset_top = -120.0
 offset_right = 351.0
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
