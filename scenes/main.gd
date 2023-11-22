@@ -191,7 +191,13 @@ func _on_button_params_pressed():
 	var scene = load("res://scenes/parameters_screen.tscn").instantiate()
 	add_child(scene)
 	scene.connect("close", _on_resume)
-	
+
+func _on_button_joypad_pressed():
+	_on_pause()
+	var scene = load("res://scenes/xbox.tscn").instantiate()
+	add_child(scene)
+	scene.connect("close", _on_resume)
+
 func _on_pause():
 	GameState.paused = true
 	$Game/UI.visible = false

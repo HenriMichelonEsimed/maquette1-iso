@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlrg8w3bbwoiu"]
+
+[ext_resource type="Texture2D" uid="uid://bashug3n1pu67" path="res://assets/textures/controllers/xbox.png" id="1_3q30e"]
+[ext_resource type="Script" path="res://scenes/xbox.gd" id="1_jpn40"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4u85d"]
+bg_color = Color(0.156863, 0.298039, 0.4, 0.921569)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[node name="xbox" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jpn40")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4u85d")
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3q30e")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.039
+anchor_bottom = 0.103
+offset_left = 89.0
+offset_top = 135.0
+offset_right = 89.064
+offset_bottom = 76.896
