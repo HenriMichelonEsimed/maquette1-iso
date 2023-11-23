@@ -89,9 +89,8 @@ func _input(event):
 		var position2D = get_viewport().get_mouse_position()
 		var dropPlane  = Plane(Vector3(0, 1, 0), 0)
 		var position3D = dropPlane.intersects_ray(camera.project_ray_origin(position2D),camera.project_ray_normal(position2D))
-		print(GameState.player.position)
-		print(position3D)
-		_set_player_position(position3D, GameState.player.rotation)
+		print(str(GameState.player.position) + " -> " + str(position3D))
+		GameState.player.move_to(position3D)
 
 func _set_player_position(pos:Vector3, rot:Vector3):
 	GameState.player.position = pos

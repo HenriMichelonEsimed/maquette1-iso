@@ -24,6 +24,7 @@ var item_to_collect:Item = null
 var node_to_use:Usable = null
 var char_to_talk:InteractiveCharacter = null
 var signaled = false
+var move_target = null
 
 const directions = {
 	"forward" : 	[  { 'x':  1, 'z': -1 },  { 'x':  1, 'z':  1 },  { 'x': -1, 'z':  1 },  { 'x': -1, 'z': -1 } ],
@@ -31,6 +32,16 @@ const directions = {
 	"backward" : 	[  { 'x': -1, 'z':  1 },  { 'x': -1, 'z': -1 },  { 'x':  1, 'z': -1 },  { 'x':  1, 'z':  1 } ],
 	"right" : 		[  { 'x':  1, 'z':  1 },  { 'x': -1, 'z':  1 },  { 'x': -1, 'z': -1 },  { 'x':  1, 'z': -1 } ]
 }
+
+func move_to(target:Vector3):
+	anim.play("walking")
+	move_target = target
+	if (position.y < 0):
+		$RayCastToGround.position = move_target
+		$RayCastToGround.position.y += 2
+		var ground = $RayCastToGround.get_collision_point()
+		move_target.y = ground.y
+		print(str(move_target) + "/" + str(ground))
 
 func _process(_delta):
 	if (GameState.paused): return
@@ -51,6 +62,26 @@ func _physics_process(delta):
 	if (position.y < -10) :
 		reset_position.emit()
 		return
+	if (move_target != null):
+		if Input.is_action_pressed("player_right") or  Input.is_action_pressed("player_left") or  Input.is_action_pressed("player_backward") or  Input.is_action_pressed("player_forward"):
+			move_target = null
+			velocity = Vector3.ZERO
+		else:
+			
+			look_at(move_target)
+			velocity = -transform.basis.z * walking_speed
+			if (transform.origin.distance_to(move_target)) < 0.5:
+				move_target = null
+				velocity = Vector3.ZERO
+				anim.play("standing")
+			else:
+				if !anim.is_playing():
+					anim.play()
+				move_and_slide()
+				GameState.view_pivot.position = position
+				GameState.view_pivot.position.y += 1.5
+			return
+		
 	var no_jump = false
 	var on_floor = is_on_floor_only() #$RayCastToGround.is_colliding()
 	var direction = Vector3.ZERO
