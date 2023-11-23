@@ -40,10 +40,11 @@ func move_to(target:Vector2, camera:Camera3D):
 	var iray = get_world_3d().direct_space_state.intersect_ray(ray_query)
 	if (iray.size() > 0):
 		var collider = iray.collider
-		if (collider.is_in_group("floor") or collider.is_in_group("stairs")):
-			anim.play("walking")
-			move_to_previous_position = position
-			move_to_target = iray.position
+		anim.play("walking")
+		move_to_previous_position = position
+		move_to_target = iray.position
+		if not(collider.is_in_group("floor") or collider.is_in_group("stairs")):
+			move_to_target.y = position.y
 	
 func _stop_move_to():
 	move_to_previous_position = null
