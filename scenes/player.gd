@@ -24,7 +24,8 @@ var item_to_collect:Item = null
 var node_to_use:Usable = null
 var char_to_talk:InteractiveCharacter = null
 var signaled = false
-var move_target = null
+var move_to_target = null
+var move_to_previous_position = null
 
 const directions = {
 	"forward" : 	[  { 'x':  1, 'z': -1 },  { 'x':  1, 'z':  1 },  { 'x': -1, 'z':  1 },  { 'x': -1, 'z': -1 } ],
@@ -35,13 +36,14 @@ const directions = {
 
 func move_to(target:Vector3):
 	anim.play("walking")
-	move_target = target
-	if (position.y < 0):
-		$RayCastToGround.position = move_target
-		$RayCastToGround.position.y += 2
-		var ground = $RayCastToGround.get_collision_point()
-		move_target.y = ground.y
-		print(str(move_target) + "/" + str(ground))
+	move_to_previous_position = position
+	move_to_target = target
+	
+func _stop_move_to():
+	move_to_previous_position = null
+	move_to_target = null
+	velocity = Vector3.ZERO
+	anim.play("standing")
 
 func _process(_delta):
 	if (GameState.paused): return
@@ -59,31 +61,40 @@ func _process(_delta):
 
 func _physics_process(delta):
 	if (GameState.paused or just_resumed): return
-	if (position.y < -10) :
+	if (position.y < -100) :
 		reset_position.emit()
 		return
-	if (move_target != null):
+	if (move_to_target != null):
 		if Input.is_action_pressed("player_right") or  Input.is_action_pressed("player_left") or  Input.is_action_pressed("player_backward") or  Input.is_action_pressed("player_forward"):
-			move_target = null
-			velocity = Vector3.ZERO
+			_stop_move_to()
 		else:
-			
-			look_at(move_target)
-			velocity = -transform.basis.z * walking_speed
-			if (transform.origin.distance_to(move_target)) < 0.5:
-				move_target = null
-				velocity = Vector3.ZERO
-				anim.play("standing")
+			var look_at_target = move_to_target
+			look_at_target.y = position.y
+			look_at(look_at_target)
+			if (transform.origin.distance_to(look_at_target)) < 0.6:
+				_stop_move_to()
 			else:
+				velocity = -transform.basis.z * walking_speed
+				for index in range(get_slide_collision_count()):
+					var collision = get_slide_collision(index)
+					var collider = collision.get_collider()
+					if collider == null:
+						continue
+					if collider.is_in_group("stairs"):
+						print("stairs")
+						velocity.y = 5
 				if !anim.is_playing():
 					anim.play()
+				move_to_previous_position = position
 				move_and_slide()
+				if (position.x == move_to_previous_position.x) and (position.y == move_to_previous_position.y):
+					_stop_move_to()
 				GameState.view_pivot.position = position
 				GameState.view_pivot.position.y += 1.5
-			return
+		return
 		
 	var no_jump = false
-	var on_floor = is_on_floor_only() #$RayCastToGround.is_colliding()
+	var on_floor = is_on_floor_only() 
 	var direction = Vector3.ZERO
 	if Input.is_action_pressed("player_right"):
 		direction.x += directions["right"][current_view].x
@@ -146,6 +157,8 @@ func _on_camera_view_rotate(view:int):
 	current_view = view
 
 func _on_collect_item_aera_body_entered(node:Node):
+	if (move_to_target != null) and (not node.is_in_group("stairs")):
+		_stop_move_to()
 	if (node is Item):
 		item_to_collect = node
 		display_info.emit(node)

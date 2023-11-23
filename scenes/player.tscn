@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://drr16dfcqhfyw"]
+[gd_scene load_steps=23 format=3 uid="uid://drr16dfcqhfyw"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_7my55"]
 [ext_resource type="Texture2D" uid="uid://hn1mjnguw62i" path="res://characters/player/textures/casual_man_color.png" id="2_imkcu"]
@@ -684,9 +684,6 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_b7lxq"]
 size = Vector3(0.758498, 0.502338, 0.288186)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vnj7x"]
-size = Vector3(0.412231, 0.383118, 1.17015)
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_byirt"]
 radius = 0.328553
 height = 1.85556
@@ -698,6 +695,7 @@ size = Vector3(0.78597, 1.6584, 0.931033)
 size = Vector3(0.71047, 1, 0.237145)
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
+collision_layer = 0
 script = ExtResource("1_7my55")
 
 [node name="RootNode" type="Node3D" parent="."]
@@ -1164,8 +1162,6 @@ bones/64/scale = Vector3(1, 1, 1)
 mesh = SubResource("ArrayMesh_d0xum")
 skin = SubResource("Skin_jvwan")
 
-[node name="RayCastToGround" type="RayCast3D" parent="."]
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 reset_on_save = false
 libraries = {
@@ -1176,10 +1172,6 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 1.1, 0, 1.07333, -0.376407)
 shape = SubResource("BoxShape3D_b7lxq")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.189942, -0.0351233)
-shape = SubResource("BoxShape3D_vnj7x")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.923668, 0)
 shape = SubResource("CapsuleShape3D_byirt")
@@ -1187,7 +1179,7 @@ shape = SubResource("CapsuleShape3D_byirt")
 [node name="CollectAndUseArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11161, -0.533054)
 collision_layer = 0
-collision_mask = 22
+collision_mask = 23
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollectAndUseArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, -0.0634052, 0.0666128)

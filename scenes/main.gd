@@ -10,6 +10,7 @@ extends Node3D
 @onready var NPCPhraseLabel = $TalkWindow/MarginContainer/VBoxContainer/NPC
 @onready var NPCNameLabel = $TalkWindow/MarginContainer/VBoxContainer/NPCName
 @onready var playerTalkList = $TalkWindow/MarginContainer/VBoxContainer/Player
+@onready var rayCast = $Game/CameraPivot/Camera/RayCast
 @onready var optionMenuButtons = [
 	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonSave,
 	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonParams,
@@ -80,12 +81,18 @@ func _process(_delta):
 func _input(event):
 	if event is InputEventMouseMotion:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if Input.is_action_pressed("player_moveto"):
-		var position2D = get_viewport().get_mouse_position()
-		var dropPlane  = Plane(Vector3(0, 1, 0), 0)
-		var position3D = dropPlane.intersects_ray(camera.project_ray_origin(position2D),camera.project_ray_normal(position2D))
-		print(str(GameState.player.position) + " -> " + str(position3D))
-		GameState.player.move_to(position3D)
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+		_move_to_target(event.position)
+		
+func _move_to_target(click_position: Vector2):
+	var ray_query = PhysicsRayQueryParameters3D.new()
+	ray_query.from = camera.project_ray_origin(click_position)
+	ray_query.to = ray_query.from + camera.project_ray_normal(click_position) * 1000
+	var iray = get_world_3d().direct_space_state.intersect_ray(ray_query)
+	if (iray.size() > 0):
+		var node_name = iray.collider.name.to_lower()
+		if (node_name.begins_with("floor") or node_name.begins_with("stair")):
+			GameState.player.move_to(iray.position)
 
 func _set_player_position(pos:Vector3, rot:Vector3):
 	GameState.player.position = pos
