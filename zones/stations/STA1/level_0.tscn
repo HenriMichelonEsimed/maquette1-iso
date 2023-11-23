@@ -883,31 +883,28 @@ transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -1.226, 
 color = Color(0.466667, 1, 1, 1)
 
 [node name="Shelf1" parent="Canteen" instance=ExtResource("45_insie")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.8283, 0, 0.200001)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 11.1283, 0, 2.63769)
 
 [node name="Shelf7" parent="Canteen" instance=ExtResource("45_insie")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.8283, 0, 1.2)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 10.1283, 0, 2.63769)
 
 [node name="Shelf8" parent="Canteen" instance=ExtResource("45_insie")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.8283, 0, 1.2)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.8283, 0, 1.44407)
 
 [node name="Shelf2" parent="Canteen" instance=ExtResource("45_insie")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.8283, 0, -0.799999)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.8283, 0, 0.366085)
 
 [node name="Shelf3" parent="Canteen" instance=ExtResource("45_insie")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.8283, 0, -1.8)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.8283, 0, -2.4644)
 
 [node name="Shelf4" parent="Canteen" instance=ExtResource("45_insie")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.8283, 0, -2.8)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.8283, 0, -3.4644)
 
 [node name="Locker1" parent="Canteen" instance=ExtResource("46_7teu8")]
-transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, 10.2, 0, 2.7)
-
-[node name="Locker2" parent="Canteen" instance=ExtResource("46_7teu8")]
-transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, 10.7, 0, 2.7)
+transform = Transform3D(1.03316e-07, 0, -1, 0, 1, 0, 1, 0, 1.03316e-07, 11.7983, 0, -0.628168)
 
 [node name="Locker3" parent="Canteen" instance=ExtResource("46_7teu8")]
-transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, 11.2, 0, 2.7)
+transform = Transform3D(1.03316e-07, 0, -1, 0, 1, 0, 1, 0, 1.03316e-07, 11.7983, 0, -1.5)
 
 [node name="Credit" parent="Canteen/Locker3" instance=ExtResource("58_6ad3g")]
 transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, 11.2, 0, 2.70001)

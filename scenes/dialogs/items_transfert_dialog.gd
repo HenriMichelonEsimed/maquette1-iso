@@ -4,8 +4,14 @@ class_name ItemsTransfertDialog
 signal close(node:Storage)
 signal item_collected(item:Item,quantity:int)
 signal item_dropped(item:Item,quantity:int)
-var list_container:ItemList
-var list_inventory:ItemList
+
+@onready var selectQtyDialog = $SelectQuantityDialog
+@onready var buttonDrop = $Content/VBoxContainer/Lists/Buttons/Middle/ButtonDrop
+@onready var buttonPick = $Content/VBoxContainer/Lists/Buttons/Middle/ButtonPick
+@onready var label = $Content/VBoxContainer/Lists/Left/Label
+@onready var list_container = $Content/VBoxContainer/Lists/Left/ListContainer
+@onready var list_inventory = $Content/VBoxContainer/Lists/Right/ListInventory
+
 var current_list:ItemList
 var storage:Storage
 var transfered_item:Item
@@ -19,7 +25,7 @@ func _on_child_exiting_tree(_node):
 	disconnect("item_collected", GameState.current_zone.on_item_collected)
 
 func _process(_delta):
-	if ($SelectQuantityDialog.visible): return
+	if (selectQtyDialog.visible): return
 	if Input.is_action_just_pressed("cancel"):
 		_on_close()
 	elif Input.is_action_just_pressed("player_use"):
@@ -52,8 +58,7 @@ func _on_button_all_pressed():
 
 func open_select_quantity(item:Item):
 	transfered_item = item
-	
-	$SelectQuantityDialog.open(item)
+	selectQtyDialog.open(item)
 
 func _on_select_quantity_dialog_quantity(quantity):
 	if (current_list == list_container):
@@ -72,9 +77,7 @@ func container_to_inventory(item:Item,quantity:int=-1,refresh:bool=true):
 	if (refresh): _refresh()
 
 func open(node:Storage):
-	list_container = $Content/VBoxContainer/Lists/Left/ListContainer
-	list_inventory = $Content/VBoxContainer/Lists/Right/ListInventory
-	$Content/VBoxContainer/Lists/Left/Label.text = tr(str(node))
+	label.text = tr(str(node))
 	storage = node
 	current_list = list_container
 	_refresh()
@@ -92,16 +95,16 @@ func _on_close():
 	close.emit(storage)
 
 func _on_list_container_focus_entered():
-	if ($SelectQuantityDialog.visible): 
+	if (selectQtyDialog.visible): 
 		list_inventory.grab_focus()
 		return
 	current_list = list_container
-	$Content/VBoxContainer/Lists/Buttons/Middle/ButtonDrop.visible = false
-	$Content/VBoxContainer/Lists/Buttons/Middle/ButtonPick.visible = true
+	buttonDrop.visible = false
+	buttonPick.visible = true
 	
 func _on_list_inventory_focus_entered():
-	if ($SelectQuantityDialog.visible): return
+	if (selectQtyDialog.visible): return
 	current_list = list_inventory
-	$Content/VBoxContainer/Lists/Buttons/Middle/ButtonDrop.visible = true
-	$Content/VBoxContainer/Lists/Buttons/Middle/ButtonPick.visible = false
+	buttonDrop.visible = true
+	buttonPick.visible = false
 
