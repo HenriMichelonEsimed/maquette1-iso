@@ -75,14 +75,12 @@ func _physics_process(delta):
 				_stop_move_to()
 			else:
 				velocity = -transform.basis.z * walking_speed
-				for index in range(get_slide_collision_count()):
-					var collision = get_slide_collision(index)
-					var collider = collision.get_collider()
-					if collider == null:
-						continue
-					if collider.is_in_group("stairs"):
-						print("stairs")
-						velocity.y = 5
+				if (move_to_target.y > position.y):
+					for index in range(get_slide_collision_count()):
+						var collision = get_slide_collision(index)
+						var collider = collision.get_collider()
+						if collider.is_in_group("stairs"):
+							velocity.y = 5
 				if !anim.is_playing():
 					anim.play()
 				move_to_previous_position = position
@@ -126,7 +124,7 @@ func _physics_process(delta):
 			if collider == null:
 				continue
 			if collider.is_in_group("stairs"):
-				target_velocity.y = 5
+				target_velocity.y = 8
 				no_jump = true
 			elif collider.is_in_group("ladders") and Input.is_action_pressed("player_jump"):
 				target_velocity.y = 12

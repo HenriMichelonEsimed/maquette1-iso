@@ -90,8 +90,8 @@ func _move_to_target(click_position: Vector2):
 	ray_query.to = ray_query.from + camera.project_ray_normal(click_position) * 1000
 	var iray = get_world_3d().direct_space_state.intersect_ray(ray_query)
 	if (iray.size() > 0):
-		var node_name = iray.collider.name.to_lower()
-		if (node_name.begins_with("floor") or node_name.begins_with("stair")):
+		var collider = iray.collider
+		if (collider.is_in_group("floor") or collider.is_in_group("stairs")):
 			GameState.player.move_to(iray.position)
 
 func _set_player_position(pos:Vector3, rot:Vector3):

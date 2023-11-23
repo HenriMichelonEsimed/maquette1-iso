@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://bq24ptdvoql7j" path="res://assets/materials/diamond_plate.tres" id="1_e1ojq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ipmsd"]
-size = Vector3(3.01881, 0.441135, 1.65719)
+size = Vector3(2.99732, 0.233465, 0.735544)
 
 [node name="Stair" type="StaticBody3D" groups=["stairs"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.126909, -0.250646)
@@ -27,6 +27,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.75)
 size = Vector3(3, 0.25, 0.75)
 material = ExtResource("1_e1ojq")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.812491, -0.582974, 0, 0.582974, 0.812491, 0, 0.202973, -0.414613)
+[node name="Collision1" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00224671, -0.000813037)
+shape = SubResource("BoxShape3D_ipmsd")
+
+[node name="Collision2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.254223, -0.245872)
+shape = SubResource("BoxShape3D_ipmsd")
+
+[node name="Collision3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.492365, -0.489943)
+shape = SubResource("BoxShape3D_ipmsd")
+
+[node name="Collision4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.753234, -0.745872)
 shape = SubResource("BoxShape3D_ipmsd")
