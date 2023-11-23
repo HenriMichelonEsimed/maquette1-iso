@@ -1,5 +1,6 @@
 extends Node3D
 
+@onready var camera = $Game/CameraPivot/Camera
 @onready var labelInfo = $Game/UI/LabelInfo
 @onready var notificationsList = $Game/UI/ListNotifications
 @onready var notificationLabel = $Game/UI/LabelNotification
@@ -40,7 +41,7 @@ func _ready():
 	GameState.view_pivot = $Game/ViewPivot
 	GameState.loadGame()
 	TranslationServer.set_locale(GameState.settings.lang)
-	$Game/CameraPivot/Camera.init()
+	camera.init()
 	if (GameState.messages.have_unread()):
 		_on_new_message()
 	_change_zonelevel(GameState.location.zone_name, "default")
@@ -84,11 +85,18 @@ func _process(_delta):
 func _input(event):
 	if event is InputEventMouseMotion:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if Input.is_action_pressed("player_moveto"):
+		var position2D = get_viewport().get_mouse_position()
+		var dropPlane  = Plane(Vector3(0, 1, 0), 0)
+		var position3D = dropPlane.intersects_ray(camera.project_ray_origin(position2D),camera.project_ray_normal(position2D))
+		print(GameState.player.position)
+		print(position3D)
+		_set_player_position(position3D, GameState.player.rotation)
 
 func _set_player_position(pos:Vector3, rot:Vector3):
 	GameState.player.position = pos
 	GameState.player.rotation = rot
-	$Game/CameraPivot/Camera.move(pos)
+	camera.move(pos)
 	GameState.view_pivot.position = pos
 	GameState.view_pivot.position.y += 1.5
 	
@@ -266,7 +274,7 @@ func _on_display_info(node:Node3D):
 	var label = tr(str(node))
 	if (label.is_empty()): return
 	labelInfo.visible = true
-	labelInfo.position = $Game/CameraPivot/Camera.unproject_position(node.global_position)
+	labelInfo.position =camera.unproject_position(node.global_position)
 	labelInfo.text = label
 
 func _on_hide_info():

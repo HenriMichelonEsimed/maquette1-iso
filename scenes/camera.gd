@@ -62,7 +62,6 @@ func _zoom_view():
 		_size = 100
 	size = _size
 	GameState.camera.size = _size
-	print(size)
 
 func _rotate_view():
 	if (_view > 3): 
