@@ -23,6 +23,9 @@ var item_to_collect:Item = null
 var node_to_use:Usable = null
 var char_to_talk:InteractiveCharacter = null
 var signaled = false
+var path_to_follow = null
+var closest_to_target = null
+var move_to_path = null
 var move_to_target = null
 var move_to_previous_position = null
 
@@ -75,27 +78,41 @@ func _physics_process(delta):
 		if Input.is_action_pressed("player_right") or  Input.is_action_pressed("player_left") or  Input.is_action_pressed("player_backward") or  Input.is_action_pressed("player_forward"):
 			_stop_move_to()
 		else:
-			var look_at_target = move_to_target
-			look_at_target.y = position.y
-			look_at(look_at_target)
-			if (transform.origin.distance_to(look_at_target)) < 0.6:
-				_stop_move_to()
+			if (move_to_path != null):
+				var look_at_target = move_to_path
+				look_at_target.y = position.y
+				look_at(look_at_target)
+				if (transform.origin.distance_to(move_to_path)) < 0.1:
+					if (path_to_follow.size() > 0):
+						move_to_path = path_to_follow.pop_front()
+					else:
+						path_to_follow = null
+						move_to_path = null
 			else:
-				velocity = -transform.basis.z * walking_speed
-				if (move_to_target.y > position.y):
-					for index in range(get_slide_collision_count()):
-						var collision = get_slide_collision(index)
-						var collider = collision.get_collider()
-						if collider.is_in_group("stairs"):
-							velocity.y = 5
-				if !anim.is_playing():
-					anim.play()
-				move_to_previous_position = position
-				move_and_slide()
-				if (position.x == move_to_previous_position.x) and (position.y == move_to_previous_position.y):
-					_stop_move_to()
-				GameState.view_pivot.position = position
-				GameState.view_pivot.position.y += 1.5
+				var look_at_target = move_to_target
+				look_at_target.y = position.y
+				look_at(look_at_target)
+			if (transform.origin.distance_to(move_to_target)) < 0.6:
+				_stop_move_to()
+				return
+			velocity = -transform.basis.z * walking_speed
+			if (move_to_target.y > position.y):
+				for index in range(get_slide_collision_count()):
+					var collision = get_slide_collision(index)
+					var collider = collision.get_collider()
+					if collider.is_in_group("stairs"):
+						velocity.y = 5
+			if !anim.is_playing():
+				anim.play()
+			move_to_previous_position = position
+			move_and_slide()
+			if (position.x == move_to_previous_position.x) and (position.y == move_to_previous_position.y):
+				_stop_move_to()
+			GameState.view_pivot.position = position
+			GameState.view_pivot.position.y += 1.5
+			if (!signaled) :
+				player_moving.emit()
+				signaled = true
 		return
 		
 	var no_jump = false
@@ -160,10 +177,37 @@ func _physics_process(delta):
 
 func _on_camera_view_rotate(view:int):
 	current_view = view
+	
+func get_closest(pos:Vector3, points:Array):
+	var closest = null
+	var shortest_distance = INF
+	for point in points:
+		var distance = pos.distance_to(point)
+		if distance < shortest_distance:
+			shortest_distance = distance
+			closest = point
+	return closest
+	
+func find_path():
+	for path in GameState.current_zone.find_children("*", "Path3D", true, true):
+		path_to_follow = []
+		for point in path.curve.get_baked_points(): 
+			point = path.global_transform * point
+			path_to_follow.push_back(point)
+		var closest_to_player = get_closest(position, path_to_follow)
+		if (closest_to_player != null):
+			closest_to_target = get_closest(move_to_target, path_to_follow)
+			move_to_path = closest_to_player
+			var index = path_to_follow.find(closest_to_player)
+			path_to_follow = path_to_follow.slice(index)
+			index = path_to_follow.find(closest_to_target)
+			path_to_follow = path_to_follow.slice(0, index)
 
 func _on_collect_item_aera_body_entered(node:Node):
-	if (move_to_target != null) and (not node.is_in_group("stairs")):
-		_stop_move_to()
+	if (move_to_target != null):
+		if (path_to_follow == null) and (not node.is_in_group("stairs")):
+			find_path()
+		return
 	if (node is Item):
 		item_to_collect = node
 		display_info.emit(node)
