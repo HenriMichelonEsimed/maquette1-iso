@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bujimcljxbwsr"
-path="res://.godot/imported/xbox - Copie.png-915d35ee7b73a5fef30ba783fe48420e.ctex"
+uid="uid://djnludt2nrnf6"
+path="res://.godot/imported/keyboard.jpg-2690c79dbf703dfd4064e7e964e87f3a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/controllers/xbox - Copie.png"
-dest_files=["res://.godot/imported/xbox - Copie.png-915d35ee7b73a5fef30ba783fe48420e.ctex"]
+source_file="res://assets/textures/controllers/keyboard.jpg"
+dest_files=["res://.godot/imported/keyboard.jpg-2690c79dbf703dfd4064e7e964e87f3a.ctex"]
 
 [params]
 

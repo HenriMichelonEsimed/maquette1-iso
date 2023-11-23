@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=60 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_7fv8t"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -31,7 +31,6 @@
 [ext_resource type="PackedScene" uid="uid://c0b64m347r4gr" path="res://props/architecture/doors/door_sliding_1.tscn" id="24_brdvl"]
 [ext_resource type="PackedScene" uid="uid://8fgixw252g2s" path="res://props/furnitures/trash_1.tscn" id="24_i20hq"]
 [ext_resource type="PackedScene" uid="uid://tpf78n87yw1h" path="res://props/furnitures/desk_1_mirror.tscn" id="27_05vrf"]
-[ext_resource type="Script" path="res://zones/stations/STA1/door_to_administration.gd" id="27_vg34u"]
 [ext_resource type="PackedScene" uid="uid://d0185cw36cxe0" path="res://props/furnitures/desk_1_long.tscn" id="28_8gey5"]
 [ext_resource type="PackedScene" uid="uid://ckkonogu6iyrf" path="res://props/furnitures/desk_chair_2.tscn" id="29_fn5gj"]
 [ext_resource type="PackedScene" uid="uid://bvmod4ptmg0r6" path="res://props/lights/floor_lamp_1.tscn" id="30_7rsgu"]
@@ -453,7 +452,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0,
 
 [node name="door_sliding_1" parent="Admistration/Architecture" instance=ExtResource("24_brdvl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85788, 0, -7.729)
-script = ExtResource("27_vg34u")
 label = "Administration"
 
 [node name="Wall_16" parent="Admistration/Architecture" instance=ExtResource("8_sguot")]

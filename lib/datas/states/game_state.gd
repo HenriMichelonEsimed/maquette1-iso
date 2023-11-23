@@ -16,6 +16,7 @@ var settings = SettingsState.new()
 var player:Player
 var view_pivot:ViewPivot
 var is_mobile:bool
+var use_joypad = null
 var mutex: Mutex
 var thread: Thread
 

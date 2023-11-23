@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://11l2j1hffkbj"]
+
+[ext_resource type="Script" path="res://scenes/controllers/controller.gd" id="1_4ok7v"]
+[ext_resource type="Texture2D" uid="uid://2ef3oxxx54bp" path="res://assets/textures/controllers/keyboard.png" id="2_3vvj2"]
+
+[node name="keyboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4ok7v")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3vvj2")
+expand_mode = 3

@@ -12,6 +12,7 @@ extends Node3D
 @onready var optionMenuButtons = [
 	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonSave,
 	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonParams,
+	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonJoypad,
 	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonExit
 ]
 var items_transfert_dialog:ItemsTransfertDialog
@@ -45,6 +46,14 @@ func _ready():
 	items_transfert_dialog = load("res://scenes/dialogs/items_transfert_dialog.tscn").instantiate()
 	items_transfert_dialog.connect("close", _on_storage_close)
 	GameState.quests.start("main")
+	#if (Input.get_connected_joypads().size() > 0):
+	#	print(Input.get_joy_name(0))
+	#	GameState.use_joypad = true
+	#if (not GameState.settings.xbox_controller_shown):
+	#	_on_button_joypad_pressed()
+	#	GameState.settings.xbox_controller_shown = true
+	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonJoypad.icon_name = "keyboard"
+	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonJoypad.text = ""
 	#_on_button_inventory_pressed()
 	#_on_button_terminal_pressed()
 	
@@ -194,7 +203,10 @@ func _on_button_params_pressed():
 
 func _on_button_joypad_pressed():
 	_on_pause()
-	var scene = load("res://scenes/xbox.tscn").instantiate()
+	var scene_name = "keyboard"
+	if (GameState.use_joypad):
+		scene_name = "xbox"
+	var scene = load("res://scenes/controllers/" + scene_name + ".tscn").instantiate()
 	add_child(scene)
 	scene.connect("close", _on_resume)
 
