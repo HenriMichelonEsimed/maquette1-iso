@@ -12,7 +12,6 @@ signal display_info(node:Node3D)
 signal hide_info()
 signal item_collected(item:Item,quantity:int)
 @onready var anim = $AnimationPlayer
-@onready var camera = $Camera
 
 var just_resumed = false
 var speed = 0
@@ -34,10 +33,17 @@ const directions = {
 	"right" : 		[  { 'x':  1, 'z':  1 },  { 'x': -1, 'z':  1 },  { 'x': -1, 'z': -1 },  { 'x':  1, 'z': -1 } ]
 }
 
-func move_to(target:Vector3):
-	anim.play("walking")
-	move_to_previous_position = position
-	move_to_target = target
+func move_to(target:Vector2, camera:Camera3D):
+	var ray_query = PhysicsRayQueryParameters3D.new()
+	ray_query.from = camera.project_ray_origin(target)
+	ray_query.to = ray_query.from + camera.project_ray_normal(target) * 1000
+	var iray = get_world_3d().direct_space_state.intersect_ray(ray_query)
+	if (iray.size() > 0):
+		var collider = iray.collider
+		if (collider.is_in_group("floor") or collider.is_in_group("stairs")):
+			anim.play("walking")
+			move_to_previous_position = position
+			move_to_target = iray.position
 	
 func _stop_move_to():
 	move_to_previous_position = null

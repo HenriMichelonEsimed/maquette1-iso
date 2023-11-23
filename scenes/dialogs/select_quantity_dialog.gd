@@ -18,7 +18,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("cancel"):
 		_on_button_cancel_pressed()
 		return
-	elif Input.is_action_just_pressed("player_use"):
+	elif Input.is_action_just_pressed("player_use_nomouse"):
 		_on_button_drop_pressed()
 		return
 	if sliderQuantity.has_focus():

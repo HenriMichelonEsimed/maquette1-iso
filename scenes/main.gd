@@ -68,10 +68,12 @@ func _process(_delta):
 				_on_resume()
 			pass
 		elif (talkWindow.visible):
-			if Input.is_action_just_pressed("player_use") and playerTalkList.get_selected_items().size() > 0:
+			if Input.is_action_just_pressed("player_use_nomouse") and playerTalkList.get_selected_items().size() > 0:
 				_on_player_talk_item_clicked(playerTalkList.get_selected_items()[0], 0, 0)
 		return
-	if Input.is_action_just_pressed("player_inventory"):
+	if Input.is_action_just_pressed("player_moveto"):
+		GameState.player.move_to(get_viewport().get_mouse_position(), camera)
+	elif Input.is_action_just_pressed("player_inventory"):
 		_on_button_inventory_pressed()
 	elif Input.is_action_just_pressed("player_terminal"):
 		_on_button_terminal_pressed()
@@ -81,18 +83,6 @@ func _process(_delta):
 func _input(event):
 	if event is InputEventMouseMotion:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
-		_move_to_target(event.position)
-		
-func _move_to_target(click_position: Vector2):
-	var ray_query = PhysicsRayQueryParameters3D.new()
-	ray_query.from = camera.project_ray_origin(click_position)
-	ray_query.to = ray_query.from + camera.project_ray_normal(click_position) * 1000
-	var iray = get_world_3d().direct_space_state.intersect_ray(ray_query)
-	if (iray.size() > 0):
-		var collider = iray.collider
-		if (collider.is_in_group("floor") or collider.is_in_group("stairs")):
-			GameState.player.move_to(iray.position)
 
 func _set_player_position(pos:Vector3, rot:Vector3):
 	GameState.player.position = pos

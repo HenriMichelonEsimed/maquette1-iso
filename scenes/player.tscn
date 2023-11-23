@@ -682,10 +682,10 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b7lxq"]
-size = Vector3(0.758498, 0.502338, 0.288186)
+size = Vector3(0.68768, 0.502338, 0.288186)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_byirt"]
-radius = 0.328553
+radius = 0.215533
 height = 1.85556
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n027a"]
