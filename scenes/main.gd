@@ -30,7 +30,7 @@ func _ready():
 	TranslationServer.set_locale(GameState.settings.lang)
 	_prev_lang = GameState.settings.lang
 	if get_viewport().size.x > 1920:
-		get_viewport().content_scale_factor = 2
+		get_viewport().content_scale_factor = 2.2
 	elif get_viewport().size.x >= 7680 :
 		get_viewport().content_scale_factor = 3
 	NotifManager.connect("new_notification", _on_new_notification)
@@ -50,14 +50,9 @@ func _ready():
 	items_transfert_dialog = load("res://scenes/dialogs/items_transfert_dialog.tscn").instantiate()
 	items_transfert_dialog.connect("close", _on_storage_close)
 	GameState.quests.start("main")
-	#if (Input.get_connected_joypads().size() > 0):
-	#	print(Input.get_joy_name(0))
-	#	GameState.use_joypad = true
-	#if (not GameState.settings.xbox_controller_shown):
-	#	_on_button_joypad_pressed()
-	#	GameState.settings.xbox_controller_shown = true
-	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonJoypad.icon_name = "keyboard"
-	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonJoypad.text = ""
+	Input.connect("joy_connection_changed", _on_joypas_connection_changed)
+	if (Input.get_connected_joypads().size() > 0):
+		_on_joypas_connection_changed(null, true)
 	#_on_button_inventory_pressed()
 	#_on_button_terminal_pressed()
 	
@@ -160,6 +155,19 @@ func _on_storage_close(node:Storage):
 
 func _on_new_message():
 	_on_new_notification("You have unread messages !")
+
+func _on_joypas_connection_changed(id,connected):
+	GameState.use_joypad = connected
+	if connected:
+		if not GameState.settings.xbox_controller_shown:
+			_on_button_joypad_pressed()
+			GameState.settings.xbox_controller_shown = true
+		$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonJoypad.icon_name = "gamepad"
+		$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonJoypad.text = ""
+	else:
+		$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonJoypad.icon_name = "keyboard"
+		$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonJoypad.text = ""
+
 
 func _on_new_notification(message:String):
 	notificationTimer.stop()
