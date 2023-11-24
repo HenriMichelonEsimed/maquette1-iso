@@ -98,7 +98,7 @@ theme_override_styles/disabled = ExtResource("3_4047r")
 theme_override_styles/focus = ExtResource("3_4047r")
 text = "Yes"
 
-[node name="ButtonCancel" type="Button" parent="Panel/Content/VBoxContainer/Bottom"]
+[node name="ButtonNosave" type="Button" parent="Panel/Content/VBoxContainer/Bottom"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
@@ -112,6 +112,20 @@ theme_override_styles/disabled = ExtResource("3_4047r")
 theme_override_styles/focus = ExtResource("3_4047r")
 text = "No"
 
+[node name="ButtonCancel" type="Button" parent="Panel/Content/VBoxContainer/Bottom"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_styles/normal = ExtResource("3_4047r")
+theme_override_styles/hover = ExtResource("3_4047r")
+theme_override_styles/pressed = ExtResource("3_4047r")
+theme_override_styles/disabled = ExtResource("3_4047r")
+theme_override_styles/focus = ExtResource("3_4047r")
+text = "Cancel	"
+
 [node name="SelectQuantityDialog" parent="." instance=ExtResource("5_6b1bu")]
 visible = false
 layout_mode = 1
@@ -119,5 +133,6 @@ layout_mode = 1
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="pressed" from="Panel/Content/VBoxContainer/Bottom/ButtonSave" to="." method="_on_button_save_pressed"]
+[connection signal="pressed" from="Panel/Content/VBoxContainer/Bottom/ButtonNosave" to="." method="_on_button_nosave_pressed"]
 [connection signal="pressed" from="Panel/Content/VBoxContainer/Bottom/ButtonCancel" to="." method="_on_button_cancel_pressed"]
 [connection signal="quantity" from="SelectQuantityDialog" to="." method="_on_select_quantity_dialog_quantity"]

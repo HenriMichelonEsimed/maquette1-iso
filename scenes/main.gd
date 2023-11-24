@@ -64,7 +64,6 @@ func _process(_delta):
 			if Input.is_action_just_pressed("cancel") or Input.is_action_just_pressed("player_optionsmenu") :
 				optionMenu.visible = false
 				_on_resume()
-			pass
 		elif (talkWindow.visible):
 			if Input.is_action_just_pressed("player_use_nomouse") and playerTalkList.get_selected_items().size() > 0:
 				_on_player_talk_item_clicked(playerTalkList.get_selected_items()[0], 0, 0)

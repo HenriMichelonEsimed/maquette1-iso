@@ -1,6 +1,7 @@
 extends Control
 
 signal save_confirm(save_confirm:bool)
+signal close(node:Node)
 
 func _ready():
 	$Panel/Content/VBoxContainer/Bottom/ButtonSave.grab_focus()
@@ -15,4 +16,8 @@ func _on_button_save_pressed():
 	save_confirm.emit(true)
 
 func _on_button_cancel_pressed():
+	close.emit(self)
+
+func _on_button_nosave_pressed():
 	save_confirm.emit(false)
+
