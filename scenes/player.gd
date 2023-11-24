@@ -82,7 +82,7 @@ func _physics_process(delta):
 				var look_at_target = move_to_path
 				look_at_target.y = position.y
 				look_at(look_at_target)
-				if (transform.origin.distance_to(move_to_path)) < 0.1:
+				if (transform.origin.distance_to(move_to_path)) < 0.2:
 					if (path_to_follow.size() > 0):
 						move_to_path = path_to_follow.pop_front()
 					else:
@@ -188,20 +188,41 @@ func get_closest(pos:Vector3, points:Array):
 			closest = point
 	return closest
 	
+func get_closest_path(pos:Vector3, paths:Dictionary):
+	var closest = null
+	var shortest_distance = INF
+	for point in paths:
+		var distance = pos.distance_to(point)
+		if distance < shortest_distance:
+			shortest_distance = distance
+			closest = { point: paths[point] }
+	return closest
+	
+
 func find_path():
+	path_to_follow = []
+	var paths = {}
 	for path in GameState.current_zone.find_children("*", "Path3D", true, true):
-		path_to_follow = []
+		var points = []
 		for point in path.curve.get_baked_points(): 
 			point = path.global_transform * point
-			path_to_follow.push_back(point)
-		var closest_to_player = get_closest(position, path_to_follow)
+			points.push_back(point)
+		var closest_to_player = get_closest(position, points)
 		if (closest_to_player != null):
-			closest_to_target = get_closest(move_to_target, path_to_follow)
-			move_to_path = closest_to_player
-			var index = path_to_follow.find(closest_to_player)
-			path_to_follow = path_to_follow.slice(index)
-			index = path_to_follow.find(closest_to_target)
-			path_to_follow = path_to_follow.slice(0, index)
+			paths[closest_to_player] = points
+	var closest_path = get_closest_path(position, paths)
+	if (closest_path != null) and (closest_path.size() > 0):
+		var closest_to_player = closest_path.keys()[0]
+		path_to_follow = closest_path.values()[0]
+		closest_to_target = get_closest(move_to_target, path_to_follow)
+		move_to_path = closest_to_player
+		var index_player = path_to_follow.find(closest_to_player)
+		var index_target = path_to_follow.find(closest_to_target)
+		if (index_player > index_target):
+			path_to_follow.reverse()
+		path_to_follow = path_to_follow.slice(index_player)
+		path_to_follow = path_to_follow.slice(0, index_target)
+		print(str(closest_to_player) + "/" + str(closest_to_target))
 
 func _on_collect_item_aera_body_entered(node:Node):
 	if (move_to_target != null):
