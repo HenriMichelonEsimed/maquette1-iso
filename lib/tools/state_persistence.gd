@@ -49,13 +49,17 @@ func backup():
 			var path_to_remove = default_path + backup_path + dirs[i]
 			OS.move_to_trash(ProjectSettings.globalize_path(path_to_remove))
 	var new_path = default_path + backup_path + Time.get_datetime_string_from_system().replace(":", "").replace("-", "") + "/"
-	DirAccess.make_dir_recursive_absolute(new_path)
-	for file in DirAccess.get_files_at(_path):
-		DirAccess.copy_absolute(_path + file, new_path + file)
+	var files = DirAccess.get_files_at(_path)
+	if (files.size() > 0):
+		DirAccess.make_dir_recursive_absolute(new_path)
+		for file in DirAccess.get_files_at(_path):
+			DirAccess.copy_absolute(_path + "/" + file, new_path + file)
 
 func saveState(res:State):
-	var file = FileAccess.open(_path + "/" + _format_name(res.name) + default_ext, FileAccess.WRITE)
-	if (file == null): return false
+	var filename = _path + "/" + _format_name(res.name) + default_ext
+	var file = FileAccess.open(filename, FileAccess.WRITE)
+	if (file == null): 
+		return false
 	for prop in res.get_property_list():
 		if (prop.name == "name"): continue
 		if (prop.name == "parent"):

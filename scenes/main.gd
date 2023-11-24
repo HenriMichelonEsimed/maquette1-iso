@@ -107,7 +107,6 @@ func _change_zonelevel(zone_name:String, spawnpoint_key:String):
 			_previous_zone.queue_free()
 		new_zone = GameState.getZone(zone_name).instantiate()
 	if (GameState.current_zone != null): 
-		
 		GameState.player.disconnect("item_collected", GameState.current_zone.on_item_collected)
 		GameState.current_zone.disconnect("change_zone", _on_change_zonelevel)
 		for node in GameState.current_zone.find_children("*", "Storage", true, true):

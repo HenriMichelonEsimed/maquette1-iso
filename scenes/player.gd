@@ -46,10 +46,13 @@ func use(target:Vector2, camera:Camera3D):
 	ray_query.from = camera.project_ray_origin(target)
 	ray_query.to = ray_query.from + camera.project_ray_normal(target) * 1000
 	var iray = get_world_3d().direct_space_state.intersect_ray(ray_query)
-	if (iray.size() > 0) and (position.distance_to(iray.position) < 1.5):
-		_on_collect_item_aera_body_entered(iray.collider)
-		action_use()
-		_on_collect_item_aera_body_exited(iray.collider)
+	if (iray.size() > 0):
+		iray.position.y = position.y
+		var dist = position.distance_to(iray.position)
+		if (dist < 1.5):
+			_on_collect_item_aera_body_entered(iray.collider)
+			action_use()
+			_on_collect_item_aera_body_exited(iray.collider)
 	#else:
 	#	action_use()
 	

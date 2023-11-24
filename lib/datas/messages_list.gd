@@ -29,6 +29,7 @@ func saveState(file:FileAccess):
 		file.store_8(1 if message.read else 0)
 
 func loadState(file:FileAccess):
+	messages.clear()
 	var unread = false
 	for i in range(file.get_64()):
 		var from = file.get_pascal_string()
