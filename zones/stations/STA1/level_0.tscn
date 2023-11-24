@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=59 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_7fv8t"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -58,14 +58,13 @@
 [ext_resource type="PackedScene" uid="uid://nebo4anbesm0" path="res://props/items/misc/credit.tscn" id="58_6ad3g"]
 [ext_resource type="PackedScene" uid="uid://btdkocrw70s4u" path="res://lib/nodes/zone_change_trigger.tscn" id="59_o5rmr"]
 [ext_resource type="PackedScene" uid="uid://ctbw7kil8lw7k" path="res://zones/stations/STA1/waiter.tscn" id="59_ym5ud"]
-[ext_resource type="PackedScene" uid="uid://bisthw5n1b1yg" path="res://props/items/consum/ham_sandwich_1.tscn" id="60_eky8k"]
 
 [node name="level_0" type="Node3D"]
 script = ExtResource("1_7fv8t")
 zone_name = "stations/STA1/level_0"
 
 [node name="SpawnPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.43635, 0, -22.9887)
 script = ExtResource("2_3hqhq")
 key = "default"
 
@@ -942,7 +941,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, 0.300001)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0, 0.300001)
 
 [node name="Bar1" parent="Canteen" instance=ExtResource("49_6p5b4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0, -3.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, -4.76837e-07, -3.5)
 
 [node name="Bench2" parent="Canteen" instance=ExtResource("50_vboi2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 1)
@@ -985,10 +984,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.2, 
 
 [node name="waiter" parent="Canteen" instance=ExtResource("59_ym5ud")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26446, 0, -4.03226)
-
-[node name="HamSandwitch1" parent="Canteen" instance=ExtResource("60_eky8k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.762318, 0)
-quantity = 10
 
 [node name="ZoneChangeTrigger" parent="." instance=ExtResource("59_o5rmr")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.0718, 2.8, -8.6)

@@ -30,10 +30,10 @@ func _ready():
 	TranslationServer.set_locale(GameState.settings.lang)
 
 func saveGame(use_thread:bool = true):
-	#if use_thread:
-	#	thread = Thread.new()
-	#	thread.start(_saveGame)
-	#else:
+	if use_thread:
+		thread = Thread.new()
+		thread.start(_saveGame)
+	else:
 		_saveGame()
 	
 func _saveGame():
