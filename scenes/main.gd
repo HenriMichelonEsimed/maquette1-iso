@@ -42,7 +42,6 @@ func _ready():
 	GameState.messages.connect("new_message", _on_new_message)
 	GameState.player = $Game/Player
 	GameState.view_pivot = $Game/ViewPivot
-	GameState.loadGame()
 	TranslationServer.set_locale(GameState.settings.lang)
 	camera.init()
 	if (GameState.messages.have_unread()):
@@ -58,6 +57,7 @@ func _ready():
 		_on_joypas_connection_changed(null, true)
 	#_on_button_inventory_pressed()
 	#_on_button_terminal_pressed()
+	#_on_button_load_pressed()
 	
 func _process(_delta):
 	if (Input.is_action_just_pressed("exit_game")):
@@ -205,23 +205,25 @@ func _on_button_save_pressed():
 	_on_resume()
 	optionMenu.visible = false
 
-func _on_button_inventory_pressed():
+func load_dialog(filename:String):
 	_on_pause()
-	var scene = load("res://scenes/inventory_screen.tscn").instantiate()
+	var scene = load("res://scenes/" + filename + ".tscn").instantiate()
 	add_child(scene)
 	scene.connect("close", _on_resume)
+	return scene
+
+func _on_button_inventory_pressed():
+	load_dialog("inventory_screen")
 
 func _on_button_terminal_pressed():
-	_on_pause()
-	var scene = load("res://scenes/terminal.tscn").instantiate()
-	add_child(scene)
-	scene.connect("close", _on_resume)
+	load_dialog("terminal")
 
 func _on_button_params_pressed():
-	_on_pause()
-	var scene = load("res://scenes/parameters_screen.tscn").instantiate()
-	add_child(scene)
-	scene.connect("close", _on_resume)
+	load_dialog("parameters_screen")
+
+func _on_button_load_pressed():
+	var scene = load_dialog("dialogs/load_savegame_dialog")
+	scene.connect("load_savegame", _on_load_savegame)
 
 func _on_button_joypad_pressed():
 	_on_pause()
@@ -231,6 +233,11 @@ func _on_button_joypad_pressed():
 	var scene = load("res://scenes/controllers/" + scene_name + ".tscn").instantiate()
 	add_child(scene)
 	scene.connect("close", _on_resume)
+	
+func _on_load_savegame(savegame:String):
+	GameState.loadGame(savegame)
+	get_tree().reload_current_scene()
+	_on_resume()
 
 func _on_pause():
 	GameState.paused = true

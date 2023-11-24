@@ -3,6 +3,8 @@ class_name StatePersistence
 
 const default_ext = ".state"
 const default_path = "user://savegames/"
+const autosave_path = "autosave"
+const backup_path = "backup/"
 
 enum {
  	STATE_VARIANT 		= 0,
@@ -15,34 +17,44 @@ enum {
 	STATE_QUEST			= 7
 }
 
-var path = default_path
-var backup_path = path + "/backup/"
+var _path:String
 const max_backup = 9
 
 func _ready():
-	DirAccess.make_dir_recursive_absolute(path)
-	DirAccess.make_dir_recursive_absolute(backup_path)
+	set_path(autosave_path)
+	DirAccess.make_dir_recursive_absolute(default_path + autosave_path)
+	DirAccess.make_dir_recursive_absolute(default_path + backup_path)
+
+func get_savegames():
+	return DirAccess.get_directories_at(default_path + backup_path)
+
+func get_savegame_time(savegame:String):
+	return FileAccess.get_modified_time(default_path + backup_path + savegame)
 	
-func set_path(_path:String):
-	path = default_path + _path + "/"
-	DirAccess.make_dir_recursive_absolute(path)
+func format_savegame_name(savegame:String):
+	if (savegame == ""):
+		return autosave_path
+	return backup_path + savegame
+
+func set_path(_p:String = autosave_path):
+	_path = default_path + _p
 
 func _format_name(name:String):
 	return name.replace("/", "_")
 	
 func backup():
-	var dirs = DirAccess.get_directories_at(backup_path)
+	var dirs = DirAccess.get_directories_at(default_path + backup_path)
 	if (dirs.size() > max_backup):
 		for i in range(0, dirs.size() - max_backup):
-			var path_to_remove = backup_path + dirs[i]
+			var path_to_remove = default_path + backup_path + dirs[i]
 			OS.move_to_trash(ProjectSettings.globalize_path(path_to_remove))
-	var new_path = backup_path + Time.get_datetime_string_from_system().replace(":", "").replace("-", "") + "/"
+	var new_path = default_path + backup_path + Time.get_datetime_string_from_system().replace(":", "").replace("-", "") + "/"
 	DirAccess.make_dir_recursive_absolute(new_path)
-	for file in DirAccess.get_files_at(path):
-		DirAccess.copy_absolute(path + file, new_path + file)
+	for file in DirAccess.get_files_at(_path):
+		DirAccess.copy_absolute(_path + file, new_path + file)
 
 func saveState(res:State):
-	var file = FileAccess.open(path + _format_name(res.name) + default_ext, FileAccess.WRITE)
+	var file = FileAccess.open(_path + "/" + _format_name(res.name) + default_ext, FileAccess.WRITE)
 	if (file == null): return false
 	for prop in res.get_property_list():
 		if (prop.name == "name"): continue
@@ -94,8 +106,10 @@ func saveState(res:State):
 	
 func loadState(res:State):
 	var parent:Node = res.get("parent")
-	var file = FileAccess.open(path + _format_name(res.name) + default_ext, FileAccess.READ)
+	var filename = _path + "/" + _format_name(res.name) + default_ext
+	var file = FileAccess.open(filename, FileAccess.READ)
 	if (file == null):
+		print(FileAccess.get_open_error())
 		return null
 	while (!file.eof_reached()):
 		var entry_type = file.get_8()

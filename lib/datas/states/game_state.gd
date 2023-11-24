@@ -4,7 +4,6 @@ signal saving_start()
 signal saving_end()
 
 var paused:bool = false
-var current_state_path = "autosave"
 var current_zone:Zone
 var quests = QuestsManager.new()
 var location = LocationState.new()
@@ -23,18 +22,19 @@ var thread: Thread
 func _ready():
 	mutex = Mutex.new()
 	is_mobile = OS.get_name() in ["android", "iOS"]
-	StateSaver.set_path(current_state_path)
+	loadGame()
 
 func saveGame(use_thread:bool = true):
-	if use_thread:
-		thread = Thread.new()
-		thread.start(_saveGame)
-	else:
+	#if use_thread:
+	#	thread = Thread.new()
+	#	thread.start(_saveGame)
+	#else:
 		_saveGame()
 	
 func _saveGame():
 	mutex.lock()
 	call_deferred("emit_signal","saving_start")
+	StateSaver.set_path()
 	StateSaver.backup()
 	location.position = player.position
 	location.rotation = player.rotation
@@ -49,7 +49,11 @@ func _saveGame():
 	call_deferred("emit_signal","saving_end")
 	mutex.unlock()
 
-func loadGame():
+func loadGame(savegame = null):
+	if (savegame == null):
+		StateSaver.set_path()
+	else:
+		StateSaver.set_path(savegame)
 	StateSaver.loadState(settings)
 	StateSaver.loadState(QuestsState.new(quests))
 	StateSaver.loadState(MessagesState.new(messages))

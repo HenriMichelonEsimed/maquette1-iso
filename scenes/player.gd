@@ -50,8 +50,8 @@ func use(target:Vector2, camera:Camera3D):
 		_on_collect_item_aera_body_entered(iray.collider)
 		action_use()
 		_on_collect_item_aera_body_exited(iray.collider)
-	else:
-		action_use()
+	#else:
+	#	action_use()
 	
 func stop_move_to():
 	if (move_to_target != null):
