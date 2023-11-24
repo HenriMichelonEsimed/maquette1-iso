@@ -1194,6 +1194,9 @@ collision_mask = 8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0424516)
 shape = SubResource("BoxShape3D_4xd2y")
 
+[node name="RayCastCollision" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.548015, 0)
+
 [connection signal="body_entered" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_entered"]
 [connection signal="body_exited" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_exited"]
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_collect_item_aera_body_entered"]
