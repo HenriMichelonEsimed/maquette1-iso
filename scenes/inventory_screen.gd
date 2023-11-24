@@ -147,6 +147,7 @@ func _on_drop_pressed():
 		$SelectQuantityDialog.open(item, tr("Drop"))
 	else:
 		_drop()
+
 func _drop(quantity:int=0):
 	item_dropped.emit(item, quantity)
 	_refresh()

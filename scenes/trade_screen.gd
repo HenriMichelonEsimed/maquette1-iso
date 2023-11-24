@@ -6,13 +6,17 @@ class TradeScreenState extends State:
 		super("trade_screen")
 
 signal trade_end(node:Node)
-@onready var buttonBuy = $Content/Body/PanelItem/Content/Bottom/ButtonBuy
-@onready var tabs = $Content/Body/PanelItem/Content/Tabs
-@onready var list_tools:ItemList = $Content/Body/PanelItem/Content/Tabs/Tools/List
-@onready var list_clothes:ItemList = $Content/Body/PanelItem/Content/Tabs/Clothes/List
-@onready var list_consumables:ItemList = $Content/Body/PanelItem/Content/Tabs/Consumables/List
-@onready var list_quest:ItemList = $Content/Body/PanelItem/Content/Tabs/Quests/List
-@onready var list_miscellaneous:ItemList = $Content/Body/PanelItem/Content/Tabs/Miscellaneous/List
+
+@onready var tabs:TabContainer = $Content/Body/Content/Tabs
+@onready var list_tools:ItemList = $Content/Body/Content/Tabs/Tools/List
+@onready var list_clothes:ItemList = $Content/Body/Content/Tabs/Clothes/List
+@onready var list_consumables:ItemList = $Content/Body/Content/Tabs/Consumables/List
+@onready var list_quest:ItemList = $Content/Body/Content/Tabs/Quests/List
+@onready var list_miscellaneous:ItemList = $Content/Body/Content/Tabs/Miscellaneous/List
+@onready var item_content = $Content/Body/Content/PanelItem/Content
+@onready var item_title = $Content/Body/Content/PanelItem/Content/Title
+@onready var weigth_value = $Content/Body/Content/PanelItem/Content/LabelWeight
+@onready var node_3d = $"Content/Body/Content/PanelItem/Content/ViewContent/3DView/InsertPoint"
 
 const tab_order = [ 
 	Item.ItemType.ITEM_TOOLS, 
@@ -32,6 +36,13 @@ const tab_order = [
 
 var state = TradeScreenState.new()
 var trader:InteractiveCharacter
+var item:Item
+var list:ItemList
+var selected = 0
+
+func open(char:InteractiveCharacter):
+	trader = char
+	for type in list_content: _fill_list(type, list_content[type])
 
 func _ready():
 	var ratio = size.x / size.y
@@ -40,18 +51,68 @@ func _ready():
 	size.y = size.x / ratio
 	position.x = (vsize.x - size.x) / 2
 	position.y = (vsize.y - size.y) / 2
-	buttonBuy.disabled = true
+	tabs.custom_minimum_size.x = size.x/2
 	StateSaver.loadState(state)
 	tabs.current_tab = state.tab
 
-func open(char:InteractiveCharacter):
-	trader = char
-	for type in list_content: _fill_list(type, list_content[type])
+func _on_button_back_pressed():
+	trade_end.emit(self)
+
+func _on_list_tools_item_selected(index):
+	list_clothes.deselect_all()
+	list_consumables.deselect_all()
+	list_miscellaneous.deselect_all()
+	list_quest.deselect_all()
+	_item_details(trader.items.getone_bytype(index, Item.ItemType.ITEM_TOOLS), index)
+
+func _on_list_miscellaneous_item_selected(index):
+	list_clothes.deselect_all()
+	list_consumables.deselect_all()
+	list_quest.deselect_all()
+	list_tools.deselect_all()
+	_item_details(trader.items.getone_bytype(index, Item.ItemType.ITEM_MISCELLANEOUS), index)
+
+func _on_list_item_quest_selected(index):
+	list_clothes.deselect_all()
+	list_consumables.deselect_all()
+	list_miscellaneous.deselect_all()
+	list_tools.deselect_all()
+	_item_details(trader.items.getone_bytype(index, Item.ItemType.ITEM_QUEST), index)
+
+func _on_list_item_consumable_selected(index):
+	list_clothes.deselect_all()
+	list_miscellaneous.deselect_all()
+	list_quest.deselect_all()
+	list_tools.deselect_all()
+	_item_details(trader.items.getone_bytype(index, Item.ItemType.ITEM_CONSUMABLES), index)
+
+func _on_list_item_clothe_selected(index):
+	list_miscellaneous.deselect_all()
+	list_consumables.deselect_all()
+	list_quest.deselect_all()
+	list_tools.deselect_all()
+	_item_details(trader.items.getone_bytype(index, Item.ItemType.ITEM_CLOTHES), index)
+
+func _item_details(_item:Item, index):
+	selected = index
+	item = _item
+	item_title.text = item.label
+	weigth_value.text = tr("Weigth : %.1f") % _item.weight
+	for c in node_3d.get_children():
+		c.queue_free()
+	var clone = _item.duplicate()
+	node_3d.add_child(clone)
+	clone.position = Vector3.ZERO
+	clone.scale = clone.scale * (clone.preview_scale+1)
+	item_content.visible = true
 
 func _process(_delta):
 	if ($SelectQuantityDialog.visible): return
 	if Input.is_action_just_pressed("cancel"):
 		_on_button_back_pressed()
+		return
+	elif Input.is_action_just_pressed("player_use_nomouse"):
+		_on_buy_pressed()
 		return
 	state.tab = tabs.current_tab
 	if Input.is_action_just_pressed("ui_left"):
@@ -68,18 +129,37 @@ func _process(_delta):
 				list.select(0)
 				list.item_selected.emit(0)
 
-func _on_button_back_pressed():
-	trade_end.emit(self)
-	
 func _set_tab():
 	if (state.tab < 0):
 		state.tab = 4
 	elif (state.tab > 4):
 		state.tab = 0
 	tabs.current_tab = state.tab
+	item_content.visible = false
 	StateSaver.saveState(state)
 
 func _fill_list(type:Item.ItemType, list:ItemList):
 	list.clear()
 	for item in trader.items.getall_bytype(type):
 		list.add_item(tr(str(item)))
+
+func _on_buy_pressed():
+	if (item == null): return
+	if (item is ItemMultiple):
+		$SelectQuantityDialog.open(item, tr("Drop"))
+	else:
+		_buy()
+
+func _buy(quantity:int=0):
+	_refresh()
+
+func _refresh():
+	item_content.visible = false
+	_fill_list(item.type, list_content[item.type])
+	
+func _on_tabs_tab_selected(tab):
+	list = list_content[tab_order[tab]]
+	if (tab == state.tab): return
+	state.tab = tab
+	StateSaver.saveState(state)
+
