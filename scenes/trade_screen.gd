@@ -16,6 +16,7 @@ signal trade_end(node:Node)
 @onready var item_content = $Content/Body/Content/PanelItem/Content
 @onready var item_title = $Content/Body/Content/PanelItem/Content/Title
 @onready var weigth_value = $Content/Body/Content/PanelItem/Content/LabelWeight
+@onready var price_value = $Content/Body/Content/PanelItem/Content/LabelPrice
 @onready var node_3d = $"Content/Body/Content/PanelItem/Content/ViewContent/3DView/InsertPoint"
 
 const tab_order = [ 
@@ -97,7 +98,8 @@ func _item_details(_item:Item, index):
 	selected = index
 	item = _item
 	item_title.text = item.label
-	weigth_value.text = tr("Weigth : %.1f") % _item.weight
+	weigth_value.text = tr("Weigth : %.2f") % _item.weight
+	price_value.text = tr("Unit price : %.2f") % _item.price
 	for c in node_3d.get_children():
 		c.queue_free()
 	var clone = _item.duplicate()

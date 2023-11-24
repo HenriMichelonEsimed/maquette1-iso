@@ -11,6 +11,8 @@ radius = 0.0122663
 script = ExtResource("1_5p0pu")
 key = "credit"
 label = "Credit"
+weight = 0.01
+price = 1.0
 type = 3
 preview_scale = 20.0
 

@@ -11,6 +11,7 @@ script = ExtResource("1_o7s2n")
 key = "pizza_1"
 label = "Peperroni Pizza"
 weight = 0.02
+price = 2.0
 type = 2
 preview_scale = 3.0
 

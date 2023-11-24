@@ -9,7 +9,7 @@ Quests;Quêtes
 Drop;Lâcher
 Hello !;Salut !
 Bye.;Au revoir.
-Weigth : %.1f;Poids : %.1f
+Weigth : %.2f;Poids : %.2f
 Transfert;Transfert
 How many ?;Combien ?
 Cancel;Annuler
@@ -33,3 +33,4 @@ Yes;Oui
 No;Non
 Trading;Commerce
 Buy;Acheter
+Unit price : %.2f;Prix unitaire : %.2f

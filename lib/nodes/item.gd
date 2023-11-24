@@ -13,6 +13,7 @@ const scenes_path = [ 'tools', 'clothes', 'consum', 'misc', 'quest']
 @export var key:String
 @export var label:String
 @export var weight:float
+@export var price:float = 0.0
 @export var type:ItemType
 @export var preview_scale:float = 1.0
 
