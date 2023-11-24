@@ -688,8 +688,8 @@ size = Vector3(0.367915, 0.502338, 0.451454)
 radius = 0.37188
 height = 1.85556
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_n027a"]
-size = Vector3(0.883042, 1.6584, 0.817676)
+[sub_resource type="BoxShape3D" id="BoxShape3D_u4tew"]
+size = Vector3(0.895054, 1.80922, 1.01242)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_24n27"]
 radius = 0.267303
@@ -1170,10 +1170,12 @@ libraries = {
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 1.1, 0, 1.07333, -0.324777)
+visible = false
 shape = SubResource("BoxShape3D_b7lxq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.923668, 0)
+visible = false
 shape = SubResource("CapsuleShape3D_byirt")
 
 [node name="CollectAndUseArea" type="Area3D" parent="."]
@@ -1182,11 +1184,12 @@ collision_layer = 0
 collision_mask = 22
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollectAndUseArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, -0.0634052, 0.128569)
-shape = SubResource("BoxShape3D_n027a")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, -0.210914, 0.149642)
+shape = SubResource("BoxShape3D_u4tew")
 
 [node name="TriggerArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.718367, -0.214216)
+visible = false
 collision_layer = 0
 collision_mask = 8
 

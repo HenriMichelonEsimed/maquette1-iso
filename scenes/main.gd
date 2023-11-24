@@ -22,6 +22,7 @@ var last_spawnpoint:String
 var talking_char:InteractiveCharacter
 var _prev_lang:String
 var _previous_zone:Zone
+var talk_window_just_closed = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
@@ -76,12 +77,15 @@ func _process(_delta):
 		GameState.player.move_to(get_viewport().get_mouse_position(), camera)
 	elif Input.is_action_just_released("player_moveto"):
 		GameState.player.stop_move_to()
+	elif Input.is_action_just_pressed("player_use_mouse") and not talk_window_just_closed:
+		GameState.player.use(get_viewport().get_mouse_position(), camera)
 	if Input.is_action_just_pressed("player_inventory"):
 		_on_button_inventory_pressed()
 	elif Input.is_action_just_pressed("player_terminal"):
 		_on_button_terminal_pressed()
 	elif Input.is_action_just_pressed("player_optionsmenu"):
 		_on_button_optionsmenu_pressed()
+	talk_window_just_closed = false
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -274,6 +278,7 @@ func _on_npc_talk(char:InteractiveCharacter,phrase:String, answers:Array):
 		playerTalkList.select(0)
 
 func _on_end_talk():
+	talk_window_just_closed = true
 	talkWindow.visible = false
 	_on_resume()
 

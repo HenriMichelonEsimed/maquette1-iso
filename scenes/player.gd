@@ -41,19 +41,39 @@ func move_to(target:Vector2, camera:Camera3D):
 	if (iray.size() > 0):
 		move_to_target = iray.position
 	
+func use(target:Vector2, camera:Camera3D):
+	var ray_query = PhysicsRayQueryParameters3D.new()
+	ray_query.from = camera.project_ray_origin(target)
+	ray_query.to = ray_query.from + camera.project_ray_normal(target) * 1000
+	var iray = get_world_3d().direct_space_state.intersect_ray(ray_query)
+	if (iray.size() > 0) and (position.distance_to(iray.position) < 1.5):
+		_on_collect_item_aera_body_entered(iray.collider)
+		action_use()
+		_on_collect_item_aera_body_exited(iray.collider)
+	else:
+		action_use()
+	
 func stop_move_to():
 	if (move_to_target != null):
 		move_to_target = null
 		velocity = Vector3.ZERO
 		anim.play("standing")
+		
+func _look_at(node:Node3D):
+	var pos = node.global_position
+	pos.y = position.y
+	look_at(pos)
 	
 func action_use():
 	if (node_to_use != null):
+		_look_at(node_to_use)
 		node_to_use.use(true)
 	elif (item_to_collect != null):
+		_look_at(item_to_collect)
 		item_collected.emit(item_to_collect,-1)
 		item_to_collect = null
 	elif (char_to_talk != null):
+		_look_at(char_to_talk)
 		char_to_talk.interact()
 
 func _process(_delta):
@@ -61,7 +81,7 @@ func _process(_delta):
 	if (just_resumed):
 		just_resumed = false
 		return
-	if Input.is_action_just_pressed("player_use"):
+	if Input.is_action_just_pressed("player_use_nomouse"):
 		action_use()
 
 func _physics_process(delta):

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bprbccvw74dlh" path="res://characters/1/char_1.glb" id="2_rllrt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_svw2g"]
-size = Vector3(1.1, 1.7, 1.4)
+size = Vector3(1, 1.7, 1.5)
 
 [node name="waiter" type="CharacterBody3D"]
 script = ExtResource("1_av54p")
@@ -14,5 +14,5 @@ label = "Waiter"
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.5)
 shape = SubResource("BoxShape3D_svw2g")
