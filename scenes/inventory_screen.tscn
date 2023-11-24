@@ -62,7 +62,7 @@ ambient_light_color = Color(1, 1, 1, 1)
 [sub_resource type="World3D" id="World3D_tt1eo"]
 environment = SubResource("Environment_f1hi3")
 
-[node name="InventoryScreen" type="Control" node_paths=PackedStringArray("tabs", "list_tools", "list_clothes", "list_consumables", "list_quest", "list_miscellaneous")]
+[node name="InventoryScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -76,12 +76,6 @@ offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0hce1")
-tabs = NodePath("Content/Body/Content/Tabs")
-list_tools = NodePath("Content/Body/Content/Tabs/Tools/List")
-list_clothes = NodePath("Content/Body/Content/Tabs/Clothes/List")
-list_consumables = NodePath("Content/Body/Content/Tabs/Consumables/List")
-list_quest = NodePath("Content/Body/Content/Tabs/Quests/List")
-list_miscellaneous = NodePath("Content/Body/Content/Tabs/Miscellaneous/List")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

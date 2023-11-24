@@ -268,6 +268,7 @@ func _on_npc_trade(char:InteractiveCharacter):
 	var scene = load("res://scenes/trade_screen.tscn").instantiate()
 	add_child(scene)
 	scene.connect("trade_end", _on_npc_trade_end)
+	scene.open(char)
 	
 func _on_npc_trade_end(node:Node):
 	node.queue_free()

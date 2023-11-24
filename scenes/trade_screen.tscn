@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://carlrkrgnmhlc"]
+[gd_scene load_steps=13 format=3 uid="uid://carlrkrgnmhlc"]
 
 [ext_resource type="Script" path="res://scenes/trade_screen.gd" id="1_ixb2b"]
 [ext_resource type="Texture2D" uid="uid://38qd58n3acbb" path="res://assets/textures/talkwindow.png" id="2_4aej3"]
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="3_kn1xy"]
 [ext_resource type="StyleBox" uid="uid://bmyh6yvafukya" path="res://assets/button_style.tres" id="4_ahejk"]
 [ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="5_114mb"]
+[ext_resource type="StyleBox" uid="uid://ml3osqlkwitw" path="res://assets/tabs_tab_style.tres" id="6_1uk07"]
+[ext_resource type="StyleBox" uid="uid://p34djr2fcs3w" path="res://assets/tabs_list_style.tres" id="7_322xj"]
 [ext_resource type="PackedScene" uid="uid://dytjnya7i6c47" path="res://scenes/dialogs/select_quantity_dialog.tscn" id="9_a2hjl"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_825ag"]
@@ -140,8 +142,104 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_cq1op")
 
-[node name="Content" type="HBoxContainer" parent="Content/Body"]
+[node name="Content" type="VBoxContainer" parent="Content/Body/PanelItem"]
 layout_mode = 2
+
+[node name="Tabs" type="TabContainer" parent="Content/Body/PanelItem/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hovered_color = Color(1, 1, 0, 1)
+theme_override_colors/font_unselected_color = Color(0.564706, 0.564706, 0.564706, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_styles/tab_selected = ExtResource("6_1uk07")
+theme_override_styles/tab_hovered = ExtResource("6_1uk07")
+theme_override_styles/tab_unselected = ExtResource("6_1uk07")
+theme_override_styles/tab_disabled = ExtResource("6_1uk07")
+
+[node name="Tools" type="Control" parent="Content/Body/PanelItem/Content/Tabs"]
+layout_mode = 2
+
+[node name="List" type="ItemList" parent="Content/Body/PanelItem/Content/Tabs/Tools"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("7_322xj")
+
+[node name="Clothes" type="Control" parent="Content/Body/PanelItem/Content/Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="List" type="ItemList" parent="Content/Body/PanelItem/Content/Tabs/Clothes"]
+layout_mode = 2
+offset_left = -250.0
+offset_right = 250.0
+theme_override_styles/panel = ExtResource("7_322xj")
+
+[node name="Consumables" type="Control" parent="Content/Body/PanelItem/Content/Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="List" type="ItemList" parent="Content/Body/PanelItem/Content/Tabs/Consumables"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("7_322xj")
+
+[node name="Miscellaneous" type="Control" parent="Content/Body/PanelItem/Content/Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="List" type="ItemList" parent="Content/Body/PanelItem/Content/Tabs/Miscellaneous"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("7_322xj")
+
+[node name="Quests" type="Control" parent="Content/Body/PanelItem/Content/Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="List" type="ItemList" parent="Content/Body/PanelItem/Content/Tabs/Quests"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("7_322xj")
+
+[node name="Bottom" type="HBoxContainer" parent="Content/Body/PanelItem/Content"]
+layout_mode = 2
+alignment = 1
+
+[node name="ButtonBuy" type="Button" parent="Content/Body/PanelItem/Content/Bottom"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.564706, 0.564706, 0.564706, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_styles/normal = ExtResource("4_ahejk")
+theme_override_styles/hover = ExtResource("4_ahejk")
+theme_override_styles/pressed = ExtResource("4_ahejk")
+theme_override_styles/disabled = ExtResource("4_ahejk")
+theme_override_styles/focus = ExtResource("4_ahejk")
+text = "Buy	"
 
 [node name="SelectQuantityDialog" parent="." instance=ExtResource("9_a2hjl")]
 visible = false

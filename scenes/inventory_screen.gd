@@ -8,12 +8,16 @@ class InventoryScreenState extends State:
 signal close(node:Node)
 signal item_dropped(item:Item,quantity:int)
 
-@export var tabs:TabContainer
-@export var list_tools:ItemList
-@export var list_clothes:ItemList
-@export var list_consumables:ItemList
-@export var list_quest:ItemList
-@export var list_miscellaneous:ItemList
+@onready var tabs:TabContainer = $Content/Body/Content/Tabs
+@onready var list_tools:ItemList = $Content/Body/Content/Tabs/Tools/List
+@onready var list_clothes:ItemList = $Content/Body/Content/Tabs/Clothes/List
+@onready var list_consumables:ItemList = $Content/Body/Content/Tabs/Consumables/List
+@onready var list_quest:ItemList = $Content/Body/Content/Tabs/Quests/List
+@onready var list_miscellaneous:ItemList = $Content/Body/Content/Tabs/Miscellaneous/List
+@onready var item_content = $Content/Body/Content/PanelItem/Content
+@onready var item_title = $Content/Body/Content/PanelItem/Content/Title
+@onready var weigth_value = $Content/Body/Content/PanelItem/Content/LabelWeight
+@onready var node_3d = $"Content/Body/Content/PanelItem/Content/ViewContent/3DView/InsertPoint"
 
 const tab_order = [ 
 	Item.ItemType.ITEM_TOOLS, 
@@ -30,10 +34,6 @@ const tab_order = [
 	Item.ItemType.ITEM_MISCELLANEOUS : list_miscellaneous,
 	Item.ItemType.ITEM_QUEST : list_quest
 }
-@onready var item_content = $Content/Body/Content/PanelItem/Content
-@onready var item_title = $Content/Body/Content/PanelItem/Content/Title
-@onready var weigth_value = $Content/Body/Content/PanelItem/Content/LabelWeight
-@onready var node_3d = $"Content/Body/Content/PanelItem/Content/ViewContent/3DView/InsertPoint"
 
 var state = InventoryScreenState.new()
 var item:Item
