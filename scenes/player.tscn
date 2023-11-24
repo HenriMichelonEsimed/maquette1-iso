@@ -682,14 +682,14 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b7lxq"]
-size = Vector3(0.68768, 0.502338, 0.288186)
+size = Vector3(0.367915, 0.502338, 0.358309)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_byirt"]
-radius = 0.215533
+radius = 0.37188
 height = 1.85556
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n027a"]
-size = Vector3(0.78597, 1.6584, 0.931033)
+size = Vector3(0.883042, 1.6584, 0.817676)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4xd2y"]
 size = Vector3(0.71047, 1, 0.237145)
@@ -1169,7 +1169,7 @@ libraries = {
 }
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 1.1, 0, 1.07333, -0.376407)
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 1.1, 0, 1.07333, -0.324777)
 shape = SubResource("BoxShape3D_b7lxq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -1179,10 +1179,10 @@ shape = SubResource("CapsuleShape3D_byirt")
 [node name="CollectAndUseArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11161, -0.533054)
 collision_layer = 0
-collision_mask = 23
+collision_mask = 22
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollectAndUseArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, -0.0634052, 0.0666128)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, -0.0634052, 0.128569)
 shape = SubResource("BoxShape3D_n027a")
 
 [node name="TriggerArea" type="Area3D" parent="."]
@@ -1193,9 +1193,6 @@ collision_mask = 8
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0424516)
 shape = SubResource("BoxShape3D_4xd2y")
-
-[node name="RayCastCollision" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.548015, 0)
 
 [connection signal="body_entered" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_entered"]
 [connection signal="body_exited" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_exited"]

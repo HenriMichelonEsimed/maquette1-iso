@@ -12,7 +12,6 @@ signal display_info(node:Node3D)
 signal hide_info()
 signal item_collected(item:Item,quantity:int)
 @onready var anim = $AnimationPlayer
-@onready var raycast =$RayCastCollision
 
 var just_resumed = false
 var speed = 0
@@ -24,9 +23,6 @@ var item_to_collect:Item = null
 var node_to_use:Usable = null
 var char_to_talk:InteractiveCharacter = null
 var signaled = false
-var path_to_follow = null
-var closest_to_target = null
-var move_to_path = null
 var move_to_target = null
 var move_to_previous_position = null
 
@@ -43,18 +39,24 @@ func move_to(target:Vector2, camera:Camera3D):
 	ray_query.to = ray_query.from + camera.project_ray_normal(target) * 1000
 	var iray = get_world_3d().direct_space_state.intersect_ray(ray_query)
 	if (iray.size() > 0):
-		var collider = iray.collider
-		anim.play("walking")
-		move_to_previous_position = position
 		move_to_target = iray.position
+		var collider = iray.collider
 		if not(collider.is_in_group("floor") or collider.is_in_group("stairs")):
 			move_to_target.y = position.y
 	
-func _stop_move_to():
-	move_to_previous_position = null
+func stop_move_to():
 	move_to_target = null
 	velocity = Vector3.ZERO
 	anim.play("standing")
+	
+func action_use():
+	if (node_to_use != null):
+		node_to_use.use(true)
+	elif (item_to_collect != null):
+		item_collected.emit(item_to_collect,-1)
+		item_to_collect = null
+	elif (char_to_talk != null):
+		char_to_talk.interact()
 
 func _process(_delta):
 	if (GameState.paused): return
@@ -62,13 +64,7 @@ func _process(_delta):
 		just_resumed = false
 		return
 	if Input.is_action_just_pressed("player_use"):
-		if (node_to_use != null):
-			node_to_use.use(true)
-		elif (item_to_collect != null):
-			item_collected.emit(item_to_collect,-1)
-			item_to_collect = null
-		elif (char_to_talk != null):
-			char_to_talk.interact()
+		action_use()
 
 func _physics_process(delta):
 	if (GameState.paused or just_resumed): return
@@ -77,20 +73,13 @@ func _physics_process(delta):
 		return
 	if (move_to_target != null):
 		if Input.is_action_pressed("player_right") or  Input.is_action_pressed("player_left") or  Input.is_action_pressed("player_backward") or  Input.is_action_pressed("player_forward"):
-			_stop_move_to()
+			stop_move_to()
 		else:
-			if (move_to_path != null):
-				var look_at_target = move_to_path
-				look_at_target.y = position.y
-				look_at(look_at_target)
-				if (transform.origin.distance_to(move_to_path)) < 0.2:
-					move_to_path = null
-			else:
-				var look_at_target = move_to_target
-				look_at_target.y = position.y
-				look_at(look_at_target)
+			var look_at_target = move_to_target
+			look_at_target.y = position.y
+			look_at(look_at_target)
 			if (transform.origin.distance_to(move_to_target)) < 0.6:
-				_stop_move_to()
+				stop_move_to()
 				return
 			velocity = -transform.basis.z * walking_speed
 			if (move_to_target.y > position.y):
@@ -99,12 +88,14 @@ func _physics_process(delta):
 					var collider = collision.get_collider()
 					if collider.is_in_group("stairs"):
 						velocity.y = 5
-			if !anim.is_playing():
-				anim.play()
 			move_to_previous_position = position
 			move_and_slide()
-			if (position.x == move_to_previous_position.x) and (position.y == move_to_previous_position.y):
-				_stop_move_to()
+			if (position.distance_to(move_to_previous_position) < 0.001):
+				stop_move_to()
+				return
+			if !anim.is_playing():
+				anim.play()
+			anim.play("walking")
 			GameState.view_pivot.position = position
 			GameState.view_pivot.position.y += 1.5
 			if (!signaled) :
@@ -176,15 +167,6 @@ func _on_camera_view_rotate(view:int):
 	current_view = view
 
 func _on_collect_item_aera_body_entered(node:Node):
-	if (move_to_target != null):
-		raycast.target_position = to_global(node.position)
-		raycast.force_raycast_update()
-		var dir = position.direction_to(raycast.get_collision_point())
-		var dist = position.distance_to(raycast.get_collision_point())
-		var reflect = dir.reflect(raycast.get_collision_normal())
-		print(reflect)
-		#move_to_path = position + reflect
-		return
 	if (node is Item):
 		item_to_collect = node
 		display_info.emit(node)

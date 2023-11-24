@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b7qddn8f2vuxm" path="res://assets/models/Misc/sandwich/ham sandwich.glb" id="2_0d3u4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c6hvw"]
-size = Vector3(8.04759, 1, 1.14309)
+size = Vector3(0.228299, 0.191791, 0.244588)
 
 [node name="HamSandwich1" type="CharacterBody3D"]
 script = ExtResource("1_jcd3k")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=60 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_7fv8t"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -59,13 +59,6 @@
 [ext_resource type="PackedScene" uid="uid://btdkocrw70s4u" path="res://lib/nodes/zone_change_trigger.tscn" id="59_o5rmr"]
 [ext_resource type="PackedScene" uid="uid://ctbw7kil8lw7k" path="res://zones/stations/STA1/waiter.tscn" id="59_ym5ud"]
 [ext_resource type="PackedScene" uid="uid://bisthw5n1b1yg" path="res://props/items/consum/ham_sandwich_1.tscn" id="60_eky8k"]
-
-[sub_resource type="Curve3D" id="Curve3D_f5gni"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.0765533, 0, -5.19724, 0, 0, 0, 0, 0, 0, 0.0485916, 0.00012207, 5.91988),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
 
 [node name="level_0" type="Node3D"]
 script = ExtResource("1_7fv8t")
@@ -930,10 +923,11 @@ transform = Transform3D(0.996345, 0, 0.0854169, 0, 1, 0, -0.0854169, 0, 0.996345
 transform = Transform3D(0.996345, 0, 0.0854169, 0, 1, 0, -0.0854169, 0, 0.996345, 9.97914, 0.529372, -4.4)
 
 [node name="Table1" parent="Canteen" instance=ExtResource("48_c2tmy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.599999, 0, 7.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.599999, 0, 6.68172)
 
 [node name="Table2" parent="Canteen" instance=ExtResource("48_c2tmy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, 7.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, 6.68172)
+visible = false
 
 [node name="Table3" parent="Canteen" instance=ExtResource("48_c2tmy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, 3.7)
@@ -975,16 +969,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0, 4.4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0, 3.1)
 
 [node name="Bench10" parent="Canteen" instance=ExtResource("50_vboi2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0, 7.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0, 7.28172)
 
 [node name="Bench11" parent="Canteen" instance=ExtResource("50_vboi2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0, 6.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0, 5.98172)
 
 [node name="Bench12" parent="Canteen" instance=ExtResource("50_vboi2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, 7.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, 7.28172)
 
 [node name="Bench13" parent="Canteen" instance=ExtResource("50_vboi2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, 6.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, 5.98172)
 
 [node name="Trash1" parent="Canteen" instance=ExtResource("24_i20hq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.2, 0, 2.7)
@@ -1000,7 +994,3 @@ quantity = 10
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.9718, 2.8, -8.6)
 zone_name = "stations/STA1/level_1"
 spawnpoint_key = "default"
-
-[node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2596, 0, -17.7032)
-curve = SubResource("Curve3D_f5gni")

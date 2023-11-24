@@ -71,9 +71,11 @@ func _process(_delta):
 			if Input.is_action_just_pressed("player_use_nomouse") and playerTalkList.get_selected_items().size() > 0:
 				_on_player_talk_item_clicked(playerTalkList.get_selected_items()[0], 0, 0)
 		return
-	if Input.is_action_just_pressed("player_moveto"):
+	if Input.is_action_pressed("player_moveto"):
 		GameState.player.move_to(get_viewport().get_mouse_position(), camera)
-	elif Input.is_action_just_pressed("player_inventory"):
+	else:
+		GameState.player.stop_move_to()
+	if Input.is_action_just_pressed("player_inventory"):
 		_on_button_inventory_pressed()
 	elif Input.is_action_just_pressed("player_terminal"):
 		_on_button_terminal_pressed()
