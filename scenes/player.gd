@@ -40,9 +40,6 @@ func move_to(target:Vector2, camera:Camera3D):
 	var iray = get_world_3d().direct_space_state.intersect_ray(ray_query)
 	if (iray.size() > 0):
 		move_to_target = iray.position
-		#var collider = iray.collider
-		#if not(collider.is_in_group("floor") or collider.is_in_group("stairs")):
-		#	move_to_target.y = position.y
 	
 func stop_move_to():
 	if (move_to_target != null):
@@ -83,7 +80,14 @@ func _physics_process(delta):
 			if (transform.origin.distance_to(move_to_target)) < 0.1:
 				stop_move_to()
 				return
-			velocity = -transform.basis.z * walking_speed
+			if Input.is_action_pressed("modifier"):
+				if (anim.current_animation != "running"):
+					speed = running_speed
+					anim.play("running")
+			else:
+				speed = walking_speed
+				anim.play("walking")
+			velocity = -transform.basis.z * speed
 			if (move_to_target.y > position.y):
 				for index in range(get_slide_collision_count()):
 					var collision = get_slide_collision(index)
@@ -99,12 +103,8 @@ func _physics_process(delta):
 				return
 			if !anim.is_playing():
 				anim.play()
-			anim.play("walking")
 			GameState.view_pivot.position = position
 			GameState.view_pivot.position.y += 1.5
-			if (!signaled) :
-				player_moving.emit()
-				signaled = true
 			return
 		
 	var no_jump = false

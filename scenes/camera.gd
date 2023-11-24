@@ -74,10 +74,10 @@ func _rotate_view():
 	view_rotate.emit(_view)
 
 func _on_view_pivot_view_moving():
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _on_player_player_moving():
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _on_touch_view_rotate():
 	_view -= 1

@@ -24,6 +24,7 @@ var _prev_lang:String
 var _previous_zone:Zone
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	var os_lang = OS.get_locale_language()
 	for lang in Settings.langs:
 		if (lang == os_lang):
@@ -73,7 +74,7 @@ func _process(_delta):
 		return
 	if Input.is_action_pressed("player_moveto"):
 		GameState.player.move_to(get_viewport().get_mouse_position(), camera)
-	else:
+	elif Input.is_action_just_released("player_moveto"):
 		GameState.player.stop_move_to()
 	if Input.is_action_just_pressed("player_inventory"):
 		_on_button_inventory_pressed()
@@ -84,7 +85,7 @@ func _process(_delta):
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 
 func _set_player_position(pos:Vector3, rot:Vector3):
 	GameState.player.position = pos
