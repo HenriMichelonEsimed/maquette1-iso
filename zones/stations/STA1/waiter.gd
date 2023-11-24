@@ -15,3 +15,6 @@ func _init():
 			[ Item.ItemType.ITEM_CONSUMABLES, "soft_drink_1", 10],
 		], 10
 	)
+	if not GameState.quests.have_advpoint("main", "lvl0_generate_ham_sandwich"):
+		if not items.have(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1"):
+			items.new(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1")

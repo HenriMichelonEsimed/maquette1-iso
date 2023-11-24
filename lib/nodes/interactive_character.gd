@@ -18,18 +18,21 @@ func _init(disc = ["Hello !", [["Bye.", _end]] ], it = [], gen = 0):
 	if (not items_list.is_empty()):
 		items = ItemsCollection.new()
 		generate_chance = gen
+		var rng = RandomNumberGenerator.new()
+		if (rng.randi_range(0, generate_chance) == 1) or (items.count() == 0):
+			for item in items_list:
+					var max_qty = 1
+					if (item.size() == 3):
+						max_qty = item[2]
+						var have_item = items.getitem(item[0], item[1])
+						if (have_item != null):
+							max_qty -= have_item.quantity
+					var qty = rng.randi_range(0, max_qty)
+					if (qty > 0):
+						items.new(item[0], item[1], qty)
 
 func _ready():
 	set_collision_layer_value(5, true)
-	var rng = RandomNumberGenerator.new()
-	if (items != null) and ((rng.randi_range(0, generate_chance) == 1) or (items.count() == 0)):
-		for item in items_list:
-				var max_qty = 1
-				if (item.size() == 3):
-					max_qty = item[2]
-				var qty = rng.randi_range(0, max_qty)
-				if (qty > 0):
-					items.new(item[0], item[1], qty)
 
 func interact():
 	say(discussion)

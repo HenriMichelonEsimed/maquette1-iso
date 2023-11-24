@@ -11,6 +11,8 @@ func _init():
 		"lvl0_use_access_card": 
 			["Use the access card", "lvl0_admin_woman_have_access_card", "lvl0_admin_woman_want_sandwitch"],
 		"lvl0_admin_woman_want_sandwitch": 
-			["Give a ham sandwich to the Administrator"]
+			["Give a ham sandwich to the Administrator"],
+		"lvl0_generate_ham_sandwich":
+			[null]
 	}
 )
