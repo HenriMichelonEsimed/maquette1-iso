@@ -1,0 +1,151 @@
+[gd_scene load_steps=11 format=3 uid="uid://carlrkrgnmhlc"]
+
+[ext_resource type="Script" path="res://scenes/trade_screen.gd" id="1_ixb2b"]
+[ext_resource type="Texture2D" uid="uid://38qd58n3acbb" path="res://assets/textures/talkwindow.png" id="2_4aej3"]
+[ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="3_kn1xy"]
+[ext_resource type="StyleBox" uid="uid://bmyh6yvafukya" path="res://assets/button_style.tres" id="4_ahejk"]
+[ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="5_114mb"]
+[ext_resource type="PackedScene" uid="uid://dytjnya7i6c47" path="res://scenes/dialogs/select_quantity_dialog.tscn" id="9_a2hjl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_825ag"]
+texture = ExtResource("2_4aej3")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4plc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_gicgb"]
+font_size = 34
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cq1op"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.2, 0.364706, 0.486275, 0.792157)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="TradeScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -478.0
+offset_top = -300.0
+offset_right = 478.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ixb2b")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_825ag")
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q4plc")
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_right = -18.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Top" type="MarginContainer" parent="Content"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/Top"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Content/Top/HBoxContainer"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Content/Top/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+text = "Trading"
+label_settings = SubResource("LabelSettings_gicgb")
+horizontal_alignment = 1
+
+[node name="ButtonBack" type="Button" parent="Content/Top/HBoxContainer"]
+layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_kn1xy")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("4_ahejk")
+theme_override_styles/hover = ExtResource("4_ahejk")
+theme_override_styles/pressed = ExtResource("4_ahejk")
+theme_override_styles/disabled = ExtResource("4_ahejk")
+theme_override_styles/focus = ExtResource("4_ahejk")
+text = ""
+script = ExtResource("5_114mb")
+icon_size = 32
+icon_name = "xmark"
+
+[node name="Body" type="MarginContainer" parent="Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 34
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelItem" type="PanelContainer" parent="Content/Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_cq1op")
+
+[node name="Content" type="HBoxContainer" parent="Content/Body"]
+layout_mode = 2
+
+[node name="SelectQuantityDialog" parent="." instance=ExtResource("9_a2hjl")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="Content/Top/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="quantity" from="SelectQuantityDialog" to="." method="_drop"]

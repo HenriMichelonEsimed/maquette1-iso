@@ -2,13 +2,14 @@ extends CharacterBody3D
 class_name InteractiveCharacter
 
 @export var label:String
+signal trade(char:InteractiveCharacter)
 signal talk(char:InteractiveCharacter,phrase:String, answers:Array)
 signal end_talk()
 
 var discussion:Array
 var current:Array
 
-func _init(disc = ["Hello !", [["Bye.", end]] ]):
+func _init(disc = ["Hello !", [["Bye.", _end]] ]):
 	discussion = disc
 
 func _ready():
@@ -16,6 +17,9 @@ func _ready():
 	
 func interact():
 	say(discussion)
+	
+func _trade():
+	trade.emit(self)
 	
 func say(disc):
 	current = disc
@@ -31,7 +35,7 @@ func say(disc):
 		phrase = phrase[0]
 	talk.emit(self, phrase, answr)
 	
-func end():
+func _end():
 	end_talk.emit()
 	
 func answer(index:int):

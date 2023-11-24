@@ -7,10 +7,10 @@ func _init():
 			["Wow, thank you !", [
 				"You can now roam freely in the station", [
 					["Let's talk.", d1],
-					["Nice. Bye.", end]
+					["Nice. Bye.", _end]
 				]
 			]],
-			["Ok, bye", end]
+			["Ok, bye", _end]
 		]
 	])
 	super(
@@ -21,4 +21,4 @@ func _init():
 
 func a1():
 	GameState.quests.event("main", Quest.QuestEventType.QUESTEVENT_TALK, "QAMain1_end")
-	end()
+	_end()

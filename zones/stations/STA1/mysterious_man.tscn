@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://27sty830tukx"]
 
-[ext_resource type="Script" path="res://lib/nodes/interactive_character.gd" id="1_xg7ks"]
+[ext_resource type="Script" path="res://zones/stations/STA1/mysterious_man.gd" id="1_wq1xo"]
 [ext_resource type="PackedScene" uid="uid://05srs73auu0f" path="res://characters/2/char_2.tscn" id="2_iefcc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_khdtm"]
 size = Vector3(1, 1, 1.76908)
 
 [node name="MysteriousMan" type="CharacterBody3D"]
-script = ExtResource("1_xg7ks")
+script = ExtResource("1_wq1xo")
 label = "Mysterious Person"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

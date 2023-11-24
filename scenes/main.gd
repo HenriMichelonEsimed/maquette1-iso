@@ -120,6 +120,7 @@ func _change_zonelevel(zone_name:String, spawnpoint_key:String):
 	for node in GameState.current_zone.find_children("*", "Storage", true, true):
 		node.connect("open", _on_storage_open)
 	for node in GameState.current_zone.find_children("*", "InteractiveCharacter", true, true):
+		node.connect("trade", _on_npc_trade)
 		node.connect("talk", _on_npc_talk)
 		node.connect("end_talk", _on_end_talk)
 		
@@ -262,6 +263,14 @@ func _on_saving_end():
 	
 func _on_saving_timer_timeout():
 	$Game/UI/LabelSaving.visible = false
+
+func _on_npc_trade(char:InteractiveCharacter):
+	var scene = load("res://scenes/trade_screen.tscn").instantiate()
+	add_child(scene)
+	scene.connect("trade_end", _on_npc_trade_end)
+	
+func _on_npc_trade_end(node:Node):
+	node.queue_free()
 
 func _on_npc_talk(char:InteractiveCharacter,phrase:String, answers:Array):
 	_on_pause()

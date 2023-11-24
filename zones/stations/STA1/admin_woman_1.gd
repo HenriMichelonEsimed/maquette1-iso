@@ -7,7 +7,7 @@ func r3():
 		return [ "[Show message on phone]",
 			[
 				["Oh ok I see. But I am very hungry and very busy. If you can bring me a ham sandwich I could help you", a3], [
-					["I'll look it up.", end],
+					["I'll look it up.", _end],
 					["...in your dreams!", d1],
 					r2d
 			]
@@ -21,7 +21,7 @@ var r2a =["Why do you need one ?", [
 					[ "I don't know",
 						[ 
 							"Come back when you have a name", [
-								["ok", end]
+								["ok", _end]
 							]
 						]
 					],
@@ -31,14 +31,14 @@ var r2a =["Why do you need one ?", [
 		],
 		["Just give me one",
 			[
-				"I don't even know who you are", [["Sure, but..", end]]
+				"I don't even know who you are", [["Sure, but..", _end]]
 			]
 		]
 	]
 ]
 
 var r2b = [ "Where is my sandwitch ?", [
-			["I'll look it up.", end],
+			["I'll look it up.", _end],
 			["...in your dreams!", d1],
 			r2d
 		]
@@ -51,7 +51,7 @@ func r2d():
 		return [tr("[Give %s]") % tr(item.label),
 		[
 			["Thank you ! Here is the access card", a1, item], [
-				["Thank you.", end]
+				["Thank you.", _end]
 			]
 		]]
 	return null
@@ -102,6 +102,6 @@ func _init():
 			"I am the administrator of this station", [["Nice to meet you", d1]]
 		]],
 		r4,
-		["Bye.", end]
+		["Bye.", _end]
 	]])
 	super(d1)
