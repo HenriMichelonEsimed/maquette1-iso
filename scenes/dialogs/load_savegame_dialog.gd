@@ -16,8 +16,12 @@ func _ready():
 	for dir in dirs:
 		var time = Time.get_datetime_dict_from_unix_time(StateSaver.get_savegame_time(dir))
 		var item: String
-		if (GameState.settings.lang == "en") : 
-			item = "%04d/%02d/%02d %02d:%02d:%02d" % [time.year, time.day, time.month, time.hour, time.minute, time.second]
+		if (GameState.settings.lang == "en_US") : 
+			item = "%02d-%02d-%04d %02d:%02d:%02d" % [time.month, time.day, time.year, time.hour, time.minute, time.second]
+		elif (GameState.settings.lang == "en_UK"): 
+			item = "%02d-%02d-%04d %02d:%02d:%02d" % [time.day, time.month, time.year, time.hour, time.minute, time.second]
+		elif (GameState.settings.lang == "fr") : 
+			item = "%02d/%02d/%04d %02d:%02d:%02d" % [time.day, time.month, time.year, time.hour, time.minute, time.second]
 		else:
 			item = "%04d/%02d/%02d %02d:%02d:%02d" % [time.year, time.month, time.day, time.hour, time.minute, time.second]
 		listSaves.add_item(item)

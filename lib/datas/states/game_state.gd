@@ -22,7 +22,12 @@ var thread: Thread
 func _ready():
 	mutex = Mutex.new()
 	is_mobile = OS.get_name() in ["android", "iOS"]
+	var os_lang = OS.get_locale_language()
+	for lang in Settings.langs:
+		if (lang == os_lang):
+			GameState.settings.lang = lang
 	loadGame()
+	TranslationServer.set_locale(GameState.settings.lang)
 
 func saveGame(use_thread:bool = true):
 	#if use_thread:

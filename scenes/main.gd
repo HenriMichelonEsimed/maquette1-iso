@@ -26,11 +26,6 @@ var talk_window_just_closed = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-	var os_lang = OS.get_locale_language()
-	for lang in Settings.langs:
-		if (lang == os_lang):
-			GameState.settings.lang = lang
-	TranslationServer.set_locale(GameState.settings.lang)
 	_prev_lang = GameState.settings.lang
 	if get_viewport().size.x > 1920:
 		get_viewport().content_scale_factor = 2.2

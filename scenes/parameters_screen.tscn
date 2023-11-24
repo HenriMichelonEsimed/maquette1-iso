@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://dg48h81de81wc"]
+[gd_scene load_steps=12 format=3 uid="uid://dg48h81de81wc"]
 
 [ext_resource type="Script" path="res://scenes/parameters_screen.gd" id="1_qcuah"]
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="2_3bvhh"]
 [ext_resource type="StyleBox" uid="uid://bmyh6yvafukya" path="res://assets/button_style.tres" id="3_bm84j"]
 [ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="4_18fut"]
+[ext_resource type="Texture2D" uid="uid://ytcljnydjest" path="res://assets/i18n/flags/en_UK.png" id="5_6hqpi"]
 [ext_resource type="PackedScene" uid="uid://dytjnya7i6c47" path="res://scenes/dialogs/select_quantity_dialog.tscn" id="5_36c0x"]
-[ext_resource type="Texture2D" uid="uid://dxehhobvuri62" path="res://assets/i18n/flags/en.png" id="5_uyxxo"]
 [ext_resource type="Texture2D" uid="uid://dalqcbtvl8ffy" path="res://assets/i18n/flags/fr.png" id="6_tuqvp"]
+[ext_resource type="Texture2D" uid="uid://c3glsao5mlwv" path="res://assets/i18n/flags/en_US.png" id="6_xncg2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25hsw"]
 bg_color = Color(0.505882, 0.701961, 0.854902, 0.839216)
@@ -125,13 +126,16 @@ text = "Language"
 [node name="OptionButton" type="OptionButton" parent="Borders/Content/Panel/Borders/Settings/i18n"]
 layout_mode = 2
 size_flags_horizontal = 3
-item_count = 2
-popup/item_0/text = "English"
-popup/item_0/icon = ExtResource("5_uyxxo")
+item_count = 3
+popup/item_0/text = "English (UK)"
+popup/item_0/icon = ExtResource("5_6hqpi")
 popup/item_0/id = 1
-popup/item_1/text = "French"
-popup/item_1/icon = ExtResource("6_tuqvp")
-popup/item_1/id = 0
+popup/item_1/text = "English (US)"
+popup/item_1/icon = ExtResource("6_xncg2")
+popup/item_1/id = 2
+popup/item_2/text = "French"
+popup/item_2/icon = ExtResource("6_tuqvp")
+popup/item_2/id = 0
 
 [node name="Control" type="Control" parent="Borders/Content/Panel/Borders/Settings"]
 layout_mode = 2
