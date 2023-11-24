@@ -1170,12 +1170,10 @@ libraries = {
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 1.1, 0, 1.07333, -0.324777)
-visible = false
 shape = SubResource("BoxShape3D_b7lxq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.923668, 0)
-visible = false
 shape = SubResource("CapsuleShape3D_byirt")
 
 [node name="CollectAndUseArea" type="Area3D" parent="."]
@@ -1184,12 +1182,11 @@ collision_layer = 0
 collision_mask = 22
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollectAndUseArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, -0.210914, 0.149642)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, -0.210914, 0.0302294)
 shape = SubResource("BoxShape3D_u4tew")
 
 [node name="TriggerArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.718367, -0.214216)
-visible = false
 collision_layer = 0
 collision_mask = 8
 
