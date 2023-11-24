@@ -16,7 +16,6 @@ var _view = 0
 var player_moving = false
 
 func _ready():
-	
 	camera_pivot = get_node(cameraPivotPath)
 	object_to_follow = get_node(objectToFollowPath)
 	
@@ -30,7 +29,8 @@ func init():
 
 func move(pos):
 	camera_pivot.position = pos
-	
+
+
 func _process(_delta):
 	if (GameState.paused): return
 	camera_pivot.position = object_to_follow.position

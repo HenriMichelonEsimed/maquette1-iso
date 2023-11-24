@@ -8,10 +8,13 @@ const mouse_delta = 0
 var current_view = 0
 var signaled = false
 var player_moving = false
-var mouse_pressed_position: Vector2
+var mouse_pressed_position = Vector2.ZERO
+var mouse_previous_position = Vector2.ZERO
 var mouse_vector:Vector2
 
-#func _input(event):
+func _input(event):
+	if event is InputEventMouseMotion and mouse_pressed_position != Vector2.ZERO:
+		mouse_vector = event.relative
 #	if event is InputEventScreenTouch:
 #		if( event.pressed):
 #			mouse_pressed_position = event.position
@@ -28,17 +31,23 @@ var mouse_vector:Vector2
 func _process(_delta):
 	if (GameState.paused): return
 	if Input.is_action_pressed("modifier") or player_moving : return
-	#if not GameState.is_mobile and Input.is_action_just_pressed("view_pan"):
-	#	mouse_pressed_position = get_viewport().get_mouse_position()
-	#elif Input.is_action_just_released("view_pan"):
-	#	mouse_pressed_position = Vector2.ZERO
-	#	mouse_vector = Vector2.ZERO
+	var mouse_pos = get_viewport().get_mouse_position()
+	if Input.is_action_just_pressed("view_pan"):
+		mouse_pressed_position = mouse_pos
+	elif Input.is_action_just_released("view_pan"):
+		mouse_pressed_position = Vector2.ZERO
+		mouse_vector = Vector2.ZERO
+	elif (mouse_previous_position == mouse_pos):
+		mouse_vector = Vector2.ZERO
+	else:
+		mouse_previous_position = mouse_pos
+	
 	var new_pos = position
 	var modifier
 	if (GameState.is_mobile):
 		modifier = 1
 	else:
-		modifier = ((100 - GameState.camera.size)+5)/12.0
+		modifier = ((100 - GameState.camera.size)+5)/20.0
 	if Input.is_action_pressed("view_right") or mouse_vector.x < -mouse_delta:
 		new_pos.x += Player.directions["right"][current_view].x/modifier
 		new_pos.z += Player.directions["right"][current_view].z/modifier
