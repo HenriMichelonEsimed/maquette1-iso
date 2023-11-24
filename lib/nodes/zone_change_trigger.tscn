@@ -12,7 +12,8 @@ collision_mask = 0
 script = ExtResource("1_birtx")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-size = Vector3(4, 0.01, 0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.497927)
+size = Vector3(4, 0.01, 1.29318)
 material = ExtResource("2_s5n2t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

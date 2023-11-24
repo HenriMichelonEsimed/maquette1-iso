@@ -682,7 +682,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b7lxq"]
-size = Vector3(0.367915, 0.502338, 0.358309)
+size = Vector3(0.367915, 0.502338, 0.451454)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_byirt"]
 radius = 0.37188
@@ -691,8 +691,8 @@ height = 1.85556
 [sub_resource type="BoxShape3D" id="BoxShape3D_n027a"]
 size = Vector3(0.883042, 1.6584, 0.817676)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4xd2y"]
-size = Vector3(0.71047, 1, 0.237145)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_24n27"]
+radius = 0.267303
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 0
@@ -1191,8 +1191,8 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0424516)
-shape = SubResource("BoxShape3D_4xd2y")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0294552)
+shape = SubResource("CapsuleShape3D_24n27")
 
 [connection signal="body_entered" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_entered"]
 [connection signal="body_exited" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_exited"]

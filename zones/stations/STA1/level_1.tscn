@@ -152,6 +152,6 @@ script = ExtResource("10_lbufr")
 key = "default"
 
 [node name="ZoneChangeTrigger" parent="." instance=ExtResource("11_0odjv")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.03788, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.13788, 0, 0.5)
 zone_name = "stations/STA1/level_0"
 spawnpoint_key = "from_hall2"

@@ -40,14 +40,15 @@ func move_to(target:Vector2, camera:Camera3D):
 	var iray = get_world_3d().direct_space_state.intersect_ray(ray_query)
 	if (iray.size() > 0):
 		move_to_target = iray.position
-		var collider = iray.collider
-		if not(collider.is_in_group("floor") or collider.is_in_group("stairs")):
-			move_to_target.y = position.y
+		#var collider = iray.collider
+		#if not(collider.is_in_group("floor") or collider.is_in_group("stairs")):
+		#	move_to_target.y = position.y
 	
 func stop_move_to():
-	move_to_target = null
-	velocity = Vector3.ZERO
-	anim.play("standing")
+	if (move_to_target != null):
+		move_to_target = null
+		velocity = Vector3.ZERO
+		anim.play("standing")
 	
 func action_use():
 	if (node_to_use != null):
@@ -71,6 +72,7 @@ func _physics_process(delta):
 	if (position.y < -100) :
 		reset_position.emit()
 		return
+	var on_floor = is_on_floor_only() 
 	if (move_to_target != null):
 		if Input.is_action_pressed("player_right") or  Input.is_action_pressed("player_left") or  Input.is_action_pressed("player_backward") or  Input.is_action_pressed("player_forward"):
 			stop_move_to()
@@ -78,7 +80,7 @@ func _physics_process(delta):
 			var look_at_target = move_to_target
 			look_at_target.y = position.y
 			look_at(look_at_target)
-			if (transform.origin.distance_to(move_to_target)) < 0.6:
+			if (transform.origin.distance_to(move_to_target)) < 0.1:
 				stop_move_to()
 				return
 			velocity = -transform.basis.z * walking_speed
@@ -87,8 +89,10 @@ func _physics_process(delta):
 					var collision = get_slide_collision(index)
 					var collider = collision.get_collider()
 					if collider.is_in_group("stairs"):
-						velocity.y = 5
+						velocity.y = 8
 			move_to_previous_position = position
+			if not on_floor:
+				velocity.y = velocity.y - (fall_acceleration * delta)
 			move_and_slide()
 			if (position.distance_to(move_to_previous_position) < 0.001):
 				stop_move_to()
@@ -101,10 +105,9 @@ func _physics_process(delta):
 			if (!signaled) :
 				player_moving.emit()
 				signaled = true
-		return
+			return
 		
 	var no_jump = false
-	var on_floor = is_on_floor_only() 
 	var direction = Vector3.ZERO
 	if Input.is_action_pressed("player_right"):
 		direction.x += directions["right"][current_view].x
