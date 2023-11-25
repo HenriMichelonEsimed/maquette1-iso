@@ -30,6 +30,8 @@ func _ready():
 	TranslationServer.set_locale(GameState.settings.lang)
 
 func saveGame(use_thread:bool = true):
+	location.position = player.position
+	location.rotation = player.rotation
 	if use_thread:
 		thread = Thread.new()
 		thread.start(_saveGame)
@@ -41,8 +43,6 @@ func _saveGame():
 	call_deferred("emit_signal","saving_start")
 	StateSaver.set_path()
 	StateSaver.backup()
-	location.position = player.position
-	location.rotation = player.rotation
 	StateSaver.saveState(settings)
 	StateSaver.saveState(QuestsState.new(quests))
 	StateSaver.saveState(MessagesState.new(messages))

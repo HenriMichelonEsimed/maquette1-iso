@@ -97,6 +97,7 @@ func saveState(file:FileAccess):
 			file.store_64(item.quantity)
 	
 func loadState(file:FileAccess):
+	_items.clear()
 	for i in range(file.get_64()):
 		var type = file.get_8()
 		var key = file.get_pascal_string()
