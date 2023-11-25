@@ -7,7 +7,7 @@ var finished = false
 
 func _init(_k = "", _label = ""):
 	key = _k
-	label = _label
+	label = "" if _label == null else _label
 
 func saveState(file:FileAccess):
 	file.store_pascal_string(key)

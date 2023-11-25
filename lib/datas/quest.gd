@@ -4,6 +4,7 @@ class_name Quest
 enum QuestEventType {
 	QUESTEVENT_READMESSAGE	= 0,
 	QUESTEVENT_TALK			= 1,
+	QUESTEVENT_BUY			= 2,
 }
 
 var key:String
@@ -22,7 +23,7 @@ func _init(_k, _start, _label, _avdpoints):
 
 func start():
 	current.start()
-	
+
 func have_advpoint(adv_key:String):
 	for adv in advancementPoints:
 		if (adv.key == adv_key):
@@ -49,7 +50,11 @@ func add_advpoint(adv_key:String):
 func get_advpoints():
 	return advancementPoints.filter(func(adv): return not adv.finished)
 
+func _on_new_quest_event(type:Quest.QuestEventType, event_key:String):
+	pass
+
 func on_new_quest_event(type:Quest.QuestEventType, event_key:String):
+	_on_new_quest_event(type, event_key)
 	current.on_new_quest_event(type, event_key)
 	var next = current.success()
 	if (next != null):

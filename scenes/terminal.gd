@@ -47,7 +47,7 @@ func _update():
 	listQuests.append_text("[color=yellow]" + tr(GameState.quests.label("main")) + "[/color]\n")
 	listQuests.append_text(tr(GameState.quests.current("main").label) + "\n")
 	for adv in GameState.quests.get_advpoints("main"):
-		if (adv.label != null):
+		if (adv.label != ""):
 			listQuests.append_text("\t[i]" + tr(adv.label) + "[/i]\n")
 
 func _on_button_back_pressed():

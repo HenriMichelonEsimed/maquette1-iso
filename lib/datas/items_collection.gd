@@ -68,6 +68,16 @@ func getone_bytype(index:int, type:Item.ItemType) -> Item:
 func count() -> int:
 	return _items.size()
 
+func get_credits() -> ItemMiscellaneous:
+	return getitem(Item.ItemType.ITEM_MISCELLANEOUS, "credit")
+
+func get_credits_quantity() -> int:
+	var qty = 0
+	var item = getitem(Item.ItemType.ITEM_MISCELLANEOUS, "credit")
+	if (item != null):
+		qty = item.quantity
+	return qty
+
 func saveState(file:FileAccess):
 	file.store_64(_items.size())
 	for item in _items:

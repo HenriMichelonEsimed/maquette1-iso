@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=60 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_7fv8t"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://ckkonogu6iyrf" path="res://props/furnitures/desk_chair_2.tscn" id="29_fn5gj"]
 [ext_resource type="PackedScene" uid="uid://bvmod4ptmg0r6" path="res://props/lights/floor_lamp_1.tscn" id="30_7rsgu"]
 [ext_resource type="PackedScene" uid="uid://gy2yrjoxusc2" path="res://props/lights/desk_lamp_1.tscn" id="31_cx0h5"]
+[ext_resource type="PackedScene" uid="uid://db3jowuq7tn73" path="res://props/items/quest/ring_1.tscn" id="31_jdet3"]
 [ext_resource type="PackedScene" uid="uid://d2k24ft5g0g61" path="res://props/furnitures/round_table_1.tscn" id="32_qkjhq"]
 [ext_resource type="PackedScene" uid="uid://ddjm6m12rr6k8" path="res://props/furnitures/pencil_holder_1.tscn" id="33_1ks5q"]
 [ext_resource type="PackedScene" uid="uid://vjrmp52hspwu" path="res://props/furnitures/pencil_holder_1_empty.tscn" id="34_e5nx4"]
@@ -516,6 +517,8 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0,
 [node name="DeskFile1" parent="Admistration" instance=ExtResource("23_m64c6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.66, 0, 5.658)
 
+[node name="Ring1" parent="Admistration/DeskFile1" instance=ExtResource("31_jdet3")]
+
 [node name="DeskFile2" parent="Admistration" instance=ExtResource("23_m64c6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.23803, 0.0652536, 5.65838)
 
@@ -577,7 +580,7 @@ transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 4.64203,
 transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 4.64203, 0, 3)
 
 [node name="DeskChair5" parent="Admistration" instance=ExtResource("29_fn5gj")]
-transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 1.5, 0, -1)
+transform = Transform3D(-0.85794, 0, 0.513751, 0, 1, 0, -0.513751, 0, -0.85794, 1.13321, 0, -1.40622)
 
 [node name="DeskChair7" parent="Admistration" instance=ExtResource("29_fn5gj")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -3.11814, 0, -2.90911)
@@ -674,9 +677,6 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107
 
 [node name="AdminWoman1" parent="Admistration" instance=ExtResource("46_5g5nd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.91167, 0, -2.97911)
-
-[node name="Credit" parent="Admistration" instance=ExtResource("58_6ad3g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.280271, 0)
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 15.5, -9)
@@ -907,7 +907,7 @@ transform = Transform3D(1.03316e-07, 0, -1, 0, 1, 0, 1, 0, 1.03316e-07, 11.7983,
 
 [node name="Credit" parent="Canteen/Locker3" instance=ExtResource("58_6ad3g")]
 transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, 11.2, 0, 2.70001)
-quantity = 5
+quantity = 3
 
 [node name="Box1" parent="Canteen" instance=ExtResource("47_hu7xp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.6227, 0, -4.4)

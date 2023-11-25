@@ -6,7 +6,7 @@ func r3():
 	if GameState.quests.current("main").key > "QMain0":
 		return [ "[Show message on phone]",
 			[
-				["Oh ok I see. But I am very hungry and very busy. If you can bring me a ham sandwich I could help you", a3], [
+				["Oh ok I see. But I am very hungry and very busy. If you can bring me a sandwich or a burger with ham I could help you", a3], [
 					["I'll look it up.", _end],
 					["...in your dreams!", d1],
 					r2d
@@ -52,6 +52,13 @@ func r2d():
 		[
 			["Thank you ! Here is the access card", a1, item], [
 				["Thank you.", _end]
+			]
+		]]
+	if GameState.inventory.getitem(Item.ItemType.ITEM_CONSUMABLES, "burger_1") != null:
+		return [tr("[Give %s]") % tr(item.label),
+		[
+			["It's not ham and I don't eat beef"], [
+				["Okay, I'll go back and get a ham sandwich.", _end]
 			]
 		]]
 	return null

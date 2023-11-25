@@ -67,7 +67,7 @@ func _ready():
 	tabs.custom_minimum_size.x = size.x/2
 	StateSaver.loadState(state)
 	tabs.current_tab = state.tab
-	item_credits = GameState.inventory.getitem(Item.ItemType.ITEM_MISCELLANEOUS, "credit")
+	item_credits = GameState.inventory.get_credits()
 	if (item_credits != null):
 		credits = item_credits.quantity
 
@@ -178,11 +178,13 @@ func _buy(quantity:int=0):
 		$AlertDialog.open("Buy", "You don't have enough credits")
 		return
 	credits -= price
-	GameState.inventory.removeqty(item_credits, quantity)
-	GameState.inventory.new(item.type, item.key, quantity)
+	var remove_credit = item_credits.duplicate()
+	remove_credit.quantity = quantity
+	GameState.inventory.remove(remove_credit)
 	var remove_item = item.duplicate()
 	remove_item.quantity = quantity
 	trader.items.remove(remove_item)
+	GameState.quests.event_all(Quest.QuestEventType.QUESTEVENT_BUY, item.key)
 	_refresh()
 
 func _refresh():
