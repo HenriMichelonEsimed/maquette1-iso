@@ -47,9 +47,11 @@ func use(target:Vector2, camera:Camera3D):
 	ray_query.to = ray_query.from + camera.project_ray_normal(target) * 1000
 	var iray = get_world_3d().direct_space_state.intersect_ray(ray_query)
 	if (iray.size() > 0):
-		iray.position.y = position.y
-		var dist = position.distance_to(iray.position)
-		if (dist < 1.5):
+		var dist = global_position.distance_to(iray.collider.global_position)
+		var use_min_dist = 1.5
+		if iray.collider is InteractiveCharacter:
+			use_min_dist = 2
+		if (dist < use_min_dist):
 			_on_collect_item_aera_body_entered(iray.collider)
 			action_use()
 			_on_collect_item_aera_body_exited(iray.collider)
@@ -111,15 +113,16 @@ func _physics_process(delta):
 				speed = walking_speed
 				anim.play("walking")
 			velocity = -transform.basis.z * speed
+			
 			if (move_to_target.y > position.y):
 				for index in range(get_slide_collision_count()):
 					var collision = get_slide_collision(index)
 					var collider = collision.get_collider()
 					if collider.is_in_group("stairs"):
 						velocity.y = 8
+			elif not on_floor:
+				velocity.y = velocity.y - (fall_acceleration * 2 * delta)
 			move_to_previous_position = position
-			if not on_floor:
-				velocity.y = velocity.y - (fall_acceleration * delta)
 			move_and_slide()
 			if (position.distance_to(move_to_previous_position) < 0.001):
 				stop_move_to()

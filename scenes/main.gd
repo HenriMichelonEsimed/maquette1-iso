@@ -25,7 +25,7 @@ var _previous_zone:Zone
 var talk_window_just_closed = false
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	_prev_lang = GameState.settings.lang
 	if get_viewport().size.x > 1920:
 		get_viewport().content_scale_factor = 2.2

@@ -27,7 +27,7 @@ GameState="*res://lib/datas/states/game_state.gd"
 
 window/size/viewport_width=1200
 window/size/viewport_height=600
-window/size/mode=3
+window/size/initial_position_type=0
 mouse_cursor/custom_image="res://assets/cursors/png/cursor_default.png"
 
 [editor_plugins]

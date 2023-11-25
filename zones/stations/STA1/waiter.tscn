@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bprbccvw74dlh" path="res://characters/1/char_1.glb" id="2_rllrt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_svw2g"]
-size = Vector3(1.18491, 1.82194, 1.91075)
+size = Vector3(0.848694, 1.82194, 1.51293)
 
 [node name="waiter" type="CharacterBody3D"]
 script = ExtResource("1_av54p")
