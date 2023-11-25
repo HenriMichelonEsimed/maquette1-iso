@@ -544,9 +544,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.65,
 [node name="DeskFile11" parent="Admistration" instance=ExtResource("23_m64c6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.65003, 0, -1.462)
 
-[node name="Ring1" parent="Admistration/DeskFile11" instance=ExtResource("31_jdet3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.12, 0, 1.99003)
-
 [node name="DeskFile12" parent="Admistration" instance=ExtResource("23_m64c6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.65179, 0, -1.962)
 
@@ -679,6 +676,9 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107
 [node name="AdminWoman1" parent="Admistration" instance=ExtResource("46_5g5nd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.91167, 0, -2.97911)
 
+[node name="Ring1" parent="Admistration" instance=ExtResource("31_jdet3")]
+transform = Transform3D(-1, 0, -8.74228e-08, -8.74204e-08, -0.00738273, 0.999973, -6.45419e-10, 0.999973, 0.00738273, -0.127211, 0.71556, -5.33986)
+
 [node name="ReflectionProbe" type="ReflectionProbe" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 15.5, -9)
 size = Vector3(64.5, 13.5, 38)
@@ -758,13 +758,13 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.1, 
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.1, 0, -3.9)
 
 [node name="Wall_33" parent="Canteen/Architecture" instance=ExtResource("8_sguot")]
-transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 10, 0, -4.6)
+transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 9.7, 0, -5.5)
 
 [node name="Wall_34" parent="Canteen/Architecture" instance=ExtResource("8_sguot")]
-transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 11.4, 0, -4.6)
+transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 11.4, 0, -5.5)
 
 [node name="Wall_31" parent="Canteen/Architecture" instance=ExtResource("8_sguot")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.1, 0, -3.9)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.1, 0, -4.7)
 
 [node name="Wall_18" parent="Canteen/Architecture" instance=ExtResource("8_sguot")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 9.2, 0, 4.9)
@@ -882,45 +882,48 @@ color = Color(0.466667, 1, 1, 1)
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -1.226, 1.5, 9.63845)
 color = Color(0.466667, 1, 1, 1)
 
-[node name="Shelf1" parent="Canteen" instance=ExtResource("45_insie")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 11.1283, 0, 2.63769)
-
 [node name="Shelf7" parent="Canteen" instance=ExtResource("45_insie")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 10.1283, 0, 2.63769)
 
 [node name="Shelf8" parent="Canteen" instance=ExtResource("45_insie")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.8283, 0, 1.44407)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.8622, 0, 1.44407)
 
 [node name="Shelf2" parent="Canteen" instance=ExtResource("45_insie")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.8283, 0, 0.366085)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.8419, 0, 0.372871)
 
 [node name="Shelf3" parent="Canteen" instance=ExtResource("45_insie")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.8283, 0, -2.4644)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.8554, 0, -2.7644)
 
 [node name="Shelf4" parent="Canteen" instance=ExtResource("45_insie")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.8283, 0, -3.4644)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.8622, 0, -3.9644)
 
 [node name="Locker1" parent="Canteen" instance=ExtResource("46_7teu8")]
-transform = Transform3D(1.03316e-07, 0, -1, 0, 1, 0, 1, 0, 1.03316e-07, 11.7983, 0, -0.628168)
+transform = Transform3D(1.03316e-07, 0, -1, 0, 1, 0, 1, 0, 1.03316e-07, 11.8729, 0, -0.728168)
 
 [node name="Locker3" parent="Canteen" instance=ExtResource("46_7teu8")]
-transform = Transform3D(1.03316e-07, 0, -1, 0, 1, 0, 1, 0, 1.03316e-07, 11.7983, 0, -1.5)
+transform = Transform3D(1.03316e-07, 0, -1, 0, 1, 0, 1, 0, 1.03316e-07, 11.8594, 0, -1.8)
 
 [node name="Credit" parent="Canteen/Locker3" instance=ExtResource("58_6ad3g")]
 transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, 11.2, 0, 2.70001)
 quantity = 3
 
 [node name="Box1" parent="Canteen" instance=ExtResource("47_hu7xp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.6227, 0, -4.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5227, 0, -5.2)
 
 [node name="Box2" parent="Canteen" instance=ExtResource("47_hu7xp")]
-transform = Transform3D(0.97217, 0, -0.234277, 0, 1, 0, 0.234277, 0, 0.97217, 10.3227, 0, -4.4)
+transform = Transform3D(0.97217, 0, -0.234277, 0, 1, 0, 0.234277, 0, 0.97217, 10.3227, 0, -5.1)
 
 [node name="Box3" parent="Canteen" instance=ExtResource("47_hu7xp")]
-transform = Transform3D(0.996345, 0, 0.0854169, 0, 1, 0, -0.0854169, 0, 0.996345, 10.9781, 0, -4.4)
+transform = Transform3D(0.996345, 0, 0.0854169, 0, 1, 0, -0.0854169, 0, 0.996345, 10.9781, 0, -5.1)
+
+[node name="Box5" parent="Canteen" instance=ExtResource("47_hu7xp")]
+transform = Transform3D(-0.992849, 0, -0.119374, 0, 1, 0, 0.119374, 0, -0.992849, 11.1116, 0, 2.60703)
+
+[node name="Box6" parent="Canteen" instance=ExtResource("47_hu7xp")]
+transform = Transform3D(-0.979024, 0, -0.203744, 0, 1, 0, 0.203744, 0, -0.979024, 11.6404, 0, 2.44273)
 
 [node name="Box4" parent="Canteen" instance=ExtResource("47_hu7xp")]
-transform = Transform3D(0.996345, 0, 0.0854169, 0, 1, 0, -0.0854169, 0, 0.996345, 9.97914, 0.529372, -4.4)
+transform = Transform3D(0.996345, 0, 0.0854169, 0, 1, 0, -0.0854169, 0, 0.996345, 9.97914, 0.529372, -5.2)
 
 [node name="Table1" parent="Canteen" instance=ExtResource("48_c2tmy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.599999, 0, 6.68172)

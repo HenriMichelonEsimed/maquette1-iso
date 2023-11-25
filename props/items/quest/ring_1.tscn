@@ -14,7 +14,7 @@ key = "ring_1"
 label = "Ring"
 weight = 0.01
 type = 3
-preview_scale = 8.0
+preview_scale = 9.0
 
 [node name="Ring1" parent="." instance=ExtResource("2_oioi1")]
 transform = Transform3D(1, 0, 0, 0, -0.00647503, -0.999979, 0, 0.999979, -0.00647503, 0, 0, 0)

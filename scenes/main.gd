@@ -175,7 +175,10 @@ func _on_new_notification(message:String):
 		notificationsList.add_item(msg)
 	if (notificationsList.item_count > 5):
 		notificationsList.remove_item(0)
-	notificationLabel.text = msg
+	_display_notification(msg)
+
+func _display_notification(message:String):
+	notificationLabel.text = message
 	notificationLabel.visible = true
 	notificationTimer.start()
 
@@ -313,3 +316,8 @@ func _on_notification_timer_timeout():
 func _on_player_talk_item_clicked(index, at_position, mouse_button_index):
 	talking_char.answer(playerTalkList.get_item_metadata(index))
 
+func _on_list_notifications_focus_entered():
+	notificationsList.release_focus()
+
+func _on_list_notifications_item_clicked(index, at_position, mouse_button_index):
+	_display_notification(notificationsList.get_item_text(index))

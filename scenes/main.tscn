@@ -370,18 +370,18 @@ theme_override_font_sizes/font_size = 12
 theme_override_styles/panel = SubResource("StyleBoxFlat_enm55")
 
 [node name="LabelNotification" type="Label" parent="Game/UI"]
-visible = false
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 0.072
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.078
-offset_left = -88.0
-offset_top = -6.4
-offset_right = 96.0
-offset_bottom = 14.4
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -162.0
+offset_right = 88.0
+offset_bottom = -131.0
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_styles/normal = ExtResource("5_ki3d2")
@@ -389,7 +389,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="Game/UI/LabelNotification"]
-wait_time = 5.0
+wait_time = 10.0
 one_shot = true
 
 [node name="TouchMove" parent="." instance=ExtResource("5_asao4")]
@@ -484,6 +484,8 @@ environment = ExtResource("2_dhum8")
 [connection signal="pressed" from="Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonJoypad" to="." method="_on_button_joypad_pressed"]
 [connection signal="pressed" from="Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonExit" to="." method="_on_button_quit_pressed"]
 [connection signal="timeout" from="Game/UI/LabelSaving/Timer" to="." method="_on_saving_timer_timeout"]
+[connection signal="focus_entered" from="Game/UI/ListNotifications" to="." method="_on_list_notifications_focus_entered"]
+[connection signal="item_clicked" from="Game/UI/ListNotifications" to="." method="_on_list_notifications_item_clicked"]
 [connection signal="timeout" from="Game/UI/LabelNotification/Timer" to="." method="_on_notification_timer_timeout"]
 [connection signal="view_rotate" from="TouchView" to="Game/CameraPivot/Camera" method="_on_touch_view_rotate"]
 [connection signal="view_zoomin" from="TouchView" to="Game/CameraPivot/Camera" method="_on_touch_view_view_zoomin"]

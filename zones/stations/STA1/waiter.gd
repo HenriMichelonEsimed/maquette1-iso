@@ -34,8 +34,8 @@ func r4():
 			["No", d1],
 			[tr("[Give %s]") % tr(item.label), 
 				[["Great ! Here's your ham sandwich. Where did you find my ring?", a2, item], [
-					["In an administration file", 
-						["I'm sure it's that bitch Administrator", [
+					["Behind the Administrator's desk", 
+						["I was sure it was that bitchy Administrator", [
 							["If you say so", d1]
 						]]
 					]

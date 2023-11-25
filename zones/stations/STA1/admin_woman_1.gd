@@ -97,7 +97,8 @@ func a3():
 	GameState.quests.advpoint("main","lvl0_admin_woman_want_sandwitch")
 
 func r4():
-	if not GameState.quests.have_advpoint("main", "lvl0_door_to_restricted_area_access_card"): return null
+	if not GameState.quests.have_advpoint("main", "lvl0_door_to_restricted_area_access_card"):
+		return null
 	if GameState.quests.have_advpoint("main", "lvl0_admin_woman_have_access_card"):
 		if GameState.quests.have_advpoint("main", "lvl0_use_access_card"):
 			return null
