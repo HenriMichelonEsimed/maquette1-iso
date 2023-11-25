@@ -12,7 +12,7 @@ key = "pizza_1"
 label = "Chorizo pizza"
 weight = 0.02
 price = 2.0
-type = 2
+type = 1
 preview_scale = 3.0
 
 [node name="PIzza1" parent="." instance=ExtResource("1_8ecj8")]

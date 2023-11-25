@@ -9,7 +9,8 @@ func r3():
 				["Oh ok I see. But I am very hungry and very busy. If you can bring me a sandwich or a burger with ham I could help you", a3], [
 					["I'll look it up.", _end],
 					["...in your dreams!", d1],
-					r2d
+					r2d,
+					r2f
 			]
 		]]
 	return null
@@ -40,7 +41,8 @@ var r2a =["Why do you need one ?", [
 var r2b = [ "Where is my sandwitch ?", [
 			["I'll look it up.", _end],
 			["...in your dreams!", d1],
-			r2d
+			r2d,
+			r2f
 		]
 	]
 	
@@ -54,10 +56,13 @@ func r2d():
 				["Thank you.", _end]
 			]
 		]]
-	if GameState.inventory.getitem(Item.ItemType.ITEM_CONSUMABLES, "burger_1") != null:
+
+func r2f():
+	var item = GameState.inventory.getitem(Item.ItemType.ITEM_CONSUMABLES, "burger_1")
+	if item != null:
 		return [tr("[Give %s]") % tr(item.label),
 		[
-			["It's not ham and I don't eat beef"], [
+			"It's not ham and I don't eat beef", [
 				["Okay, I'll go back and get a ham sandwich.", _end]
 			]
 		]]
@@ -81,7 +86,7 @@ var r1 = ["How can I access the restricted area ?",
 ]
 
 func a1(item): 
-	GameState.inventory.removeqty(item, 1)
+	GameState.inventory.remove(item)
 	GameState.inventory.new(Item.ItemType.ITEM_QUEST, "access_card_1")
 	GameState.quests.advpoint("main", "lvl0_use_access_card")
 

@@ -12,7 +12,7 @@ key = "ham_sandwich_1"
 label = "Grilled sandwich"
 weight = 0.5
 price = 4.0
-type = 2
+type = 1
 preview_scale = 3.0
 
 [node name="HamSandwich1" parent="." instance=ExtResource("2_0d3u4")]

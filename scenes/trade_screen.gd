@@ -9,7 +9,6 @@ signal trade_end(node:Node)
 
 @onready var tabs:TabContainer = $Content/Body/Content/Tabs
 @onready var list_tools:ItemList = $Content/Body/Content/Tabs/Tools/List
-@onready var list_clothes:ItemList = $Content/Body/Content/Tabs/Clothes/List
 @onready var list_consumables:ItemList = $Content/Body/Content/Tabs/Consumables/List
 @onready var list_quest:ItemList = $Content/Body/Content/Tabs/Quests/List
 @onready var list_miscellaneous:ItemList = $Content/Body/Content/Tabs/Miscellaneous/List
@@ -22,7 +21,6 @@ signal trade_end(node:Node)
 
 const tab_order = [ 
 	Item.ItemType.ITEM_TOOLS, 
-	Item.ItemType.ITEM_CLOTHES,
 	Item.ItemType.ITEM_CONSUMABLES,
 	Item.ItemType.ITEM_MISCELLANEOUS,
 	Item.ItemType.ITEM_QUEST
@@ -30,7 +28,6 @@ const tab_order = [
 
 @onready var list_content = {
 	Item.ItemType.ITEM_TOOLS : list_tools,
-	Item.ItemType.ITEM_CLOTHES : list_clothes,
 	Item.ItemType.ITEM_CONSUMABLES : list_consumables,
 	Item.ItemType.ITEM_MISCELLANEOUS : list_miscellaneous,
 	Item.ItemType.ITEM_QUEST : list_quest
@@ -75,39 +72,28 @@ func _on_button_back_pressed():
 	trade_end.emit(self)
 
 func _on_list_tools_item_selected(index):
-	list_clothes.deselect_all()
 	list_consumables.deselect_all()
 	list_miscellaneous.deselect_all()
 	list_quest.deselect_all()
 	_item_details(trader.items.getone_bytype(index, Item.ItemType.ITEM_TOOLS), index)
 
 func _on_list_miscellaneous_item_selected(index):
-	list_clothes.deselect_all()
 	list_consumables.deselect_all()
 	list_quest.deselect_all()
 	list_tools.deselect_all()
 	_item_details(trader.items.getone_bytype(index, Item.ItemType.ITEM_MISCELLANEOUS), index)
 
 func _on_list_item_quest_selected(index):
-	list_clothes.deselect_all()
 	list_consumables.deselect_all()
 	list_miscellaneous.deselect_all()
 	list_tools.deselect_all()
 	_item_details(trader.items.getone_bytype(index, Item.ItemType.ITEM_QUEST), index)
 
 func _on_list_item_consumable_selected(index):
-	list_clothes.deselect_all()
 	list_miscellaneous.deselect_all()
 	list_quest.deselect_all()
 	list_tools.deselect_all()
 	_item_details(trader.items.getone_bytype(index, Item.ItemType.ITEM_CONSUMABLES), index)
-
-func _on_list_item_clothe_selected(index):
-	list_miscellaneous.deselect_all()
-	list_consumables.deselect_all()
-	list_quest.deselect_all()
-	list_tools.deselect_all()
-	_item_details(trader.items.getone_bytype(index, Item.ItemType.ITEM_CLOTHES), index)
 
 func _item_details(_item:Item, index):
 	selected = index
@@ -181,9 +167,10 @@ func _buy(quantity:int=0):
 	var remove_credit = item_credits.duplicate()
 	remove_credit.quantity = quantity
 	GameState.inventory.remove(remove_credit)
-	var remove_item = item.duplicate()
-	remove_item.quantity = quantity
-	trader.items.remove(remove_item)
+	var buy_item = item.duplicate()
+	buy_item.quantity = quantity
+	GameState.inventory.add(buy_item)
+	trader.items.remove(buy_item)
 	GameState.quests.event_all(Quest.QuestEventType.QUESTEVENT_BUY, item.key)
 	_refresh()
 

@@ -123,7 +123,7 @@ func loadState(file:FileAccess):
 func _skip_item(file:FileAccess, type:int):
 	file.get_var()
 	file.get_var()
-	if (type in [Item.ItemType.ITEM_TOOLS, Item.ItemType.ITEM_CLOTHES]):
+	if (type in [Item.ItemType.ITEM_TOOLS]):
 		file.get_pascal_string()
 		file.get_16()
 		file.get_8()

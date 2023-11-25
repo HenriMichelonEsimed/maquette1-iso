@@ -3,12 +3,11 @@ class_name Item
 
 enum ItemType {
 	ITEM_TOOLS			= 0,
-	ITEM_CLOTHES 		= 1,
-	ITEM_CONSUMABLES	= 2,
-	ITEM_MISCELLANEOUS	= 3,
-	ITEM_QUEST			= 4
+	ITEM_CONSUMABLES	= 1,
+	ITEM_MISCELLANEOUS	= 2,
+	ITEM_QUEST			= 3
 	}
-const scenes_path = [ 'tools', 'clothes', 'consum', 'misc', 'quest']
+const scenes_path = [ 'tools', 'consum', 'misc', 'quest']
 
 @export var key:String
 @export var label:String

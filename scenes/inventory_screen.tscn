@@ -189,16 +189,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("6_vja64")
 
-[node name="Clothes" type="Control" parent="Content/Body/Content/Tabs"]
-visible = false
-layout_mode = 2
-
-[node name="List" type="ItemList" parent="Content/Body/Content/Tabs/Clothes"]
-layout_mode = 2
-offset_left = -250.0
-offset_right = 250.0
-theme_override_styles/panel = ExtResource("6_vja64")
-
 [node name="Consumables" type="Control" parent="Content/Body/Content/Tabs"]
 visible = false
 layout_mode = 2
@@ -324,7 +314,6 @@ layout_mode = 1
 [connection signal="tab_changed" from="Content/Body/Content/Tabs" to="." method="_on_tabs_tab_changed"]
 [connection signal="tab_selected" from="Content/Body/Content/Tabs" to="." method="_on_tabs_tab_selected"]
 [connection signal="item_selected" from="Content/Body/Content/Tabs/Tools/List" to="." method="_on_list_tools_item_selected"]
-[connection signal="item_selected" from="Content/Body/Content/Tabs/Clothes/List" to="." method="_on_list_item_clothe_selected"]
 [connection signal="item_selected" from="Content/Body/Content/Tabs/Consumables/List" to="." method="_on_list_item_consumable_selected"]
 [connection signal="item_selected" from="Content/Body/Content/Tabs/Miscellaneous/List" to="." method="_on_list_miscellaneous_item_selected"]
 [connection signal="item_selected" from="Content/Body/Content/Tabs/Quests/List" to="." method="_on_list_item_quest_selected"]

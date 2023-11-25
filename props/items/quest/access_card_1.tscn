@@ -10,6 +10,7 @@ script = ExtResource("1_fy3ev")
 indestructible = true
 key = "access_card_1"
 label = "Access Card"
+type = 3
 preview_scale = 15.0
 
 [node name="AccessCard1" parent="." instance=ExtResource("2_4sy7g")]

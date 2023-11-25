@@ -22,14 +22,13 @@ func _ready():
 func init():
 	_size = GameState.camera.size
 	if (_size == -1):
-		_size = 20 #30 / get_viewport().content_scale_factor
+		_size = 10 #30 / get_viewport().content_scale_factor
 	_view = GameState.camera.view
 	_zoom_view()
 	_rotate_view()
 
 func move(pos):
 	camera_pivot.position = pos
-
 
 func _process(_delta):
 	if (GameState.paused): return

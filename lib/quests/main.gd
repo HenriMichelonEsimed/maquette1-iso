@@ -14,8 +14,6 @@ func _init():
 			["Give a sandwich or a burger with ham to the Administrator"],
 		"lvl0_waiter_want_is_ring": 
 			["Find the Waiter's ring"],
-		"lvl0_generate_ham_sandwich":
-			[""],
 		"lvl0_make_first_purchase":
 			[""]
 	}

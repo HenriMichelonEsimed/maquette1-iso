@@ -10,7 +10,6 @@ signal item_dropped(item:Item,quantity:int)
 
 @onready var tabs:TabContainer = $Content/Body/Content/Tabs
 @onready var list_tools:ItemList = $Content/Body/Content/Tabs/Tools/List
-@onready var list_clothes:ItemList = $Content/Body/Content/Tabs/Clothes/List
 @onready var list_consumables:ItemList = $Content/Body/Content/Tabs/Consumables/List
 @onready var list_quest:ItemList = $Content/Body/Content/Tabs/Quests/List
 @onready var list_miscellaneous:ItemList = $Content/Body/Content/Tabs/Miscellaneous/List
@@ -21,7 +20,6 @@ signal item_dropped(item:Item,quantity:int)
 
 const tab_order = [ 
 	Item.ItemType.ITEM_TOOLS, 
-	Item.ItemType.ITEM_CLOTHES,
 	Item.ItemType.ITEM_CONSUMABLES,
 	Item.ItemType.ITEM_MISCELLANEOUS,
 	Item.ItemType.ITEM_QUEST
@@ -29,7 +27,6 @@ const tab_order = [
 
 @onready var list_content = {
 	Item.ItemType.ITEM_TOOLS : list_tools,
-	Item.ItemType.ITEM_CLOTHES : list_clothes,
 	Item.ItemType.ITEM_CONSUMABLES : list_consumables,
 	Item.ItemType.ITEM_MISCELLANEOUS : list_miscellaneous,
 	Item.ItemType.ITEM_QUEST : list_quest
@@ -57,39 +54,28 @@ func _on_button_back_pressed():
 	close.emit(self)
 
 func _on_list_tools_item_selected(index):
-	list_clothes.deselect_all()
 	list_consumables.deselect_all()
 	list_miscellaneous.deselect_all()
 	list_quest.deselect_all()
 	_item_details(GameState.inventory.getone_bytype(index, Item.ItemType.ITEM_TOOLS), index)
 
 func _on_list_miscellaneous_item_selected(index):
-	list_clothes.deselect_all()
 	list_consumables.deselect_all()
 	list_quest.deselect_all()
 	list_tools.deselect_all()
 	_item_details(GameState.inventory.getone_bytype(index, Item.ItemType.ITEM_MISCELLANEOUS), index)
 
 func _on_list_item_quest_selected(index):
-	list_clothes.deselect_all()
 	list_consumables.deselect_all()
 	list_miscellaneous.deselect_all()
 	list_tools.deselect_all()
 	_item_details(GameState.inventory.getone_bytype(index, Item.ItemType.ITEM_QUEST), index)
 
 func _on_list_item_consumable_selected(index):
-	list_clothes.deselect_all()
 	list_miscellaneous.deselect_all()
 	list_quest.deselect_all()
 	list_tools.deselect_all()
 	_item_details(GameState.inventory.getone_bytype(index, Item.ItemType.ITEM_CONSUMABLES), index)
-
-func _on_list_item_clothe_selected(index):
-	list_miscellaneous.deselect_all()
-	list_consumables.deselect_all()
-	list_quest.deselect_all()
-	list_tools.deselect_all()
-	_item_details(GameState.inventory.getone_bytype(index, Item.ItemType.ITEM_CLOTHES), index)
 
 func _item_details(_item:Item, index):
 	selected = index

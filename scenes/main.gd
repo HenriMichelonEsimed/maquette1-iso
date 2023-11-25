@@ -56,6 +56,7 @@ func _ready():
 	
 func _process(_delta):
 	if (Input.is_action_just_pressed("exit_game")):
+		GameState.saveGame()
 		get_tree().quit()
 		return
 	if (GameState.paused): 
@@ -192,7 +193,7 @@ func _on_button_quit_pressed():
 	scene.connect("save_confirm", _on_save_confirm)
 	
 func _on_save_confirm(save:bool):
-	if (save): GameState.saveGame(false)
+	if (save): GameState.saveGame()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().quit()
 

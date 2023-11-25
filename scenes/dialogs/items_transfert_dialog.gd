@@ -28,7 +28,7 @@ func _process(_delta):
 	if (selectQtyDialog.visible): return
 	if Input.is_action_just_pressed("cancel"):
 		_on_close()
-	elif Input.is_action_just_pressed("player_use"):
+	elif Input.is_action_just_pressed("player_use_nomouse"):
 		_transfert()
 	elif Input.is_action_just_pressed("collect_all"):
 		_on_button_all_pressed()
