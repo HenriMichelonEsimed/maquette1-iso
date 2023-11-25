@@ -8,7 +8,7 @@ func _init():
 		]],
 		[
 			[ Item.ItemType.ITEM_CONSUMABLES, "orange_1", 16],
-			[ Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1", 5],
+			[ Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1", 4],
 			[ Item.ItemType.ITEM_CONSUMABLES, "pizza_1", 4],
 			[ Item.ItemType.ITEM_CONSUMABLES, "soft_drink_1", 10],
 		], 10

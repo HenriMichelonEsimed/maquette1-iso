@@ -20,5 +20,5 @@ func _init():
 	)
 
 func a1():
-	GameState.quests.event("main", Quest.QuestEventType.QUESTEVENT_TALK, "QAMain1_end")
+	GameState.quests.event("main", Quest.QuestEventType.QUESTEVENT_TALK, "QMain1_end")
 	_end()

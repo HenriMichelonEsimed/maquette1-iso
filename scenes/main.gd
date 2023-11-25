@@ -240,7 +240,7 @@ func _on_load_savegame(savegame:String):
 func _on_pause():
 	GameState.paused = true
 	$Game/UI.visible = false
-	
+
 func _on_resume(from:Node=null):
 	if (from != null): remove_child(from)
 	if (GameState.settings.lang != _prev_lang):

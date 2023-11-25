@@ -64,7 +64,7 @@ script = ExtResource("1_7fv8t")
 zone_name = "stations/STA1/level_0"
 
 [node name="SpawnPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.43635, 0, -22.9887)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.075, -0.893, 4.137)
 script = ExtResource("2_3hqhq")
 key = "default"
 

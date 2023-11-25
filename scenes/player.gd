@@ -55,18 +55,18 @@ func use(target:Vector2, camera:Camera3D):
 			_on_collect_item_aera_body_exited(iray.collider)
 	#else:
 	#	action_use()
-	
+
 func stop_move_to():
 	if (move_to_target != null):
 		move_to_target = null
 		velocity = Vector3.ZERO
 		anim.play("standing")
-		
+
 func _look_at(node:Node3D):
 	var pos = node.global_position
 	pos.y = position.y
 	look_at(pos)
-	
+
 func action_use():
 	if (node_to_use != null):
 		_look_at(node_to_use)
