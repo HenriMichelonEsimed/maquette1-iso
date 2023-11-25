@@ -46,6 +46,7 @@ var item_credits:ItemMiscellaneous
 
 func open(char:InteractiveCharacter):
 	trader = char
+	label_credits.text = tr("Inventory : %d credits") % credits
 	var idx = 0
 	for type in list_content: 
 		_fill_list(idx, type, list_content[type])
@@ -69,7 +70,6 @@ func _ready():
 	item_credits = GameState.inventory.getitem(Item.ItemType.ITEM_MISCELLANEOUS, "credit")
 	if (item_credits != null):
 		credits = item_credits.quantity
-	label_credits.text = tr("Inventory : %d credits") % credits
 
 func _on_button_back_pressed():
 	trade_end.emit(self)
@@ -173,9 +173,11 @@ func _on_buy_pressed():
 		_buy()
 
 func _buy(quantity:int=0):
-	if (quantity * item.price) > credits:
+	var price = quantity * item.price
+	if price > credits:
 		$AlertDialog.open("Buy", "You don't have enough credits")
 		return
+	credits -= price
 	GameState.inventory.removeqty(item_credits, quantity)
 	GameState.inventory.new(item.type, item.key, quantity)
 	var remove_item = item.duplicate()
