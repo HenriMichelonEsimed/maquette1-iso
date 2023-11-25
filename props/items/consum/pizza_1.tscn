@@ -9,7 +9,7 @@ size = Vector3(0.215913, 0.0653964, 0.319595)
 [node name="Pizza1" type="CharacterBody3D"]
 script = ExtResource("1_o7s2n")
 key = "pizza_1"
-label = "Peperroni Pizza"
+label = "Chorizo pizza"
 weight = 0.02
 price = 2.0
 type = 2

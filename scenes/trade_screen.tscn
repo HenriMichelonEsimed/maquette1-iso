@@ -102,7 +102,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 18.0
 offset_right = -18.0
-offset_bottom = -75.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -135,6 +135,10 @@ layout_mode = 2
 auto_translate = false
 localize_numeral_system = false
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("3_kn1xy")
@@ -272,7 +276,7 @@ own_world_3d = true
 world_3d = SubResource("World3D_tt1eo")
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(496, 247)
+size = Vector2i(2, 2)
 render_target_update_mode = 0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Content/Body/Content/PanelItem/Content/ViewContent/3DView"]
@@ -299,6 +303,13 @@ custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 auto_translate = false
 localize_numeral_system = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.494118, 0.494118, 0.494118, 1)
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("3_kn1xy")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("4_ahejk")
@@ -310,6 +321,24 @@ text = ""
 script = ExtResource("5_114mb")
 icon_size = 32
 icon_name = "coins"
+
+[node name="Bottom" type="MarginContainer" parent="Content"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Menu" type="HBoxContainer" parent="Content/Bottom"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Content/Bottom/Menu"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Wallet
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SelectQuantityDialog" parent="." instance=ExtResource("9_a2hjl")]
 visible = false

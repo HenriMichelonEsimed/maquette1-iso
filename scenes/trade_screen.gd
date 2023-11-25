@@ -18,6 +18,7 @@ signal trade_end(node:Node)
 @onready var weigth_value = $Content/Body/Content/PanelItem/Content/LabelWeight
 @onready var price_value = $Content/Body/Content/PanelItem/Content/LabelPrice
 @onready var node_3d = $"Content/Body/Content/PanelItem/Content/ViewContent/3DView/InsertPoint"
+@onready var label_credits = $Content/Bottom/Menu/Label
 
 const tab_order = [ 
 	Item.ItemType.ITEM_TOOLS, 
@@ -40,10 +41,20 @@ var trader:InteractiveCharacter
 var item:Item
 var list:ItemList
 var selected = 0
+var credits = 0
+var item_credits:ItemMiscellaneous
 
 func open(char:InteractiveCharacter):
 	trader = char
-	for type in list_content: _fill_list(type, list_content[type])
+	var idx = 0
+	for type in list_content: 
+		_fill_list(idx, type, list_content[type])
+		idx += 1
+	for i in range(0, tabs.get_tab_count()):
+		if not tabs.is_tab_hidden(i):
+			tabs.current_tab = i
+			state.tab = tabs.current_tab
+			break
 
 func _ready():
 	var ratio = size.x / size.y
@@ -55,6 +66,10 @@ func _ready():
 	tabs.custom_minimum_size.x = size.x/2
 	StateSaver.loadState(state)
 	tabs.current_tab = state.tab
+	item_credits = GameState.inventory.getitem(Item.ItemType.ITEM_MISCELLANEOUS, "credit")
+	if (item_credits != null):
+		credits = item_credits.quantity
+	label_credits.text = tr("Inventory : %d credits") % credits
 
 func _on_button_back_pressed():
 	trade_end.emit(self)
@@ -140,10 +155,12 @@ func _set_tab():
 	item_content.visible = false
 	StateSaver.saveState(state)
 
-func _fill_list(type:Item.ItemType, list:ItemList):
+func _fill_list(idx: int, type:Item.ItemType, list:ItemList):
 	list.clear()
 	for item in trader.items.getall_bytype(type):
 		list.add_item(tr(str(item)))
+	if (list.item_count == 0):
+		tabs.set_tab_hidden(idx, true)
 
 func _on_buy_pressed():
 	if (item == null): return
@@ -157,7 +174,7 @@ func _buy(quantity:int=0):
 
 func _refresh():
 	item_content.visible = false
-	_fill_list(item.type, list_content[item.type])
+	open(trader)
 	
 func _on_tabs_tab_selected(tab):
 	list = list_content[tab_order[tab]]

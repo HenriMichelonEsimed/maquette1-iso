@@ -7,8 +7,6 @@ func _init():
 			["Bye.", _end]
 		]],
 		[
-			[ Item.ItemType.ITEM_QUEST, "access_card_1"],
-			[ Item.ItemType.ITEM_MISCELLANEOUS, "credit", 10],
 			[ Item.ItemType.ITEM_CONSUMABLES, "orange_1", 16],
 			[ Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1", 5],
 			[ Item.ItemType.ITEM_CONSUMABLES, "pizza_1", 4],
