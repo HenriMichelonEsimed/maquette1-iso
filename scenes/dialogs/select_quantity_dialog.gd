@@ -9,6 +9,10 @@ signal quantity(quantity:int)
 
 var _slide_pressed = 0
 var _just_opened = true
+var func_quantity:Callable
+
+func _ready():
+	visible = false
 
 func _process(_delta):
 	if (!visible): return
@@ -37,18 +41,22 @@ func _process(_delta):
 			sliderQuantity.value += 1
 			_slide_pressed = 0
 
-func open(item:Item, label:String="Transfert"):
+func open(item:Item, all:bool, label:String="Transfert", func_qty=_quantity):
 	_just_opened = true
 	buttonDrop.text = tr(label)
 	labelName.text = tr(item.label)
+	func_quantity = func_qty
 	sliderQuantity.max_value = item.quantity
-	sliderQuantity.value = item.quantity
-	labelQuantity.text = str(sliderQuantity.value)
+	sliderQuantity.value = item.quantity if all else 1
+	labelQuantity.text = func_quantity.call(sliderQuantity.value)
 	sliderQuantity.grab_focus()
 	visible = true
+	
+func _quantity(value):
+	return str(value)
 
 func _on_slider_quantity_value_changed(value):
-	labelQuantity.text = str(sliderQuantity.value)
+	labelQuantity.text = func_quantity.call(value)
 
 func _on_button_cancel_pressed():
 	visible = false

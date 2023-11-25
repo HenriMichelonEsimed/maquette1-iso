@@ -58,7 +58,7 @@ func _on_button_all_pressed():
 
 func open_select_quantity(item:Item):
 	transfered_item = item
-	selectQtyDialog.open(item)
+	selectQtyDialog.open(item, true)
 
 func _on_select_quantity_dialog_quantity(quantity):
 	if (current_list == list_container):

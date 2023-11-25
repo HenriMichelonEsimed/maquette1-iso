@@ -35,3 +35,6 @@ Trading;Commerce
 Buy;Acheter
 Unit price : %.2f;Prix unitaire : %.2f
 Inventory : %d credits;Inventaire : %d crédits
+Ok;Ok
+You don't have enough credits;Vous n'avez pas assez de crédits
+%d (%d credits);%d (%d crédits)

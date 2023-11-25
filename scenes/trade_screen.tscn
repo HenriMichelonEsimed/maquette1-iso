@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b5d8gkjyrc4yn"]
+[gd_scene load_steps=18 format=3 uid="uid://b5d8gkjyrc4yn"]
 
 [ext_resource type="Script" path="res://scenes/trade_screen.gd" id="1_ixb2b"]
 [ext_resource type="Texture2D" uid="uid://38qd58n3acbb" path="res://assets/textures/talkwindow.png" id="2_4aej3"]
@@ -9,6 +9,7 @@
 [ext_resource type="StyleBox" uid="uid://p34djr2fcs3w" path="res://assets/tabs_list_style.tres" id="7_322xj"]
 [ext_resource type="Material" uid="uid://k5r36wixdaow" path="res://assets/materials/misc/dark.tres" id="8_qg3ut"]
 [ext_resource type="PackedScene" uid="uid://dytjnya7i6c47" path="res://scenes/dialogs/select_quantity_dialog.tscn" id="9_a2hjl"]
+[ext_resource type="PackedScene" uid="uid://cc7nc5nncmkua" path="res://scenes/dialogs/alert_dialog.tscn" id="10_eb1wg"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_825ag"]
 texture = ExtResource("2_4aej3")
@@ -62,7 +63,7 @@ ambient_light_color = Color(1, 1, 1, 1)
 [sub_resource type="World3D" id="World3D_tt1eo"]
 environment = SubResource("Environment_f1hi3")
 
-[node name="InventoryScreen" type="Control"]
+[node name="TradingScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -344,6 +345,10 @@ vertical_alignment = 1
 visible = false
 layout_mode = 1
 
+[node name="AlertDialog" parent="." instance=ExtResource("10_eb1wg")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="Content/Top/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
 [connection signal="tab_changed" from="Content/Body/Content/Tabs" to="." method="_on_tabs_tab_changed"]
 [connection signal="tab_selected" from="Content/Body/Content/Tabs" to="." method="_on_tabs_tab_selected"]
@@ -352,4 +357,5 @@ layout_mode = 1
 [connection signal="item_selected" from="Content/Body/Content/Tabs/Consumables/List" to="." method="_on_list_item_consumable_selected"]
 [connection signal="item_selected" from="Content/Body/Content/Tabs/Miscellaneous/List" to="." method="_on_list_miscellaneous_item_selected"]
 [connection signal="item_selected" from="Content/Body/Content/Tabs/Quests/List" to="." method="_on_list_item_quest_selected"]
-[connection signal="quantity" from="SelectQuantityDialog" to="." method="_drop"]
+[connection signal="pressed" from="Content/Body/Content/PanelItem/Content/Actions/Buy" to="." method="_on_buy_pressed"]
+[connection signal="quantity" from="SelectQuantityDialog" to="." method="_buy"]

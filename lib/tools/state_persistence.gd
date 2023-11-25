@@ -18,7 +18,7 @@ enum {
 }
 
 var _path:String
-const max_backup = 9
+const max_backup = 19
 
 func _ready():
 	set_path(autosave_path)

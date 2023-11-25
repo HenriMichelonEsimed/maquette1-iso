@@ -124,7 +124,7 @@ func _item_details(_item:Item, index):
 	item_content.visible = true
 
 func _process(_delta):
-	if ($SelectQuantityDialog.visible): return
+	if ($SelectQuantityDialog.visible or $AlertDialog.visible): return
 	if Input.is_action_just_pressed("cancel"):
 		_on_button_back_pressed()
 		return
@@ -162,20 +162,31 @@ func _fill_list(idx: int, type:Item.ItemType, list:ItemList):
 	if (list.item_count == 0):
 		tabs.set_tab_hidden(idx, true)
 
+func _buy_quanity(value):
+	return tr("%d (%d credits)") % [value, item.price * value]
+
 func _on_buy_pressed():
 	if (item == null): return
 	if (item is ItemMultiple):
-		$SelectQuantityDialog.open(item, tr("Drop"))
+		$SelectQuantityDialog.open(item, false, tr("Buy"), _buy_quanity)
 	else:
 		_buy()
 
 func _buy(quantity:int=0):
+	if (quantity * item.price) > credits:
+		$AlertDialog.open("Buy", "You don't have enough credits")
+		return
+	GameState.inventory.removeqty(item_credits, quantity)
+	GameState.inventory.new(item.type, item.key, quantity)
+	var remove_item = item.duplicate()
+	remove_item.quantity = quantity
+	trader.items.remove(remove_item)
 	_refresh()
 
 func _refresh():
 	item_content.visible = false
 	open(trader)
-	
+
 func _on_tabs_tab_selected(tab):
 	list = list_content[tab_order[tab]]
 	if (tab == state.tab): return

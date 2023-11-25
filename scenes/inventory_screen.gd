@@ -95,7 +95,7 @@ func _item_details(_item:Item, index):
 	selected = index
 	item = _item
 	item_title.text = item.label
-	weigth_value.text = tr("Weigth : %.1f") % _item.weight
+	weigth_value.text = tr("Weigth : %.2f") % _item.weight
 	for c in node_3d.get_children():
 		c.queue_free()
 	var clone = _item.duplicate()
@@ -144,7 +144,7 @@ func _fill_list(type:Item.ItemType, list:ItemList):
 func _on_drop_pressed():
 	if (item == null): return
 	if (item is ItemMultiple):
-		$SelectQuantityDialog.open(item, tr("Drop"))
+		$SelectQuantityDialog.open(item, tr("Drop"), false)
 	else:
 		_drop()
 
