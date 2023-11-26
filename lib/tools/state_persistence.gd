@@ -22,8 +22,10 @@ var _last
 var _path:String
 const max_backup = 19
 
-func get_savegames():
-	return DirAccess.get_directories_at(default_path)
+func get_savegames() -> Array:
+	var dirs = Array(DirAccess.get_directories_at(default_path))
+	dirs.sort_custom(_compare_times)
+	return dirs
 
 func get_last_savegame() -> String:
 	if (_last == null) or (_last == autosave_path):
@@ -40,8 +42,6 @@ func _compare_times(a,b):
 func get_last():
 	var dirs = get_savegames()
 	if dirs.is_empty(): return null
-	dirs = Array(dirs)
-	dirs.sort_custom(_compare_times)
 	return dirs[0]
 
 func savegame_exists(savegame:String):

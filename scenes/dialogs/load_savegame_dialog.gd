@@ -9,27 +9,13 @@ var saves = {}
 var savegame:String
 
 func _ready():
-	listSaves.add_item(tr("Last save"))
-	listSaves.set_item_metadata(0, "")
-	var dirs = StateSaver.get_savegames()
-	dirs.reverse()
-	for dir in dirs:
-		var time = Time.get_datetime_dict_from_unix_time(StateSaver.get_savegame_time(dir))
-		var item: String
-		if (GameState.settings.lang == "en_US") : 
-			item = "%02d-%02d-%04d %02d:%02d:%02d" % [time.month, time.day, time.year, time.hour, time.minute, time.second]
-		elif (GameState.settings.lang == "en_UK"): 
-			item = "%02d-%02d-%04d %02d:%02d:%02d" % [time.day, time.month, time.year, time.hour, time.minute, time.second]
-		elif (GameState.settings.lang == "fr") : 
-			item = "%02d/%02d/%04d %02d:%02d:%02d" % [time.day, time.month, time.year, time.hour, time.minute, time.second]
-		else:
-			item = "%04d/%02d/%02d %02d:%02d:%02d" % [time.year, time.month, time.day, time.hour, time.minute, time.second]
-		listSaves.add_item(item)
+	for dir in StateSaver.get_savegames():
+		listSaves.add_item(tr("[Auto save]") if dir==StatePersistence.autosave_path else dir)
 		listSaves.set_item_metadata(listSaves.item_count-1, dir)
 	listSaves.select(0)
 
 func _on_list_savegames_item_clicked(index, at_position, mouse_button_index):
-	savegame = StateSaver.format_savegame_name(listSaves.get_item_metadata(index))
+	savegame = listSaves.get_item_metadata(index)
 
 func _on_button_close_pressed():
 	close.emit(self)
