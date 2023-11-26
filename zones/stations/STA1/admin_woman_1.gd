@@ -1,5 +1,10 @@
 extends InteractiveCharacter
 
+func ring_action():
+	discussion = [ "Hey, DON'T touch that ring !", [
+		["Ok ! Calm down...", _end]
+	]]
+
 var d1 = []
 
 func r3():

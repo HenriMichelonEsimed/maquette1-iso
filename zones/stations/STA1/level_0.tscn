@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=61 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_7fv8t"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -55,6 +55,7 @@
 [ext_resource type="PackedScene" uid="uid://dwqi0awwy1s56" path="res://props/furnitures/box_1.tscn" id="47_hu7xp"]
 [ext_resource type="PackedScene" uid="uid://yma7nitl272y" path="res://props/furnitures/table_1.tscn" id="48_c2tmy"]
 [ext_resource type="PackedScene" uid="uid://bk120r6rxex7p" path="res://props/furnitures/bar_1.tscn" id="49_6p5b4"]
+[ext_resource type="Script" path="res://props/items/quest/ring_1.gd" id="50_7121f"]
 [ext_resource type="PackedScene" uid="uid://c2umsprj0ccgr" path="res://props/furnitures/bench_2.tscn" id="50_vboi2"]
 [ext_resource type="PackedScene" uid="uid://nebo4anbesm0" path="res://props/items/misc/credit.tscn" id="58_6ad3g"]
 [ext_resource type="PackedScene" uid="uid://btdkocrw70s4u" path="res://lib/nodes/zone_change_trigger.tscn" id="59_o5rmr"]
@@ -678,6 +679,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.91167, 0, -2.97911)
 
 [node name="Ring1" parent="Admistration" instance=ExtResource("31_jdet3")]
 transform = Transform3D(-1, 0, -8.74228e-08, -8.74204e-08, -0.00738273, 0.999973, -6.45419e-10, 0.999973, 0.00738273, -0.127211, 0.71556, -5.33986)
+script = ExtResource("50_7121f")
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 15.5, -9)
