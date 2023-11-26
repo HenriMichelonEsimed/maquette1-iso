@@ -8,7 +8,7 @@ Subject;Sujet
 Quests;Quêtes
 Drop;Lâcher
 Hello !;Salut !
-Bye.;Au revoir.
+Bye;Au revoir
 Weigth : %.2f;Poids : %.2f
 Transfert;Transfert
 How many ?;Combien ?
@@ -46,3 +46,12 @@ Overwrite existing save?;Ecraser la sauvegarde existante ?
 Delete;Supprimer
 Delete ?;Supprimer ?
 Delete saved game ' %s' ?;Supprimer la sauvegarde '%s' ?
+Nice to meet you;Enchanté de vous rencontrer
+Thank you;Merci
+ok;ok
+Hello;Salut
+Nevermind;Laissez tomber
+Let's talk;Autre chose…
+Nice. Bye;Bien. Au revoir
+Ok, bye;Ok, au revoir
+[Give %s];[Donner %s]

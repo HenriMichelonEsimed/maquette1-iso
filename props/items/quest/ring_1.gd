@@ -1,6 +1,5 @@
 extends ItemQuest
 
 func collect():
-	$"../AdminWoman1".ring_action()
-	$"../AdminWoman1".interact()
+	$"../AdminWoman1".interact($"../AdminWoman1".ring_discussion(self))
 	return false

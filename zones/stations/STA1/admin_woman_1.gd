@@ -1,9 +1,22 @@
 extends InteractiveCharacter
 
-func ring_action():
-	discussion = [ "Hey, DON'T touch that ring !", [
-		["Ok ! Calm down...", _end]
+var ring:ItemQuest
+
+func ring_discussion(item:ItemQuest):
+	ring = item
+	var can_collect = GameState.quests.have_advpoint("main", "lvl0_waiter_want_is_ring")
+	return [ "Hey, DON'T touch that ring !", [
+		["Ok ! Calm down...", _end],
+		["Isn't this ring the waiter's?", [
+			"Uh...well... maybe he put it there and forgot about it?", [
+				["Maybe. I'll show him.", ring_action]
+			]
+		]]
 	]]
+
+func ring_action():
+	GameState.current_zone.on_item_collected(ring, -1, true)
+	_end()
 
 var d1 = []
 
@@ -12,7 +25,7 @@ func r3():
 		return [ "[Show message on phone]",
 			[
 				["Oh ok I see. But I am very hungry and very busy. If you can bring me a sandwich or a burger with ham I could help you", a3], [
-					["I'll look it up.", _end],
+					["I'll look it up", _end],
 					["...in your dreams!", d1],
 					r2d,
 					r2f
@@ -27,7 +40,7 @@ var r2a =["Why do you need one ?", [
 					[ "I don't know",
 						[ 
 							"Come back when you have a name", [
-								["ok", _end]
+								["Ok", _end]
 							]
 						]
 					],
@@ -44,7 +57,7 @@ var r2a =["Why do you need one ?", [
 ]
 
 var r2b = [ "Where is my sandwitch ?", [
-			["I'll look it up.", _end],
+			["I'll look it up", _end],
 			["...in your dreams!", d1],
 			r2d,
 			r2f
@@ -58,7 +71,7 @@ func r2d():
 		return [tr("[Give %s]") % tr(item.label),
 		[
 			["Thank you ! Here is the access card", a1, item], [
-				["Thank you.", _end]
+				["Thank you", _end]
 			]
 		]]
 
@@ -113,13 +126,12 @@ func r4():
 			return r2
 	return r1
 
-
 func _init():
 	d1.append_array(["How can I help you ?", [
 		["Who are you ?", [
 			"I am the administrator of this station", [["Nice to meet you", d1]]
 		]],
 		r4,
-		["Bye.", _end]
+		["Bye", _end]
 	]])
 	super(d1)

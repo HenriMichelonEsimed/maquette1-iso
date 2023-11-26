@@ -8,15 +8,15 @@ func _start_talking():
 			items.new(Item.ItemType.ITEM_CONSUMABLES, "burger_1")
 
 func d1():
-	return ["Hello.", [
+	return ["Hello", [
 			["Hey, what's on the menu ?", _trade],
 			r1,
-			["Bye.", _end]
+			["Bye", _end]
 		]]
 
 var r2 = []
 var r5 = [
-	["I'll look it up.", _end],
+	["I'll look it up", _end],
 	["Nevermind", d1]
 ]
 

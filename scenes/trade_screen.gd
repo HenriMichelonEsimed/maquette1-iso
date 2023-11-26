@@ -110,7 +110,7 @@ func _item_details(_item:Item, index):
 	item_content.visible = true
 
 func _process(_delta):
-	if ($SelectQuantityDialog.visible or $AlertDialog.visible): return
+	if $SelectQuantityDialog.visible: return
 	if Input.is_action_just_pressed("cancel"):
 		_on_button_back_pressed()
 		return

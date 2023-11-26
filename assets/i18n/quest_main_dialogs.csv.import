@@ -6,10 +6,10 @@ uid="uid://xcu1gmcolmgc"
 
 [deps]
 
-files=["res://assets/i18n/quest_main_dialogs.fr.translation", "res://assets/i18n/quest_main_dialogs..translation"]
+files=["res://assets/i18n/quest_main_dialogs.fr.translation"]
 
 source_file="res://assets/i18n/quest_main_dialogs.csv"
-dest_files=["res://assets/i18n/quest_main_dialogs.fr.translation", "res://assets/i18n/quest_main_dialogs..translation"]
+dest_files=["res://assets/i18n/quest_main_dialogs.fr.translation"]
 
 [params]
 

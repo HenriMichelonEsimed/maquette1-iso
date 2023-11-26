@@ -51,6 +51,7 @@ func _ready():
 	Input.connect("joy_connection_changed", _on_joypas_connection_changed)
 	if (Input.get_connected_joypads().size() > 0):
 		_on_joypas_connection_changed(null, true)
+	GameState.paused = false
 	#_on_button_inventory_pressed()
 	#_on_button_terminal_pressed()
 	#_on_button_load_pressed()

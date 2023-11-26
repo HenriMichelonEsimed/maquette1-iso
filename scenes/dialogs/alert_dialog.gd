@@ -9,10 +9,9 @@ func _process(delta):
 	if (Input.is_action_just_pressed("cancel") or Input.is_action_just_pressed("player_use_nomouse")):
 		_on_button_cancel_pressed()
 		
-func open(title:String,message:String,button:String="Ok"):
+func open(title:String,message:String):
 	$Panel/Content/VBoxContainer/Top/Label.text = tr(title)
 	$Panel/Content/VBoxContainer/Label.text = tr(message)
-	$Panel/Content/VBoxContainer/Bottom/ButtonCancel.text = str(button)
 	$Panel/Content/VBoxContainer/Bottom/ButtonCancel.grab_focus()
 	visible = true
 

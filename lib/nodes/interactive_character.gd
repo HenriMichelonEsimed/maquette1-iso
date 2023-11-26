@@ -12,7 +12,7 @@ var items_list:Array
 var items:ItemsCollection
 var generate_chance:int
 
-func _init(disc = ["Hello !", [["Bye.", _end]] ], it = [], gen = 0):
+func _init(disc = ["Hello !", [["Bye", _end]] ], it = [], gen = 0):
 	discussion = disc
 	items_list = it
 	if (not items_list.is_empty()):
@@ -34,15 +34,18 @@ func _init(disc = ["Hello !", [["Bye.", _end]] ], it = [], gen = 0):
 func _ready():
 	set_collision_layer_value(5, true)
 
-func interact():
-	say(discussion)
+func interact(new_disc=null):
+	var disc = discussion
+	if (new_disc != null):
+		disc = new_disc
+	say(disc)
 	
 func _trade():
 	trade.emit(self)
 
 func _start_talking():
 	pass
-
+	
 func say(disc):
 	_start_talking()
 	current = disc
