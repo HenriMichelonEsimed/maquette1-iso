@@ -227,7 +227,7 @@ func _on_savegame_confirm(overwrite:bool):
 
 func load_dialog(filename:String):
 	_on_pause()
-	return GameState.loadDialog(self, filename, _on_resume)
+	return Tools.load_dialog(self, filename, _on_resume)
 
 func _on_button_inventory_pressed():
 	load_dialog("inventory_screen")

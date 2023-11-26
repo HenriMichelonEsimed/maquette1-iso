@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cc7nc5nncmkua"]
+[gd_scene load_steps=8 format=3 uid="uid://cc7nc5nncmkua"]
 
 [ext_resource type="Script" path="res://scenes/dialogs/alert_dialog.gd" id="1_gpx26"]
+[ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="2_hbjlj"]
 [ext_resource type="StyleBox" uid="uid://bmyh6yvafukya" path="res://assets/button_style.tres" id="2_p35bo"]
 [ext_resource type="PackedScene" uid="uid://dytjnya7i6c47" path="res://scenes/dialogs/select_quantity_dialog.tscn" id="3_1rwli"]
+[ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="4_mmsq2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25hsw"]
 bg_color = Color(0.505882, 0.701961, 0.854902, 0.839216)
@@ -37,6 +39,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -75.0
+offset_right = 250.0
+offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_25hsw")
@@ -46,6 +52,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -3.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 5
@@ -83,17 +91,24 @@ alignment = 1
 
 [node name="ButtonCancel" type="Button" parent="Panel/Content/VBoxContainer/Bottom"]
 layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_hbjlj")
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("2_p35bo")
 theme_override_styles/hover = ExtResource("2_p35bo")
 theme_override_styles/pressed = ExtResource("2_p35bo")
 theme_override_styles/disabled = ExtResource("2_p35bo")
 theme_override_styles/focus = ExtResource("2_p35bo")
-text = "Ok"
+text = ""
+script = ExtResource("4_mmsq2")
+icon_size = 32
+icon_name = "check"
 
 [node name="SelectQuantityDialog" parent="." instance=ExtResource("3_1rwli")]
 visible = false

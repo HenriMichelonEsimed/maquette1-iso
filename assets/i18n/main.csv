@@ -12,7 +12,6 @@ Bye.;Au revoir.
 Weigth : %.2f;Poids : %.2f
 Transfert;Transfert
 How many ?;Combien ?
-Cancel;Annuler
 Tools;Outils
 Clothes;Vêtements
 Consumables;Consommables
@@ -22,15 +21,11 @@ Settings;Paramètres
 Language;Langue
 English;Anglais
 French;Français
-Apply;Appliquer
-Load;Charger
 Load a saved game;Charger une sauvegarde
 [Auto save];[Sauvegarde auto]
 Last save;Dernière sauvegarde
 Save ?;Sauvegarder ?
 Save game before exiting ?;Sauvegarder avant de sortir ?
-Yes;Oui
-No;Non
 Trading;Commerce
 Buy;Acheter
 Unit price : %.2f;Prix unitaire : %.2f
@@ -42,6 +37,5 @@ my saved game;ma sauvegarde
 Save;Enregistrer
 Save game;Sauvegarder
 Overwrite existing save?;Ecraser la sauvegarde existante ?
-Delete;Supprimer
 Delete ?;Supprimer ?
-Delete saved game '%s' ?;Supprimer la sauvegarde '%s' ?
+Delete saved game ' %s' ?;Supprimer la sauvegarde '%s' ?

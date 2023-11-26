@@ -152,17 +152,24 @@ alignment = 2
 
 [node name="ButtonSave" type="Button" parent="Borders/Content/Panel/Borders/Settings/Bottom"]
 layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_3bvhh")
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("3_bm84j")
 theme_override_styles/hover = ExtResource("3_bm84j")
 theme_override_styles/pressed = ExtResource("3_bm84j")
 theme_override_styles/disabled = ExtResource("3_bm84j")
 theme_override_styles/focus = ExtResource("3_bm84j")
-text = "Apply"
+text = ""
+script = ExtResource("4_18fut")
+icon_size = 32
+icon_name = "check"
 
 [node name="SelectQuantityDialog" parent="." instance=ExtResource("5_36c0x")]
 visible = false
