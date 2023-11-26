@@ -3,11 +3,16 @@ extends Control
 signal confirm(confirm:bool)
 signal close(node:Node)
 
+var _just_opened = false
+
 func _ready():
 	visible = false
 	
 func _process(delta):
 	if not visible: return
+	if (_just_opened):
+		_just_opened = false
+		return
 	if (Input.is_action_just_pressed("cancel")):
 		_on_button_cancel_pressed()
 	elif Input.is_action_just_pressed("player_use_nomouse"):
@@ -18,6 +23,7 @@ func open(title:String,text:String):
 	$Panel/Content/VBoxContainer/Label.text = tr(text)
 	$Panel/Content/VBoxContainer/Bottom/ButtonYes.grab_focus()
 	visible = true
+	_just_opened = true
 
 func _on_button_yes_pressed():
 	confirm.emit(true)
