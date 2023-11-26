@@ -42,3 +42,6 @@ my saved game;ma sauvegarde
 Save;Enregistrer
 Save game;Sauvegarder
 Overwrite existing save?;Ecraser la sauvegarde existante ?
+Delete;Supprimer
+Delete ?;Supprimer ?
+Delete saved game '%s' ?;Supprimer la sauvegarde '%s' ?

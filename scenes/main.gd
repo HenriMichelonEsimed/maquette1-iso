@@ -227,10 +227,7 @@ func _on_savegame_confirm(overwrite:bool):
 
 func load_dialog(filename:String):
 	_on_pause()
-	var scene = load("res://scenes/" + filename + ".tscn").instantiate()
-	add_child(scene)
-	scene.connect("close", _on_resume)
-	return scene
+	return GameState.loadDialog(self, filename, _on_resume)
 
 func _on_button_inventory_pressed():
 	load_dialog("inventory_screen")

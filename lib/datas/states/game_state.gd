@@ -62,6 +62,12 @@ func getZone(zone_name:String):
 		ResourceLoader.load_threaded_request(zone_path)
 	return ResourceLoader.load_threaded_get(zone_path)
 
+func loadDialog(node, dialog, close_func = null):
+	var scene = load("res://scenes/" + dialog + ".tscn").instantiate()
+	add_child(scene)
+	if (close_func != null): scene.connect("close", close_func)
+	return scene
+
 class MessagesState extends State:
 	var messages:MessagesList
 	func _init(_inv):

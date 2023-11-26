@@ -98,6 +98,20 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="ButtonDelete" type="Button" parent="Content/VBoxContainer/Bottom"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_styles/normal = ExtResource("3_mac3t")
+theme_override_styles/hover = ExtResource("3_mac3t")
+theme_override_styles/pressed = ExtResource("3_mac3t")
+theme_override_styles/disabled = ExtResource("3_mac3t")
+theme_override_styles/focus = ExtResource("3_mac3t")
+text = "Delete	"
+
 [node name="ButtonLoad" type="Button" parent="Content/VBoxContainer/Bottom"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -120,5 +134,7 @@ layout_mode = 1
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="pressed" from="Content/VBoxContainer/Top/ButtonClose" to="." method="_on_button_close_pressed"]
 [connection signal="item_clicked" from="Content/VBoxContainer/ListSavegames" to="." method="_on_list_savegames_item_clicked"]
+[connection signal="item_selected" from="Content/VBoxContainer/ListSavegames" to="." method="_on_list_savegames_item_selected"]
+[connection signal="pressed" from="Content/VBoxContainer/Bottom/ButtonDelete" to="." method="_on_button_delete_pressed"]
 [connection signal="pressed" from="Content/VBoxContainer/Bottom/ButtonLoad" to="." method="_on_button_load_pressed"]
 [connection signal="quantity" from="SelectQuantityDialog" to="." method="_on_select_quantity_dialog_quantity"]

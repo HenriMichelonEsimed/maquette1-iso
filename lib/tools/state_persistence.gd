@@ -47,12 +47,15 @@ func get_last():
 func savegame_exists(savegame:String):
 	return DirAccess.dir_exists_absolute(default_path + _format_name(savegame))
 
+func delete(savegame:String):
+	OS.move_to_trash(ProjectSettings.globalize_path(default_path + _format_name(savegame)))
+
 func set_path(savegame = null):
 	_last = autosave_path if savegame == null else _format_name(savegame)
 	_path = default_path + _last
 
 func _format_name(name:String) -> String:
-	return name.replace("/", "_").replace(":", "_")
+	return name.replace("/", "_").replace(":", "_").replace("%", "_").replace("'", "_").replace("\"", "_")
 	
 func saveState(res:State):
 	DirAccess.make_dir_recursive_absolute(_path)
