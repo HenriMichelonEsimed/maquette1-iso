@@ -70,6 +70,7 @@ func _init():
 			[ Item.ItemType.ITEM_CONSUMABLES, "burger_1", 8],
 			[ Item.ItemType.ITEM_CONSUMABLES, "pizza_1", 4],
 			[ Item.ItemType.ITEM_CONSUMABLES, "soft_drink_1", 10],
+			[ Item.ItemType.ITEM_QUEST, "access_card_1", 10],
 		], 10
 	)
 	r2.push_back(["The Administrator asks for a sandwich", [

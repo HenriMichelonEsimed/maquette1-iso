@@ -46,20 +46,11 @@ var prev_tab = -1
 
 func open(char:InteractiveCharacter):
 	trader = char
-	label_credits.text =tr("Inventory : %d credits" if credits > 1 else "Inventory : %d credit")  % credits
-	var idx = 0
-	for type in list_content: 
-		_fill_list(idx, type, list_content[type])
-		idx += 1
-	StateSaver.loadState(state)
-	for i in range(0, tabs.get_tab_count()):
-		if not tabs.is_tab_hidden(i):
-			state.tab = i
-			break
+	_refresh()
+	_hide_empty_tabs()
 	item_credits = GameState.inventory.get_credits()
 	if (item_credits != null):
 		credits = item_credits.quantity
-	tabs.current_tab = state.tab
 
 func _ready():
 	var ratio = size.x / size.y
@@ -69,6 +60,7 @@ func _ready():
 	position.x = (vsize.x - size.x) / 2
 	position.y = (vsize.y - size.y) / 2
 	tabs.custom_minimum_size.x = size.x/2
+	StateSaver.loadState(state)
 
 func _process(_delta):
 	if select_dialog != null or alert_dialog != null: return
@@ -126,13 +118,13 @@ func _item_details(_item:Item, index):
 	item_content.visible = true
 
 func _next_tab():
-	for idx in range(tabs.current_tab, tabs.get_tab_count()):
+	for idx in range(tabs.current_tab+1, tabs.get_tab_count()):
 		if not tabs.is_tab_hidden(idx): 
 			tabs.current_tab = idx
 			return
 
 func _prev_tab():
-	for idx in range(tabs.get_tab_count() -1, tabs.current_tab, -1):
+	for idx in range(tabs.current_tab-1, -1, -1):
 		if not tabs.is_tab_hidden(idx): 
 			tabs.current_tab = idx
 			return
@@ -143,6 +135,24 @@ func _fill_list(idx: int, type:Item.ItemType, list:ItemList):
 		list.add_item(tr(str(item)))
 	if (list.item_count == 0):
 		tabs.set_tab_hidden(idx, true)
+		
+func _hide_empty_tabs():
+	for i in range(0, tabs.get_tab_count()):
+		if not tabs.is_tab_hidden(i):
+			state.tab = i
+			break
+	tabs.current_tab = state.tab
+
+func _refresh():
+	item_content.visible = false
+	label_credits.text =tr("Inventory : %d credits" if credits > 1 else "Inventory : %d credit")  % credits
+	var idx = 0
+	for type in list_content: 
+		_fill_list(idx, type, list_content[type])
+		idx += 1
+	if (tabs.is_tab_hidden(tabs.current_tab)):
+		_hide_empty_tabs()
+	_focus_current_tab()
 
 func _buy_quanity(value):
 	return tr("%d (%d credits)") % [value, item.price * value]
@@ -158,20 +168,26 @@ func _on_buy_pressed():
 		_buy()
 
 func _buy(quantity:int=0):
-	select_dialog.queue_free()
-	select_dialog = null
+	if (select_dialog != null):
+		select_dialog.queue_free()
+		select_dialog = null
 	var price = quantity * item.price
 	if price > credits:
 		alert_dialog = Tools.load_dialog(self, "dialogs/alert_dialog")
 		alert_dialog.open("Buy", "You don't have enough credits")
 		alert_dialog.connect("close", _on_alert_close)
 		return
-	credits -= price
-	var remove_credit = item_credits.duplicate()
-	remove_credit.quantity = price
-	GameState.inventory.remove(remove_credit)
-	var buy_item = item.duplicate()
-	buy_item.quantity = quantity
+	if (price > 0):
+		credits -= price
+		var remove_credit = item_credits.duplicate()
+		remove_credit.quantity = price
+		GameState.inventory.remove(remove_credit)
+	var buy_item
+	if (item.type == Item.ItemType.ITEM_MISCELLANEOUS) or (item.type == Item.ItemType.ITEM_CONSUMABLES):
+		buy_item = item.duplicate()
+		buy_item.quantity = quantity
+	else:
+		buy_item = item
 	GameState.inventory.add(buy_item)
 	trader.items.remove(buy_item)
 	GameState.quests.event_all(Quest.QuestEventType.QUESTEVENT_BUY, item.key)
@@ -180,27 +196,24 @@ func _buy(quantity:int=0):
 func _on_select_close(node):
 	select_dialog.queue_free()
 	select_dialog = null
-	list = list_content[tab_order[tabs.current_tab]]
-	list.grab_focus()
+	_focus_current_tab()
 
 func _on_alert_close(node):
 	alert_dialog = null
+	_focus_current_tab()
+
+func _focus_current_tab():
 	list = list_content[tab_order[tabs.current_tab]]
 	list.grab_focus()
-
-func _refresh():
-	item_content.visible = false
-	open(trader)
+	if (list.item_count > 0) and not list.is_anything_selected():
+		list.select(0)
+		list.item_selected.emit(0)	
 
 func _on_tabs_tab_selected(tab):
 	if (prev_tab == tab): return
 	prev_tab = tab
-	list = list_content[tab_order[tab]]
 	item_content.visible = false
-	list.grab_focus()
-	if (list.item_count > 0):
-		list.select(0)
-		list.item_selected.emit(0)	
+	_focus_current_tab()
 	state.tab = tab
 	StateSaver.saveState(state)
 
