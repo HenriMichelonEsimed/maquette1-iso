@@ -20,6 +20,8 @@ func _process(delta):
 	if not visible: return
 	if (Input.is_action_just_pressed("cancel")):
 		_on_button_close_pressed()
+	elif (Input.is_action_just_pressed("player_use_nomouse")):
+		_on_button_load_pressed()
 
 func _on_list_savegames_item_selected(index):
 	savegame = listSaves.get_item_metadata(index)

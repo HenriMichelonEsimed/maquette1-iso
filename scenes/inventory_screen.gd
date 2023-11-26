@@ -107,13 +107,6 @@ func _process(_delta):
 	elif Input.is_action_just_pressed("ui_right"):
 		state.tab += 1
 		_set_tab()
-	#elif Input.is_action_just_pressed("ui_down"):
-	#	var list = tabs.get_current_tab_control().find_child("List")
-	#	if (!list.has_focus()): 
-	#		list.grab_focus()
-	#		if (list.item_count > 0):
-	#			list.select(0)
-	#			list.item_selected.emit(0)
 
 func _set_tab():
 	if (state.tab < 0):
@@ -129,7 +122,7 @@ func _fill_list(type:Item.ItemType, list:ItemList):
 
 func _on_drop_pressed():
 	if (item == null): return
-	if (item is ItemMultiple):
+	if (item is ItemMultiple) and (item.quantity > 1):
 		select_dialog = Tools.load_dialog(self, "dialogs/select_quantity_dialog")
 		select_dialog.open(item, false, tr("Drop"))
 		select_dialog.connect("quantity", _drop)
@@ -142,7 +135,7 @@ func _on_select_close(node):
 	select_dialog = null
 	_focus_current_tab()
 
-func _drop(quantity:int=0):
+func _drop(quantity:int=1):
 	if (select_dialog != null):
 		select_dialog.queue_free()
 		select_dialog = null
@@ -152,7 +145,7 @@ func _drop(quantity:int=0):
 func _refresh():
 	item_content.visible = false
 	for type in list_content: _fill_list(type, list_content[type])
-	_focus_current_tab()	
+	_focus_current_tab()
 	
 func _focus_current_tab():
 	list = list_content[tab_order[tabs.current_tab]]

@@ -11,7 +11,9 @@ signal reset_position()
 signal display_info(node:Node3D)
 signal hide_info()
 signal item_collected(item:Item,quantity:int)
+
 @onready var anim = $AnimationPlayer
+@onready var raycast = $RayCast3D
 
 var speed = 0
 var fall_acceleration = 200
@@ -188,6 +190,10 @@ func _physics_process(delta):
 			player_moving.emit()
 			signaled = true
 
+func get_floor_collision():
+	raycast.force_raycast_update()
+	return raycast.get_collision_point()
+
 func _on_camera_view_rotate(view:int):
 	current_view = view
 
@@ -212,3 +218,4 @@ func _on_collect_item_aera_body_exited(_node:Node):
 
 func _on_view_pivot_view_moving():
 	signaled = false
+

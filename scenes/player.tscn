@@ -685,10 +685,10 @@ _data = {
 size = Vector3(0.367915, 0.502338, 0.451454)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oc544"]
-size = Vector3(0.746669, 1.76845, 0.633556)
+size = Vector3(0.746669, 1.7685, 0.633556)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u4tew"]
-size = Vector3(0.895054, 1.40349, 1.01242)
+size = Vector3(0.895054, 1.65919, 1.01242)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2u61k"]
 size = Vector3(1, 1.13164, 0.252328)
@@ -1172,7 +1172,7 @@ transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 1.1, 0, 1.07333, -0.324777)
 shape = SubResource("BoxShape3D_b7lxq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.915508, -0.0367215)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.886222, -0.0367215)
 shape = SubResource("BoxShape3D_oc544")
 
 [node name="CollectAndUseArea" type="Area3D" parent="."]
@@ -1181,7 +1181,7 @@ collision_layer = 0
 collision_mask = 22
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollectAndUseArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, -0.210914, 0.0791913)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, -0.282158, 0.0791913)
 shape = SubResource("BoxShape3D_u4tew")
 
 [node name="TriggerArea" type="Area3D" parent="."]
@@ -1192,6 +1192,9 @@ collision_mask = 8
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.155046, 0.0294552)
 shape = SubResource("BoxShape3D_2u61k")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 
 [connection signal="body_entered" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_entered"]
 [connection signal="body_exited" from="CollectAndUseArea" to="." method="_on_collect_item_aera_body_exited"]
