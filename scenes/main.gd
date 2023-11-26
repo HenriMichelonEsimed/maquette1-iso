@@ -23,7 +23,6 @@ var talking_char:InteractiveCharacter
 var _prev_lang:String
 var _previous_zone:Zone
 var talk_window_just_closed = false
-var trading = false
 var savegame_name:String
 
 func _ready():
@@ -293,11 +292,13 @@ func _on_npc_trade(char:InteractiveCharacter):
 	add_child(scene)
 	scene.connect("trade_end", _on_npc_trade_end)
 	scene.open(char)
-	trading = true
+	if talkWindow.visible:
+		playerTalkList.release_focus()
 	
 func _on_npc_trade_end(node:Node):
-	trading = false
 	node.queue_free()
+	if talkWindow.visible:
+		playerTalkList.grab_focus()
 
 func _on_npc_talk(char:InteractiveCharacter, phrase:String, answers:Array):
 	_on_pause()
@@ -338,7 +339,6 @@ func _on_notification_timer_timeout():
 	notificationLabel.visible = false
 
 func _on_player_talk_item_clicked(index, at_position, mouse_button_index):
-	if trading: return
 	talking_char.answer(playerTalkList.get_item_metadata(index))
 
 func _on_list_notifications_focus_entered():

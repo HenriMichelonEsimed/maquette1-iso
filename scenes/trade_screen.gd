@@ -18,8 +18,8 @@ signal trade_end(node:Node)
 @onready var price_value = $Content/Body/Content/PanelItem/Content/LabelPrice
 @onready var node_3d = $"Content/Body/Content/PanelItem/Content/ViewContent/3DView/InsertPoint"
 @onready var label_credits = $Content/Bottom/Menu/Label
-@onready var alert_dialog = $AlertDialog
-@onready var select_dialog = $SelectQuantityDialog
+@onready var alert_dialog = null
+@onready var select_dialog = null
 
 const tab_order = [ 
 	Item.ItemType.ITEM_TOOLS, 
@@ -69,6 +69,28 @@ func _ready():
 	item_credits = GameState.inventory.get_credits()
 	if (item_credits != null):
 		credits = item_credits.quantity
+		
+
+func _process(_delta):
+	if select_dialog != null or alert_dialog != null: return
+	if Input.is_action_just_pressed("cancel"):
+		_on_button_back_pressed()
+		return
+	elif Input.is_action_just_pressed("player_use_nomouse"):
+		_on_buy_pressed()
+		return
+	state.tab = tabs.current_tab
+	if Input.is_action_just_pressed("ui_left"):
+		_prev_tab()
+	elif Input.is_action_just_pressed("ui_right"):
+		_next_tab()
+	elif Input.is_action_just_pressed("ui_down"):
+		var list = tabs.get_current_tab_control().find_child("List")
+		if (!list.has_focus()): 
+			list.grab_focus()
+			if (list.item_count > 0):
+				list.select(0)
+				list.item_selected.emit(0)
 
 func _on_button_back_pressed():
 	trade_end.emit(self)
@@ -111,37 +133,23 @@ func _item_details(_item:Item, index):
 	clone.scale = clone.scale * (clone.preview_scale+1)
 	item_content.visible = true
 
-func _process(_delta):
-	if select_dialog.visible or alert_dialog.visible: return
-	if Input.is_action_just_pressed("cancel"):
-		_on_button_back_pressed()
-		return
-	elif Input.is_action_just_pressed("player_use_nomouse"):
-		_on_buy_pressed()
-		return
-	state.tab = tabs.current_tab
-	if Input.is_action_just_pressed("ui_left"):
-		state.tab -= 1
-		_set_tab()
-	elif Input.is_action_just_pressed("ui_right"):
-		state.tab += 1
-		_set_tab()
-	elif Input.is_action_just_pressed("ui_down"):
-		var list = tabs.get_current_tab_control().find_child("List")
-		if (!list.has_focus()): 
-			list.grab_focus()
-			if (list.item_count > 0):
-				list.select(0)
-				list.item_selected.emit(0)
+func _next_tab():
+	for idx in range(tabs.current_tab, tabs.get_tab_count()):
+		if not tabs.is_tab_hidden(idx): 
+			tabs.current_tab = idx
+			state.tab = idx
+			StateSaver.saveState(state)
+			item_content.visible = false
+			return
 
-func _set_tab():
-	if (state.tab < 0):
-		state.tab = 4
-	elif (state.tab > 4):
-		state.tab = 0
-	tabs.current_tab = state.tab
-	item_content.visible = false
-	StateSaver.saveState(state)
+func _prev_tab():
+	for idx in range(tabs.get_tab_count() -1, tabs.current_tab, -1):
+		if not tabs.is_tab_hidden(idx): 
+			tabs.current_tab = idx
+			state.tab = idx
+			StateSaver.saveState(state)
+			item_content.visible = false
+			return
 
 func _fill_list(idx: int, type:Item.ItemType, list:ItemList):
 	list.clear()
@@ -156,14 +164,20 @@ func _buy_quanity(value):
 func _on_buy_pressed():
 	if (item == null): return
 	if (item is ItemMultiple):
+		select_dialog = Tools.load_dialog(self, "dialogs/select_quantity_dialog")
 		select_dialog.open(item, false, tr("Buy"), _buy_quanity)
+		select_dialog.connect("quantity", _buy)
 	else:
 		_buy()
 
 func _buy(quantity:int=0):
+	select_dialog.queue_free()
+	select_dialog = null
 	var price = quantity * item.price
 	if price > credits:
-		alert_dialog.open("Buy", "You don't have enough credits", false)
+		alert_dialog = Tools.load_dialog(self, "dialogs/alert_dialog")
+		alert_dialog.open("Buy", "You don't have enough credits")
+		alert_dialog.connect("close", func(node):alert_dialog=null)
 		return
 	credits -= price
 	var remove_credit = item_credits.duplicate()

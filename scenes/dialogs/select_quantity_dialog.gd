@@ -11,11 +11,8 @@ var _slide_pressed = 0
 var _just_opened = true
 var func_quantity:Callable
 
-func _ready():
-	visible = false
-
 func _process(_delta):
-	if (!visible): return
+	if not visible: return
 	if (_just_opened):
 		_just_opened = false
 		return
