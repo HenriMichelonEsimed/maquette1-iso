@@ -1,6 +1,7 @@
 extends Control
 
 signal quantity(quantity:int)
+signal close(node:Node)
 
 @onready var sliderQuantity = $Content/Body/SliderQuantity
 @onready var labelQuantity = $Content/Body/LabelQuantity
@@ -56,6 +57,7 @@ func _on_slider_quantity_value_changed(value):
 	labelQuantity.text = func_quantity.call(value)
 
 func _on_button_cancel_pressed():
+	close.emit(self)
 	visible = false
 
 func _on_button_drop_pressed():

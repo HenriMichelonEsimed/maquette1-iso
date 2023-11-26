@@ -75,21 +75,14 @@ func _process(_delta):
 	if Input.is_action_just_pressed("cancel"):
 		_on_button_back_pressed()
 		return
-	#elif Input.is_action_just_pressed("player_use_nomouse"):
-	#	_on_buy_pressed()
-	#	return
+	elif Input.is_action_just_pressed("player_use_nomouse"):
+		_on_buy_pressed()
+		return
 	state.tab = tabs.current_tab
 	if Input.is_action_just_pressed("ui_left"):
 		_prev_tab()
 	elif Input.is_action_just_pressed("ui_right"):
 		_next_tab()
-	#elif Input.is_action_just_pressed("ui_down"):
-	#	var list = tabs.get_current_tab_control().find_child("List")
-	#	if (!list.has_focus()): 
-	#		list.grab_focus()
-	#		if (list.item_count > 0):
-	#			list.select(0)
-	#			list.item_selected.emit(0)
 
 func _on_button_back_pressed():
 	trade_end.emit(self)
@@ -160,6 +153,7 @@ func _on_buy_pressed():
 		select_dialog = Tools.load_dialog(self, "dialogs/select_quantity_dialog")
 		select_dialog.open(item, false, tr("Buy"), _buy_quanity)
 		select_dialog.connect("quantity", _buy)
+		select_dialog.connect("close", _on_select_close)
 	else:
 		_buy()
 
@@ -170,7 +164,7 @@ func _buy(quantity:int=0):
 	if price > credits:
 		alert_dialog = Tools.load_dialog(self, "dialogs/alert_dialog")
 		alert_dialog.open("Buy", "You don't have enough credits")
-		alert_dialog.connect("close", func(node):alert_dialog=null)
+		alert_dialog.connect("close", _on_alert_close)
 		return
 	credits -= price
 	var remove_credit = item_credits.duplicate()
@@ -182,6 +176,17 @@ func _buy(quantity:int=0):
 	trader.items.remove(buy_item)
 	GameState.quests.event_all(Quest.QuestEventType.QUESTEVENT_BUY, item.key)
 	_refresh()
+
+func _on_select_close(node):
+	select_dialog.queue_free()
+	select_dialog = null
+	list = list_content[tab_order[tabs.current_tab]]
+	list.grab_focus()
+
+func _on_alert_close(node):
+	alert_dialog = null
+	list = list_content[tab_order[tabs.current_tab]]
+	list.grab_focus()
 
 func _refresh():
 	item_content.visible = false
