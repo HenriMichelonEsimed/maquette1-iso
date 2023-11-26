@@ -13,7 +13,6 @@ signal hide_info()
 signal item_collected(item:Item,quantity:int)
 @onready var anim = $AnimationPlayer
 
-var just_resumed = false
 var speed = 0
 var fall_acceleration = 200
 var target_velocity = Vector3.ZERO
@@ -83,14 +82,11 @@ func action_use():
 
 func _process(_delta):
 	if (GameState.paused): return
-	if (just_resumed):
-		just_resumed = false
-		return
 	if Input.is_action_just_pressed("player_use_nomouse"):
 		action_use()
 
 func _physics_process(delta):
-	if (GameState.paused or just_resumed): return
+	if (GameState.paused): return
 	if (position.y < -100) :
 		reset_position.emit()
 		return

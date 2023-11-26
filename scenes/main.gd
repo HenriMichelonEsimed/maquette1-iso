@@ -219,11 +219,12 @@ func _on_savegame_input(savegame):
 			scene.open("Save game", "Overwrite existing save?")
 		else:
 			GameState.saveGame(savegame)
-	_on_resume()
-	
+			_on_resume()
+
 func _on_savegame_confirm(overwrite:bool):
 	if (overwrite):
 		GameState.saveGame(savegame_name)
+		_on_resume()
 
 func load_dialog(filename:String):
 	_on_pause()
@@ -271,7 +272,9 @@ func _on_resume(from:Node=null):
 				notificationsList.remove_item(idx)
 	$Game/UI.visible = true
 	$Game.visible = true
-	GameState.player.just_resumed = true
+	call_deferred("_resume")
+	
+func _resume():
 	GameState.paused = false
 
 func _on_saving_start():

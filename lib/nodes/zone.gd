@@ -65,7 +65,9 @@ func on_item_dropped(item:Item,quantity:int):
 		new_item.enable()
 	state.items_added.add(new_item)
 
-func on_item_collected(item:Item,quantity:int):
+func on_item_collected(item:Item, quantity:int, force = true):
+	if (not force) and (not item.collect()):
+		return
 	var new_item = item.duplicate()
 	new_item.remove_meta("storage")
 	new_item.disable()

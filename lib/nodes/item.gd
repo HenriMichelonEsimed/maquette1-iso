@@ -23,7 +23,10 @@ func _ready():
 	label = tr(label)
 	set_collision_layer_value(1, false)
 	set_collision_layer_value(2, true)
-	
+
+func collect():
+	return true
+
 func disable():
 	set_collision_layer_value(2, false)
 	#visible = false

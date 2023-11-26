@@ -36,7 +36,7 @@ func _on_button_delete_pressed():
 	if (savegame != null): 
 		var dlg = Tools.load_dialog(self, "dialogs/confirm_dialog")
 		dlg.connect("confirm", _on_confirm_delete)
-		dlg.open("Delete ?", tr("Delete saved game '%s' ?") % savegame)
+		dlg.open("Delete ?", tr("Delete saved game ' %s' ?") % savegame)
 		
 func _on_confirm_delete(confirm:bool):
 	if confirm:
