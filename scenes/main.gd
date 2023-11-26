@@ -292,7 +292,7 @@ func _on_npc_trade(char:InteractiveCharacter):
 func _on_npc_trade_end(node:Node):
 	node.queue_free()
 
-func _on_npc_talk(char:InteractiveCharacter,phrase:String, answers:Array):
+func _on_npc_talk(char:InteractiveCharacter, phrase:String, answers:Array):
 	_on_pause()
 	talking_char = char
 	NPCNameLabel.text = str(char)

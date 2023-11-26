@@ -684,9 +684,8 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_b7lxq"]
 size = Vector3(0.367915, 0.502338, 0.451454)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_byirt"]
-radius = 0.37188
-height = 1.85556
+[sub_resource type="BoxShape3D" id="BoxShape3D_oc544"]
+size = Vector3(0.746669, 1.76845, 0.633556)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u4tew"]
 size = Vector3(0.895054, 1.40349, 1.01242)
@@ -1173,8 +1172,8 @@ transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 1.1, 0, 1.07333, -0.324777)
 shape = SubResource("BoxShape3D_b7lxq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.923668, 0)
-shape = SubResource("CapsuleShape3D_byirt")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.915508, -0.0367215)
+shape = SubResource("BoxShape3D_oc544")
 
 [node name="CollectAndUseArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11161, -0.533054)

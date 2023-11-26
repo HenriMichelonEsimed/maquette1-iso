@@ -1,4 +1,12 @@
 extends InteractiveCharacter
+
+func _start_talking():
+	if GameState.quests.have_advpoint("main", "lvl0_admin_woman_want_sandwitch"):
+		if not items.have(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1"):
+			items.new(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1")
+		if not items.have(Item.ItemType.ITEM_CONSUMABLES, "burger_1"):
+			items.new(Item.ItemType.ITEM_CONSUMABLES, "burger_1")
+
 func d1():
 	return ["Hello.", [
 			["Hey, what's on the menu ?", _trade],
@@ -56,9 +64,7 @@ func a1():
 
 func a2(item):
 	GameState.inventory.remove(item)
-	var sandwich = items.getitem(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1")
-	GameState.inventory.add(sandwich.duplicate())
-	items.remove(sandwich)
+	items.transfert_to(GameState.inventory, Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1")
 	GameState.quests.finish_advpoint("main", "lvl0_waiter_want_is_ring")
 
 func _init():
@@ -83,8 +89,4 @@ func _init():
 		]])
 	r2.push_back([ "Can we barter?", d3])
 	r2.push_back(["Nevermind", d1])
-	if GameState.quests.have_advpoint("main", "lvl0_admin_woman_want_sandwitch"):
-		if not items.have(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1"):
-			items.new(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1")
-		if not items.have(Item.ItemType.ITEM_CONSUMABLES, "burger_1"):
-			items.new(Item.ItemType.ITEM_CONSUMABLES, "burger_1")
+

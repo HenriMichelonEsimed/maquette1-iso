@@ -39,8 +39,12 @@ func interact():
 	
 func _trade():
 	trade.emit(self)
-	
+
+func _start_talking():
+	pass
+
 func say(disc):
+	_start_talking()
 	current = disc
 	var phrase = current[0]
 	var answr = current[1]

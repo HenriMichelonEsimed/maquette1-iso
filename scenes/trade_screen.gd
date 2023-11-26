@@ -43,7 +43,7 @@ var item_credits:ItemMiscellaneous
 
 func open(char:InteractiveCharacter):
 	trader = char
-	label_credits.text = tr("Inventory : %d credits") % credits
+	label_credits.text =tr("Inventory : %d credits" if credits > 1 else "Inventory : %d credit")  % credits
 	var idx = 0
 	for type in list_content: 
 		_fill_list(idx, type, list_content[type])
@@ -165,7 +165,7 @@ func _buy(quantity:int=0):
 		return
 	credits -= price
 	var remove_credit = item_credits.duplicate()
-	remove_credit.quantity = quantity
+	remove_credit.quantity = price
 	GameState.inventory.remove(remove_credit)
 	var buy_item = item.duplicate()
 	buy_item.quantity = quantity

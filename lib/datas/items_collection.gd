@@ -40,6 +40,11 @@ func remove(item:Item):
 				_items.erase(found[0])
 			return
 	_items.erase(item)
+	
+func transfert_to(coll:ItemsCollection, type:int, key:String):
+	var item = getitem(type, key)
+	coll.add(item.duplicate())
+	remove(item)
 
 func removeqty(item:ItemMultiple, qty:int) -> ItemMultiple:
 	if add_multiples:

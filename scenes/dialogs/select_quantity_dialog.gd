@@ -4,8 +4,8 @@ signal quantity(quantity:int)
 
 @onready var sliderQuantity = $Content/Body/SliderQuantity
 @onready var labelQuantity = $Content/Body/LabelQuantity
-@onready var labelName = $Content/Body/LabelName
-@onready var buttonDrop = $Content/Body/Buttons/ButtonDrop
+@onready var labelName = $Content/Body/Top/LabelName
+@onready var buttonDrop =$Content/Body/Buttons/ButtonDrop
 
 var _slide_pressed = 0
 var _just_opened = true
