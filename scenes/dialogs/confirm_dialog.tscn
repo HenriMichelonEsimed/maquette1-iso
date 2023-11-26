@@ -1,0 +1,138 @@
+[gd_scene load_steps=6 format=3 uid="uid://bolx6qweton2o"]
+
+[ext_resource type="Script" path="res://scenes/dialogs/confirm_dialog.gd" id="1_tlf1k"]
+[ext_resource type="StyleBox" uid="uid://bmyh6yvafukya" path="res://assets/button_style.tres" id="2_ftlx5"]
+[ext_resource type="PackedScene" uid="uid://dytjnya7i6c47" path="res://scenes/dialogs/select_quantity_dialog.tscn" id="3_i81fa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25hsw"]
+bg_color = Color(0.505882, 0.701961, 0.854902, 0.839216)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yd3k6"]
+bg_color = Color(0.156863, 0.298039, 0.4, 0.921569)
+
+[node name="ConfirmDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -285.5
+offset_top = -286.5
+offset_right = 285.5
+offset_bottom = 286.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tlf1k")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(500, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_25hsw")
+
+[node name="Content" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Content"]
+layout_mode = 2
+
+[node name="Top" type="HBoxContainer" parent="Panel/Content/VBoxContainer"]
+custom_minimum_size = Vector2(0, -1)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/Content/VBoxContainer/Top"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "XXX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Panel/Content/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_yd3k6")
+text = "XXX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bottom" type="HBoxContainer" parent="Panel/Content/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Panel/Content/VBoxContainer/Bottom"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ButtonYes" type="Button" parent="Panel/Content/VBoxContainer/Bottom"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_styles/normal = ExtResource("2_ftlx5")
+theme_override_styles/hover = ExtResource("2_ftlx5")
+theme_override_styles/pressed = ExtResource("2_ftlx5")
+theme_override_styles/disabled = ExtResource("2_ftlx5")
+theme_override_styles/focus = ExtResource("2_ftlx5")
+text = "Yes"
+
+[node name="ButtonNo" type="Button" parent="Panel/Content/VBoxContainer/Bottom"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_styles/normal = ExtResource("2_ftlx5")
+theme_override_styles/hover = ExtResource("2_ftlx5")
+theme_override_styles/pressed = ExtResource("2_ftlx5")
+theme_override_styles/disabled = ExtResource("2_ftlx5")
+theme_override_styles/focus = ExtResource("2_ftlx5")
+text = "No"
+
+[node name="ButtonCancel" type="Button" parent="Panel/Content/VBoxContainer/Bottom"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_styles/normal = ExtResource("2_ftlx5")
+theme_override_styles/hover = ExtResource("2_ftlx5")
+theme_override_styles/pressed = ExtResource("2_ftlx5")
+theme_override_styles/disabled = ExtResource("2_ftlx5")
+theme_override_styles/focus = ExtResource("2_ftlx5")
+text = "Cancel	"
+
+[node name="SelectQuantityDialog" parent="." instance=ExtResource("3_i81fa")]
+visible = false
+layout_mode = 1
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
+[connection signal="pressed" from="Panel/Content/VBoxContainer/Bottom/ButtonYes" to="." method="_on_button_yes_pressed"]
+[connection signal="pressed" from="Panel/Content/VBoxContainer/Bottom/ButtonNo" to="." method="_on_button_no_pressed"]
+[connection signal="pressed" from="Panel/Content/VBoxContainer/Bottom/ButtonCancel" to="." method="_on_button_cancel_pressed"]
+[connection signal="quantity" from="SelectQuantityDialog" to="." method="_on_select_quantity_dialog_quantity"]

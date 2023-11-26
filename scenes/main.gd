@@ -23,9 +23,10 @@ var talking_char:InteractiveCharacter
 var _prev_lang:String
 var _previous_zone:Zone
 var talk_window_just_closed = false
+var savegame_name:String
 
 func _ready():
-	#Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	_prev_lang = GameState.settings.lang
 	if get_viewport().size.x > 1920:
 		get_viewport().content_scale_factor = 2.2
@@ -192,8 +193,10 @@ func _on_button_optionsmenu_pressed():
 	optionMenu.visible = true
 
 func _on_button_quit_pressed():
-	var scene = load_dialog("dialogs/save_confirm_dialog")
-	scene.connect("save_confirm", _on_save_confirm)
+	_on_pause()
+	var scene = load_dialog("dialogs/confirm_dialog")
+	scene.connect("confirm", _on_save_confirm)
+	scene.open("Save ?", "Save game before exiting ?")
 	
 func _on_save_confirm(save:bool):
 	if (save): GameState.saveGame()
@@ -202,9 +205,25 @@ func _on_save_confirm(save:bool):
 
 func _on_button_save_pressed():
 	_on_pause()
-	GameState.saveGame()
-	_on_resume()
+	var scene = load_dialog("dialogs/input_dialog")
+	scene.connect("input", _on_savegame_input)
+	scene.open("Save game", StateSaver.get_last_savegame())
 	optionMenu.visible = false
+	
+func _on_savegame_input(savegame):
+	if (savegame != null):
+		if (StateSaver.savegame_exists(savegame)):
+			savegame_name = savegame
+			var scene = load_dialog("dialogs/confirm_dialog")
+			scene.connect("confirm", _on_savegame_confirm)
+			scene.open("Save game", "Overwrite existing save?")
+		else:
+			GameState.saveGame(savegame)
+	_on_resume()
+	
+func _on_savegame_confirm(overwrite:bool):
+	if (overwrite):
+		GameState.saveGame(savegame_name)
 
 func load_dialog(filename:String):
 	_on_pause()

@@ -23,16 +23,12 @@ func _ready():
 	for lang in Settings.langs:
 		if (lang == os_lang):
 			GameState.settings.lang = lang
-	loadGame()
+	loadGame(StateSaver.get_last())
 	TranslationServer.set_locale(GameState.settings.lang)
 
-func saveGame():
-	_saveGame()
-	
-func _saveGame():
+func saveGame(savegame = null):
 	call_deferred("emit_signal","saving_start")
-	StateSaver.set_path()
-	StateSaver.backup()
+	StateSaver.set_path(savegame)
 	StateSaver.saveState(settings)
 	StateSaver.saveState(QuestsState.new(quests))
 	StateSaver.saveState(MessagesState.new(messages))
@@ -46,10 +42,7 @@ func _saveGame():
 	call_deferred("emit_signal","saving_end")
 
 func loadGame(savegame = null):
-	if (savegame == null):
-		StateSaver.set_path()
-	else:
-		StateSaver.set_path(savegame)
+	StateSaver.set_path(savegame)
 	StateSaver.loadState(settings)
 	StateSaver.loadState(QuestsState.new(quests))
 	StateSaver.loadState(MessagesState.new(messages))

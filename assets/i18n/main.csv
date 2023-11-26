@@ -28,7 +28,7 @@ Load a saved game;Charger une sauvegarde
 Auto save;Sauvegarde auto
 Last save;Dernière sauvegarde
 Save ?;Sauvegarder ?
-Save game before exiting ?;Sauvergader avant de sortir ?
+Save game before exiting ?;Sauvegarder avant de sortir ?
 Yes;Oui
 No;Non
 Trading;Commerce
@@ -38,3 +38,7 @@ Inventory : %d credits;Inventaire : %d crédits
 Ok;Ok
 You don't have enough credits;Vous n'avez pas assez de crédits
 %d (%d credits);%d (%d crédits)
+my saved game;ma sauvegarde
+Save;Enregistrer
+Save game;Sauvegarder
+Overwrite existing save?;Ecraser la sauvegarde existante ?

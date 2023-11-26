@@ -3,8 +3,9 @@ class_name StatePersistence
 
 const default_ext = ".state"
 const default_path = "user://savegames/"
-const autosave_path = "autosave"
-const backup_path = "backup/"
+const autosave_path = "_autosave"
+const default_name = "my saved game"
+const timestamp_name = "/timestamp"
 
 enum {
  	STATE_VARIANT 		= 0,
@@ -17,45 +18,49 @@ enum {
 	STATE_QUEST			= 7
 }
 
+var _last
 var _path:String
 const max_backup = 19
 
-func _ready():
-	set_path(autosave_path)
-	DirAccess.make_dir_recursive_absolute(default_path + autosave_path)
-	DirAccess.make_dir_recursive_absolute(default_path + backup_path)
-
 func get_savegames():
-	return DirAccess.get_directories_at(default_path + backup_path)
+	return DirAccess.get_directories_at(default_path)
 
-func get_savegame_time(savegame:String):
-	return FileAccess.get_modified_time(default_path + backup_path + savegame)
+func get_last_savegame() -> String:
+	if (_last == null) or (_last == autosave_path):
+		return default_name
+	return _last
+
+func _compare_times(a,b):
+	if not FileAccess.file_exists(default_path + a + timestamp_name):
+		return b
+	if not FileAccess.file_exists(default_path + b + timestamp_name):
+		return a
+	return FileAccess.get_modified_time(default_path + a + timestamp_name) > FileAccess.get_modified_time(default_path + b + timestamp_name)
+
+func get_last():
+	var dirs = get_savegames()
+	if dirs.is_empty(): return null
+	dirs = Array(dirs)
+	dirs.sort_custom(_compare_times)
+	return dirs[0]
+
+func savegame_exists(savegame:String):
+	return DirAccess.dir_exists_absolute(default_path + _format_name(savegame))
+
+func set_path(savegame = null):
+	_last = autosave_path if savegame == null else _format_name(savegame)
+	_path = default_path + _last
+
+func _format_name(name:String) -> String:
+	return name.replace("/", "_").replace(":", "_")
 	
-func format_savegame_name(savegame:String):
-	if (savegame == ""):
-		return autosave_path
-	return backup_path + savegame
-
-func set_path(_p:String = autosave_path):
-	_path = default_path + _p
-
-func _format_name(name:String):
-	return name.replace("/", "_")
-	
-func backup():
-	var dirs = DirAccess.get_directories_at(default_path + backup_path)
-	if (dirs.size() > max_backup):
-		for i in range(0, dirs.size() - max_backup):
-			var path_to_remove = default_path + backup_path + dirs[i]
-			OS.move_to_trash(ProjectSettings.globalize_path(path_to_remove))
-	var new_path = default_path + backup_path + Time.get_datetime_string_from_system().replace(":", "").replace("-", "") + "/"
-	var files = DirAccess.get_files_at(_path)
-	if (files.size() > 0):
-		DirAccess.make_dir_recursive_absolute(new_path)
-		for file in DirAccess.get_files_at(_path):
-			DirAccess.copy_absolute(_path + "/" + file, new_path + file)
-
 func saveState(res:State):
+	DirAccess.make_dir_recursive_absolute(_path)
+	var timestamp = FileAccess.open(_path + timestamp_name, FileAccess.WRITE)
+	if (timestamp == null):
+		return false
+	timestamp.store_pascal_string(_last)
+	timestamp.close()
 	var filename = _path + "/" + _format_name(res.name) + default_ext
 	var file = FileAccess.open(filename, FileAccess.WRITE)
 	if (file == null): 
