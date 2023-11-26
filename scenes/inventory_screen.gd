@@ -110,8 +110,8 @@ func _process(_delta):
 
 func _set_tab():
 	if (state.tab < 0):
-		state.tab = 4
-	elif (state.tab > 4):
+		state.tab = 3
+	elif (state.tab > 3):
 		state.tab = 0
 	tabs.current_tab = state.tab
 

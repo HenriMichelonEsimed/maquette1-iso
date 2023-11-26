@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://c048fbv1ucn7n" path="res://assets/models/Items/burger_1.glb" id="2_nlwxf"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4lb7p"]
-height = 0.123505
-radius = 0.14113
+height = 0.0683755
+radius = 0.0698375
 
 [node name="Buger1" type="CharacterBody3D"]
 script = ExtResource("1_5aso1")
@@ -14,7 +14,7 @@ label = "Burger"
 weight = 0.1
 price = 2.0
 type = 1
-preview_scale = 3.0
+preview_scale = 6.0
 
 [node name="Buger1" parent="." instance=ExtResource("2_nlwxf")]
 
