@@ -61,7 +61,7 @@ size_flags_horizontal = 3
 text = "Load a saved game"
 horizontal_alignment = 1
 
-[node name="ButtonClose" type="Button" parent="Content/VBoxContainer/Top"]
+[node name="ButtonCancel" type="Button" parent="Content/VBoxContainer/Top"]
 layout_mode = 2
 auto_translate = false
 localize_numeral_system = false
@@ -99,6 +99,7 @@ alignment = 1
 layout_mode = 2
 auto_translate = false
 localize_numeral_system = false
+focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
@@ -120,6 +121,7 @@ icon_name = "trash"
 layout_mode = 2
 auto_translate = false
 localize_numeral_system = false
+focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
@@ -143,7 +145,7 @@ layout_mode = 1
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
-[connection signal="pressed" from="Content/VBoxContainer/Top/ButtonClose" to="." method="_on_button_close_pressed"]
+[connection signal="pressed" from="Content/VBoxContainer/Top/ButtonCancel" to="." method="_on_button_close_pressed"]
 [connection signal="item_clicked" from="Content/VBoxContainer/ListSavegames" to="." method="_on_list_savegames_item_clicked"]
 [connection signal="item_selected" from="Content/VBoxContainer/ListSavegames" to="." method="_on_list_savegames_item_selected"]
 [connection signal="pressed" from="Content/VBoxContainer/Bottom/ButtonDelete" to="." method="_on_button_delete_pressed"]
