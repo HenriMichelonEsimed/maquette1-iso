@@ -42,6 +42,7 @@ var list:ItemList
 var selected = 0
 var credits = 0
 var item_credits:ItemMiscellaneous
+var prev_tab = -1
 
 func open(char:InteractiveCharacter):
 	trader = char
@@ -50,11 +51,15 @@ func open(char:InteractiveCharacter):
 	for type in list_content: 
 		_fill_list(idx, type, list_content[type])
 		idx += 1
+	StateSaver.loadState(state)
 	for i in range(0, tabs.get_tab_count()):
 		if not tabs.is_tab_hidden(i):
-			tabs.current_tab = i
-			state.tab = tabs.current_tab
+			state.tab = i
 			break
+	item_credits = GameState.inventory.get_credits()
+	if (item_credits != null):
+		credits = item_credits.quantity
+	tabs.current_tab = state.tab
 
 func _ready():
 	var ratio = size.x / size.y
@@ -64,33 +69,27 @@ func _ready():
 	position.x = (vsize.x - size.x) / 2
 	position.y = (vsize.y - size.y) / 2
 	tabs.custom_minimum_size.x = size.x/2
-	StateSaver.loadState(state)
-	tabs.current_tab = state.tab
-	item_credits = GameState.inventory.get_credits()
-	if (item_credits != null):
-		credits = item_credits.quantity
-		
 
 func _process(_delta):
 	if select_dialog != null or alert_dialog != null: return
 	if Input.is_action_just_pressed("cancel"):
 		_on_button_back_pressed()
 		return
-	elif Input.is_action_just_pressed("player_use_nomouse"):
-		_on_buy_pressed()
-		return
+	#elif Input.is_action_just_pressed("player_use_nomouse"):
+	#	_on_buy_pressed()
+	#	return
 	state.tab = tabs.current_tab
 	if Input.is_action_just_pressed("ui_left"):
 		_prev_tab()
 	elif Input.is_action_just_pressed("ui_right"):
 		_next_tab()
-	elif Input.is_action_just_pressed("ui_down"):
-		var list = tabs.get_current_tab_control().find_child("List")
-		if (!list.has_focus()): 
-			list.grab_focus()
-			if (list.item_count > 0):
-				list.select(0)
-				list.item_selected.emit(0)
+	#elif Input.is_action_just_pressed("ui_down"):
+	#	var list = tabs.get_current_tab_control().find_child("List")
+	#	if (!list.has_focus()): 
+	#		list.grab_focus()
+	#		if (list.item_count > 0):
+	#			list.select(0)
+	#			list.item_selected.emit(0)
 
 func _on_button_back_pressed():
 	trade_end.emit(self)
@@ -137,18 +136,12 @@ func _next_tab():
 	for idx in range(tabs.current_tab, tabs.get_tab_count()):
 		if not tabs.is_tab_hidden(idx): 
 			tabs.current_tab = idx
-			state.tab = idx
-			StateSaver.saveState(state)
-			item_content.visible = false
 			return
 
 func _prev_tab():
 	for idx in range(tabs.get_tab_count() -1, tabs.current_tab, -1):
 		if not tabs.is_tab_hidden(idx): 
 			tabs.current_tab = idx
-			state.tab = idx
-			StateSaver.saveState(state)
-			item_content.visible = false
 			return
 
 func _fill_list(idx: int, type:Item.ItemType, list:ItemList):
@@ -195,8 +188,14 @@ func _refresh():
 	open(trader)
 
 func _on_tabs_tab_selected(tab):
+	if (prev_tab == tab): return
+	prev_tab = tab
 	list = list_content[tab_order[tab]]
-	if (tab == state.tab): return
+	item_content.visible = false
+	list.grab_focus()
+	if (list.item_count > 0):
+		list.select(0)
+		list.item_selected.emit(0)	
 	state.tab = tab
 	StateSaver.saveState(state)
 
