@@ -18,8 +18,8 @@ signal trade_end(node:Node)
 @onready var price_value = $Content/Body/Content/PanelItem/Content/LabelPrice
 @onready var node_3d = $"Content/Body/Content/PanelItem/Content/ViewContent/3DView/InsertPoint"
 @onready var label_credits = $Content/Bottom/Menu/Label
-@onready var alert_dialog = null
-@onready var select_dialog = null
+var alert_dialog = null
+var select_dialog = null
 
 const tab_order = [ 
 	Item.ItemType.ITEM_TOOLS, 
@@ -216,4 +216,3 @@ func _on_tabs_tab_selected(tab):
 	_focus_current_tab()
 	state.tab = tab
 	StateSaver.saveState(state)
-

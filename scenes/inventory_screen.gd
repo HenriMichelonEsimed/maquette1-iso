@@ -17,6 +17,7 @@ signal item_dropped(item:Item,quantity:int)
 @onready var item_title = $Content/Body/Content/PanelItem/Content/Title
 @onready var weigth_value = $Content/Body/Content/PanelItem/Content/LabelWeight
 @onready var node_3d = $"Content/Body/Content/PanelItem/Content/ViewContent/3DView/InsertPoint"
+var select_dialog = null
 
 const tab_order = [ 
 	Item.ItemType.ITEM_TOOLS, 
@@ -36,6 +37,7 @@ var state = InventoryScreenState.new()
 var item:Item
 var list:ItemList
 var selected = 0
+var prev_tab = -1
 
 func _ready():
 	var ratio = size.x / size.y
@@ -46,8 +48,8 @@ func _ready():
 	position.y = (vsize.y - size.y) / 2
 	tabs.custom_minimum_size.x = size.x/2
 	StateSaver.loadState(state)
+	_refresh()
 	tabs.current_tab = state.tab
-	for type in list_content: _fill_list(type, list_content[type])
 	connect("item_dropped", GameState.current_zone.on_item_dropped)
 
 func _on_button_back_pressed():
@@ -91,7 +93,7 @@ func _item_details(_item:Item, index):
 	item_content.visible = true
 
 func _process(_delta):
-	if ($SelectQuantityDialog.visible): return
+	if select_dialog != null: return
 	if (Input.is_action_just_pressed("cancel") or Input.is_action_just_pressed("player_inventory")):
 		_on_button_back_pressed()
 		return
@@ -105,13 +107,13 @@ func _process(_delta):
 	elif Input.is_action_just_pressed("ui_right"):
 		state.tab += 1
 		_set_tab()
-	elif Input.is_action_just_pressed("ui_down"):
-		var list = tabs.get_current_tab_control().find_child("List")
-		if (!list.has_focus()): 
-			list.grab_focus()
-			if (list.item_count > 0):
-				list.select(0)
-				list.item_selected.emit(0)
+	#elif Input.is_action_just_pressed("ui_down"):
+	#	var list = tabs.get_current_tab_control().find_child("List")
+	#	if (!list.has_focus()): 
+	#		list.grab_focus()
+	#		if (list.item_count > 0):
+	#			list.select(0)
+	#			list.item_selected.emit(0)
 
 func _set_tab():
 	if (state.tab < 0):
@@ -119,8 +121,6 @@ func _set_tab():
 	elif (state.tab > 4):
 		state.tab = 0
 	tabs.current_tab = state.tab
-	item_content.visible = false
-	StateSaver.saveState(state)
 
 func _fill_list(type:Item.ItemType, list:ItemList):
 	list.clear()
@@ -130,21 +130,41 @@ func _fill_list(type:Item.ItemType, list:ItemList):
 func _on_drop_pressed():
 	if (item == null): return
 	if (item is ItemMultiple):
-		$SelectQuantityDialog.open(item, tr("Drop"), false)
+		select_dialog = Tools.load_dialog(self, "dialogs/select_quantity_dialog")
+		select_dialog.open(item, false, tr("Drop"))
+		select_dialog.connect("quantity", _drop)
+		select_dialog.connect("close", _on_select_close)
 	else:
 		_drop()
 
+func _on_select_close(node):
+	select_dialog.queue_free()
+	select_dialog = null
+	_focus_current_tab()
+
 func _drop(quantity:int=0):
+	if (select_dialog != null):
+		select_dialog.queue_free()
+		select_dialog = null
 	item_dropped.emit(item, quantity)
 	_refresh()
 
 func _refresh():
 	item_content.visible = false
-	_fill_list(item.type, list_content[item.type])
+	for type in list_content: _fill_list(type, list_content[type])
+	_focus_current_tab()	
 	
+func _focus_current_tab():
+	list = list_content[tab_order[tabs.current_tab]]
+	list.grab_focus()
+	if (list.item_count > 0) and not list.is_anything_selected():
+		list.select(0)
+		list.item_selected.emit(0)	
+
 func _on_tabs_tab_selected(tab):
-	list = list_content[tab_order[tab]]
-	if (tab == state.tab): return
+	if (prev_tab == tab): return
+	prev_tab = tab
+	item_content.visible = false
+	_focus_current_tab()
 	state.tab = tab
 	StateSaver.saveState(state)
-
