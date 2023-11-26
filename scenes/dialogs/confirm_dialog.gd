@@ -7,6 +7,7 @@ func _ready():
 	visible = false
 	
 func _process(delta):
+	if not visible: return
 	if (Input.is_action_just_pressed("cancel")):
 		_on_button_cancel_pressed()
 	elif Input.is_action_just_pressed("player_use_nomouse"):

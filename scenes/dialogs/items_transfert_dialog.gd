@@ -25,6 +25,7 @@ func _on_child_exiting_tree(_node):
 	disconnect("item_collected", GameState.current_zone.on_item_collected)
 
 func _process(_delta):
+	if not visible: return
 	if (selectQtyDialog.visible): return
 	if Input.is_action_just_pressed("cancel"):
 		_on_close()

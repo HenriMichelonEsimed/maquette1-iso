@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cc7nc5nncmkua"]
+[gd_scene load_steps=7 format=3 uid="uid://cc7nc5nncmkua"]
 
 [ext_resource type="Script" path="res://scenes/dialogs/alert_dialog.gd" id="1_gpx26"]
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="2_hbjlj"]
 [ext_resource type="StyleBox" uid="uid://bmyh6yvafukya" path="res://assets/button_style.tres" id="2_p35bo"]
-[ext_resource type="PackedScene" uid="uid://dytjnya7i6c47" path="res://scenes/dialogs/select_quantity_dialog.tscn" id="3_1rwli"]
 [ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="4_mmsq2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25hsw"]
@@ -110,11 +109,6 @@ script = ExtResource("4_mmsq2")
 icon_size = 32
 icon_name = "check"
 
-[node name="SelectQuantityDialog" parent="." instance=ExtResource("3_1rwli")]
-visible = false
-layout_mode = 1
-
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="pressed" from="Panel/Content/VBoxContainer/Bottom/ButtonCancel" to="." method="_on_button_cancel_pressed"]
-[connection signal="quantity" from="SelectQuantityDialog" to="." method="_on_select_quantity_dialog_quantity"]

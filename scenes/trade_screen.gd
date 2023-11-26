@@ -18,6 +18,8 @@ signal trade_end(node:Node)
 @onready var price_value = $Content/Body/Content/PanelItem/Content/LabelPrice
 @onready var node_3d = $"Content/Body/Content/PanelItem/Content/ViewContent/3DView/InsertPoint"
 @onready var label_credits = $Content/Bottom/Menu/Label
+@onready var alert_dialog = $AlertDialog
+@onready var select_dialog = $SelectQuantityDialog
 
 const tab_order = [ 
 	Item.ItemType.ITEM_TOOLS, 
@@ -110,7 +112,7 @@ func _item_details(_item:Item, index):
 	item_content.visible = true
 
 func _process(_delta):
-	if $SelectQuantityDialog.visible: return
+	if select_dialog.visible or alert_dialog.visible: return
 	if Input.is_action_just_pressed("cancel"):
 		_on_button_back_pressed()
 		return
@@ -154,14 +156,14 @@ func _buy_quanity(value):
 func _on_buy_pressed():
 	if (item == null): return
 	if (item is ItemMultiple):
-		$SelectQuantityDialog.open(item, false, tr("Buy"), _buy_quanity)
+		select_dialog.open(item, false, tr("Buy"), _buy_quanity)
 	else:
 		_buy()
 
 func _buy(quantity:int=0):
 	var price = quantity * item.price
 	if price > credits:
-		$AlertDialog.open("Buy", "You don't have enough credits")
+		alert_dialog.open("Buy", "You don't have enough credits", false)
 		return
 	credits -= price
 	var remove_credit = item_credits.duplicate()

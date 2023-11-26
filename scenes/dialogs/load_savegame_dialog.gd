@@ -17,6 +17,7 @@ func _ready():
 	listSaves.grab_focus()
 
 func _process(delta):
+	if not visible: return
 	if (Input.is_action_just_pressed("cancel")):
 		_on_button_close_pressed()
 
