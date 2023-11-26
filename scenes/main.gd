@@ -304,6 +304,7 @@ func _on_npc_talk(char:InteractiveCharacter, phrase:String, answers:Array):
 	playerTalkList.clear()
 	for i in range(0, answers.size()):
 		var answer = answers[i]
+		if (answer == null): continue
 		if (answer is Callable):
 			answer = answer.call()
 			if (answer == null): continue

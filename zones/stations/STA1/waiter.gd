@@ -15,24 +15,25 @@ func d1():
 		]]
 
 var r2 = []
+
 var r5 = [
 	["I'll look it up", _end],
 	["Nevermind", d1]
 ]
 
-var d2 = [ "I have 1 credit oranges if you're poor", r2 ]
-
-func d3():
+func d2():
 	if GameState.quests.have_advpoint("main", "lvl0_waiter_want_is_ring"):
 		return ["Did you find my ring?", r4()]
-	else:
-		return	[["Someone stole my ring if you bring it back I can give you a ham sandwich", a1], r5]
+	return [ "I've got oranges for 1 credit if you're poor", r2 ]
+
+func d3():
+	return	[["Someone stole my ring if you bring it back I can give you a ham sandwich", a1], r5]
 
 func r1():
 	var credits = GameState.inventory.get_credits_quantity()
 	var item = items.getitem(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1")
 	if (item != null) and (credits < item.price) and GameState.quests.have_advpoint("main", "lvl0_make_first_purchase") and GameState.quests.have_advpoint("main", "lvl0_admin_woman_want_sandwitch"):
-		return [ "Is there a way to negotiate?", d2]
+		return [ "Is there any way to negotiate?", d2]
 	return null
 	
 func r4():
@@ -52,12 +53,6 @@ func r4():
 		]
 	else:
 		return r5
-	
-func r3():
-	if GameState.quests.have_advpoint("main", "lvl0_waiter_want_is_ring"):
-		return [ "Did you find my ring?", [
-		]]
-	return null
 	
 func a1(): 
 	GameState.quests.advpoint("main","lvl0_waiter_want_is_ring")
@@ -87,6 +82,6 @@ func _init():
 				["Too exhausting", d2]
 			]
 		]])
-	r2.push_back([ "Can we barter?", d3])
+	r2.push_back(["Can we barter?", d3])
 	r2.push_back(["Nevermind", d1])
 

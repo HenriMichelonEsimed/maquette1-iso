@@ -11,7 +11,7 @@ func ring_discussion(item:ItemQuest):
 			"Uh...well... maybe he put it there and forgot about it?", [
 				["Maybe. I'll show him.", ring_action]
 			]
-		]]
+		]] if can_collect else null
 	]]
 
 func ring_action():
