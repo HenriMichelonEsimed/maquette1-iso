@@ -2,28 +2,29 @@
 
 [ext_resource type="Script" path="res://lib/nodes/item_consumable.gd" id="1_jj2n6"]
 [ext_resource type="PackedScene" uid="uid://bcpq62vmdc8av" path="res://assets/models/Items/sandwich_1.glb" id="2_h1vea"]
-[ext_resource type="PackedScene" uid="uid://kgx8vw8wbl0n" path="res://assets/models/Items/pickles_1.glb" id="3_5p5i3"]
+[ext_resource type="PackedScene" uid="uid://bmslj6e5qjhvt" path="res://assets/models/Items/pickles_1.glb" id="3_5p5i3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4xcqy"]
-size = Vector3(1, 0.669672, 2.67206)
+size = Vector3(0.276405, 0.140198, 0.546667)
 
 [node name="ham_sandwich_2_pickels" type="CharacterBody3D"]
 script = ExtResource("1_jj2n6")
 key = "ham_sandwich_2_pickels"
 label = "Ham sandwich with pickles"
 weight = 0.2
-price = 4.0
+price = 5.0
 type = 1
+preview_scale = 2.0
 
 [node name="Sandwich1" parent="." instance=ExtResource("2_h1vea")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.271847, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.0399725, 0)
 
 [node name="pickles_1" parent="Sandwich1" instance=ExtResource("3_5p5i3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.108417, -0.190331, 0.571995)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00841701, -0.0210484, 0.071995)
 
 [node name="pickles_2" parent="Sandwich1" instance=ExtResource("3_5p5i3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.108417, -0.190331, -0.697397)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00572885, -0.00374798, -0.123233)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.278478, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.0481406, 0)
 shape = SubResource("BoxShape3D_4xcqy")

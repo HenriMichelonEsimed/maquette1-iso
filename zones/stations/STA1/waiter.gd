@@ -2,6 +2,8 @@ extends InteractiveCharacter
 
 func _start_talking():
 	if GameState.quests.have_advpoint("main", "lvl0_admin_woman_want_sandwitch"):
+		if not items.have(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_2"):
+			items.new(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_2")
 		if not items.have(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1"):
 			items.new(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1")
 		if not items.have(Item.ItemType.ITEM_CONSUMABLES, "burger_1"):
@@ -31,7 +33,7 @@ func d3():
 
 func r1():
 	var credits = GameState.inventory.get_credits_quantity()
-	var item = items.getitem(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1")
+	var item = items.getitem(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_2")
 	if (item != null) and (credits < item.price) and GameState.quests.have_advpoint("main", "lvl0_make_first_purchase") and GameState.quests.have_advpoint("main", "lvl0_admin_woman_want_sandwitch"):
 		return [ "Is there any way to negotiate?", d2]
 	return null
@@ -59,16 +61,18 @@ func a1():
 
 func a2(item):
 	GameState.inventory.remove(item)
-	items.transfert_to(GameState.inventory, Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1")
+	items.transfert_to(GameState.inventory, Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_2")
 	GameState.quests.finish_advpoint("main", "lvl0_waiter_want_is_ring")
 
 func _init():
 	super(d1(),
 		[
 			[ Item.ItemType.ITEM_CONSUMABLES, "orange_1", 16],
-			[ Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1", 4],
+			[ Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1", 8],
+			[ Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_2", 4],
 			[ Item.ItemType.ITEM_CONSUMABLES, "burger_1", 8],
 			[ Item.ItemType.ITEM_CONSUMABLES, "pizza_1", 4],
+			[ Item.ItemType.ITEM_CONSUMABLES, "bread", 2],
 			[ Item.ItemType.ITEM_CONSUMABLES, "soft_drink_1", 10],
 		], 10
 	)

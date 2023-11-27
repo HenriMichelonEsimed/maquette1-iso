@@ -43,8 +43,11 @@ func remove(item:Item):
 	
 func transfert_to(coll:ItemsCollection, type:int, key:String):
 	var item = getitem(type, key)
-	coll.add(item.duplicate())
-	remove(item)
+	if (item != null):
+		item = item.duplicate()
+		item.quantity = 1
+		coll.add(item.duplicate())
+		remove(item)
 
 func removeqty(item:ItemMultiple, qty:int) -> ItemMultiple:
 	if add_multiples:

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bmslj6e5qjhvt" path="res://assets/models/Items/pickles_1.glb" id="2_u50ku"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wx7qq"]
-size = Vector3(0.2, 0.0697046, 0.3)
+size = Vector3(0.502448, 0.132297, 0.4868)
 
 [node name="pickle_1" type="CharacterBody3D"]
 script = ExtResource("1_o45ds")

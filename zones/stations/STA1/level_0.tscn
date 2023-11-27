@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=70 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_7fv8t"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -63,10 +63,12 @@
 [ext_resource type="PackedScene" uid="uid://b0qjip36rdva" path="res://props/furnitures/fridge_1.tscn" id="60_02mso"]
 [ext_resource type="PackedScene" uid="uid://bhgkrxewljxig" path="res://props/furnitures/fridge_2.tscn" id="61_o6juj"]
 [ext_resource type="PackedScene" uid="uid://bmwn14jyifc8t" path="res://props/items/consum/soft_drink_1.tscn" id="62_dqcij"]
-[ext_resource type="PackedScene" uid="uid://mrdrxswin6kf" path="res://props/items/tools/plate_1.tscn" id="63_n6fxy"]
+[ext_resource type="PackedScene" uid="uid://mrdrxswin6kf" path="res://props/furnitures/plate_1.tscn" id="63_n6fxy"]
 [ext_resource type="PackedScene" uid="uid://c7derxdard3wp" path="res://props/items/consum/pizza_1.tscn" id="64_heg3w"]
 [ext_resource type="PackedScene" uid="uid://b2a5is4heyefo" path="res://props/items/consum/bread_1.tscn" id="65_3mke5"]
 [ext_resource type="PackedScene" uid="uid://phtxrpdo5av2" path="res://props/items/consum/pickle_1.tscn" id="66_mihk7"]
+[ext_resource type="Texture2D" uid="uid://b7gbvcip7pxvo" path="res://assets/textures/signs/BULLIT.jpg" id="67_ue4vf"]
+[ext_resource type="Texture2D" uid="uid://327t15onp2t6" path="res://assets/textures/signs/retro_science_fiction_portrait_ai_render_by_torbk_dfjffm5-pre.jpg" id="68_angrr"]
 
 [node name="level_0" type="Node3D"]
 script = ExtResource("1_7fv8t")
@@ -914,7 +916,7 @@ transform = Transform3D(1.03316e-07, 0, -1, 0, 1, 0, 1, 0, 1.03316e-07, 11.8594,
 
 [node name="Credit" parent="Canteen/Locker3" instance=ExtResource("58_6ad3g")]
 transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, 11.2, 0, 2.70001)
-quantity = 3
+quantity = 4
 
 [node name="Box1" parent="Canteen" instance=ExtResource("47_hu7xp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5227, 0, -5.2)
@@ -963,37 +965,37 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, -0.299999)
 
 [node name="Bench4" parent="Canteen" instance=ExtResource("50_vboi2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, 1)
+transform = Transform3D(0.995138, 0, 0.0984861, 0, 1, 0, -0.0984861, 0, 0.995138, 4.6, 0, 1)
 
 [node name="Bench5" parent="Canteen" instance=ExtResource("50_vboi2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, -0.299999)
 
 [node name="Bench6" parent="Canteen" instance=ExtResource("50_vboi2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, 4.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, 4.16816)
 
 [node name="Bench7" parent="Canteen" instance=ExtResource("50_vboi2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, 3.1)
 
 [node name="Bench8" parent="Canteen" instance=ExtResource("50_vboi2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0, 4.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0, 4.45152)
 
 [node name="Bench9" parent="Canteen" instance=ExtResource("50_vboi2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0, 3.1)
+transform = Transform3D(0.984601, 0, 0.174817, 0, 1, 0, -0.174817, 0, 0.984601, -0.7, 0, 3.17728)
 
 [node name="Bench10" parent="Canteen" instance=ExtResource("50_vboi2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0, 7.28172)
+transform = Transform3D(0.999211, 3.47184e-09, 0.0397132, 0, -1, 8.74228e-08, 0.0397132, -8.73538e-08, -0.999211, -0.613915, 1.20224, 6.98172)
 
 [node name="Bench11" parent="Canteen" instance=ExtResource("50_vboi2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0, 5.98172)
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -0.7, 1.23759, 6.48172)
 
 [node name="Bench12" parent="Canteen" instance=ExtResource("50_vboi2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, 7.28172)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.23472, 0, 7.28172)
 
 [node name="Bench13" parent="Canteen" instance=ExtResource("50_vboi2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, 5.98172)
+transform = Transform3D(0.962123, 0, 0.272616, 0, 1, 0, -0.272616, 0, 0.962123, 4.6, 0, 6.51013)
 
 [node name="Trash1" parent="Canteen" instance=ExtResource("24_i20hq")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.2, 0, 2.7)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.2, 0, 5.81992)
 
 [node name="Trash2" parent="Canteen" instance=ExtResource("24_i20hq")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.8, 0, -5.4)
@@ -1023,10 +1025,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.74381, 0.753383, 3.97628)
 transform = Transform3D(0.921938, 0, 0.387339, 0, 1, 0, -0.387339, 0, 0.921938, 5.06132, 0.791312, 3.43274)
 
 [node name="bread_1" parent="Canteen" instance=ExtResource("65_3mke5")]
-transform = Transform3D(0.942647, 0, 0.33379, 0, 1, 0, -0.33379, 0, 0.942647, 5.03654, 0.757608, 4.00124)
+transform = Transform3D(0.942647, 0, 0.33379, 0, 1, 0, -0.33379, 0, 0.942647, 4.44626, 0.757608, 3.76162)
 
 [node name="pickle_1" parent="Canteen" instance=ExtResource("66_mihk7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.86386, 0.768548, 3.96275)
+
+[node name="Signboard_1" parent="Canteen" instance=ExtResource("15_jddbe")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.44348, 0.6, 1.96675)
+sign = ExtResource("67_ue4vf")
+
+[node name="Signboard_2" parent="Canteen" instance=ExtResource("15_jddbe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.39571, 0.6, -5.65211)
+sign = ExtResource("19_mqhbl")
+
+[node name="Signboard_3" parent="Canteen" instance=ExtResource("15_jddbe")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.86499, 0.6, 1.9708)
+sign = ExtResource("68_angrr")
 
 [node name="ZoneChangeTrigger" parent="." instance=ExtResource("59_o5rmr")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.0718, 2.8, -8.6)
