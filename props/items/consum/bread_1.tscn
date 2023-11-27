@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2a5is4heyefo"]
+
+[ext_resource type="PackedScene" uid="uid://0gxv7ku464wa" path="res://assets/models/Items/bread_1.glb" id="1_bq5hw"]
+[ext_resource type="Script" path="res://lib/nodes/item_consumable.gd" id="1_rp7t1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a7pms"]
+size = Vector3(0.0896204, 0.0661448, 0.174423)
+
+[node name="bread_1" type="CharacterBody3D"]
+script = ExtResource("1_rp7t1")
+key = "bread_1"
+label = "Bread"
+weight = 0.2
+price = 2.0
+type = 1
+
+[node name="Bread1" parent="." instance=ExtResource("1_bq5hw")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0245406, -0.00541531)
+shape = SubResource("BoxShape3D_a7pms")
