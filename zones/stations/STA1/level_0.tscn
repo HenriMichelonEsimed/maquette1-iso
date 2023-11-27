@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=68 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_7fv8t"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -66,6 +66,7 @@
 [ext_resource type="PackedScene" uid="uid://mrdrxswin6kf" path="res://props/items/tools/plate_1.tscn" id="63_n6fxy"]
 [ext_resource type="PackedScene" uid="uid://c7derxdard3wp" path="res://props/items/consum/pizza_1.tscn" id="64_heg3w"]
 [ext_resource type="PackedScene" uid="uid://b2a5is4heyefo" path="res://props/items/consum/bread_1.tscn" id="65_3mke5"]
+[ext_resource type="PackedScene" uid="uid://phtxrpdo5av2" path="res://props/items/consum/pickle_1.tscn" id="66_mihk7"]
 
 [node name="level_0" type="Node3D"]
 script = ExtResource("1_7fv8t")
@@ -1023,6 +1024,9 @@ transform = Transform3D(0.921938, 0, 0.387339, 0, 1, 0, -0.387339, 0, 0.921938, 
 
 [node name="bread_1" parent="Canteen" instance=ExtResource("65_3mke5")]
 transform = Transform3D(0.942647, 0, 0.33379, 0, 1, 0, -0.33379, 0, 0.942647, 5.03654, 0.757608, 4.00124)
+
+[node name="pickle_1" parent="Canteen" instance=ExtResource("66_mihk7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.86386, 0.768548, 3.96275)
 
 [node name="ZoneChangeTrigger" parent="." instance=ExtResource("59_o5rmr")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.0718, 2.8, -8.6)

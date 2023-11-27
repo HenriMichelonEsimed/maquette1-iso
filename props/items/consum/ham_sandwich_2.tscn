@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://oj23hg7xnptf"]
+
+[ext_resource type="Script" path="res://lib/nodes/item_consumable.gd" id="1_u03pc"]
+[ext_resource type="PackedScene" uid="uid://bcpq62vmdc8av" path="res://assets/models/Items/sandwich_1.glb" id="2_2xayr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4xcqy"]
+size = Vector3(1, 0.669672, 2.67206)
+
+[node name="ham_sandwich_2" type="CharacterBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_u03pc")
+key = "ham_sandwich_2"
+label = "Ham sandwich"
+weight = 0.2
+price = 4.0
+type = 1
+
+[node name="Sandwich1" parent="." instance=ExtResource("2_2xayr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.278478, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.278478, 0)
+shape = SubResource("BoxShape3D_4xcqy")

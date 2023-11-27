@@ -9,9 +9,9 @@ size = Vector3(0.228299, 0.191791, 0.244588)
 [node name="HamSandwich1" type="CharacterBody3D"]
 script = ExtResource("1_jcd3k")
 key = "ham_sandwich_1"
-label = "Grilled sandwich"
+label = "Grilled ham sandwich"
 weight = 0.5
-price = 4.0
+price = 2.0
 type = 1
 preview_scale = 3.0
 
