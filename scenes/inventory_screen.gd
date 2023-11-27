@@ -157,7 +157,6 @@ func _focus_current_tab():
 func _on_tabs_tab_selected(tab):
 	if (prev_tab == tab): return
 	prev_tab = tab
-	item_content.visible = false
 	_focus_current_tab()
 	state.tab = tab
 	StateSaver.saveState(state)

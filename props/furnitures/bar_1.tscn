@@ -19,6 +19,9 @@ surface_material_override/0 = ExtResource("2_5giyc")
 surface_material_override/1 = ExtResource("3_jcdtx")
 surface_material_override/2 = ExtResource("2_5giyc")
 
+[node name="Table Bar_002" parent="." index="2"]
+surface_material_override/0 = ExtResource("3_jcdtx")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46253, -0.5)
 shape = SubResource("BoxShape3D_6smry")

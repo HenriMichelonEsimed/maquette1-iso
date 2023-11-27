@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://mrdrxswin6kf"]
+
+[ext_resource type="Script" path="res://lib/nodes/item_tool.gd" id="1_0fbod"]
+[ext_resource type="PackedScene" uid="uid://dgp1afnts4qyn" path="res://assets/models/Furnitures/plate_1.glb" id="2_5qeww"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_x4gjw"]
+height = 0.0613639
+radius = 0.208858
+
+[node name="Plate_1" type="CharacterBody3D"]
+script = ExtResource("1_0fbod")
+key = "plate_1"
+label = "Plate"
+weight = 0.1
+price = 1.0
+
+[node name="Plate_1" parent="." instance=ExtResource("2_5qeww")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0169732, 0)
+shape = SubResource("CylinderShape3D_x4gjw")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=65 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_7fv8t"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -60,6 +60,10 @@
 [ext_resource type="PackedScene" uid="uid://nebo4anbesm0" path="res://props/items/misc/credit.tscn" id="58_6ad3g"]
 [ext_resource type="PackedScene" uid="uid://btdkocrw70s4u" path="res://lib/nodes/zone_change_trigger.tscn" id="59_o5rmr"]
 [ext_resource type="PackedScene" uid="uid://ctbw7kil8lw7k" path="res://zones/stations/STA1/waiter.tscn" id="59_ym5ud"]
+[ext_resource type="PackedScene" uid="uid://b0qjip36rdva" path="res://props/furnitures/fridge_1.tscn" id="60_02mso"]
+[ext_resource type="PackedScene" uid="uid://bhgkrxewljxig" path="res://props/furnitures/fridge_2.tscn" id="61_o6juj"]
+[ext_resource type="PackedScene" uid="uid://bmwn14jyifc8t" path="res://props/items/consum/soft_drink_1.tscn" id="62_dqcij"]
+[ext_resource type="PackedScene" uid="uid://mrdrxswin6kf" path="res://props/items/tools/plate_1.tscn" id="63_n6fxy"]
 
 [node name="level_0" type="Node3D"]
 script = ExtResource("1_7fv8t")
@@ -809,7 +813,11 @@ label = "Storage"
 [node name="Lights" type="Node3D" parent="Canteen"]
 
 [node name="OmniLed1" parent="Canteen/Lights" instance=ExtResource("6_jvn7r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.8, 2.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.8, 5)
+light_color = Color(0.988235, 0.968627, 0.8, 1)
+
+[node name="OmniLed3" parent="Canteen/Lights" instance=ExtResource("6_jvn7r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.8, -1.9)
 light_color = Color(0.988235, 0.968627, 0.8, 1)
 
 [node name="OmniLightBar" parent="Canteen/Lights" instance=ExtResource("15_5vulm")]
@@ -841,15 +849,11 @@ transform = Transform3D(1, 0, -1.58932e-08, 0, 1, 0, 1.58932e-08, 0, 1, 5.229, 1
 color = Color(0.988235, 0.968627, 0.8, 1)
 
 [node name="OmniLightBar15" parent="Canteen/Lights" instance=ExtResource("15_5vulm")]
-transform = Transform3D(1, 0, -1.58932e-08, 0, 1, 0, 1.58932e-08, 0, 1, 2.429, 1.5, -5.62951)
+transform = Transform3D(-4.37114e-08, 1, 6.94714e-16, -1, -4.37114e-08, 1.58932e-08, 1.58932e-08, 0, 1, 1.829, 2.4, -5.62951)
 color = Color(0.988235, 0.968627, 0.8, 1)
 
 [node name="OmniLightBar16" parent="Canteen/Lights" instance=ExtResource("15_5vulm")]
-transform = Transform3D(1, 0, -1.58932e-08, 0, 1, 0, 1.58932e-08, 0, 1, 2.429, 1.5, -5.62951)
-color = Color(0.988235, 0.968627, 0.8, 1)
-
-[node name="OmniLightBar17" parent="Canteen/Lights" instance=ExtResource("15_5vulm")]
-transform = Transform3D(1, 0, -1.58932e-08, 0, 1, 0, 1.58932e-08, 0, 1, -1.171, 1.5, -5.62951)
+transform = Transform3D(-4.37114e-08, 1, 6.94714e-16, -1, -4.37114e-08, 1.58932e-08, 1.58932e-08, 0, 1, -1.471, 2.4, -5.62951)
 color = Color(0.988235, 0.968627, 0.8, 1)
 
 [node name="OmniLightBar2" parent="Canteen/Lights" instance=ExtResource("15_5vulm")]
@@ -947,7 +951,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, 0.300001)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0, 0.300001)
 
 [node name="Bar1" parent="Canteen" instance=ExtResource("49_6p5b4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, -4.76837e-07, -3.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, -4.76837e-07, -2.6)
 
 [node name="Bench2" parent="Canteen" instance=ExtResource("50_vboi2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 1)
@@ -988,8 +992,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, 5.98172)
 [node name="Trash1" parent="Canteen" instance=ExtResource("24_i20hq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.2, 0, 2.7)
 
+[node name="Trash2" parent="Canteen" instance=ExtResource("24_i20hq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.8, 0, -5.4)
+
 [node name="waiter" parent="Canteen" instance=ExtResource("59_ym5ud")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26446, 0, -4.03226)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0644598, 0, -3.13226)
+
+[node name="Fridge_1" parent="Canteen" instance=ExtResource("60_02mso")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.3)
+
+[node name="Fridge_2" parent="Canteen" instance=ExtResource("61_o6juj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.22111, 0, -4.26259)
+
+[node name="soft_drink_1" parent="Canteen" instance=ExtResource("62_dqcij")]
+transform = Transform3D(0.0952028, 0, -0.995458, 0, 1, 0, 0.995458, 0, 0.0952028, 3.87689, 0.870155, 0.573606)
+
+[node name="Plate_1" parent="Canteen" instance=ExtResource("63_n6fxy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98157, 0.753383, 3.46276)
 
 [node name="ZoneChangeTrigger" parent="." instance=ExtResource("59_o5rmr")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.0718, 2.8, -8.6)

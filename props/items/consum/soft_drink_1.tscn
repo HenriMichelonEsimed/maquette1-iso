@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://buvukwyuvgw67" path="res://assets/models/Items/soft_drink_1.glb" id="2_8n1q3"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1ty8y"]
-height = 0.297626
+height = 0.327186
 radius = 0.102321
 
 [node name="soft_drink_1" type="CharacterBody3D"]
@@ -17,8 +17,8 @@ price = 2.0
 type = 1
 
 [node name="soft_drink_1" parent="." instance=ExtResource("2_8n1q3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.115921, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.043012, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0121651, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206649, 0)
 shape = SubResource("CylinderShape3D_1ty8y")
