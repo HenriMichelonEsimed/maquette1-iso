@@ -56,17 +56,20 @@ var r2a =["Why do you need one ?", [
 	]
 ]
 
-var r2b = [ "Where is my sandwitch ?", [
+var r2c = [
 			["I'll look it up", _end],
 			["...in your dreams!", d1],
 			r2d,
-			r2f
+			r2f,
+			r2f1,
+			r2f2
 		]
-	]
+
+var r2b = [ "Where is my sandwitch ?", r2c]
 	
 
 func r2d():
-	var item = GameState.inventory.getitem(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1")
+	var item = GameState.inventory.getitem(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_2_pickels")
 	if item != null:
 		return [tr("[Give %s]") % tr(item.label),
 		[
@@ -79,9 +82,26 @@ func r2f():
 	var item = GameState.inventory.getitem(Item.ItemType.ITEM_CONSUMABLES, "burger_1")
 	if item != null:
 		return [tr("[Give %s]") % tr(item.label),
+			[ "It's not ham and I don't eat beef", r2c ]
+		]
+	return null
+	
+func r2f1():
+	var item = GameState.inventory.getitem(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1")
+	if item != null:
+		return [tr("[Give %s]") % tr(item.label),
+			["It's not a sandwich but a croque monsieur", r2c]
+		]
+	return null
+	
+func r2f2():
+	var item = GameState.inventory.getitem(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_2")
+	if item != null:
+		GameState.quests.advpoint("main","lvl0_admin_woman_want_sandwitch_with_pickles")
+		return [tr("[Give %s]") % tr(item.label),
 		[
-			"It's not ham and I don't eat beef", [
-				["Okay, I'll go back and get a ham sandwich.", _end]
+			"This sandwich is appetizing but I prefer it with pickles", [
+				["Well, I'm off in search of pickles to put in that sandwich", _end]
 			]
 		]]
 	return null

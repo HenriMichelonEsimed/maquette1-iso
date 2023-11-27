@@ -12,6 +12,8 @@ func _init():
 			["Use the access card", "lvl0_admin_woman_have_access_card", "lvl0_admin_woman_want_sandwitch"],
 		"lvl0_admin_woman_want_sandwitch": 
 			["Give a sandwich or a burger with ham to the Administrator"],
+		"lvl0_admin_woman_want_sandwitch_with_pickles": 
+			["Give a ham sandwich with pickles to the Administrator", "lvl0_admin_woman_want_sandwitch"],
 		"lvl0_waiter_want_is_ring": 
 			["Find the Waiter's ring"],
 		"lvl0_make_first_purchase":
