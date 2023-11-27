@@ -4,14 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://05srs73auu0f" path="res://characters/2/char_2.tscn" id="2_iefcc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_khdtm"]
-size = Vector3(1, 1, 1.76908)
+size = Vector3(1, 1.6236, 1.76908)
 
 [node name="MysteriousMan" type="CharacterBody3D"]
 script = ExtResource("1_wq1xo")
 label = "Mysterious Person"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.830146, 0.50944)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.830146, 0.66194)
 shape = SubResource("BoxShape3D_khdtm")
 
 [node name="char_2" parent="." instance=ExtResource("2_iefcc")]

@@ -1190,7 +1190,7 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.155046, 0.0294552)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.155046, 0.113964)
 shape = SubResource("BoxShape3D_2u61k")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]

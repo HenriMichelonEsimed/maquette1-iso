@@ -46,11 +46,11 @@ var prev_tab = -1
 
 func open(char:InteractiveCharacter):
 	trader = char
-	_refresh()
-	_hide_empty_tabs()
 	item_credits = GameState.inventory.get_credits()
 	if (item_credits != null):
 		credits = item_credits.quantity
+	_refresh()
+	_hide_empty_tabs()
 
 func _ready():
 	var ratio = size.x / size.y
