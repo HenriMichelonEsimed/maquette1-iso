@@ -57,7 +57,7 @@ func _ready():
 		GameState.settings.keyboard_controller_shown = true
 		GameState.saveGame()
 	GameState.paused = false
-	_on_button_inventory_pressed()
+	#_on_button_inventory_pressed()
 	#_on_button_terminal_pressed()
 	#_on_button_load_pressed()
 	

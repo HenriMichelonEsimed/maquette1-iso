@@ -373,7 +373,7 @@ script = ExtResource("5_p36nm")
 icon_size = 32
 icon_name = "xmark"
 
-[node name="List" type="ItemList" parent="Content/Body/Content/PanelCrafting/Content"]
+[node name="ListCraft" type="ItemList" parent="Content/Body/Content/PanelCrafting/Content"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("6_vja64")
@@ -383,7 +383,7 @@ layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Craft" type="Button" parent="Content/Body/Content/PanelCrafting/Content/Actions"]
+[node name="DropCraft" type="Button" parent="Content/Body/Content/PanelCrafting/Content/Actions"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 auto_translate = false
@@ -393,28 +393,7 @@ theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("3_q3qwn")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("9_arycq")
-theme_override_styles/hover = ExtResource("9_arycq")
-theme_override_styles/pressed = ExtResource("9_arycq")
-theme_override_styles/disabled = ExtResource("9_arycq")
-theme_override_styles/focus = ExtResource("9_arycq")
-text = ""
-script = ExtResource("5_p36nm")
-icon_size = 32
-icon_name = "screwdriver-wrench"
-
-[node name="Craft2" type="Button" parent="Content/Body/Content/PanelCrafting/Content/Actions"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-auto_translate = false
-localize_numeral_system = false
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.486275, 0.486275, 0.486275, 1)
 theme_override_fonts/font = ExtResource("3_q3qwn")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("9_arycq")
@@ -427,6 +406,29 @@ script = ExtResource("5_p36nm")
 icon_size = 32
 icon_name = "ban"
 
+[node name="Craft" type="Button" parent="Content/Body/Content/PanelCrafting/Content/Actions"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.486275, 0.486275, 0.486275, 1)
+theme_override_fonts/font = ExtResource("3_q3qwn")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("9_arycq")
+theme_override_styles/hover = ExtResource("9_arycq")
+theme_override_styles/pressed = ExtResource("9_arycq")
+theme_override_styles/disabled = ExtResource("9_arycq")
+theme_override_styles/focus = ExtResource("9_arycq")
+text = ""
+script = ExtResource("5_p36nm")
+icon_size = 32
+icon_name = "screwdriver-wrench"
+
 [connection signal="pressed" from="Content/Top/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
 [connection signal="tab_changed" from="Content/Body/Content/Tabs" to="." method="_on_tabs_tab_changed"]
 [connection signal="tab_selected" from="Content/Body/Content/Tabs" to="." method="_on_tabs_tab_selected"]
@@ -437,3 +439,5 @@ icon_name = "ban"
 [connection signal="pressed" from="Content/Body/Content/PanelItem/Content/Actions/Drop" to="." method="_on_drop_pressed"]
 [connection signal="pressed" from="Content/Body/Content/PanelItem/Content/Actions/Craft" to="." method="_on_craft_pressed"]
 [connection signal="pressed" from="Content/Body/Content/PanelCrafting/Content/Top/ButtonStopCraft" to="." method="_on_button_stop_craft_pressed"]
+[connection signal="item_selected" from="Content/Body/Content/PanelCrafting/Content/ListCraft" to="." method="_on_list_craft_item_selected"]
+[connection signal="pressed" from="Content/Body/Content/PanelCrafting/Content/Actions/DropCraft" to="." method="_on_drop_craft_pressed"]

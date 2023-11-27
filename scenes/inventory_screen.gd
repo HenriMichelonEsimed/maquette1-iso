@@ -18,7 +18,9 @@ signal item_dropped(item:Item,quantity:int)
 @onready var weigth_value = $Content/Body/Content/PanelItem/Content/LabelWeight
 @onready var node_3d = $"Content/Body/Content/PanelItem/Content/ViewContent/3DView/InsertPoint"
 @onready var panel_crafting = $Content/Body/Content/PanelCrafting
-@onready var list_crafting = $Content/Body/Content/PanelCrafting/Content/List
+@onready var list_crafting = $Content/Body/Content/PanelCrafting/Content/ListCraft
+@onready var button_dropcraft = $Content/Body/Content/PanelCrafting/Content/Actions/DropCraft
+@onready var button_craft = $Content/Body/Content/PanelCrafting/Content/Actions/Craft
 
 var select_dialog = null
 
@@ -39,7 +41,6 @@ const tab_order = [
 var state = InventoryScreenState.new()
 var item:Item
 var list:ItemList
-var selected = 0
 var prev_tab = -1
 var crafting_items = []
 
@@ -50,8 +51,32 @@ func _ready():
 	tabs.current_tab = state.tab
 	connect("item_dropped", GameState.current_zone.on_item_dropped)
 
+func _process(_delta):
+	if select_dialog != null: return
+	if Input.is_action_just_pressed("cancel") and panel_crafting.visible:
+		_on_button_stop_craft_pressed()
+		return
+	elif Input.is_action_just_pressed("cancel") or Input.is_action_just_pressed("player_inventory"):
+		_on_button_back_pressed()
+		return
+	if Input.is_action_just_pressed("delete"):
+		_on_drop_pressed()
+		return
+	if Input.is_action_just_pressed("player_use_nomouse"):
+		_on_craft_pressed()
+		return
+	state.tab = tabs.current_tab
+	if Input.is_action_just_pressed("ui_left"):
+		state.tab -= 1
+		_set_tab()
+	elif Input.is_action_just_pressed("ui_right"):
+		state.tab += 1
+		_set_tab()
+
 func _resize(with_crafting = false):
 	panel_crafting.visible = with_crafting
+	button_dropcraft.disabled = true
+	button_craft.disabled = true
 	var ratio = size.x / size.y
 	var vsize = get_viewport().size / get_viewport().content_scale_factor
 	size.x = vsize.x / (1.5 if vsize.x > 1200 else 1.2)
@@ -61,6 +86,7 @@ func _resize(with_crafting = false):
 	tabs.custom_minimum_size.x = size.x/(3 if with_crafting else 2)
 
 func _on_button_back_pressed():
+	_clear_crafting()
 	close.emit(self)
 
 func _on_list_tools_item_selected(index):
@@ -88,7 +114,6 @@ func _on_list_item_consumable_selected(index):
 	_item_details(GameState.inventory.getone_bytype(index, Item.ItemType.ITEM_CONSUMABLES), index)
 
 func _item_details(_item:Item, index):
-	selected = index
 	item = _item
 	item_title.text = item.label
 	weigth_value.text = tr("Weigth : %.2f") % _item.weight
@@ -99,22 +124,6 @@ func _item_details(_item:Item, index):
 	clone.position = Vector3.ZERO
 	clone.scale = clone.scale * (clone.preview_scale+1)
 	item_content.visible = true
-
-func _process(_delta):
-	if select_dialog != null: return
-	if (Input.is_action_just_pressed("cancel") or Input.is_action_just_pressed("player_inventory")):
-		_on_button_back_pressed()
-		return
-	elif Input.is_action_just_pressed("delete"):
-		_on_drop_pressed()
-		return
-	state.tab = tabs.current_tab
-	if Input.is_action_just_pressed("ui_left"):
-		state.tab -= 1
-		_set_tab()
-	elif Input.is_action_just_pressed("ui_right"):
-		state.tab += 1
-		_set_tab()
 
 func _set_tab():
 	if (state.tab < 0):
@@ -174,25 +183,45 @@ func _fill_crafting_list():
 	for citem in crafting_items:
 		list_crafting.add_item(tr(str(citem)))
 	_resize(true)
-	
+
 func _fill_lists():
-	for type in list_content: _fill_list(type, list_content[type])
+	for type in list_content: 
+		_fill_list(type, list_content[type])
 
-func _on_craft_pressed():
-	if crafting_items.find(item) == -1:
-		if (item.quantity == 1):
-			item_content.visible = false
-		var craft_item = item.duplicate()
-		craft_item.quantity = 1
-		crafting_items.push_back(craft_item)
-		_fill_crafting_list()
-		GameState.inventory.remove(craft_item)
-		_fill_lists()
-
-func _on_button_stop_craft_pressed():
+func _clear_crafting():
 	for itm in crafting_items:
 		GameState.inventory.add(itm)
 	crafting_items.clear()
+
+func _on_craft_pressed():
+	if (item == null) or crafting_items.find(item) != -1: return
+	if (item.quantity == 1):
+		item_content.visible = false
+	var craft_item = item.duplicate()
+	craft_item.quantity = 1
+	crafting_items.push_back(craft_item)
+	_fill_crafting_list()
+	GameState.inventory.remove(craft_item)
+	_fill_lists()
+
+func _on_button_stop_craft_pressed():
+	_clear_crafting()
 	list_crafting.clear()
 	_resize(false)
 	_refresh()
+
+func _on_drop_craft_pressed():
+	if list_crafting.get_selected_items().size() == 0: return
+	var selected = list_crafting.get_selected_items()[0]
+	var craft_item = crafting_items[selected]
+	crafting_items.remove_at(selected)
+	GameState.inventory.add(craft_item)
+	item_content.visible = false
+	_fill_lists()
+	if (crafting_items.is_empty()):
+		_on_button_stop_craft_pressed()
+	else:
+		_fill_crafting_list()
+
+func _on_list_craft_item_selected(index):
+	button_dropcraft.disabled = false
