@@ -1021,6 +1021,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98157, 0.753383, 3.46276)
 [node name="Plate_2" parent="Canteen" instance=ExtResource("63_n6fxy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.74381, 0.753383, 3.97628)
 
+[node name="Plate_3" parent="Canteen" instance=ExtResource("63_n6fxy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.74381, 0.753383, 3.97628)
+
 [node name="Pizza1" parent="Canteen" instance=ExtResource("64_heg3w")]
 transform = Transform3D(0.921938, 0, 0.387339, 0, 1, 0, -0.387339, 0, 0.921938, 5.06132, 0.791312, 3.43274)
 
@@ -1029,6 +1032,9 @@ transform = Transform3D(0.942647, 0, 0.33379, 0, 1, 0, -0.33379, 0, 0.942647, 4.
 
 [node name="pickle_1" parent="Canteen" instance=ExtResource("66_mihk7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.86386, 0.768548, 3.96275)
+
+[node name="pickle_2" parent="Canteen" instance=ExtResource("66_mihk7")]
+transform = Transform3D(0.760281, 0, -0.649594, 0, 1, 0, 0.649594, 0, 0.760281, 4.80003, 0.768548, 4.06074)
 
 [node name="Signboard_1" parent="Canteen" instance=ExtResource("15_jddbe")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.44348, 0.6, 1.96675)

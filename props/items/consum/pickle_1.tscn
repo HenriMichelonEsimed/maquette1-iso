@@ -7,17 +7,17 @@
 size = Vector3(0.502448, 0.132297, 0.4868)
 
 [node name="pickle_1" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0473038)
 script = ExtResource("1_o45ds")
 key = "pickle_1"
-label = "Pickles"
+label = "Pickle"
 weight = 0.01
 price = 1.0
 type = 1
+preview_scale = 2.0
 
 [node name="pickles_1" parent="." instance=ExtResource("2_u50ku")]
-
-[node name="pickles_2" parent="." instance=ExtResource("2_u50ku")]
-transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 0, 0, 0.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0487884)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015648, 0)

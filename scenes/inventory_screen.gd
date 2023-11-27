@@ -17,6 +17,9 @@ signal item_dropped(item:Item,quantity:int)
 @onready var item_title = $Content/Body/Content/PanelItem/Content/Title
 @onready var weigth_value = $Content/Body/Content/PanelItem/Content/LabelWeight
 @onready var node_3d = $"Content/Body/Content/PanelItem/Content/ViewContent/3DView/InsertPoint"
+@onready var panel_crafting = $Content/Body/Content/PanelCrafting
+@onready var list_crafting = $Content/Body/Content/PanelCrafting/Content/List
+
 var select_dialog = null
 
 const tab_order = [ 
@@ -38,19 +41,24 @@ var item:Item
 var list:ItemList
 var selected = 0
 var prev_tab = -1
+var crafting_items = []
 
 func _ready():
+	_resize()
+	StateSaver.loadState(state)
+	_refresh()
+	tabs.current_tab = state.tab
+	connect("item_dropped", GameState.current_zone.on_item_dropped)
+
+func _resize(with_crafting = false):
+	panel_crafting.visible = with_crafting
 	var ratio = size.x / size.y
 	var vsize = get_viewport().size / get_viewport().content_scale_factor
 	size.x = vsize.x / (1.5 if vsize.x > 1200 else 1.2)
 	size.y = size.x / ratio
 	position.x = (vsize.x - size.x) / 2
 	position.y = (vsize.y - size.y) / 2
-	tabs.custom_minimum_size.x = size.x/2
-	StateSaver.loadState(state)
-	_refresh()
-	tabs.current_tab = state.tab
-	connect("item_dropped", GameState.current_zone.on_item_dropped)
+	tabs.custom_minimum_size.x = size.x/(3 if with_crafting else 2)
 
 func _on_button_back_pressed():
 	close.emit(self)
@@ -144,7 +152,7 @@ func _drop(quantity:int=1):
 
 func _refresh():
 	item_content.visible = false
-	for type in list_content: _fill_list(type, list_content[type])
+	_fill_lists()
 	_focus_current_tab()
 	
 func _focus_current_tab():
@@ -160,3 +168,31 @@ func _on_tabs_tab_selected(tab):
 	_focus_current_tab()
 	state.tab = tab
 	StateSaver.saveState(state)
+
+func _fill_crafting_list():
+	list_crafting.clear()
+	for citem in crafting_items:
+		list_crafting.add_item(tr(str(citem)))
+	_resize(true)
+	
+func _fill_lists():
+	for type in list_content: _fill_list(type, list_content[type])
+
+func _on_craft_pressed():
+	if crafting_items.find(item) == -1:
+		if (item.quantity == 1):
+			item_content.visible = false
+		var craft_item = item.duplicate()
+		craft_item.quantity = 1
+		crafting_items.push_back(craft_item)
+		_fill_crafting_list()
+		GameState.inventory.remove(craft_item)
+		_fill_lists()
+
+func _on_button_stop_craft_pressed():
+	for itm in crafting_items:
+		GameState.inventory.add(itm)
+	crafting_items.clear()
+	list_crafting.clear()
+	_resize(false)
+	_refresh()

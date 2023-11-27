@@ -233,7 +233,6 @@ size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_cq1op")
 
 [node name="Content" type="VBoxContainer" parent="Content/Body/Content/PanelItem"]
-visible = false
 layout_mode = 2
 
 [node name="Title" type="Label" parent="Content/Body/Content/PanelItem/Content"]
@@ -261,8 +260,8 @@ own_world_3d = true
 world_3d = SubResource("World3D_tt1eo")
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(2, 2)
-render_target_update_mode = 0
+size = Vector2i(236, 275)
+render_target_update_mode = 4
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Content/Body/Content/PanelItem/Content/ViewContent/3DView"]
 transform = Transform3D(1, -8.35189e-23, -4.37114e-08, 4.37114e-08, 1.91069e-15, 1, 0, -1, 1.91069e-15, 0, 1, 0)
@@ -282,6 +281,7 @@ transform = Transform3D(0.866025, -0.5, 0, 0.433013, 0.75, 0.5, -0.25, -0.433013
 [node name="Actions" type="HBoxContainer" parent="Content/Body/Content/PanelItem/Content"]
 layout_mode = 2
 theme_override_constants/separation = 10
+alignment = 1
 
 [node name="Drop" type="Button" parent="Content/Body/Content/PanelItem/Content/Actions"]
 custom_minimum_size = Vector2(48, 48)
@@ -305,6 +305,128 @@ script = ExtResource("5_p36nm")
 icon_size = 32
 icon_name = "arrow-up-from-bracket"
 
+[node name="Craft" type="Button" parent="Content/Body/Content/PanelItem/Content/Actions"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_q3qwn")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("9_arycq")
+theme_override_styles/hover = ExtResource("9_arycq")
+theme_override_styles/pressed = ExtResource("9_arycq")
+theme_override_styles/disabled = ExtResource("9_arycq")
+theme_override_styles/focus = ExtResource("9_arycq")
+text = ""
+script = ExtResource("5_p36nm")
+icon_size = 32
+icon_name = "screwdriver-wrench"
+
+[node name="PanelCrafting" type="PanelContainer" parent="Content/Body/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_cq1op")
+
+[node name="Content" type="VBoxContainer" parent="Content/Body/Content/PanelCrafting"]
+layout_mode = 2
+
+[node name="Top" type="HBoxContainer" parent="Content/Body/Content/PanelCrafting/Content"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Content/Body/Content/PanelCrafting/Content/Top"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_k6qyf")
+text = "Crafting"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonStopCraft" type="Button" parent="Content/Body/Content/PanelCrafting/Content/Top"]
+layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_q3qwn")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("9_arycq")
+theme_override_styles/hover = ExtResource("9_arycq")
+theme_override_styles/pressed = ExtResource("9_arycq")
+theme_override_styles/disabled = ExtResource("9_arycq")
+theme_override_styles/focus = ExtResource("9_arycq")
+text = ""
+script = ExtResource("5_p36nm")
+icon_size = 32
+icon_name = "xmark"
+
+[node name="List" type="ItemList" parent="Content/Body/Content/PanelCrafting/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("6_vja64")
+
+[node name="Actions" type="HBoxContainer" parent="Content/Body/Content/PanelCrafting/Content"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Craft" type="Button" parent="Content/Body/Content/PanelCrafting/Content/Actions"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_q3qwn")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("9_arycq")
+theme_override_styles/hover = ExtResource("9_arycq")
+theme_override_styles/pressed = ExtResource("9_arycq")
+theme_override_styles/disabled = ExtResource("9_arycq")
+theme_override_styles/focus = ExtResource("9_arycq")
+text = ""
+script = ExtResource("5_p36nm")
+icon_size = 32
+icon_name = "screwdriver-wrench"
+
+[node name="Craft2" type="Button" parent="Content/Body/Content/PanelCrafting/Content/Actions"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_q3qwn")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("9_arycq")
+theme_override_styles/hover = ExtResource("9_arycq")
+theme_override_styles/pressed = ExtResource("9_arycq")
+theme_override_styles/disabled = ExtResource("9_arycq")
+theme_override_styles/focus = ExtResource("9_arycq")
+text = ""
+script = ExtResource("5_p36nm")
+icon_size = 32
+icon_name = "ban"
+
 [connection signal="pressed" from="Content/Top/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
 [connection signal="tab_changed" from="Content/Body/Content/Tabs" to="." method="_on_tabs_tab_changed"]
 [connection signal="tab_selected" from="Content/Body/Content/Tabs" to="." method="_on_tabs_tab_selected"]
@@ -313,3 +435,5 @@ icon_name = "arrow-up-from-bracket"
 [connection signal="item_selected" from="Content/Body/Content/Tabs/Miscellaneous/List" to="." method="_on_list_miscellaneous_item_selected"]
 [connection signal="item_selected" from="Content/Body/Content/Tabs/Quests/List" to="." method="_on_list_item_quest_selected"]
 [connection signal="pressed" from="Content/Body/Content/PanelItem/Content/Actions/Drop" to="." method="_on_drop_pressed"]
+[connection signal="pressed" from="Content/Body/Content/PanelItem/Content/Actions/Craft" to="." method="_on_craft_pressed"]
+[connection signal="pressed" from="Content/Body/Content/PanelCrafting/Content/Top/ButtonStopCraft" to="." method="_on_button_stop_craft_pressed"]
