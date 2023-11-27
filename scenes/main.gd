@@ -50,8 +50,12 @@ func _ready():
 	items_transfert_dialog.connect("close", _on_storage_close)
 	GameState.quests.start("main")
 	Input.connect("joy_connection_changed", _on_joypas_connection_changed)
-#	if (Input.get_connected_joypads().size() > 0):
-#		_on_joypas_connection_changed(null, true)
+	if (Input.get_connected_joypads().size() > 0):
+		_on_joypas_connection_changed(null, true)
+	elif not GameState.settings.keyboard_controller_shown:
+		_on_button_joypad_pressed()
+		GameState.settings.keyboard_controller_shown = true
+		GameState.saveGame()
 	GameState.paused = false
 	#_on_button_inventory_pressed()
 	#_on_button_terminal_pressed()
@@ -161,9 +165,10 @@ func _on_new_message():
 func _on_joypas_connection_changed(id,connected):
 	GameState.use_joypad = connected
 	if connected:
-#		if not GameState.settings.xbox_controller_shown:
-#			_on_button_joypad_pressed()
-#			GameState.settings.xbox_controller_shown = true
+		if not GameState.settings.xbox_controller_shown:
+			_on_button_joypad_pressed()
+			GameState.settings.xbox_controller_shown = true
+			GameState.saveGame()
 		$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonJoypad.icon_name = "gamepad"
 		$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonJoypad.text = ""
 	else:

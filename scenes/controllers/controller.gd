@@ -11,7 +11,7 @@ func _ready():
 	position.y = (vsize.y - size.y) / 2
 	
 func _process(_delta):
-	if (Input.is_action_just_pressed("cancel")):
+	if Input.is_anything_pressed():
 		_on_close()
 
 func _on_close():
