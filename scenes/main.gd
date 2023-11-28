@@ -250,6 +250,7 @@ func load_dialog(filename:String):
 func _on_button_inventory_pressed():
 	var screen = load_dialog("inventory_screen")
 	screen.connect("item_use", _on_item_use)
+	screen.connect("item_dropped", _on_item_dropped)
 
 func _on_button_terminal_pressed():
 	load_dialog("terminal")
@@ -384,3 +385,9 @@ func _on_usable_unlock(success:bool):
 		_on_tool_unuse_pressed()
 	elif (GameState.current_tool != null):
 		NotifManager.notif(tr("Nothing happens with '%s'") % tr(str(GameState.current_tool)))
+
+func _on_item_dropped(item:Item,quantity:int):
+	if (GameState.current_tool != null):
+		if (item.type == GameState.current_tool.type) and (item.key == GameState.current_tool.key):
+			_on_tool_unuse_pressed()
+	
