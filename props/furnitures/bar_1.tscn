@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://b86o0otc0cw0q" path="res://assets/materials/wood_051.tres" id="3_jcdtx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6smry"]
-size = Vector3(3, 0.9, 1.2)
+size = Vector3(5.4, 0.9, 1.2)
 
 [node name="Bar1" instance=ExtResource("1_jb73h")]
 

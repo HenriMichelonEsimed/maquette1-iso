@@ -1028,7 +1028,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.74381, 0.753383, 3.97628)
 transform = Transform3D(0.921938, 0, 0.387339, 0, 1, 0, -0.387339, 0, 0.921938, 5.06132, 0.791312, 3.43274)
 
 [node name="bread_1" parent="Canteen" instance=ExtResource("65_3mke5")]
-transform = Transform3D(0.942647, 0, 0.33379, 0, 1, 0, -0.33379, 0, 0.942647, 4.44626, 0.757608, 3.76162)
+transform = Transform3D(0.79853, 0, 0.601954, 0, 1, 0, -0.601954, 0, 0.79853, 5.42605, 0.757608, 3.9899)
 
 [node name="pickle_1" parent="Canteen" instance=ExtResource("66_mihk7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.86386, 0.768548, 3.96275)

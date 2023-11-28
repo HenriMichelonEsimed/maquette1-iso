@@ -163,7 +163,7 @@ func _refresh():
 	item_content.visible = false
 	_fill_lists()
 	_focus_current_tab()
-	
+
 func _focus_current_tab():
 	list = list_content[tab_order[tabs.current_tab]]
 	list.grab_focus()
@@ -225,3 +225,6 @@ func _on_drop_craft_pressed():
 
 func _on_list_craft_item_selected(index):
 	button_dropcraft.disabled = false
+
+func _on_crafting_pressed():
+	pass # Replace with function body.
