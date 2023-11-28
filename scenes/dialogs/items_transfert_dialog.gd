@@ -91,6 +91,8 @@ func _refresh():
 	for item in GameState.inventory.getall():
 		list_inventory.add_item(tr(str(item)))
 	current_list.grab_focus()
+	if (current_list.item_count > 0):
+		current_list.select(0)
 
 func _on_close():
 	close.emit(storage)
