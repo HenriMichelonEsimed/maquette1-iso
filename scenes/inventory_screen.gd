@@ -229,6 +229,7 @@ func _on_craft_pressed():
 						label_recipe.text = tr(str(crafting_target))
 					else:
 						button_craft.disabled = true
+	_focus_current_tab()
 
 func _on_button_stop_craft_pressed():
 	_clear_crafting()
