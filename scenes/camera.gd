@@ -24,8 +24,8 @@ func init():
 	if (_size == -1):
 		_size = 10 #30 / get_viewport().content_scale_factor
 	_view = GameState.camera.view
-	_zoom_view()
-	_rotate_view()
+	zoom_view()
+	rotate_view()
 
 func move(pos):
 	camera_pivot.position = pos
@@ -34,27 +34,22 @@ func _process(_delta):
 	if (GameState.paused): return
 	camera_pivot.position = object_to_follow.position
 	if Input.is_action_just_released("view_rotate_left") or (Input.is_action_pressed("modifier") and Input.is_action_just_released("view_left")):
-		_view += 1
-		_rotate_view()
+		rotate_view(1)
 		return
 	elif Input.is_action_just_released("view_rotate_right") or (Input.is_action_pressed("modifier") and Input.is_action_just_released("view_right")):
-		_view -= 1
-		_rotate_view()
+		rotate_view(-1)
 		return
 	if  Input.is_action_pressed("view_zoomin") or (Input.is_action_pressed("modifier") and Input.is_action_pressed("view_up")):
-		_size -= 1
-		_zoom_view()
+		zoom_view(-1)
 	elif Input.is_action_just_pressed("view_zoomin"):
-		_size -= 4
-		_zoom_view()
-	elif Input.is_action_just_pressed("view_zoomout") or Input.is_action_pressed("view_zoomout") or (Input.is_action_pressed("modifier") and Input.is_action_pressed("view_down")):
-		_size += 1
-		_zoom_view()
+		zoom_view(-4)
+	elif Input.is_action_pressed("view_zoomout") or (Input.is_action_pressed("modifier") and Input.is_action_pressed("view_down")):
+		zoom_view(1)
 	elif Input.is_action_just_pressed("view_zoomout"):
-		_size -= 4
-		_zoom_view()
+		zoom_view(4)
 		
-func _zoom_view():
+func zoom_view(delta:int=0):
+	_size += delta
 	if (_size < 2): 
 		_size = 2
 	elif (_size > 100):
@@ -62,7 +57,8 @@ func _zoom_view():
 	size = _size
 	GameState.camera.size = _size
 
-func _rotate_view():
+func rotate_view(delta:int=0):
+	_view += delta
 	if (_view > 3): 
 		_view = 0
 	elif (_view < 0):
@@ -79,13 +75,10 @@ func _on_player_player_moving():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _on_touch_view_rotate():
-	_view -= 1
-	_rotate_view()
+	rotate_view(-1)
 
 func _on_touch_view_view_zoomin():
-	_size -= 1
-	_zoom_view()
+	zoom_view(-1)
 
 func _on_touch_view_view_zoomout():
-	_size += 1
-	_zoom_view()
+	zoom_view(1)

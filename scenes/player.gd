@@ -50,7 +50,7 @@ func use(target:Vector2, camera:Camera3D):
 	var iray = get_world_3d().direct_space_state.intersect_ray(ray_query)
 	if (iray.size() > 0):
 		var dist = global_position.distance_to(iray.collider.global_position)
-		var use_min_dist = 1.5
+		var use_min_dist = 1.8
 		if iray.collider is InteractiveCharacter:
 			use_min_dist = 2.5
 		if (dist < use_min_dist):

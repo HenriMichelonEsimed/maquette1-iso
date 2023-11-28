@@ -5,7 +5,8 @@ extends Node3D
 @onready var notificationsList = $Game/UI/ListNotifications
 @onready var notificationLabel = $Game/UI/LabelNotification
 @onready var notificationTimer = $Game/UI/LabelNotification/Timer
-@onready var optionMenu = $Game/UI/MarginContainer/VBoxContainer/OptionMenu
+@onready var optionMenu = $Game/UI/TopLeft/VBoxContainer/OptionMenu
+@onready var button_joypad = $Game/UI/TopLeft/VBoxContainer/OptionMenu/ButtonJoypad
 @onready var talkWindow = $TalkWindow
 @onready var NPCPhraseLabel = $TalkWindow/MarginContainer/VBoxContainer/NPC
 @onready var NPCNameLabel = $TalkWindow/MarginContainer/VBoxContainer/NPCName
@@ -15,10 +16,10 @@ extends Node3D
 @onready var panel_tool = $Game/UI/PanelTool
 @onready var label_tool = $Game/UI/PanelTool/LabelTool
 @onready var optionMenuButtons = [
-	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonSave,
-	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonParams,
-	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonJoypad,
-	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonExit
+	$Game/UI/TopLeft/VBoxContainer/OptionMenu/ButtonSave,
+	$Game/UI/TopLeft/VBoxContainer/OptionMenu/ButtonParams,
+	$Game/UI/TopLeft/VBoxContainer/OptionMenu/ButtonJoypad,
+	$Game/UI/TopLeft/VBoxContainer/OptionMenu/ButtonExit
 ]
 
 var items_transfert_dialog:ItemsTransfertDialog
@@ -179,11 +180,11 @@ func _on_joypas_connection_changed(id,connected):
 			_on_button_joypad_pressed()
 			GameState.settings.xbox_controller_shown = true
 			GameState.saveGame()
-		$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonJoypad.icon_name = "gamepad"
-		$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonJoypad.text = ""
+		button_joypad.icon_name = "gamepad"
+		button_joypad.text = ""
 	else:
-		$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonJoypad.icon_name = "keyboard"
-		$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonJoypad.text = ""
+		button_joypad.icon_name = "keyboard"
+		button_joypad.text = ""
 
 func _on_new_notification(message:String):
 	notificationTimer.stop()
@@ -398,3 +399,14 @@ func _on_item_dropped(item:Item,quantity:int):
 		if (item.type == GameState.current_tool.type) and (item.key == GameState.current_tool.key):
 			_on_tool_unuse_pressed()
 
+func _on_button_rotate_left_pressed():
+	camera.rotate_view(1)
+
+func _on_button_rotate_right_pressed():
+	camera.rotate_view(-1)
+
+func _on_button_zoom_out_pressed():
+	camera.zoom_view(2)
+
+func _on_button_zoom_in_pressed():
+	camera.zoom_view(-2)
