@@ -7,14 +7,13 @@
 size = Vector3(0.502448, 0.132297, 0.4868)
 
 [node name="pickle_1" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0473038)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.000658907, -0.00183882)
 script = ExtResource("1_o45ds")
 key = "pickle_1"
 label = "Pickle"
-weight = 0.01
 price = 1.0
 type = 1
-preview_scale = 2.0
+preview_scale = 4.0
 
 [node name="pickles_1" parent="." instance=ExtResource("2_u50ku")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0487884)
