@@ -12,9 +12,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0445341, 0)
 script = ExtResource("1_gr4es")
 key = "soft_drink_1"
 label = "Cherry soft drink"
-weight = 0.1
 price = 2.0
 type = 1
+preview_scale = 2.0
 
 [node name="soft_drink_1" parent="." instance=ExtResource("2_8n1q3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.043012, 0)

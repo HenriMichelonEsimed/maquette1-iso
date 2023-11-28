@@ -10,9 +10,9 @@ size = Vector3(0.0896204, 0.0661448, 0.174423)
 script = ExtResource("1_rp7t1")
 key = "bread_1"
 label = "Bread"
-weight = 0.2
 price = 2.0
 type = 1
+preview_scale = 4.0
 
 [node name="Bread1" parent="." instance=ExtResource("1_bq5hw")]
 
