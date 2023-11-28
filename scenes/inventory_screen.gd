@@ -234,6 +234,7 @@ func _on_craft_pressed():
 func _on_button_stop_craft_pressed():
 	_clear_crafting()
 	list_crafting.clear()
+	crafting_target = null
 	_resize(false)
 	_refresh()
 
