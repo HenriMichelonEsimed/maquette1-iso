@@ -240,10 +240,6 @@ text = "Title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LabelWeight" type="Label" parent="Content/Body/Content/PanelItem/Content"]
-layout_mode = 2
-text = "Weigth :"
-
 [node name="ViewContent" type="SubViewportContainer" parent="Content/Body/Content/PanelItem/Content"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -254,7 +250,7 @@ own_world_3d = true
 world_3d = SubResource("World3D_tt1eo")
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(240, 279)
+size = Vector2i(240, 307)
 render_target_update_mode = 4
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Content/Body/Content/PanelItem/Content/ViewContent/3DView"]

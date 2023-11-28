@@ -247,10 +247,6 @@ text = "Title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LabelWeight" type="Label" parent="Content/Body/Content/PanelItem/Content"]
-layout_mode = 2
-text = "Weigth :"
-
 [node name="LabelPrice" type="Label" parent="Content/Body/Content/PanelItem/Content"]
 layout_mode = 2
 text = "Unit price :"

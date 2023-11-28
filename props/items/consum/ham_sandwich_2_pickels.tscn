@@ -11,7 +11,6 @@ size = Vector3(0.276405, 0.140198, 0.546667)
 script = ExtResource("1_jj2n6")
 key = "ham_sandwich_2_pickels"
 label = "Ham sandwich with pickles"
-weight = 0.2
 price = 5.0
 type = 1
 preview_scale = 2.0

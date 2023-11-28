@@ -102,8 +102,6 @@ func saveState(file:FileAccess):
 		file.store_var(item.rotation)
 		if item is ItemUnique:
 			file.store_pascal_string(item.label)
-			file.store_16(item.weight)
-			file.store_8(item.wear)
 		elif item is ItemMultiple:
 			file.store_64(item.quantity)
 	
@@ -125,8 +123,6 @@ func loadState(file:FileAccess):
 		item.rotation = file.get_var()
 		if (item is ItemUnique):
 			item.label = file.get_pascal_string()
-			item.weight = file.get_16()
-			item.wear = file.get_8()
 		elif (item is ItemMultiple):
 			item.quantity = file.get_64()
 		_items.push_back(item)

@@ -16,7 +16,6 @@ signal item_use(item:Item)
 @onready var list_miscellaneous:ItemList = $Content/Body/Content/Tabs/Miscellaneous/List
 @onready var item_content = $Content/Body/Content/PanelItem/Content
 @onready var item_title = $Content/Body/Content/PanelItem/Content/Title
-@onready var weigth_value = $Content/Body/Content/PanelItem/Content/LabelWeight
 @onready var node_3d = $"Content/Body/Content/PanelItem/Content/ViewContent/3DView/InsertPoint"
 @onready var panel_crafting = $Content/Body/Content/PanelCrafting
 @onready var list_crafting = $Content/Body/Content/PanelCrafting/Content/ListCraft
@@ -127,7 +126,6 @@ func _on_list_item_consumable_selected(index):
 func _item_details(_item:Item, index):
 	item = _item
 	item_title.text = item.label
-	weigth_value.text = tr("Weigth : %.2f") % _item.weight
 	Tools.show_item(_item, node_3d)
 	item_content.visible = true
 
@@ -204,9 +202,10 @@ func _on_craft_pressed():
 	var craft_item = item.duplicate()
 	if (item.type == Item.ItemType.ITEM_TOOLS) or (item.type == Item.ItemType.ITEM_QUEST):
 		item_content.visible = false
-	elif (item.quantity == 1):
-		item_content.visible = false
+	else:
 		craft_item.quantity = 1
+		if (item.quantity == 1):
+			item_content.visible = false
 	crafting_items.push_back(craft_item)
 	_fill_crafting_list()
 	GameState.inventory.remove(craft_item)
