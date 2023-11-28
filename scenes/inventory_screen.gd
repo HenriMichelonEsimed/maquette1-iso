@@ -65,8 +65,11 @@ func _process(_delta):
 	if Input.is_action_just_pressed("delete"):
 		_on_drop_pressed()
 		return
-	if Input.is_action_just_pressed("player_use_nomouse"):
-		_on_craft_pressed()
+	if Input.is_action_just_pressed("craft"):
+		if panel_crafting.visible and (crafting_target != null):
+			_on_crafting_pressed()
+		else:
+			_on_craft_pressed()
 		return
 	state.tab = tabs.current_tab
 	if Input.is_action_just_pressed("ui_left"):
@@ -198,10 +201,12 @@ func _clear_crafting():
 
 func _on_craft_pressed():
 	if (item == null) or crafting_items.find(item) != -1: return
-	if (item.quantity == 1):
-		item_content.visible = false
 	var craft_item = item.duplicate()
-	craft_item.quantity = 1
+	if (item.type == Item.ItemType.ITEM_TOOLS) or (item.type == Item.ItemType.ITEM_QUEST):
+		item_content.visible = false
+	elif (item.quantity == 1):
+		item_content.visible = false
+		craft_item.quantity = 1
 	crafting_items.push_back(craft_item)
 	_fill_crafting_list()
 	GameState.inventory.remove(craft_item)

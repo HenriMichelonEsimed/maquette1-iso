@@ -14,6 +14,7 @@ var messages = MessagesList.new()
 var settings = SettingsState.new()
 var player:Player
 var view_pivot:ViewPivot
+var current_tool = null
 var is_mobile:bool
 var use_joypad = null
 
@@ -36,6 +37,11 @@ func saveGame(savegame = null):
 	location.rotation = player.rotation
 	StateSaver.saveState(location)
 	StateSaver.saveState(camera)
+	var player_state = PlayerState.new()
+	if (current_tool != null):
+		player_state.current_tool_key = current_tool.key
+		player_state.current_tool_type = current_tool.type
+	StateSaver.saveState(player_state)
 	StateSaver.saveState(InventoryState.new(inventory))
 	StateSaver.saveState(EventsQueueState.new(events_queue))
 	StateSaver.saveState(current_zone.state)
@@ -48,6 +54,10 @@ func loadGame(savegame = null):
 	StateSaver.loadState(MessagesState.new(messages))
 	StateSaver.loadState(location)
 	StateSaver.loadState(camera)
+	var player_state = PlayerState.new()
+	StateSaver.loadState(player_state)
+	if (player_state.current_tool_type != -1):
+		current_tool = Item.load(player_state.current_tool_type, player_state.current_tool_key)
 	StateSaver.loadState(InventoryState.new(inventory))
 	StateSaver.loadState(EventsQueueState.new(events_queue))
 	

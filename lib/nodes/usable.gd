@@ -7,10 +7,11 @@ signal using(is_used:bool)
 var save:bool
 var is_used:bool = false
 var _animation:AnimationPlayer
+var tools_to_use = null
 
 func _init(_save:bool = true):
 	save = _save
-	
+
 func _ready():
 	set_collision_layer_value(3, true)
 	if (label == null): 
@@ -20,10 +21,10 @@ func _ready():
 	_animation = find_child("AnimationPlayer")
 	if (_animation != null):
 		_animation.connect("animation_finished", _on_animation_finished)
-		
+
 func _check_use() -> bool:
 	return true
-	
+
 func force_use():
 	is_used = true
 	if (_animation != null):
@@ -33,9 +34,9 @@ func force_use():
 		_use()
 		using.emit(is_used)
 
-func use(_byplayer:bool=false,startup:bool=false):
+func use(_byplayer:bool=false, startup:bool=false):
 	if (not is_used):
-		if (not _check_use()) :
+		if (not startup and not _check_use()) :
 			return
 	is_used = !is_used
 	if (is_used):

@@ -1,6 +1,6 @@
 extends Usable
 
-func _check_use() -> bool:
+func _check_use(tool=null) -> bool:
 	var check = GameState.inventory.have(Item.ItemType.ITEM_QUEST, "access_card_1")
 	if not check: 
 		NotifManager.notif(tr("You need an access card"))

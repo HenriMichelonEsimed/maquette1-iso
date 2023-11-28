@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dyj5pxcv4nq84"]
+[gd_scene load_steps=25 format=3 uid="uid://dyj5pxcv4nq84"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_4sx3e"]
 [ext_resource type="PackedScene" uid="uid://drr16dfcqhfyw" path="res://scenes/player.tscn" id="1_hswq3"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://wpu71sh5k21k" path="res://scenes/touch_view.tscn" id="6_essw5"]
 [ext_resource type="Texture2D" uid="uid://38qd58n3acbb" path="res://assets/textures/talkwindow.png" id="7_le7i5"]
 [ext_resource type="Script" path="res://addons/fontawesome/FontAwesome.gd" id="8_ww8at"]
+[ext_resource type="Material" uid="uid://k5r36wixdaow" path="res://assets/materials/misc/dark.tres" id="9_g5heg"]
 
 [sub_resource type="FontVariation" id="FontVariation_y25ao"]
 variation_embolden = 1.0
@@ -32,7 +33,26 @@ border_width_top = 1
 border_width_right = 1
 border_color = Color(0.611765, 0.611765, 0.611765, 1)
 border_blend = true
-corner_radius_top_right = 48
+corner_radius_top_right = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i8d07"]
+bg_color = Color(0.172549, 0.317647, 0.427451, 0.631373)
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.611765, 0.611765, 0.611765, 1)
+border_blend = true
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+
+[sub_resource type="Environment" id="Environment_f1hi3"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="World3D" id="World3D_1egif"]
+environment = SubResource("Environment_f1hi3")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pghe6"]
 texture = ExtResource("7_le7i5")
@@ -388,6 +408,50 @@ vertical_alignment = 1
 [node name="Timer" type="Timer" parent="Game/UI/LabelNotification"]
 wait_time = 10.0
 one_shot = true
+
+[node name="PanelTool" type="Panel" parent="Game/UI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -344.0
+offset_right = 192.0
+offset_bottom = -152.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i8d07")
+
+[node name="ViewContent" type="SubViewportContainer" parent="Game/UI/PanelTool"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 129.0
+offset_right = 240.0
+offset_bottom = 408.0
+grow_vertical = 0
+
+[node name="3DView" type="SubViewport" parent="Game/UI/PanelTool/ViewContent"]
+own_world_3d = true
+world_3d = SubResource("World3D_1egif")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(240, 279)
+render_target_update_mode = 4
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Game/UI/PanelTool/ViewContent/3DView"]
+transform = Transform3D(1, -8.35189e-23, -4.37114e-08, 4.37114e-08, 1.91069e-15, 1, 0, -1, 1.91069e-15, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Game/UI/PanelTool/ViewContent/3DView"]
+transform = Transform3D(1, 0, -4.37114e-08, 4.37114e-08, 1.91069e-15, 1, 0, -1, 1.91069e-15, 0, 1, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Game/UI/PanelTool/ViewContent/3DView"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.05133, 0)
+visible = false
+size = Vector3(100, 0.1, 100)
+material = ExtResource("9_g5heg")
+
+[node name="InsertPoint" type="Node3D" parent="Game/UI/PanelTool/ViewContent/3DView"]
+transform = Transform3D(0.866025, -0.5, 0, 0.433013, 0.75, 0.5, -0.25, -0.433013, 0.866025, 0, 0, 0)
 
 [node name="TouchMove" parent="." instance=ExtResource("5_asao4")]
 visible = false

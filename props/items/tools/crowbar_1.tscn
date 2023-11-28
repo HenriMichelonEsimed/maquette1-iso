@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxcq6yoph8wwf"]
+
+[ext_resource type="Script" path="res://lib/nodes/item_tool.gd" id="1_ocabw"]
+[ext_resource type="PackedScene" uid="uid://d0615kegeap7p" path="res://assets/models/Items/crowbar_1.glb" id="2_ull4f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vnq35"]
+size = Vector3(0.186091, 0.607154, 0.0515828)
+
+[node name="crowbar_1" type="CharacterBody3D"]
+script = ExtResource("1_ocabw")
+key = "crowbar_1"
+label = "Crowbar"
+weight = 1.5
+price = 4.0
+
+[node name="crowbar_1" parent="." instance=ExtResource("2_ull4f")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.866025, -0.5, -2.18557e-08, 0, -4.37114e-08, 1, -0.5, -0.866025, -3.78552e-08, 0.024569, 0.00490488, -0.0387517)
+shape = SubResource("BoxShape3D_vnq35")

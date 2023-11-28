@@ -18,8 +18,13 @@ func _init():
 			["Find the Waiter's ring"],
 		"lvl0_make_first_purchase":
 			[""]
-	}
-)
+	})
+
+func start():
+	var crowbar = GameState.inventory.getitem(Item.ItemType.ITEM_TOOLS, "crowbar_1")
+	if (crowbar == null):
+		GameState.inventory.new(Item.ItemType.ITEM_TOOLS, "crowbar_1")
+	super.start()
 
 func _on_new_quest_event(type:Quest.QuestEventType, event_key:String):
 	if (not have_advpoint("lvl0_make_first_purchase")) and (type == Quest.QuestEventType.QUESTEVENT_BUY):
