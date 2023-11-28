@@ -370,7 +370,8 @@ func _on_list_notifications_item_clicked(index, at_position, mouse_button_index)
 
 func _on_item_use(item:Item):
 	GameState.current_tool = item.duplicate()
-	GameState.current_tool.quantity = 1
+	if (item is ItemMultiple):
+		GameState.current_tool.quantity = 1
 	GameState.inventory.remove(GameState.current_tool)
 	Tools.show_item(GameState.current_tool, tool_3d)
 	label_tool.text = tr(str(GameState.current_tool))

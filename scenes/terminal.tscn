@@ -119,7 +119,7 @@ layout_mode = 2
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="FontAwesome2" type="Label" parent="Borders/Screen/Content/HBoxContainer"]
+[node name="LabelLeft" type="Label" parent="Borders/Screen/Content/HBoxContainer"]
 layout_mode = 2
 auto_translate = false
 localize_numeral_system = false
@@ -180,7 +180,7 @@ script = ExtResource("6_i6hcg")
 icon_size = 32
 icon_name = "envelope"
 
-[node name="FontAwesome" type="Label" parent="Borders/Screen/Content/HBoxContainer"]
+[node name="LabelRight" type="Label" parent="Borders/Screen/Content/HBoxContainer"]
 layout_mode = 2
 auto_translate = false
 localize_numeral_system = false

@@ -8,6 +8,9 @@ signal close(node:Node)
 @onready var labelCurrent = $Borders/Screen/Content/Content/Label
 @onready var buttonQuests = $Borders/Screen/Content/HBoxContainer/ButtonQuests
 @onready var buttonMessages = $Borders/Screen/Content/HBoxContainer/ButtonMessages
+@onready var label_left = $Borders/Screen/Content/HBoxContainer/LabelLeft
+@onready var label_right = $Borders/Screen/Content/HBoxContainer/LabelRight
+
 var currentButton:Button
 var displayMessage = false
 
@@ -18,6 +21,8 @@ func _ready():
 	size.x = size.y / ratio
 	position.x = (vsize.x - size.x) / 2
 	position.y = (vsize.y - size.y) / 2
+	label_left.visible = GameState.use_joypad != null
+	label_right.visible = GameState.use_joypad != null
 	_update()
 	_on_button_quests_pressed()
 	

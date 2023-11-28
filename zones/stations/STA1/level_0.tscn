@@ -918,7 +918,7 @@ transform = Transform3D(1.03316e-07, 0, -1, 0, 1, 0, 1, 0, 1.03316e-07, 11.8594,
 script = ExtResource("54_h2sxl")
 
 [node name="Credit" parent="Canteen/Locker3" instance=ExtResource("58_6ad3g")]
-transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, 11.2, 0, 2.70001)
+transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, 11.2, 0, 3.02285)
 quantity = 4
 
 [node name="Box1" parent="Canteen" instance=ExtResource("47_hu7xp")]
@@ -1049,7 +1049,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.8649
 sign = ExtResource("68_angrr")
 
 [node name="ZoneChangeTrigger" parent="." instance=ExtResource("59_o5rmr")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.0718, 2.8, -8.6)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.1443, 2.8, -8.6)
 zone_name = "stations/STA1/level_1"
 spawnpoint_key = "default"
 

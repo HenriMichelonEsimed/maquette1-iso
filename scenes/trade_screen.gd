@@ -20,8 +20,8 @@ signal trade_end(node:Node)
 var alert_dialog = null
 var select_dialog = null
 
-const tab_order = [ 
-	Item.ItemType.ITEM_TOOLS, 
+const tab_order = [
+	Item.ItemType.ITEM_TOOLS,
 	Item.ItemType.ITEM_CONSUMABLES,
 	Item.ItemType.ITEM_MISCELLANEOUS,
 	Item.ItemType.ITEM_QUEST
@@ -112,13 +112,13 @@ func _item_details(_item:Item, index):
 
 func _next_tab():
 	for idx in range(tabs.current_tab+1, tabs.get_tab_count()):
-		if not tabs.is_tab_hidden(idx): 
+		if not tabs.is_tab_hidden(idx):
 			tabs.current_tab = idx
 			return
 
 func _prev_tab():
 	for idx in range(tabs.current_tab-1, -1, -1):
-		if not tabs.is_tab_hidden(idx): 
+		if not tabs.is_tab_hidden(idx):
 			tabs.current_tab = idx
 			return
 
@@ -140,7 +140,7 @@ func _refresh():
 	item_content.visible = false
 	label_credits.text =tr("Inventory : %d credits" if credits > 1 else "Inventory : %d credit")  % credits
 	var idx = 0
-	for type in list_content: 
+	for type in list_content:
 		_fill_list(idx, type, list_content[type])
 		idx += 1
 	if (tabs.is_tab_hidden(tabs.current_tab)):
@@ -176,7 +176,7 @@ func _buy(quantity:int=0):
 		remove_credit.quantity = price
 		GameState.inventory.remove(remove_credit)
 	var buy_item
-	if (item.type == Item.ItemType.ITEM_MISCELLANEOUS) or (item.type == Item.ItemType.ITEM_CONSUMABLES):
+	if item is ItemMultiple:
 		buy_item = item.duplicate()
 		buy_item.quantity = quantity
 	else:
@@ -200,7 +200,7 @@ func _focus_current_tab():
 	list.grab_focus()
 	if (list.item_count > 0) and not list.is_anything_selected():
 		list.select(0)
-		list.item_selected.emit(0)	
+		list.item_selected.emit(0)
 
 func _on_tabs_tab_selected(tab):
 	if (prev_tab == tab): return
