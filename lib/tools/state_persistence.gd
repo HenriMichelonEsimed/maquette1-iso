@@ -121,7 +121,6 @@ func loadState(res:State):
 	var filename = _path + "/" + _format_name(res.name) + default_ext
 	var file = FileAccess.open(filename, FileAccess.READ)
 	if (file == null):
-		print(FileAccess.get_open_error())
 		return null
 	while (!file.eof_reached()):
 		var entry_type = file.get_8()

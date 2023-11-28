@@ -24,7 +24,6 @@ func _process(_delta):
 		var touch_position : Vector2 = (move.get_local_mouse_position() - analog_offset).limit_length(analog_size.x / 2.0)
 		move_position.position = touch_position + analog_size / 2.0
 		var strength : Vector2 = touch_position / (analog_size / 2.0)
-		print(strength)
 		left = strength.x < -0.2
 		right = strength.x >  0.2
 		forward = strength.y < -0.2
