@@ -23,8 +23,11 @@ func getitem(type:Item.ItemType, key:String) -> Item:
 func new(type:int,_name:String, qty:int=1):
 	var item = Item.load(type, _name)
 	if (item != null):
-		for i in range(0, qty):
+		if (qty == 1):
 			add(item)
+		else:
+			for i in range(0, qty):
+				add(item.duplicate())
 
 func add(item:Item):
 	if add_multiples and (item is ItemMultiple):
