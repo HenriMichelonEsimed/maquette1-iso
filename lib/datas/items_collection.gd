@@ -11,6 +11,9 @@ func have(type:Item.ItemType, key:String) -> bool:
 	var result = _items.filter(func(it) : return it.type == type and it.key == key)
 	return result.size() > 0
 
+func haveitem(item:Item) -> bool:
+	return have(item.type, item.key)
+
 func getitem(type:Item.ItemType, key:String) -> Item:
 	var result = _items.filter(func(it) : return it.type == type and it.key == key)
 	if result.size() > 0:

@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://wpu71sh5k21k" path="res://scenes/touch_view.tscn" id="6_essw5"]
 [ext_resource type="Texture2D" uid="uid://38qd58n3acbb" path="res://assets/textures/talkwindow.png" id="7_le7i5"]
 [ext_resource type="Script" path="res://addons/fontawesome/FontAwesome.gd" id="8_ww8at"]
-[ext_resource type="Material" uid="uid://k5r36wixdaow" path="res://assets/materials/misc/dark.tres" id="9_g5heg"]
 
 [sub_resource type="FontVariation" id="FontVariation_y25ao"]
 variation_embolden = 1.0
@@ -36,7 +35,7 @@ border_blend = true
 corner_radius_top_right = 24
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i8d07"]
-bg_color = Color(0.172549, 0.317647, 0.427451, 0.631373)
+bg_color = Color(0.423529, 0.635294, 0.8, 0.67451)
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
@@ -53,6 +52,10 @@ ambient_light_color = Color(1, 1, 1, 1)
 
 [sub_resource type="World3D" id="World3D_1egif"]
 environment = SubResource("Environment_f1hi3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wb7bd"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pghe6"]
 texture = ExtResource("7_le7i5")
@@ -410,48 +413,77 @@ wait_time = 10.0
 one_shot = true
 
 [node name="PanelTool" type="Panel" parent="Game/UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -344.0
-offset_right = 192.0
-offset_bottom = -152.0
+offset_top = -312.0
+offset_right = 160.0
+offset_bottom = -153.0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_i8d07")
 
 [node name="ViewContent" type="SubViewportContainer" parent="Game/UI/PanelTool"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = 129.0
-offset_right = 240.0
-offset_bottom = 408.0
-grow_vertical = 0
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -70.0
+offset_right = 140.0
+offset_bottom = 70.0
+grow_vertical = 2
 
 [node name="3DView" type="SubViewport" parent="Game/UI/PanelTool/ViewContent"]
 own_world_3d = true
 world_3d = SubResource("World3D_1egif")
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(240, 279)
-render_target_update_mode = 4
+size = Vector2i(140, 140)
+render_target_update_mode = 0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Game/UI/PanelTool/ViewContent/3DView"]
 transform = Transform3D(1, -8.35189e-23, -4.37114e-08, 4.37114e-08, 1.91069e-15, 1, 0, -1, 1.91069e-15, 0, 1, 0)
+light_energy = 2.0
 
 [node name="Camera3D" type="Camera3D" parent="Game/UI/PanelTool/ViewContent/3DView"]
 transform = Transform3D(1, 0, -4.37114e-08, 4.37114e-08, 1.91069e-15, 1, 0, -1, 1.91069e-15, 0, 1, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Game/UI/PanelTool/ViewContent/3DView"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.05133, 0)
-visible = false
 size = Vector3(100, 0.1, 100)
-material = ExtResource("9_g5heg")
+material = SubResource("StandardMaterial3D_wb7bd")
 
 [node name="InsertPoint" type="Node3D" parent="Game/UI/PanelTool/ViewContent/3DView"]
 transform = Transform3D(0.866025, -0.5, 0, 0.433013, 0.75, 0.5, -0.25, -0.433013, 0.866025, 0, 0, 0)
+
+[node name="ToolUnuse" type="Button" parent="Game/UI/PanelTool"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 32.0
+grow_horizontal = 0
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("6_5m64j")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("5_ki3d2")
+theme_override_styles/hover = ExtResource("5_ki3d2")
+theme_override_styles/pressed = ExtResource("5_ki3d2")
+theme_override_styles/disabled = ExtResource("5_ki3d2")
+theme_override_styles/focus = ExtResource("5_ki3d2")
+text = ""
+script = ExtResource("6_2kw7t")
+icon_name = "xmark"
 
 [node name="TouchMove" parent="." instance=ExtResource("5_asao4")]
 visible = false
@@ -548,6 +580,7 @@ environment = ExtResource("2_dhum8")
 [connection signal="focus_entered" from="Game/UI/ListNotifications" to="." method="_on_list_notifications_focus_entered"]
 [connection signal="item_clicked" from="Game/UI/ListNotifications" to="." method="_on_list_notifications_item_clicked"]
 [connection signal="timeout" from="Game/UI/LabelNotification/Timer" to="." method="_on_notification_timer_timeout"]
+[connection signal="pressed" from="Game/UI/PanelTool/ToolUnuse" to="." method="_on_tool_unuse_pressed"]
 [connection signal="view_rotate" from="TouchView" to="Game/CameraPivot/Camera" method="_on_touch_view_rotate"]
 [connection signal="view_zoomin" from="TouchView" to="Game/CameraPivot/Camera" method="_on_touch_view_view_zoomin"]
 [connection signal="view_zoomout" from="TouchView" to="Game/CameraPivot/Camera" method="_on_touch_view_view_zoomout"]

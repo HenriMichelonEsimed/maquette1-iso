@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://dl5weeg8uwspr"]
+[gd_scene load_steps=72 format=3 uid="uid://dl5weeg8uwspr"]
 
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_7fv8t"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="2_3hqhq"]
@@ -57,6 +57,7 @@
 [ext_resource type="PackedScene" uid="uid://bk120r6rxex7p" path="res://props/furnitures/bar_1.tscn" id="49_6p5b4"]
 [ext_resource type="Script" path="res://props/items/quest/ring_1.gd" id="50_7121f"]
 [ext_resource type="PackedScene" uid="uid://c2umsprj0ccgr" path="res://props/furnitures/bench_2.tscn" id="50_vboi2"]
+[ext_resource type="Script" path="res://zones/stations/STA1/locker_3.gd" id="54_h2sxl"]
 [ext_resource type="PackedScene" uid="uid://nebo4anbesm0" path="res://props/items/misc/credit.tscn" id="58_6ad3g"]
 [ext_resource type="PackedScene" uid="uid://btdkocrw70s4u" path="res://lib/nodes/zone_change_trigger.tscn" id="59_o5rmr"]
 [ext_resource type="PackedScene" uid="uid://ctbw7kil8lw7k" path="res://zones/stations/STA1/waiter.tscn" id="59_ym5ud"]
@@ -69,6 +70,7 @@
 [ext_resource type="PackedScene" uid="uid://phtxrpdo5av2" path="res://props/items/consum/pickle_1.tscn" id="66_mihk7"]
 [ext_resource type="Texture2D" uid="uid://b7gbvcip7pxvo" path="res://assets/textures/signs/BULLIT.jpg" id="67_ue4vf"]
 [ext_resource type="Texture2D" uid="uid://327t15onp2t6" path="res://assets/textures/signs/retro_science_fiction_portrait_ai_render_by_torbk_dfjffm5-pre.jpg" id="68_angrr"]
+[ext_resource type="PackedScene" uid="uid://bxcq6yoph8wwf" path="res://props/items/tools/crowbar_1.tscn" id="71_qj64m"]
 
 [node name="level_0" type="Node3D"]
 script = ExtResource("1_7fv8t")
@@ -913,6 +915,7 @@ transform = Transform3D(1.03316e-07, 0, -1, 0, 1, 0, 1, 0, 1.03316e-07, 11.8729,
 
 [node name="Locker3" parent="Canteen" instance=ExtResource("46_7teu8")]
 transform = Transform3D(1.03316e-07, 0, -1, 0, 1, 0, 1, 0, 1.03316e-07, 11.8594, 0, -1.8)
+script = ExtResource("54_h2sxl")
 
 [node name="Credit" parent="Canteen/Locker3" instance=ExtResource("58_6ad3g")]
 transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, 11.2, 0, 2.70001)
@@ -926,9 +929,6 @@ transform = Transform3D(0.97217, 0, -0.234277, 0, 1, 0, 0.234277, 0, 0.97217, 10
 
 [node name="Box3" parent="Canteen" instance=ExtResource("47_hu7xp")]
 transform = Transform3D(0.996345, 0, 0.0854169, 0, 1, 0, -0.0854169, 0, 0.996345, 10.9781, 0, -5.1)
-
-[node name="Box5" parent="Canteen" instance=ExtResource("47_hu7xp")]
-transform = Transform3D(-0.992849, 0, -0.119374, 0, 1, 0, 0.119374, 0, -0.992849, 11.1116, 0, 2.60703)
 
 [node name="Box6" parent="Canteen" instance=ExtResource("47_hu7xp")]
 transform = Transform3D(-0.979024, 0, -0.203744, 0, 1, 0, 0.203744, 0, -0.979024, 11.6404, 0, 2.44273)
@@ -1052,3 +1052,6 @@ sign = ExtResource("68_angrr")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.0718, 2.8, -8.6)
 zone_name = "stations/STA1/level_1"
 spawnpoint_key = "default"
+
+[node name="crowbar_1" parent="." instance=ExtResource("71_qj64m")]
+transform = Transform3D(0.702352, 0, 0.71183, 0, 1, 0, -0.71183, 0, 0.702352, 19.6715, 1.13356, -17.9653)

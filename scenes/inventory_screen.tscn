@@ -480,7 +480,7 @@ icon_name = "screwdriver-wrench"
 [connection signal="item_selected" from="Content/Body/Content/Tabs/Miscellaneous/List" to="." method="_on_list_miscellaneous_item_selected"]
 [connection signal="item_selected" from="Content/Body/Content/Tabs/Quests/List" to="." method="_on_list_item_quest_selected"]
 [connection signal="pressed" from="Content/Body/Content/PanelItem/Content/Actions/Drop" to="." method="_on_drop_pressed"]
-[connection signal="pressed" from="Content/Body/Content/PanelItem/Content/Actions/Use" to="." method="_on_craft_pressed"]
+[connection signal="pressed" from="Content/Body/Content/PanelItem/Content/Actions/Use" to="." method="_on_use_pressed"]
 [connection signal="pressed" from="Content/Body/Content/PanelItem/Content/Actions/Craft" to="." method="_on_craft_pressed"]
 [connection signal="pressed" from="Content/Body/Content/PanelCrafting/Content/Top/ButtonStopCraft" to="." method="_on_button_stop_craft_pressed"]
 [connection signal="item_selected" from="Content/Body/Content/PanelCrafting/Content/ListCraft" to="." method="_on_list_craft_item_selected"]

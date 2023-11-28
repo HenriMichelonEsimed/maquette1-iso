@@ -56,9 +56,9 @@ func loadGame(savegame = null):
 	StateSaver.loadState(camera)
 	var player_state = PlayerState.new()
 	StateSaver.loadState(player_state)
-	if (player_state.current_tool_type != -1):
-		current_tool = Item.load(player_state.current_tool_type, player_state.current_tool_key)
 	StateSaver.loadState(InventoryState.new(inventory))
+	if (player_state.current_tool_type != -1) and inventory.have(player_state.current_tool_type, player_state.current_tool_key):
+		current_tool = Item.load(player_state.current_tool_type, player_state.current_tool_key)
 	StateSaver.loadState(EventsQueueState.new(events_queue))
 	
 func loadZone(zone_name:String):

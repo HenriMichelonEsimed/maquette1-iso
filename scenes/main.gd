@@ -11,6 +11,8 @@ extends Node3D
 @onready var NPCNameLabel = $TalkWindow/MarginContainer/VBoxContainer/NPCName
 @onready var playerTalkList = $TalkWindow/MarginContainer/VBoxContainer/Player
 @onready var rayCast = $Game/CameraPivot/Camera/RayCast
+@onready var tool_3d = $"Game/UI/PanelTool/ViewContent/3DView/InsertPoint"
+@onready var panel_tool = $Game/UI/PanelTool
 @onready var optionMenuButtons = [
 	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonSave,
 	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonParams,
@@ -56,6 +58,8 @@ func _ready():
 		_on_button_joypad_pressed()
 		GameState.settings.keyboard_controller_shown = true
 		GameState.saveGame()
+	if (GameState.current_tool != null):
+		_on_item_use(GameState.current_tool)
 	GameState.paused = false
 	#_on_button_inventory_pressed()
 	#_on_button_terminal_pressed()
@@ -87,6 +91,8 @@ func _process(_delta):
 		_on_button_terminal_pressed()
 	elif Input.is_action_just_pressed("player_optionsmenu"):
 		_on_button_optionsmenu_pressed()
+	elif (GameState.current_tool != null) and Input.is_action_just_pressed("delete"):
+		_on_tool_unuse_pressed()
 	talk_window_just_closed = false
 
 func _input(event):
@@ -238,7 +244,8 @@ func load_dialog(filename:String):
 	return Tools.load_dialog(self, filename, _on_resume)
 
 func _on_button_inventory_pressed():
-	load_dialog("inventory_screen")
+	var screen = load_dialog("inventory_screen")
+	screen.connect("item_use", _on_item_use)
 
 func _on_button_terminal_pressed():
 	load_dialog("terminal")
@@ -355,3 +362,19 @@ func _on_list_notifications_focus_entered():
 
 func _on_list_notifications_item_clicked(index, at_position, mouse_button_index):
 	_display_notification(notificationsList.get_item_text(index))
+
+func _on_item_use(item:Item):
+	GameState.current_tool = item
+	var clone = item.duplicate()
+	tool_3d.add_child(clone)
+	clone.position = Vector3.ZERO
+	clone.rotation = Vector3.ZERO
+	clone.scale = clone.scale * (clone.preview_scale+1)
+	panel_tool.visible = true
+
+func _on_tool_unuse_pressed():
+	GameState.current_tool = null
+	panel_tool.visible = false
+	for c in tool_3d.get_children():
+		c.queue_free()
+	

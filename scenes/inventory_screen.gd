@@ -7,6 +7,7 @@ class InventoryScreenState extends State:
 
 signal close(node:Node)
 signal item_dropped(item:Item,quantity:int)
+signal item_use(item:Item)
 
 @onready var tabs:TabContainer = $Content/Body/Content/Tabs
 @onready var list_tools:ItemList = $Content/Body/Content/Tabs/Tools/List
@@ -64,6 +65,9 @@ func _process(_delta):
 		return
 	if Input.is_action_just_pressed("delete"):
 		_on_drop_pressed()
+		return
+	if Input.is_action_just_pressed("player_use_nomouse"):
+		_on_use_pressed()
 		return
 	if Input.is_action_just_pressed("craft"):
 		if panel_crafting.visible and (crafting_target != null):
@@ -128,6 +132,7 @@ func _item_details(_item:Item, index):
 	var clone = _item.duplicate()
 	node_3d.add_child(clone)
 	clone.position = Vector3.ZERO
+	clone.rotation = Vector3.ZERO
 	clone.scale = clone.scale * (clone.preview_scale+1)
 	item_content.visible = true
 
@@ -260,3 +265,8 @@ func _on_crafting_pressed():
 	list_crafting.clear()
 	_resize(false)
 	_refresh()
+
+func _on_use_pressed():
+	if (item == null): return
+	item_use.emit(item)
+	_on_button_back_pressed()

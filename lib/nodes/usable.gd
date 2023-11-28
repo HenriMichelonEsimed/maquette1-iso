@@ -6,8 +6,8 @@ signal using(is_used:bool)
 
 var save:bool
 var is_used:bool = false
+var unlocked:bool = false
 var _animation:AnimationPlayer
-var tools_to_use = null
 
 func _init(_save:bool = true):
 	save = _save
@@ -22,7 +22,18 @@ func _ready():
 	if (_animation != null):
 		_animation.connect("animation_finished", _on_animation_finished)
 
-func _check_use() -> bool:
+func _check_tool_use(message:String, tools_to_use:Array) -> bool:
+	if (unlocked): return true
+	var check = false
+	if (GameState.current_tool != null):
+		for tool in tools_to_use:
+			if (tool[0] == GameState.current_tool.type) and (tool[1] == GameState.current_tool.key):
+				unlocked = true
+				return true
+	NotifManager.notif(message)
+	return check
+	
+func _check_use():
 	return true
 
 func force_use():
@@ -42,14 +53,16 @@ func use(_byplayer:bool=false, startup:bool=false):
 	if (is_used):
 		if (_animation != null):
 			_animation.play("use")
-			if (startup): _animation.seek(10)
+			if (startup): 
+				_animation.seek(10)
 		else:
 			_use()
 			using.emit(is_used)
 	else:
 		if (_animation != null): 
 			_animation.play_backwards("use")
-			if (startup): _animation.seek(10)
+			if (startup): 
+				_animation.seek(10)
 		else:
 			_unuse()
 			using.emit(is_used)
