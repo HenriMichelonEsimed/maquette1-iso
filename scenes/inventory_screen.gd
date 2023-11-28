@@ -249,4 +249,9 @@ func _on_list_craft_item_selected(index):
 	button_dropcraft.disabled = false
 
 func _on_crafting_pressed():
-	pass # Replace with function body.
+	if (crafting_target == null): return
+	GameState.inventory.add(crafting_target)
+	crafting_items.clear()
+	list_crafting.clear()
+	_resize(false)
+	_refresh()
