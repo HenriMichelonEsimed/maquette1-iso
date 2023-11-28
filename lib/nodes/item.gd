@@ -23,6 +23,12 @@ func _ready():
 	label = tr(label)
 	set_collision_layer_value(1, false)
 	set_collision_layer_value(2, true)
+	
+static func load(type:int,_name:String):
+	var item = load("res://props/items/" + Item.scenes_path[type] + "/" + _name + ".tscn")
+	if (item != null):
+		return item.instantiate()
+	return null
 
 func collect():
 	return true

@@ -22,6 +22,7 @@ run/size/mode=3
 StateSaver="*res://lib/tools/state_persistence.gd"
 NotifManager="*res://lib/notification_manager.gd"
 GameState="*res://lib/datas/states/game_state.gd"
+CraftingRecipes="*res://lib/craft_recipes.gd"
 
 [display]
 

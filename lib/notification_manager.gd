@@ -1,5 +1,4 @@
 extends Node
-class_name NotificationManager
 
 signal new_notification(message:String)
 

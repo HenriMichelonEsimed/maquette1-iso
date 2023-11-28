@@ -18,10 +18,10 @@ func getitem(type:Item.ItemType, key:String) -> Item:
 	return null
 
 func new(type:int,_name:String, qty:int=1):
-	var item = load("res://props/items/" + Item.scenes_path[type] + "/" + _name + ".tscn")
+	var item = Item.load(type, _name)
 	if (item != null):
 		for i in range(0, qty):
-			add(item.instantiate())
+			add(item)
 
 func add(item:Item):
 	if add_multiples and (item is ItemMultiple):

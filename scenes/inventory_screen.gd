@@ -21,6 +21,7 @@ signal item_dropped(item:Item,quantity:int)
 @onready var list_crafting = $Content/Body/Content/PanelCrafting/Content/ListCraft
 @onready var button_dropcraft = $Content/Body/Content/PanelCrafting/Content/Actions/DropCraft
 @onready var button_craft = $Content/Body/Content/PanelCrafting/Content/Actions/Craft
+@onready var label_recipe = $Content/Body/Content/PanelCrafting/Content/VBoxContainer/LabelRecipe
 
 var select_dialog = null
 
@@ -43,6 +44,8 @@ var item:Item
 var list:ItemList
 var prev_tab = -1
 var crafting_items = []
+var crafting_recipe = null
+var crafting_target = null
 
 func _ready():
 	_resize()
@@ -203,6 +206,25 @@ func _on_craft_pressed():
 	_fill_crafting_list()
 	GameState.inventory.remove(craft_item)
 	_fill_lists()
+	var ingredients = []
+	for i in crafting_items:
+		ingredients.push_back(i.key)
+	ingredients.sort()
+	for i in CraftingRecipes.ingredients:
+		if (item.key == i):
+			var targets = CraftingRecipes.ingredients[i]
+			for target in targets:
+				var target_ingredients = CraftingRecipes.recipes[target][1]
+				var have_recipe = target_ingredients == ingredients
+				button_craft.disabled = not have_recipe
+				label_recipe.text = "-"
+				if have_recipe:
+					crafting_target = Item.load(CraftingRecipes.recipes[target][0], target)
+					if (crafting_target != null):
+						crafting_recipe = target
+						label_recipe.text = tr(str(crafting_target))
+					else:
+						button_craft.disabled = true
 
 func _on_button_stop_craft_pressed():
 	_clear_crafting()
