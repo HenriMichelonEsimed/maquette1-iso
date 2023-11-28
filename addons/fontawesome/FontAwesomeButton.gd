@@ -18,7 +18,7 @@ func _init():
 	#horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	#vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	# disable some things, this is icon not text
-	auto_translate = false
+	#auto_translate = false
 	localize_numeral_system = false
 
 	set_icon_type(icon_type)

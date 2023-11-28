@@ -90,7 +90,6 @@ alignment = 1
 
 [node name="ButtonCancel" type="Button" parent="Panel/Content/VBoxContainer/Bottom"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Ok"
 theme_override_colors/font_color = Color(1, 1, 1, 1)

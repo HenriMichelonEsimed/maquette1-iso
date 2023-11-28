@@ -63,7 +63,6 @@ horizontal_alignment = 1
 
 [node name="ButtonCancel" type="Button" parent="Content/VBoxContainer/Top"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Close"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -98,7 +97,6 @@ alignment = 1
 
 [node name="ButtonDelete" type="Button" parent="Content/VBoxContainer/Bottom"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Delete"
 focus_mode = 0
@@ -121,7 +119,6 @@ icon_name = "trash"
 
 [node name="ButtonLoad" type="Button" parent="Content/VBoxContainer/Bottom"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Load"
 focus_mode = 0

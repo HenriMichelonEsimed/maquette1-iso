@@ -158,7 +158,6 @@ size_flags_horizontal = 0
 
 [node name="ButtonMenu" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/TopMenu"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Menu"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -179,7 +178,6 @@ icon_name = "bars"
 
 [node name="ButtonInventory" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/TopMenu"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Inventory"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -193,6 +191,7 @@ theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = ExtResource("5_ki3d2")
 theme_override_styles/hover = ExtResource("5_ki3d2")
 theme_override_styles/pressed = ExtResource("5_ki3d2")
+shortcut_in_tooltip = false
 text = ""
 script = ExtResource("6_2kw7t")
 icon_size = 20
@@ -200,7 +199,6 @@ icon_name = "toolbox"
 
 [node name="ButtonTerminal" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/TopMenu"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Smartphone"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -226,7 +224,6 @@ size_flags_horizontal = 0
 
 [node name="ButtonSave" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/OptionMenu"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Save"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -247,7 +244,6 @@ icon_name = "download"
 
 [node name="ButtonLoad" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/OptionMenu"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Load"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -268,7 +264,6 @@ icon_name = "upload"
 
 [node name="ButtonParams" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/OptionMenu"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Settings"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -289,7 +284,6 @@ icon_name = "sliders"
 
 [node name="ButtonJoypad" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/OptionMenu"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Controls"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -310,7 +304,6 @@ icon_name = "keyboard"
 
 [node name="ButtonExit" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/OptionMenu"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Quit"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -396,7 +389,7 @@ offset_top = -120.0
 offset_right = 351.0
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 11
 theme_override_styles/panel = SubResource("StyleBoxFlat_enm55")
 
 [node name="LabelNotification" type="Label" parent="Game/UI"]
@@ -473,7 +466,6 @@ offset_top = 8.0
 offset_right = -8.0
 offset_bottom = 34.0
 grow_horizontal = 0
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Cancel"
 theme_override_colors/font_color = Color(1, 1, 1, 1)

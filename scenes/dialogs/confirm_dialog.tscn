@@ -75,7 +75,6 @@ vertical_alignment = 1
 
 [node name="ButtonCancel" type="Button" parent="Panel/Content/VBoxContainer/Top"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Cancel"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -110,7 +109,6 @@ alignment = 1
 
 [node name="ButtonYes" type="Button" parent="Panel/Content/VBoxContainer/Bottom"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Yes"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -132,7 +130,6 @@ icon_name = "check"
 
 [node name="ButtonNo" type="Button" parent="Panel/Content/VBoxContainer/Bottom"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "No"
 theme_override_colors/font_color = Color(1, 1, 1, 1)

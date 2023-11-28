@@ -121,8 +121,8 @@ alignment = 1
 [node name="ButtonQuests" type="Button" parent="Borders/Screen/Content/HBoxContainer"]
 custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
+tooltip_text = "Quests"
 theme_override_colors/font_color = Color(0.121569, 0.298039, 0.313726, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
@@ -145,8 +145,8 @@ icon_name = "clipboard-question"
 [node name="ButtonMessages" type="Button" parent="Borders/Screen/Content/HBoxContainer"]
 custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
+tooltip_text = "Messages"
 theme_override_colors/font_color = Color(0.321569, 0.227451, 0.337255, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
@@ -172,8 +172,8 @@ alignment = 1
 
 [node name="ButtonHomeTerm" type="Button" parent="Borders/Screen/Content/HBoxContainer2"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
+tooltip_text = "Close"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1

@@ -78,7 +78,6 @@ size_flags_horizontal = 3
 
 [node name="ButtonClose" type="Button" parent="Content/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Close"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -123,7 +122,6 @@ layout_mode = 2
 
 [node name="ButtonAll" type="Button" parent="Content/VBoxContainer/Lists/Buttons"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "T"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -152,7 +150,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_3xv2i")
 
 [node name="ButtonDrop" type="Button" parent="Content/VBoxContainer/Lists/Buttons/Middle"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Transfer"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -173,7 +170,6 @@ icon_name = "angle-left"
 
 [node name="ButtonPick" type="Button" parent="Content/VBoxContainer/Lists/Buttons/Middle"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Transfer"
 theme_override_colors/font_color = Color(1, 1, 1, 1)

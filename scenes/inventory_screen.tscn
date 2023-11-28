@@ -125,7 +125,6 @@ horizontal_alignment = 1
 
 [node name="ButtonBack" type="Button" parent="Content/Top/HBoxContainer"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Close"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -278,7 +277,6 @@ alignment = 1
 [node name="Drop" type="Button" parent="Content/Body/Content/PanelItem/Content/Actions"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Drop"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -301,7 +299,6 @@ icon_name = "arrow-up-from-bracket"
 [node name="Use" type="Button" parent="Content/Body/Content/PanelItem/Content/Actions"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Use"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -324,7 +321,6 @@ icon_name = "hand-back-fist"
 [node name="Craft" type="Button" parent="Content/Body/Content/PanelItem/Content/Actions"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Craft"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -369,7 +365,6 @@ vertical_alignment = 1
 
 [node name="ButtonStopCraft" type="Button" parent="Content/Body/Content/PanelCrafting/Content/Top"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Cancel"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -431,7 +426,6 @@ alignment = 1
 [node name="DropCraft" type="Button" parent="Content/Body/Content/PanelCrafting/Content/Actions"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Remove"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -455,7 +449,6 @@ icon_name = "ban"
 [node name="Craft" type="Button" parent="Content/Body/Content/PanelCrafting/Content/Actions"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Make"
 theme_override_colors/font_color = Color(1, 1, 1, 1)

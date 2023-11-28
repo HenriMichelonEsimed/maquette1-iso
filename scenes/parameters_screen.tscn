@@ -81,7 +81,6 @@ horizontal_alignment = 1
 
 [node name="ButtonClose" type="Button" parent="Borders/Content/Top"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Close"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -153,7 +152,6 @@ alignment = 2
 
 [node name="ButtonSave" type="Button" parent="Borders/Content/Panel/Borders/Settings/Bottom"]
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 tooltip_text = "Apply"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
