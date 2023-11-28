@@ -71,6 +71,7 @@ var r2b = [ "Where is my sandwitch ?", r2c]
 func r2d():
 	var item = GameState.inventory.getitem(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_2_pickels")
 	if item != null:
+		GameState.quests.finish_advpoint("main","lvl0_admin_woman_want_sandwitch_with_pickles")
 		return [tr("[Give %s]") % tr(item.label),
 		[
 			["Thank you ! Here is the access card", a1, item], [

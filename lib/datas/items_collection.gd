@@ -29,7 +29,7 @@ func add(item:Item):
 		if (found.size() > 0):
 			item.quantity += found[0].quantity
 			_items.erase(found[0])
-	_items.push_back(item)
+	_items.push_front(item)
 	
 func remove(item:Item):
 	if add_multiples and (item is ItemMultiple):

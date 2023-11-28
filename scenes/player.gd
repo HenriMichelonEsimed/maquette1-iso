@@ -51,7 +51,7 @@ func use(target:Vector2, camera:Camera3D):
 		var dist = global_position.distance_to(iray.collider.global_position)
 		var use_min_dist = 1.5
 		if iray.collider is InteractiveCharacter:
-			use_min_dist = 2
+			use_min_dist = 2.5
 		if (dist < use_min_dist):
 			_on_collect_item_aera_body_entered(iray.collider)
 			action_use()

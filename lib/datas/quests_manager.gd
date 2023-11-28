@@ -12,7 +12,6 @@ func label(quest:String) -> String:
 	return _quests[quest].label
 	
 func current(quest:String) -> QuestGoal:
-	print(_quests[quest].current.key )
 	return _quests[quest].current
 
 func event(quest:String, type:Quest.QuestEventType, event_key:String):

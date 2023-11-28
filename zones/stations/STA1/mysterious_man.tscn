@@ -1,17 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://27sty830tukx"]
 
 [ext_resource type="Script" path="res://zones/stations/STA1/mysterious_man.gd" id="1_wq1xo"]
-[ext_resource type="PackedScene" uid="uid://05srs73auu0f" path="res://characters/2/char_2.tscn" id="2_iefcc"]
+[ext_resource type="PackedScene" uid="uid://dpaor4tfk11x" path="res://characters/3/char_3.tscn" id="2_livbq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_khdtm"]
-size = Vector3(1, 1.6236, 1.76908)
+size = Vector3(1, 1.6236, 1.52057)
 
 [node name="MysteriousMan" type="CharacterBody3D"]
 script = ExtResource("1_wq1xo")
 label = "Mysterious Person"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.830146, 0.66194)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.830146, 0.456397)
 shape = SubResource("BoxShape3D_khdtm")
 
-[node name="char_2" parent="." instance=ExtResource("2_iefcc")]
+[node name="char_3" parent="." instance=ExtResource("2_livbq")]
