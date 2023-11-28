@@ -109,12 +109,7 @@ func _item_details(_item:Item, index):
 	item_title.text = item.label
 	weigth_value.text = tr("Weigth : %.2f") % _item.weight
 	price_value.text = tr("Unit price : %.2f") % _item.price
-	for c in node_3d.get_children():
-		c.queue_free()
-	var clone = _item.duplicate()
-	node_3d.add_child(clone)
-	clone.position = Vector3.ZERO
-	clone.scale = clone.scale * (clone.preview_scale+1)
+	Tools.show_item(_item, node_3d)
 	item_content.visible = true
 
 func _next_tab():

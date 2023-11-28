@@ -2,6 +2,7 @@ extends StaticBody3D
 class_name Usable
 
 signal using(is_used:bool)
+signal unlock(success:bool)
 @export var label:String
 
 var save:bool
@@ -29,11 +30,16 @@ func _check_tool_use(message:String, tools_to_use:Array) -> bool:
 		for tool in tools_to_use:
 			if (tool[0] == GameState.current_tool.type) and (tool[1] == GameState.current_tool.key):
 				unlocked = true
+				unlock.emit(true)
 				return true
 	NotifManager.notif(message)
+	unlock.emit(false)
 	return check
 	
 func _check_use():
+	if (GameState.current_tool != null):
+		unlock.emit(false)
+		return false
 	return true
 
 func force_use():

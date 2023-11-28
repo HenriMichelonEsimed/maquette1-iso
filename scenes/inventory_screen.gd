@@ -52,7 +52,8 @@ func _ready():
 	_resize()
 	StateSaver.loadState(state)
 	_refresh()
-	tabs.current_tab = state.tab
+	if list_content[state.tab].item_count > 0:
+		tabs.current_tab = state.tab
 	connect("item_dropped", GameState.current_zone.on_item_dropped)
 
 func _process(_delta):
@@ -127,13 +128,7 @@ func _item_details(_item:Item, index):
 	item = _item
 	item_title.text = item.label
 	weigth_value.text = tr("Weigth : %.2f") % _item.weight
-	for c in node_3d.get_children():
-		c.queue_free()
-	var clone = _item.duplicate()
-	node_3d.add_child(clone)
-	clone.position = Vector3.ZERO
-	clone.rotation = Vector3.ZERO
-	clone.scale = clone.scale * (clone.preview_scale+1)
+	Tools.show_item(_item, node_3d)
 	item_content.visible = true
 
 func _set_tab():

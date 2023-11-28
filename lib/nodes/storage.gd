@@ -3,8 +3,8 @@ class_name Storage
 
 signal open(node:Storage)
 
-func _init():
-	super(false)
+func _init(save:bool=false):
+	super(true)
 	
 func get_items() -> Array:
 	return find_children("*", "Item", true, false)

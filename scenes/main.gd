@@ -13,6 +13,7 @@ extends Node3D
 @onready var rayCast = $Game/CameraPivot/Camera/RayCast
 @onready var tool_3d = $"Game/UI/PanelTool/ViewContent/3DView/InsertPoint"
 @onready var panel_tool = $Game/UI/PanelTool
+@onready var label_tool = $Game/UI/PanelTool/LabelTool
 @onready var optionMenuButtons = [
 	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonSave,
 	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonParams,
@@ -119,6 +120,8 @@ func _change_zonelevel(zone_name:String, spawnpoint_key:String):
 		GameState.current_zone.disconnect("change_zone", _on_change_zonelevel)
 		for node in GameState.current_zone.find_children("*", "Storage", true, true):
 			node.disconnect("open", _on_storage_open)
+		for node in GameState.current_zone.find_children("*", "Usable", true, true):
+			node.disconnect("unlock", _on_usable_unlock)
 		for node in GameState.current_zone.find_children("*", "InteractiveCharacter", true, true):
 			node.disconnect("talk", _on_npc_talk)
 			node.disconnect("end_talk", _on_end_talk)
@@ -132,6 +135,8 @@ func _change_zonelevel(zone_name:String, spawnpoint_key:String):
 	_spawn_player(spawnpoint_key)
 	for node in GameState.current_zone.find_children("*", "Storage", true, true):
 		node.connect("open", _on_storage_open)
+	for node in GameState.current_zone.find_children("*", "Usable", true, true):
+		node.connect("unlock", _on_usable_unlock)
 	for node in GameState.current_zone.find_children("*", "InteractiveCharacter", true, true):
 		node.connect("trade", _on_npc_trade)
 		node.connect("talk", _on_npc_talk)
@@ -180,7 +185,6 @@ func _on_joypas_connection_changed(id,connected):
 	else:
 		$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonJoypad.icon_name = "keyboard"
 		$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonJoypad.text = ""
-
 
 func _on_new_notification(message:String):
 	notificationTimer.stop()
@@ -365,11 +369,8 @@ func _on_list_notifications_item_clicked(index, at_position, mouse_button_index)
 
 func _on_item_use(item:Item):
 	GameState.current_tool = item
-	var clone = item.duplicate()
-	tool_3d.add_child(clone)
-	clone.position = Vector3.ZERO
-	clone.rotation = Vector3.ZERO
-	clone.scale = clone.scale * (clone.preview_scale+1)
+	Tools.show_item(item, tool_3d)
+	label_tool.text = tr(str(item))
 	panel_tool.visible = true
 
 func _on_tool_unuse_pressed():
@@ -377,4 +378,9 @@ func _on_tool_unuse_pressed():
 	panel_tool.visible = false
 	for c in tool_3d.get_children():
 		c.queue_free()
-	
+
+func _on_usable_unlock(success:bool):
+	if (success):
+		_on_tool_unuse_pressed()
+	elif (GameState.current_tool != null):
+		NotifManager.notif(tr("Nothing happens with '%s'") % tr(str(GameState.current_tool)))

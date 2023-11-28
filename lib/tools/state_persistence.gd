@@ -133,8 +133,9 @@ func loadState(res:State):
 			var is_used = file.get_8() == 1
 			var unlocked = file.get_8() == 1
 			var usable = parent.get_node_or_null(entry_name)
-			if (usable != null) and is_used: 
-				usable.use(false, true)
+			if (usable != null):
+				if is_used: 
+					usable.use(false, true)
 				usable.unlocked = unlocked
 		elif (entry_type == STATE_ITEMS):
 			var items:ItemsCollection = res.get(entry_name)
