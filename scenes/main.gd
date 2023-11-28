@@ -270,7 +270,7 @@ func _on_button_joypad_pressed():
 	var scene = load("res://scenes/controllers/" + scene_name + ".tscn").instantiate()
 	add_child(scene)
 	scene.connect("close", _on_resume)
-	
+
 func _on_load_savegame(savegame:String):
 	GameState.loadGame(savegame)
 	get_tree().reload_current_scene()
@@ -292,7 +292,7 @@ func _on_resume(from:Node=null):
 	$Game/UI.visible = true
 	$Game.visible = true
 	call_deferred("_resume")
-	
+
 func _resume():
 	GameState.paused = false
 
@@ -390,4 +390,4 @@ func _on_item_dropped(item:Item,quantity:int):
 	if (GameState.current_tool != null):
 		if (item.type == GameState.current_tool.type) and (item.key == GameState.current_tool.key):
 			_on_tool_unuse_pressed()
-	
+

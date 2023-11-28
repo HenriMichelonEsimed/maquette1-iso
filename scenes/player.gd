@@ -26,6 +26,7 @@ var char_to_talk:InteractiveCharacter = null
 var signaled = false
 var move_to_target = null
 var move_to_previous_position = null
+var collect_items = []
 
 const directions = {
 	"forward" : 	[  { 'x':  1, 'z': -1 },  { 'x':  1, 'z':  1 },  { 'x': -1, 'z':  1 },  { 'x': -1, 'z': -1 } ],
@@ -56,8 +57,6 @@ func use(target:Vector2, camera:Camera3D):
 			_on_collect_item_aera_body_entered(iray.collider)
 			action_use()
 			_on_collect_item_aera_body_exited(iray.collider)
-	#else:
-	#	action_use()
 
 func stop_move_to():
 	if (move_to_target != null):
@@ -77,7 +76,6 @@ func action_use():
 	elif (item_to_collect != null):
 		_look_at(item_to_collect)
 		item_collected.emit(item_to_collect,-1)
-		item_to_collect = null
 	elif (char_to_talk != null):
 		_look_at(char_to_talk)
 		char_to_talk.interact()
@@ -86,6 +84,7 @@ func _process(_delta):
 	if (GameState.paused): return
 	if Input.is_action_just_pressed("player_use_nomouse"):
 		action_use()
+		return
 
 func _physics_process(delta):
 	if (GameState.paused): return
@@ -198,6 +197,13 @@ func _on_camera_view_rotate(view:int):
 	current_view = view
 
 func _on_collect_item_aera_body_entered(node:Node):
+	collect_items.push_back(node)
+	if item_to_collect == null:
+		_collect()
+
+func _collect():
+	if (collect_items.is_empty()): return
+	var node = collect_items.pop_back()
 	if (node is Item):
 		item_to_collect = node
 		display_info.emit(node)
@@ -215,6 +221,7 @@ func _on_collect_item_aera_body_exited(_node:Node):
 	node_to_use = null
 	char_to_talk = null
 	hide_info.emit()
+	_collect()
 
 func _on_view_pivot_view_moving():
 	signaled = false
