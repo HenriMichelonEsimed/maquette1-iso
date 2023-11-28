@@ -146,8 +146,9 @@ grow_vertical = 2
 layout_mode = 1
 offset_right = 131.0
 offset_bottom = 40.0
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Game/UI/MarginContainer"]
 layout_mode = 2
@@ -157,6 +158,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 
 [node name="ButtonMenu" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/TopMenu"]
+custom_minimum_size = Vector2(56, 0)
 layout_mode = 2
 localize_numeral_system = false
 tooltip_text = "Menu"
@@ -167,16 +169,17 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("6_5m64j")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("5_ki3d2")
 theme_override_styles/hover = ExtResource("5_ki3d2")
 theme_override_styles/pressed = ExtResource("5_ki3d2")
 text = ""
 script = ExtResource("6_2kw7t")
-icon_size = 20
+icon_size = 32
 icon_name = "bars"
 
 [node name="ButtonInventory" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/TopMenu"]
+custom_minimum_size = Vector2(56, 0)
 layout_mode = 2
 localize_numeral_system = false
 tooltip_text = "Inventory"
@@ -187,17 +190,18 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("6_5m64j")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("5_ki3d2")
 theme_override_styles/hover = ExtResource("5_ki3d2")
 theme_override_styles/pressed = ExtResource("5_ki3d2")
 shortcut_in_tooltip = false
 text = ""
 script = ExtResource("6_2kw7t")
-icon_size = 20
+icon_size = 32
 icon_name = "toolbox"
 
 [node name="ButtonTerminal" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/TopMenu"]
+custom_minimum_size = Vector2(56, 0)
 layout_mode = 2
 localize_numeral_system = false
 tooltip_text = "Smartphone"
@@ -208,21 +212,21 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("6_5m64j")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("5_ki3d2")
 theme_override_styles/hover = ExtResource("5_ki3d2")
 theme_override_styles/pressed = ExtResource("5_ki3d2")
 text = ""
 script = ExtResource("6_2kw7t")
-icon_size = 20
+icon_size = 32
 icon_name = "mobile"
 
 [node name="OptionMenu" type="VBoxContainer" parent="Game/UI/MarginContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 
 [node name="ButtonSave" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/OptionMenu"]
+custom_minimum_size = Vector2(56, 0)
 layout_mode = 2
 localize_numeral_system = false
 tooltip_text = "Save"
@@ -233,16 +237,17 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("6_5m64j")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("5_ki3d2")
 theme_override_styles/hover = ExtResource("5_ki3d2")
 theme_override_styles/pressed = ExtResource("5_ki3d2")
 text = ""
 script = ExtResource("6_2kw7t")
-icon_size = 20
+icon_size = 32
 icon_name = "download"
 
 [node name="ButtonLoad" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/OptionMenu"]
+custom_minimum_size = Vector2(56, 0)
 layout_mode = 2
 localize_numeral_system = false
 tooltip_text = "Load"
@@ -253,16 +258,17 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("6_5m64j")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("5_ki3d2")
 theme_override_styles/hover = ExtResource("5_ki3d2")
 theme_override_styles/pressed = ExtResource("5_ki3d2")
 text = ""
 script = ExtResource("6_2kw7t")
-icon_size = 20
+icon_size = 32
 icon_name = "upload"
 
 [node name="ButtonParams" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/OptionMenu"]
+custom_minimum_size = Vector2(56, 0)
 layout_mode = 2
 localize_numeral_system = false
 tooltip_text = "Settings"
@@ -273,16 +279,17 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("6_5m64j")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("5_ki3d2")
 theme_override_styles/hover = ExtResource("5_ki3d2")
 theme_override_styles/pressed = ExtResource("5_ki3d2")
 text = ""
 script = ExtResource("6_2kw7t")
-icon_size = 20
+icon_size = 32
 icon_name = "sliders"
 
 [node name="ButtonJoypad" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/OptionMenu"]
+custom_minimum_size = Vector2(56, 0)
 layout_mode = 2
 localize_numeral_system = false
 tooltip_text = "Controls"
@@ -293,16 +300,17 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("6_5m64j")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("5_ki3d2")
 theme_override_styles/hover = ExtResource("5_ki3d2")
 theme_override_styles/pressed = ExtResource("5_ki3d2")
 text = ""
 script = ExtResource("6_2kw7t")
-icon_size = 20
+icon_size = 32
 icon_name = "keyboard"
 
 [node name="ButtonExit" type="Button" parent="Game/UI/MarginContainer/VBoxContainer/OptionMenu"]
+custom_minimum_size = Vector2(56, 0)
 layout_mode = 2
 localize_numeral_system = false
 tooltip_text = "Quit"
@@ -313,13 +321,13 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("6_5m64j")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("5_ki3d2")
 theme_override_styles/hover = ExtResource("5_ki3d2")
 theme_override_styles/pressed = ExtResource("5_ki3d2")
 text = ""
 script = ExtResource("6_2kw7t")
-icon_size = 20
+icon_size = 32
 icon_name = "person-walking-arrow-right"
 
 [node name="LabelInfo" type="Label" parent="Game/UI"]

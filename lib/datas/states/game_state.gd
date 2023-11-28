@@ -17,6 +17,7 @@ var view_pivot:ViewPivot
 var current_tool = null
 var is_mobile:bool
 var use_joypad = null
+var savegame_name:String
 
 func _ready():
 	is_mobile = OS.get_name() in ["android", "iOS"]
@@ -56,9 +57,9 @@ func loadGame(savegame = null):
 	StateSaver.loadState(camera)
 	var player_state = PlayerState.new()
 	StateSaver.loadState(player_state)
-	StateSaver.loadState(InventoryState.new(inventory))
-	if (player_state.current_tool_type != -1) and inventory.have(player_state.current_tool_type, player_state.current_tool_key):
+	if (player_state.current_tool_type != -1):
 		current_tool = Item.load(player_state.current_tool_type, player_state.current_tool_key)
+	StateSaver.loadState(InventoryState.new(inventory))
 	StateSaver.loadState(EventsQueueState.new(events_queue))
 	
 func loadZone(zone_name:String):

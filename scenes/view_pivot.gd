@@ -3,7 +3,7 @@ class_name ViewPivot
 
 signal view_moving()
 const player_maxdistance = Vector3(50.0, 0, 50.0)
-const mouse_delta = 5
+const mouse_delta = 1
 
 var current_view = 0
 var signaled = false
@@ -16,11 +16,11 @@ func _process(_delta):
 	if Input.is_action_pressed("modifier") or player_moving : return
 	mouse_vector = Vector2.ZERO
 	var mouse_pos =  get_viewport().get_mouse_position()
-	if (mouse_pos.x > (get_viewport().size.x - mouse_delta)):
+	if (mouse_pos.x >= (get_viewport().size.x - mouse_delta)):
 		mouse_vector.x = -1
 	elif (mouse_pos.x < mouse_delta):
 		mouse_vector.x = 1
-	if (mouse_pos.y > (get_viewport().size.y - mouse_delta)):
+	if (mouse_pos.y >= (get_viewport().size.y - mouse_delta)):
 		mouse_vector.y = -1
 	elif (mouse_pos.y < mouse_delta):
 		mouse_vector.y = 1

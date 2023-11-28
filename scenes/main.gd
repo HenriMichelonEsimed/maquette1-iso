@@ -20,13 +20,13 @@ extends Node3D
 	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonJoypad,
 	$Game/UI/MarginContainer/VBoxContainer/OptionMenu/ButtonExit
 ]
+
 var items_transfert_dialog:ItemsTransfertDialog
 var last_spawnpoint:String
 var talking_char:InteractiveCharacter
 var _prev_lang:String
 var _previous_zone:Zone
 var talk_window_just_closed = false
-var savegame_name:String
 var trading = false
 
 func _ready():
@@ -145,7 +145,6 @@ func _change_zonelevel(zone_name:String, spawnpoint_key:String):
 func _on_change_zonelevel(trigger:ZoneChangeTrigger):
 	if (trigger.zone_name == GameState.location.zone_name): 
 		return
-	GameState.saveGame()
 	_change_zonelevel(trigger.zone_name, trigger.spawnpoint_key)
 	trigger.is_triggered = false
 
@@ -230,17 +229,19 @@ func _on_button_save_pressed():
 func _on_savegame_input(savegame):
 	if (savegame != null):
 		if (StateSaver.savegame_exists(savegame)):
-			savegame_name = savegame
+			GameState.savegame_name = savegame
 			var scene = load_dialog("dialogs/confirm_dialog")
 			scene.connect("confirm", _on_savegame_confirm)
 			scene.open("Save game", "Overwrite existing save?")
 		else:
 			GameState.saveGame(savegame)
 			_on_resume()
+	else:
+		_on_resume()
 
 func _on_savegame_confirm(overwrite:bool):
 	if (overwrite):
-		GameState.saveGame(savegame_name)
+		GameState.saveGame(GameState.savegame_name)
 		_on_resume()
 
 func load_dialog(filename:String):
@@ -369,6 +370,7 @@ func _on_list_notifications_item_clicked(index, at_position, mouse_button_index)
 	_display_notification(notificationsList.get_item_text(index))
 
 func _on_item_use(item:Item):
+	_on_tool_unuse_pressed()
 	GameState.current_tool = item.duplicate()
 	if (item is ItemMultiple):
 		GameState.current_tool.quantity = 1

@@ -918,7 +918,7 @@ transform = Transform3D(1.03316e-07, 0, -1, 0, 1, 0, 1, 0, 1.03316e-07, 11.8594,
 script = ExtResource("54_h2sxl")
 
 [node name="Credit" parent="Canteen/Locker3" instance=ExtResource("58_6ad3g")]
-transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, 11.2, 0, 3.02285)
+transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, -0.0263462, 0.0287373, 0.0155907)
 quantity = 4
 
 [node name="Box1" parent="Canteen" instance=ExtResource("47_hu7xp")]

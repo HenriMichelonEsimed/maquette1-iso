@@ -6,10 +6,10 @@ signal close(node:Node)
 @onready var labelMessage = $Borders/Screen/Content/Content/Body/MarginContainer/LabelMessage
 @onready var listQuests = $Borders/Screen/Content/Content/Body/MarginContainer/ListQuests
 @onready var labelCurrent = $Borders/Screen/Content/Content/Label
-@onready var buttonQuests = $Borders/Screen/Content/HBoxContainer/ButtonQuests
-@onready var buttonMessages = $Borders/Screen/Content/HBoxContainer/ButtonMessages
-@onready var label_left = $Borders/Screen/Content/HBoxContainer/LabelLeft
-@onready var label_right = $Borders/Screen/Content/HBoxContainer/LabelRight
+@onready var buttonQuests = $Borders/Screen/Content/MarginContainer/HBoxContainer/ButtonQuests
+@onready var buttonMessages = $Borders/Screen/Content/MarginContainer/HBoxContainer/ButtonMessages
+@onready var label_left = $Borders/Screen/Content/MarginContainer/HBoxContainer/LabelLeft
+@onready var label_right = $Borders/Screen/Content/MarginContainer/HBoxContainer/LabelRight
 
 var currentButton:Button
 var displayMessage = false

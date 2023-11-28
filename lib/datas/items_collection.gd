@@ -45,8 +45,10 @@ func remove(item:Item):
 			if (found[0].quantity <= 0): 
 				_items.erase(found[0])
 			return
+	else:
+		item = getitem(item.type, item.key)
 	_items.erase(item)
-	
+
 func transfert_to(coll:ItemsCollection, type:int, key:String):
 	var item = getitem(type, key)
 	if (item != null):

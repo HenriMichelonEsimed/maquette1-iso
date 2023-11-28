@@ -114,12 +114,17 @@ text = "[b]Objet du message[/b]
 Hello, bonjour !
 "
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Borders/Screen/Content"]
+[node name="MarginContainer" type="MarginContainer" parent="Borders/Screen/Content"]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Borders/Screen/Content/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="LabelLeft" type="Label" parent="Borders/Screen/Content/HBoxContainer"]
+[node name="LabelLeft" type="Label" parent="Borders/Screen/Content/MarginContainer/HBoxContainer"]
 layout_mode = 2
 auto_translate = false
 localize_numeral_system = false
@@ -132,8 +137,8 @@ script = ExtResource("5_21y4x")
 icon_size = 32
 icon_name = "left-long"
 
-[node name="ButtonQuests" type="Button" parent="Borders/Screen/Content/HBoxContainer"]
-custom_minimum_size = Vector2(52, 52)
+[node name="ButtonQuests" type="Button" parent="Borders/Screen/Content/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
 localize_numeral_system = false
 tooltip_text = "Quests"
@@ -145,7 +150,7 @@ theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("4_8e451")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = ExtResource("5_gyggl")
 theme_override_styles/hover = ExtResource("5_gyggl")
 theme_override_styles/pressed = ExtResource("5_gyggl")
@@ -153,11 +158,11 @@ theme_override_styles/disabled = ExtResource("5_gyggl")
 theme_override_styles/focus = ExtResource("5_gyggl")
 text = ""
 script = ExtResource("6_i6hcg")
-icon_size = 32
+icon_size = 48
 icon_name = "clipboard-question"
 
-[node name="ButtonMessages" type="Button" parent="Borders/Screen/Content/HBoxContainer"]
-custom_minimum_size = Vector2(52, 52)
+[node name="ButtonMessages" type="Button" parent="Borders/Screen/Content/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
 localize_numeral_system = false
 tooltip_text = "Messages"
@@ -169,7 +174,7 @@ theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("4_8e451")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = ExtResource("5_gyggl")
 theme_override_styles/hover = ExtResource("5_gyggl")
 theme_override_styles/pressed = ExtResource("5_gyggl")
@@ -177,10 +182,10 @@ theme_override_styles/disabled = ExtResource("5_gyggl")
 theme_override_styles/focus = ExtResource("5_gyggl")
 text = ""
 script = ExtResource("6_i6hcg")
-icon_size = 32
+icon_size = 48
 icon_name = "envelope"
 
-[node name="LabelRight" type="Label" parent="Borders/Screen/Content/HBoxContainer"]
+[node name="LabelRight" type="Label" parent="Borders/Screen/Content/MarginContainer/HBoxContainer"]
 layout_mode = 2
 auto_translate = false
 localize_numeral_system = false
@@ -193,19 +198,27 @@ script = ExtResource("5_21y4x")
 icon_size = 32
 icon_name = "right-long"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Borders/Screen/Content"]
+[node name="MarginContainer2" type="MarginContainer" parent="Borders/Screen/Content"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 12
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Borders/Screen/Content/MarginContainer2"]
 layout_mode = 2
 alignment = 1
 
-[node name="ButtonHomeTerm" type="Button" parent="Borders/Screen/Content/HBoxContainer2"]
+[node name="ButtonHomeTerm" type="Button" parent="Borders/Screen/Content/MarginContainer2/HBoxContainer2"]
 layout_mode = 2
 localize_numeral_system = false
 tooltip_text = "Close"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("4_8e451")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = ExtResource("7_dcejo")
 theme_override_styles/hover = ExtResource("7_dcejo")
 theme_override_styles/pressed = ExtResource("7_dcejo")
@@ -213,10 +226,10 @@ theme_override_styles/disabled = ExtResource("7_dcejo")
 theme_override_styles/focus = ExtResource("7_dcejo")
 text = ""
 script = ExtResource("6_i6hcg")
-icon_size = 32
+icon_size = 48
 icon_name = "xmark"
 
 [connection signal="item_clicked" from="Borders/Screen/Content/Content/Body/MarginContainer/ListMessages" to="." method="_on_list_messages_item_clicked"]
-[connection signal="pressed" from="Borders/Screen/Content/HBoxContainer/ButtonQuests" to="." method="_on_button_quests_pressed"]
-[connection signal="pressed" from="Borders/Screen/Content/HBoxContainer/ButtonMessages" to="." method="_on_button_list_messages_pressed"]
-[connection signal="pressed" from="Borders/Screen/Content/HBoxContainer2/ButtonHomeTerm" to="." method="_on_button_back_pressed"]
+[connection signal="pressed" from="Borders/Screen/Content/MarginContainer/HBoxContainer/ButtonQuests" to="." method="_on_button_quests_pressed"]
+[connection signal="pressed" from="Borders/Screen/Content/MarginContainer/HBoxContainer/ButtonMessages" to="." method="_on_button_list_messages_pressed"]
+[connection signal="pressed" from="Borders/Screen/Content/MarginContainer2/HBoxContainer2/ButtonHomeTerm" to="." method="_on_button_back_pressed"]
