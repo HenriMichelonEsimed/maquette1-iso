@@ -605,7 +605,7 @@ transform = Transform3D(0.976766, 0, 0.214309, 0, 1, 0, -0.214309, 0, 0.976766, 
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 0.5, 0, 5)
 
 [node name="FloorLamp1" parent="Admistration" instance=ExtResource("30_7rsgu")]
-transform = Transform3D(-0.776805, 0, 0.629741, 0, 1, 0, -0.629741, 0, -0.776805, -3.632, 0, -4.852)
+transform = Transform3D(-0.776805, 0, 0.629741, 0, 1, 0, -0.629741, 0, -0.776805, -4.16264, 0, -5.19807)
 
 [node name="FloorLamp2" parent="Admistration" instance=ExtResource("30_7rsgu")]
 transform = Transform3D(-0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, -0.5, -4, 0, 5)

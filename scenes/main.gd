@@ -369,12 +369,16 @@ func _on_list_notifications_item_clicked(index, at_position, mouse_button_index)
 	_display_notification(notificationsList.get_item_text(index))
 
 func _on_item_use(item:Item):
-	GameState.current_tool = item
-	Tools.show_item(item, tool_3d)
-	label_tool.text = tr(str(item))
+	GameState.current_tool = item.duplicate()
+	GameState.current_tool.quantity = 1
+	GameState.inventory.remove(GameState.current_tool)
+	Tools.show_item(GameState.current_tool, tool_3d)
+	label_tool.text = tr(str(GameState.current_tool))
 	panel_tool.visible = true
 
 func _on_tool_unuse_pressed():
+	if (GameState.current_tool == null): return
+	GameState.inventory.add(GameState.current_tool.duplicate())
 	GameState.current_tool = null
 	panel_tool.visible = false
 	for c in tool_3d.get_children():

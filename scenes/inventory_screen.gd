@@ -259,6 +259,8 @@ func _on_crafting_pressed():
 	GameState.inventory.add(crafting_target)
 	crafting_items.clear()
 	list_crafting.clear()
+	crafting_target = null
+	label_recipe.text = "-"
 	_resize(false)
 	_refresh()
 
