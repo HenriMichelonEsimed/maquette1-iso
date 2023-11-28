@@ -10,7 +10,6 @@ Drop;Lâcher
 Hello !;Salut !
 Bye;Au revoir
 Weigth : %.2f;Poids : %.2f
-Transfert;Transfert
 How many ?;Combien ?
 Cancel;Annuler
 Tools;Outils
@@ -57,3 +56,15 @@ Ok, bye;Ok, au revoir
 [Give %s];[Donner %s]
 Crafting;Artisanat
 Nothing happens with '%s';Rien ne se passe avec '%s'
+Use;Utiliser
+Craft;Artisanat
+Remove;Supprimer
+Make;Fabriquer
+Close;Fermer
+Transfer all;Tout transférer
+Transfer;Transférer
+Load;Charger
+Menu;Menu
+Smartphone;Téléphone
+Controls;Contrôles
+Quit;Quitter
