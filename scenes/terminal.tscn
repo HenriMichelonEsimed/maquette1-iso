@@ -21,7 +21,7 @@ corner_radius_bottom_left = 24
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tccb1"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7bku"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_conkj"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Tterminal" type="TextureRect"]
@@ -91,12 +91,13 @@ theme_override_constants/margin_right = 18
 theme_override_constants/margin_bottom = 18
 
 [node name="ListMessages" type="ItemList" parent="Borders/Screen/Content/Content/Body/MarginContainer"]
-visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hovered_color = Color(0.603922, 0.815686, 0.972549, 1)
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_constants/v_separation = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_tccb1")
-theme_override_styles/focus = SubResource("StyleBoxFlat_o7bku")
+theme_override_styles/focus = SubResource("StyleBoxFlat_conkj")
 
 [node name="ListQuests" type="RichTextLabel" parent="Borders/Screen/Content/Content/Body/MarginContainer"]
 visible = false

@@ -67,6 +67,8 @@ func _on_button_list_messages_pressed():
 	listMessages.grab_focus()
 	listMessages.visible = true
 	labelCurrent.visible = true
+	if (listMessages.item_count > 0) and listMessages.get_selected_items().is_empty():
+		listMessages.select(0)
 
 func _on_button_home_term_pressed():
 	_hide_all()
