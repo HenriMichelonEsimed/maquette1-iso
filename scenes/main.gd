@@ -96,6 +96,47 @@ func _process(_delta):
 	elif (GameState.current_tool != null) and Input.is_action_just_pressed("delete"):
 		_on_tool_unuse_pressed()
 	talk_window_just_closed = false
+	
+var last_collider = null
+var last_collider_mesh = []
+func _physics_process(delta):
+	if (rayCast.is_colliding()):
+		var collider:Node3D = rayCast.get_collider()
+		if (not collider.name.begins_with("Wall") or (last_collider == collider)): return
+		print(collider.name)
+		_reset_camera_collider()
+		if (collider.get_groups().is_empty()):
+			_set_camera_collider(collider)
+		else:
+			for friend in get_tree().get_nodes_in_group(collider.get_groups()[0]):
+				_set_camera_collider(friend)
+		last_collider = collider
+	else:
+		_reset_camera_collider()
+			
+func _set_camera_collider(collider):
+	var child_mesh = null
+	for child in collider.get_children():
+		if (child is MeshInstance3D):
+			child_mesh = child
+			break
+	if (child_mesh != null):
+		var mesh = child_mesh.mesh
+		for i in range(0, mesh.get_surface_count()):
+			var mat = mesh.surface_get_material(i).duplicate()
+			if (mat is ShaderMaterial):
+				mat.set_shader_parameter("alpha", 0.8)
+				child_mesh.set_surface_override_material(i, mat)
+				last_collider_mesh.push_back(child_mesh)
+			
+
+func _reset_camera_collider():
+	if (last_collider != null):
+		for mesh in last_collider_mesh:
+			for i in range(0, mesh.mesh.get_surface_count()):
+				mesh.set_surface_override_material(i, null)
+		last_collider = null
+		last_collider_mesh.clear()
 
 func _input(event):
 	if event is InputEventMouseMotion:

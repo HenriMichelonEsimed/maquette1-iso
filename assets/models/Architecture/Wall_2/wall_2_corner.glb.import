@@ -32,11 +32,11 @@ _subresources={
 "materials": {
 "Wall_2_core": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/materials/architecture/wall_1_core.tres"
+"use_external/path": "res://assets/materials/architecture/wall_2_core.tres"
 },
 "Wall_2_deco": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/materials/architecture/wall_1_deco.tres"
+"use_external/path": "res://assets/materials/architecture/wall_2_deco.tres"
 }
 }
 }

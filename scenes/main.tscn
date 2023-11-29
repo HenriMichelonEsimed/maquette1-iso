@@ -133,6 +133,7 @@ cameraPivotPath = NodePath("..")
 objectToFollowPath = NodePath("../../ViewPivot")
 
 [node name="RayCast" type="RayCast3D" parent="Game/CameraPivot/Camera"]
+target_position = Vector3(0, 0, -100)
 
 [node name="UI" type="Control" parent="Game"]
 layout_mode = 3
