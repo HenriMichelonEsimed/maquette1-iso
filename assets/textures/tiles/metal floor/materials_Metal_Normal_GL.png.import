@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cqfjqtrtrhl11"
-path.s3tc="res://.godot/imported/materials_Metal_Normal_GL.png-7f6c043c04d2c399d34d862778db7297.s3tc.ctex"
-path.etc2="res://.godot/imported/materials_Metal_Normal_GL.png-7f6c043c04d2c399d34d862778db7297.etc2.ctex"
+path.s3tc="res://.godot/imported/materials_Metal_Normal_GL.png-c7cf931df88d21013ba26bcc35607bbf.s3tc.ctex"
+path.etc2="res://.godot/imported/materials_Metal_Normal_GL.png-c7cf931df88d21013ba26bcc35607bbf.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -13,8 +13,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://assets/textures/tiles/metal floor/materials_Metal_Normal_GL.png"
-dest_files=["res://.godot/imported/materials_Metal_Normal_GL.png-7f6c043c04d2c399d34d862778db7297.s3tc.ctex", "res://.godot/imported/materials_Metal_Normal_GL.png-7f6c043c04d2c399d34d862778db7297.etc2.ctex"]
+source_file="res://assets/textures/tiles/Metal floor/materials_Metal_Normal_GL.png"
+dest_files=["res://.godot/imported/materials_Metal_Normal_GL.png-c7cf931df88d21013ba26bcc35607bbf.s3tc.ctex", "res://.godot/imported/materials_Metal_Normal_GL.png-c7cf931df88d21013ba26bcc35607bbf.etc2.ctex"]
 
 [params]
 

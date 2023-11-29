@@ -57,18 +57,6 @@ func transfert_to(coll:ItemsCollection, type:int, key:String):
 		coll.add(item.duplicate())
 		remove(item)
 
-func removeqty(item:ItemMultiple, qty:int) -> ItemMultiple:
-	if add_multiples:
-		var found = _items.filter(func(i): return i.key == item.key)
-		if (found.size() > 0) and (found[0].quantity >= qty):
-			var new_item = item.duplicate()
-			new_item.quantity = qty
-			found[0].quantity -= new_item.quantity
-			if (found[0].quantity <= 0):
-				_items.erase(found[0])
-			return new_item
-	return null
-
 func getall() -> Array:
 	return _items
 	

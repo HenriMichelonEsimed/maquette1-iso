@@ -222,6 +222,7 @@ icon_size = 32
 icon_name = "mobile"
 
 [node name="OptionMenu" type="VBoxContainer" parent="Game/UI/TopLeft/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 
