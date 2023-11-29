@@ -713,7 +713,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.8, 
 [node name="Wall_2_Corner3" parent="Canteen/Architecture" instance=ExtResource("10_uulfm")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -4.8, 0, 10)
 
-[node name="Wall_2_Corner4" parent="Canteen/Architecture" groups=["wcanteen1"] instance=ExtResource("10_uulfm")]
+[node name="Wall_2_Corner4" parent="Canteen/Architecture" groups=["wcanteen1", "wcanteen2"] instance=ExtResource("10_uulfm")]
 transform = Transform3D(1, 0, 1.3411e-07, 0, 1, 0, -1.3411e-07, 0, 1, 9.2, 0, 10)
 
 [node name="Wall_2_Corner2" parent="Canteen/Architecture" instance=ExtResource("10_uulfm")]
@@ -740,35 +740,35 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.2, 0
 [node name="Wall_13" parent="Canteen/Architecture" instance=ExtResource("8_sguot")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 6.2, 0, -6)
 
-[node name="Wall_14" parent="Canteen/Architecture" instance=ExtResource("8_sguot")]
+[node name="Wall_14" parent="Canteen/Architecture" groups=["wcanteen4"] instance=ExtResource("8_sguot")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 9.2, 0, -3)
 
-[node name="Wall_16" parent="Canteen/Architecture" instance=ExtResource("8_sguot")]
+[node name="Wall_16" parent="Canteen/Architecture" groups=["wcanteen3"] instance=ExtResource("8_sguot")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 9.2, 0, 1.5)
 
-[node name="Wall_20" parent="Canteen/Architecture" instance=ExtResource("8_sguot")]
+[node name="Wall_20" parent="Canteen/Architecture" groups=["wcanteen3"] instance=ExtResource("8_sguot")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 9.2, 0, 0.200001)
 
-[node name="Wall_17" parent="Canteen/Architecture" instance=ExtResource("8_sguot")]
+[node name="Wall_17" parent="Canteen/Architecture" groups=["wcanteen2", "wcanteen3"] instance=ExtResource("8_sguot")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 9.2, 0, 2.9)
 
-[node name="Wall_21" parent="Canteen/Architecture" instance=ExtResource("8_sguot")]
+[node name="Wall_21" parent="Canteen/Architecture" groups=["wcanteen5"] instance=ExtResource("8_sguot")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 10, 0, 2.9)
 
-[node name="Wall_22" parent="Canteen/Architecture" instance=ExtResource("8_sguot")]
+[node name="Wall_22" parent="Canteen/Architecture" groups=["wcanteen5"] instance=ExtResource("8_sguot")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 11.4, 0, 2.9)
 
-[node name="Wall_23" parent="Canteen/Architecture" instance=ExtResource("8_sguot")]
+[node name="Wall_23" parent="Canteen/Architecture" groups=["wcanteen5"] instance=ExtResource("8_sguot")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.1, 0, 2.1)
 
-[node name="Wall_28" parent="Canteen/Architecture" instance=ExtResource("8_sguot")]
+[node name="Wall_28" parent="Canteen/Architecture" groups=["wcanteen5"] instance=ExtResource("8_sguot")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.1, 0, 0.1)
 
-[node name="Wall_29" parent="Canteen/Architecture" instance=ExtResource("8_sguot")]
+[node name="Wall_29" parent="Canteen/Architecture" groups=["wcanteen5"] instance=ExtResource("8_sguot")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.1, 0, -1.9)
 
-[node name="Wall_30" parent="Canteen/Architecture" instance=ExtResource("8_sguot")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.1, 0, -3.9)
+[node name="Wall_30" parent="Canteen/Architecture" groups=["wcanteen5"] instance=ExtResource("8_sguot")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.1, 0, -3.88373)
 
 [node name="Wall_33" parent="Canteen/Architecture" instance=ExtResource("8_sguot")]
 transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 9.54309, 0, -5.5)
@@ -776,13 +776,13 @@ transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 9.54309,
 [node name="Wall_34" parent="Canteen/Architecture" instance=ExtResource("8_sguot")]
 transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 11.4483, 0, -5.5)
 
-[node name="Wall_31" parent="Canteen/Architecture" instance=ExtResource("8_sguot")]
+[node name="Wall_31" parent="Canteen/Architecture" groups=["wcanteen5"] instance=ExtResource("8_sguot")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.1, 0, -4.7)
 
-[node name="Wall_18" parent="Canteen/Architecture" instance=ExtResource("8_sguot")]
+[node name="Wall_18" parent="Canteen/Architecture" groups=["wcanteen2"] instance=ExtResource("8_sguot")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 9.2, 0, 4.9)
 
-[node name="Wall_19" parent="Canteen/Architecture" instance=ExtResource("8_sguot")]
+[node name="Wall_19" parent="Canteen/Architecture" groups=["wcanteen2"] instance=ExtResource("8_sguot")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 9.2, 0, 6.9)
 
 [node name="Wall_24" parent="Canteen/Architecture" instance=ExtResource("8_sguot")]
@@ -792,10 +792,10 @@ transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -1.7, 0,
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 2.3, 0, 10)
 
 [node name="Wall_26" parent="Canteen/Architecture" groups=["wcanteen1"] instance=ExtResource("8_sguot")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 4.3, 0, 10)
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 4.29347, 0, 10)
 
 [node name="Wall_27" parent="Canteen/Architecture" groups=["wcanteen1"] instance=ExtResource("8_sguot")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 6.2, 0, 10)
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 6.28955, 0, 10)
 
 [node name="Wall_4" parent="Canteen/Architecture" instance=ExtResource("8_sguot")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.8, 0, 1)
