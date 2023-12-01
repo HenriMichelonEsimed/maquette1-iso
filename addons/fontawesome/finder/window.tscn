@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://addons/fontawesome/finder/window.gd" id="1_1j1fa"]
 [ext_resource type="Script" path="res://addons/fontawesome/finder/option.gd" id="2_04t0g"]
-[ext_resource type="FontFile" uid="uid://dfgeh5tagnxur" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="3_1gnrw"]
+[ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="3_1gnrw"]
 [ext_resource type="Script" path="res://addons/fontawesome/FontAwesome.gd" id="4_swgx5"]
-[ext_resource type="FontFile" uid="uid://dqv1ko2cfvlae" path="res://addons/fontawesome/fonts/fa-regular-400.woff2" id="5_ti0jh"]
+[ext_resource type="FontFile" uid="uid://m4i7q63fedws" path="res://addons/fontawesome/fonts/fa-regular-400.woff2" id="5_ti0jh"]
 
 [node name="Finder" type="AcceptDialog"]
 title = "FontAwesome Icons"

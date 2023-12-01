@@ -20,14 +20,14 @@ func start():
 func _start():
 	pass
 
-func on_new_quest_event(type:Quest.QuestEventType, key:String):
+func on_new_quest_event(_type:Quest.QuestEventType, _key:String):
 	pass
 
 func success():
 	return null
 	
 func saveState(file:FileAccess):
-	file.store_8(started if 1 else 0)
+	file.store_8(1 if started else 0)
 
 func loadState(file:FileAccess):
 	started = file.get_8() == 1
