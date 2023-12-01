@@ -14,6 +14,8 @@ var object_to_follow
 var _size = -1
 var _view = 0
 var player_moving = false
+var zoom_in = false
+var zoom_out = false
 
 func _ready():
 	camera_pivot = get_node(cameraPivotPath)
@@ -30,24 +32,61 @@ func init():
 func move(pos):
 	camera_pivot.position = pos
 
+func _unhandled_input(event):
+	if (GameState.paused): return
+	if (event is InputEventMouseButton) and (not event.pressed):
+		if (event.button_index == MOUSE_BUTTON_WHEEL_DOWN):
+			if (Input.is_action_pressed("modifier")):
+				rotate_view(1)
+			else:
+				zoom_view(2)
+		elif (event.button_index == MOUSE_BUTTON_WHEEL_UP):
+			if (Input.is_action_pressed("modifier")):
+				rotate_view(-1)
+			else:
+				zoom_view(-2)
+		return
+	if (event is InputEventJoypadMotion) and Input.is_action_pressed("modifier"):
+		if (event.axis == JOY_AXIS_RIGHT_X):
+			if (event.axis_value == 1):
+				rotate_view(1)
+			elif (event.axis_value == -1):
+				rotate_view(-1)
+		elif (event.axis == JOY_AXIS_RIGHT_Y):
+			if (event.axis_value == -1):
+				zoom_in = true
+				zoom_out = false
+			elif (event.axis_value == 1):
+				zoom_out = true
+				zoom_in = false
+			else:
+				zoom_in = false
+				zoom_out = false
+				
+			
+func _unhandled_key_input(event):
+	if (event is InputEventKey) and Input.is_action_pressed("modifier"):
+		if (event.physical_keycode == KEY_UP):
+			if (event.pressed):
+				zoom_in = true
+			else:
+				zoom_in = false
+		elif (event.physical_keycode == KEY_DOWN):
+			if (event.pressed):
+				zoom_out = true
+			else:
+				zoom_out = false
+		elif (event.physical_keycode == KEY_LEFT) and not event.pressed:
+			rotate_view(-1)
+		elif (event.physical_keycode == KEY_RIGHT) and not event.pressed:
+			rotate_view(1)
+
 func _process(_delta):
 	if (GameState.paused): return
 	camera_pivot.position = object_to_follow.position
-	if Input.is_action_just_released("view_rotate_left") or (Input.is_action_pressed("modifier") and Input.is_action_just_released("view_left")):
-		rotate_view(1)
-		return
-	elif Input.is_action_just_released("view_rotate_right") or (Input.is_action_pressed("modifier") and Input.is_action_just_released("view_right")):
-		rotate_view(-1)
-		return
-	if  Input.is_action_pressed("view_zoomin") or (Input.is_action_pressed("modifier") and Input.is_action_pressed("view_up")):
-		zoom_view(-1)
-	elif Input.is_action_just_pressed("view_zoomin"):
-		zoom_view(-4)
-	elif Input.is_action_pressed("view_zoomout") or (Input.is_action_pressed("modifier") and Input.is_action_pressed("view_down")):
-		zoom_view(1)
-	elif Input.is_action_just_pressed("view_zoomout"):
-		zoom_view(4)
-		
+	if (zoom_in): zoom_view(-1)
+	if (zoom_out): zoom_view(1)
+
 func zoom_view(delta:int=0):
 	_size += delta
 	if (_size < 2): 
