@@ -200,7 +200,7 @@ func _clear_crafting():
 func _on_craft_pressed():
 	if (item == null) or crafting_items.find(item) != -1: return
 	var craft_item = item.duplicate()
-	if item is ItemMultiple:
+	if not (item is ItemMultiple):
 		item_content.visible = false
 	else:
 		craft_item.quantity = 1
