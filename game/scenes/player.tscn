@@ -695,7 +695,7 @@ size = Vector3(0.747548, 1.65919, 1.01283)
 size = Vector3(1, 1.13164, 0.252328)
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
-collision_layer = 0
+collision_layer = 512
 script = ExtResource("1_7my55")
 
 [node name="RootNode" type="Node3D" parent="."]
