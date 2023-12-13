@@ -26,9 +26,8 @@ CraftingRecipes="*res://lib/craft_recipes.gd"
 
 [display]
 
-window/size/viewport_width=1200
-window/size/viewport_height=600
-window/size/mode=3
+window/size/viewport_width=1600
+window/size/viewport_height=900
 window/size/initial_position_type=0
 mouse_cursor/custom_image="res://assets/cursors/png/cursor_default.png"
 mouse_cursor/tooltip_position_offset=Vector2(5, 22)
