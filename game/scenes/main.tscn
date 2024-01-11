@@ -434,6 +434,7 @@ icon_size = 32
 icon_name = "rotate-right"
 
 [node name="LabelInfo" type="Label" parent="Game/UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
