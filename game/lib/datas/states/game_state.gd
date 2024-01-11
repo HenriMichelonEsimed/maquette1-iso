@@ -25,7 +25,6 @@ func _ready():
 	for lang in Settings.langs:
 		if (lang == os_lang):
 			GameState.settings.lang = lang
-	loadGame(StateSaver.get_last())
 	TranslationServer.set_locale(GameState.settings.lang)
 
 func saveGame(savegame = null):

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Maquette 1 - ISO"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/menu_screen.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
@@ -28,8 +28,7 @@ CraftingRecipes="*res://lib/craft_recipes.gd"
 
 window/size/viewport_width=1600
 window/size/viewport_height=900
-window/size/mode=4
-window/size/initial_position_type=0
+window/size/mode=3
 mouse_cursor/custom_image="res://assets/cursors/png/cursor_default.png"
 mouse_cursor/tooltip_position_offset=Vector2(5, 22)
 

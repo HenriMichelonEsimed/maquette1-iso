@@ -33,10 +33,6 @@ var trading = false
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	_prev_lang = GameState.settings.lang
-	if get_viewport().size.x > 1920:
-		get_viewport().content_scale_factor = 2.2
-	elif get_viewport().size.x >= 7680 :
-		get_viewport().content_scale_factor = 3
 	NotifManager.connect("new_notification", _on_new_notification)
 	GameState.connect("saving_start", _on_saving_start)
 	GameState.connect("saving_end", _on_saving_end)
