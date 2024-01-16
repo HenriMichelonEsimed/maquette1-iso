@@ -44,22 +44,31 @@ grow_vertical = 2
 
 [node name="ButtonContinue" type="Button" parent="TextureRect/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../ButtonNewGame")
+focus_next = NodePath("../ButtonNewGame")
 theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = ExtResource("2_7fp35")
 text = "Continue"
 
 [node name="ButtonNewGame" type="Button" parent="TextureRect/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../ButtonContinue")
+focus_neighbor_bottom = NodePath("../ButtonQuit")
+focus_next = NodePath("../ButtonQuit")
+focus_previous = NodePath("../ButtonContinue")
 theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = ExtResource("2_7fp35")
 text = "New game"
 
 [node name="ButtonQuit" type="Button" parent="TextureRect/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../ButtonNewGame")
+focus_previous = NodePath("../ButtonNewGame")
 theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = ExtResource("2_7fp35")
 text = "Quit"
 
+[connection signal="focus_entered" from="TextureRect/VBoxContainer/ButtonContinue" to="." method="_on_button_continue_focus_entered"]
 [connection signal="pressed" from="TextureRect/VBoxContainer/ButtonContinue" to="." method="_on_button_continue_pressed"]
 [connection signal="pressed" from="TextureRect/VBoxContainer/ButtonNewGame" to="." method="_on_button_new_game_pressed"]
 [connection signal="pressed" from="TextureRect/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]

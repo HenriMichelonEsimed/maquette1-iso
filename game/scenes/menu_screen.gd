@@ -2,13 +2,12 @@ extends Control
 
 @onready var background:TextureRect = $TextureRect
 @onready var button_continue:Button = $TextureRect/VBoxContainer/ButtonContinue
+@onready var button_new:Button = $TextureRect/VBoxContainer/ButtonNewGame
 
 func _ready():
-	if get_viewport().size.x > 1920:
-		get_viewport().content_scale_factor = 2.2
-	elif get_viewport().size.x >= 7680 :
-		get_viewport().content_scale_factor = 3
 	button_continue.disabled = StateSaver.get_savegames().is_empty()
+	if (button_continue.disabled):
+		button_new.grab_focus()
 
 func _physics_process(delta):
 	var texture:NoiseTexture2D = background.texture
