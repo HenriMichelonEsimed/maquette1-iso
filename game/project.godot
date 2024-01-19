@@ -29,10 +29,14 @@ CraftingRecipes="*res://lib/craft_recipes.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=4
-window/stretch/mode="viewport"
-window/stretch/aspect="ignore"
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 mouse_cursor/custom_image="res://assets/cursors/png/cursor_default.png"
 mouse_cursor/tooltip_position_offset=Vector2(5, 22)
+
+[dotnet]
+
+project/assembly_name="Maquette 1 - ISO"
 
 [editor_plugins]
 
@@ -294,6 +298,4 @@ locale/translations=PackedStringArray("res://assets/i18n/main.fr.translation", "
 
 textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 1)
-anti_aliasing/quality/msaa_2d=1
-anti_aliasing/quality/msaa_3d=1
 anti_aliasing/quality/screen_space_aa=1
