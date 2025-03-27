@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cimht07s28gqk"]
 
-[ext_resource type="Script" path="res://lib/nodes/item_quest.gd" id="1_fy3ev"]
+[ext_resource type="Script" uid="uid://ejuq0p7on4m4" path="res://lib/nodes/item_quest.gd" id="1_fy3ev"]
 [ext_resource type="PackedScene" uid="uid://bbwoof00vefkc" path="res://assets/models/Misc/devit card.glb" id="2_4sy7g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u440j"]

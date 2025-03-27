@@ -1,10 +1,10 @@
 [gd_scene load_steps=16 format=3 uid="uid://b5d8gkjyrc4yn"]
 
-[ext_resource type="Script" path="res://scenes/trade_screen.gd" id="1_ixb2b"]
+[ext_resource type="Script" uid="uid://byx0nf53652oq" path="res://scenes/trade_screen.gd" id="1_ixb2b"]
 [ext_resource type="Texture2D" uid="uid://38qd58n3acbb" path="res://assets/textures/talkwindow.png" id="2_4aej3"]
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="3_kn1xy"]
 [ext_resource type="StyleBox" uid="uid://bmyh6yvafukya" path="res://assets/button_style.tres" id="4_ahejk"]
-[ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="5_114mb"]
+[ext_resource type="Script" uid="uid://rm5me2dmoo2g" path="res://addons/fontawesome/FontAwesomeButton.gd" id="5_114mb"]
 [ext_resource type="StyleBox" uid="uid://ml3osqlkwitw" path="res://assets/tabs_tab_style.tres" id="6_1uk07"]
 [ext_resource type="StyleBox" uid="uid://p34djr2fcs3w" path="res://assets/tabs_list_style.tres" id="7_322xj"]
 [ext_resource type="Material" uid="uid://k5r36wixdaow" path="res://assets/materials/misc/dark.tres" id="8_qg3ut"]

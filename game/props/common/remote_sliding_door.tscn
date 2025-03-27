@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://hwa1kwe6p5nm"]
 
-[ext_resource type="Script" path="res://lib/nodes/remote_usable.gd" id="1_p7d53"]
+[ext_resource type="Script" uid="uid://c3pwatxqte7lb" path="res://lib/nodes/remote_usable.gd" id="1_p7d53"]
 
 [sub_resource type="Animation" id="Animation_tv2k3"]
 length = 0.001
@@ -59,8 +59,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ctowf"]
 _data = {
-"RESET": SubResource("Animation_tv2k3"),
-"use": SubResource("Animation_2g2a1")
+&"RESET": SubResource("Animation_tv2k3"),
+&"use": SubResource("Animation_2g2a1")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_smurf"]

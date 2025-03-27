@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2a5is4heyefo"]
 
 [ext_resource type="PackedScene" uid="uid://0gxv7ku464wa" path="res://assets/models/Items/bread_1.glb" id="1_bq5hw"]
-[ext_resource type="Script" path="res://lib/nodes/item_consumable.gd" id="1_rp7t1"]
+[ext_resource type="Script" uid="uid://vqj3yluvohng" path="res://lib/nodes/item_consumable.gd" id="1_rp7t1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a7pms"]
 size = Vector3(0.0896204, 0.0661448, 0.174423)

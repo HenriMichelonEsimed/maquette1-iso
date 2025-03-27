@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://db3jowuq7tn73"]
 
-[ext_resource type="Script" path="res://lib/nodes/item_quest.gd" id="1_v1v60"]
+[ext_resource type="Script" uid="uid://ejuq0p7on4m4" path="res://lib/nodes/item_quest.gd" id="1_v1v60"]
 [ext_resource type="PackedScene" uid="uid://e3cjnhr87r1w" path="res://assets/models/Items/ring_1.glb" id="2_oioi1"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_l2ll3"]

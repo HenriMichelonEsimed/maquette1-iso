@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://dytjnya7i6c47"]
 
-[ext_resource type="Script" path="res://scenes/dialogs/select_quantity_dialog.gd" id="1_44m4o"]
+[ext_resource type="Script" uid="uid://dpusvsfqbvqpa" path="res://scenes/dialogs/select_quantity_dialog.gd" id="1_44m4o"]
 [ext_resource type="StyleBox" uid="uid://bmyh6yvafukya" path="res://assets/button_style.tres" id="2_255cs"]
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="2_v65ks"]
-[ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="4_yosnh"]
+[ext_resource type="Script" uid="uid://rm5me2dmoo2g" path="res://addons/fontawesome/FontAwesomeButton.gd" id="4_yosnh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_td7rj"]
 corner_radius_top_left = 12

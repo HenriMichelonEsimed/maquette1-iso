@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dl1gsdyu0b06w"]
 
-[ext_resource type="Script" path="res://props/lights/omni_light_bar.gd" id="1_p0e0v"]
+[ext_resource type="Script" uid="uid://crrwjnyebejs" path="res://props/lights/omni_light_bar.gd" id="1_p0e0v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_teybf"]
 albedo_color = Color(0.286275, 0.388235, 0.380392, 1)

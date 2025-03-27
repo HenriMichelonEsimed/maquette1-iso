@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://11l2j1hffkbj"]
 
-[ext_resource type="Script" path="res://scenes/controllers/controller.gd" id="1_4ok7v"]
+[ext_resource type="Script" uid="uid://546uiv455osk" path="res://scenes/controllers/controller.gd" id="1_4ok7v"]
 [ext_resource type="Texture2D" uid="uid://2ef3oxxx54bp" path="res://assets/textures/controllers/keyboard.png" id="2_3vvj2"]
 
 [node name="keyboard" type="Control"]

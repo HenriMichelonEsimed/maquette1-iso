@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=3 uid="uid://q1hey7m7lsk"]
 
 [ext_resource type="Texture2D" uid="uid://e05el4xtach4" path="res://assets/textures/smartphone.png" id="1_lcryf"]
-[ext_resource type="Script" path="res://scenes/terminal.gd" id="2_q88ae"]
+[ext_resource type="Script" uid="uid://bjkyinei5oxht" path="res://scenes/terminal.gd" id="2_q88ae"]
 [ext_resource type="Texture2D" uid="uid://bytoh414hh3ly" path="res://assets/textures/terminal2.png" id="3_lb5a7"]
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="4_8e451"]
-[ext_resource type="Script" path="res://addons/fontawesome/FontAwesome.gd" id="5_21y4x"]
+[ext_resource type="Script" uid="uid://bl7utyk4cn0gt" path="res://addons/fontawesome/FontAwesome.gd" id="5_21y4x"]
 [ext_resource type="StyleBox" uid="uid://ch6npjih63qbm" path="res://assets/button_terminal_style.tres" id="5_gyggl"]
-[ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="6_i6hcg"]
+[ext_resource type="Script" uid="uid://rm5me2dmoo2g" path="res://addons/fontawesome/FontAwesomeButton.gd" id="6_i6hcg"]
 [ext_resource type="StyleBox" uid="uid://bmyh6yvafukya" path="res://assets/button_style.tres" id="7_dcejo"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2iyyh"]

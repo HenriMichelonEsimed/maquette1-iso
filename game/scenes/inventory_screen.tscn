@@ -1,15 +1,15 @@
 [gd_scene load_steps=17 format=3 uid="uid://bamoxutsna6sx"]
 
-[ext_resource type="Script" path="res://scenes/inventory_screen.gd" id="1_0hce1"]
+[ext_resource type="Script" uid="uid://dp7uferk55bt2" path="res://scenes/inventory_screen.gd" id="1_0hce1"]
 [ext_resource type="Texture2D" uid="uid://38qd58n3acbb" path="res://assets/textures/talkwindow.png" id="2_vaajs"]
 [ext_resource type="Material" uid="uid://k5r36wixdaow" path="res://assets/materials/misc/dark.tres" id="2_xv7x3"]
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="3_q3qwn"]
-[ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="5_p36nm"]
+[ext_resource type="Script" uid="uid://rm5me2dmoo2g" path="res://addons/fontawesome/FontAwesomeButton.gd" id="5_p36nm"]
 [ext_resource type="StyleBox" uid="uid://ml3osqlkwitw" path="res://assets/tabs_tab_style.tres" id="6_1cyd3"]
 [ext_resource type="StyleBox" uid="uid://p34djr2fcs3w" path="res://assets/tabs_list_style.tres" id="6_vja64"]
 [ext_resource type="StyleBox" uid="uid://dqkjlrlj45ava" path="res://assets/style_titles.tres" id="8_frvtm"]
 [ext_resource type="StyleBox" uid="uid://bmyh6yvafukya" path="res://assets/button_style.tres" id="9_arycq"]
-[ext_resource type="Script" path="res://addons/fontawesome/FontAwesome.gd" id="9_tll54"]
+[ext_resource type="Script" uid="uid://bl7utyk4cn0gt" path="res://addons/fontawesome/FontAwesome.gd" id="9_tll54"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_825ag"]
 texture = ExtResource("2_vaajs")

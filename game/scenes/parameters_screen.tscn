@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://dg48h81de81wc"]
 
-[ext_resource type="Script" path="res://scenes/parameters_screen.gd" id="1_qcuah"]
+[ext_resource type="Script" uid="uid://6mphwy7ddf62" path="res://scenes/parameters_screen.gd" id="1_qcuah"]
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="2_3bvhh"]
 [ext_resource type="StyleBox" uid="uid://bmyh6yvafukya" path="res://assets/button_style.tres" id="3_bm84j"]
-[ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="4_18fut"]
+[ext_resource type="Script" uid="uid://rm5me2dmoo2g" path="res://addons/fontawesome/FontAwesomeButton.gd" id="4_18fut"]
 [ext_resource type="Texture2D" uid="uid://ytcljnydjest" path="res://assets/i18n/flags/en_UK.png" id="5_6hqpi"]
 [ext_resource type="PackedScene" uid="uid://dytjnya7i6c47" path="res://scenes/dialogs/select_quantity_dialog.tscn" id="5_36c0x"]
 [ext_resource type="Texture2D" uid="uid://dalqcbtvl8ffy" path="res://assets/i18n/flags/fr.png" id="6_tuqvp"]

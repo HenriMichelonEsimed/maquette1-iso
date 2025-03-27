@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://phtxrpdo5av2"]
 
-[ext_resource type="Script" path="res://lib/nodes/item_consumable.gd" id="1_o45ds"]
+[ext_resource type="Script" uid="uid://vqj3yluvohng" path="res://lib/nodes/item_consumable.gd" id="1_o45ds"]
 [ext_resource type="PackedScene" uid="uid://bmslj6e5qjhvt" path="res://assets/models/Items/pickles_1.glb" id="2_u50ku"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wx7qq"]

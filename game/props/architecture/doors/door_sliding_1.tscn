@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://c0b64m347r4gr"]
 
-[ext_resource type="Script" path="res://lib/nodes/usable.gd" id="1_a02bn"]
+[ext_resource type="Script" uid="uid://dypm0akw4c4dn" path="res://lib/nodes/usable.gd" id="1_a02bn"]
 [ext_resource type="Material" uid="uid://b86o0otc0cw0q" path="res://assets/materials/wood_051.tres" id="2_kyufv"]
 [ext_resource type="Material" uid="uid://dqaldtwgt7dp6" path="res://assets/materials/plastic_014A.tres" id="3_84wcp"]
 [ext_resource type="Material" uid="uid://bq24ptdvoql7j" path="res://assets/materials/diamond_plate.tres" id="3_t443d"]
@@ -113,8 +113,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2aydg"]
 _data = {
-"RESET": SubResource("Animation_ju2bl"),
-"use": SubResource("Animation_prrao")
+&"RESET": SubResource("Animation_ju2bl"),
+&"use": SubResource("Animation_prrao")
 }
 
 [node name="door_sliding_1" type="StaticBody3D"]

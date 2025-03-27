@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b4bb0em6i4goc"]
 
-[ext_resource type="Script" path="res://lib/nodes/storage.gd" id="1_obymx"]
+[ext_resource type="Script" uid="uid://cvbatluoi7r47" path="res://lib/nodes/storage.gd" id="1_obymx"]
 [ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://assets/materials/misc/orange.tres" id="2_c8evl"]
 [ext_resource type="Texture2D" uid="uid://ckvm8nths5jfv" path="res://assets/textures/misc/orange.png" id="2_n3fwf"]
 
@@ -64,8 +64,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xuj73"]
 _data = {
-"RESET": SubResource("Animation_8a0jt"),
-"use": SubResource("Animation_u5nsx")
+&"RESET": SubResource("Animation_8a0jt"),
+&"use": SubResource("Animation_u5nsx")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jsci6"]

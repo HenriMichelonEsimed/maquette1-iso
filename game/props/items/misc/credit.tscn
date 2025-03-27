@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://nebo4anbesm0"]
 
-[ext_resource type="Script" path="res://lib/nodes/item_miscellaneous.gd" id="1_5p0pu"]
+[ext_resource type="Script" uid="uid://b6psxdu0pnxsb" path="res://lib/nodes/item_miscellaneous.gd" id="1_5p0pu"]
 [ext_resource type="PackedScene" uid="uid://o5xlevfnixul" path="res://assets/models/Misc/gold coin.glb" id="2_nwtcq"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_evp8v"]

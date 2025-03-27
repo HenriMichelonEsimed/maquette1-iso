@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ceok8kdhp3vxq"]
 
-[ext_resource type="Script" path="res://zones/stations/STA1/admin_woman_1.gd" id="1_c52ht"]
+[ext_resource type="Script" uid="uid://bpds2fejeg608" path="res://zones/stations/STA1/admin_woman_1.gd" id="1_c52ht"]
 [ext_resource type="PackedScene" uid="uid://05srs73auu0f" path="res://characters/2/char_2.tscn" id="2_javro"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nlj0n"]

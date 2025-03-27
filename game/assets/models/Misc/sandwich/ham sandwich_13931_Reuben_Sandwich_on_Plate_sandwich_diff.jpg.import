@@ -2,14 +2,13 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byd3crx23fr2w"
+uid="uid://n1qanatlq4r2"
 path.s3tc="res://.godot/imported/ham sandwich_13931_Reuben_Sandwich_on_Plate_sandwich_diff.jpg-f1e94040d6b0b3cf864f0f6ed0ce041b.s3tc.ctex"
 path.etc2="res://.godot/imported/ham sandwich_13931_Reuben_Sandwich_on_Plate_sandwich_diff.jpg-f1e94040d6b0b3cf864f0f6ed0ce041b.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

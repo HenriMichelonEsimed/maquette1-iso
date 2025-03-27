@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://27sty830tukx"]
 
-[ext_resource type="Script" path="res://zones/stations/STA1/mysterious_man.gd" id="1_wq1xo"]
+[ext_resource type="Script" uid="uid://csnmi81hqisln" path="res://zones/stations/STA1/mysterious_man.gd" id="1_wq1xo"]
 [ext_resource type="PackedScene" uid="uid://dpaor4tfk11x" path="res://characters/3/char_3.tscn" id="2_livbq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_khdtm"]

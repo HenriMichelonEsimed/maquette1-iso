@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://crwblsoe85fgb"]
 
-[ext_resource type="Script" path="res://lib/nodes/remote_action.gd" id="1_7sftt"]
+[ext_resource type="Script" uid="uid://oit6hyoe78wq" path="res://lib/nodes/remote_action.gd" id="1_7sftt"]
 [ext_resource type="Material" uid="uid://btn1voqlgeo78" path="res://assets/materials/misc/orange.tres" id="2_05xqt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uj21a"]

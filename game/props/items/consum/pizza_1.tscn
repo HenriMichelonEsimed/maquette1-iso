@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c7derxdard3wp"]
 
 [ext_resource type="PackedScene" uid="uid://64ivjwxs5skn" path="res://assets/models/Items/pizza_1.glb" id="1_8ecj8"]
-[ext_resource type="Script" path="res://lib/nodes/item_consumable.gd" id="1_o7s2n"]
+[ext_resource type="Script" uid="uid://vqj3yluvohng" path="res://lib/nodes/item_consumable.gd" id="1_o7s2n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tvvvk"]
 size = Vector3(0.215913, 0.0653964, 0.319595)

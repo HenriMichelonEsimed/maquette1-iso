@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://dujfl0ljogwbx"]
 
-[ext_resource type="Script" path="res://scenes/dialogs/items_transfert_dialog.gd" id="1_b1cra"]
+[ext_resource type="Script" uid="uid://cghgy206slymg" path="res://scenes/dialogs/items_transfert_dialog.gd" id="1_b1cra"]
 [ext_resource type="PackedScene" uid="uid://dytjnya7i6c47" path="res://scenes/dialogs/select_quantity_dialog.tscn" id="2_ahwut"]
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="2_xy6rd"]
 [ext_resource type="StyleBox" uid="uid://bmyh6yvafukya" path="res://assets/button_style.tres" id="3_r5p5m"]
-[ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="4_r3gtb"]
+[ext_resource type="Script" uid="uid://rm5me2dmoo2g" path="res://addons/fontawesome/FontAwesomeButton.gd" id="4_r3gtb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25hsw"]
 bg_color = Color(0.505882, 0.701961, 0.854902, 0.839216)

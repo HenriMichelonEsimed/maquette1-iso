@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://qkckayiyvhkn"]
 
 [ext_resource type="Texture2D" uid="uid://d1r7esxh637qw" path="res://assets/textures/HUD/hud_move_normal.png" id="1_8yhw1"]
-[ext_resource type="Script" path="res://scenes/touch_move.gd" id="1_s8mho"]
+[ext_resource type="Script" uid="uid://cvfa7kn52nv6o" path="res://scenes/touch_move.gd" id="1_s8mho"]
 [ext_resource type="Texture2D" uid="uid://c3xoidbn30r61" path="res://assets/textures/HUD/hud_move_pressed.png" id="2_hilgi"]
 [ext_resource type="Texture2D" uid="uid://6xsn7o8iriqg" path="res://assets/textures/HUD/hud_move_sprite.png" id="3_yglml"]
 

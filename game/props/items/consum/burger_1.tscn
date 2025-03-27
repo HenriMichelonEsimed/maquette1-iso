@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://behaqdx0v4oy8"]
 
-[ext_resource type="Script" path="res://lib/nodes/item_consumable.gd" id="1_5aso1"]
+[ext_resource type="Script" uid="uid://vqj3yluvohng" path="res://lib/nodes/item_consumable.gd" id="1_5aso1"]
 [ext_resource type="PackedScene" uid="uid://c048fbv1ucn7n" path="res://assets/models/Items/burger_1.glb" id="2_nlwxf"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4lb7p"]

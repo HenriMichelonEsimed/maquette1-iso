@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ctbw7kil8lw7k"]
 
-[ext_resource type="Script" path="res://zones/stations/STA1/waiter.gd" id="1_av54p"]
+[ext_resource type="Script" uid="uid://cl3p2l6b446pr" path="res://zones/stations/STA1/waiter.gd" id="1_av54p"]
 [ext_resource type="PackedScene" uid="uid://bprbccvw74dlh" path="res://characters/1/char_1.glb" id="2_rllrt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_svw2g"]

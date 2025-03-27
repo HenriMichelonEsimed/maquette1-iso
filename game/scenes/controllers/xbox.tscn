@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dlrg8w3bbwoiu"]
 
 [ext_resource type="Texture2D" uid="uid://bashug3n1pu67" path="res://assets/textures/controllers/xbox.png" id="1_3q30e"]
-[ext_resource type="Script" path="res://scenes/controllers/controller.gd" id="1_x13gl"]
+[ext_resource type="Script" uid="uid://546uiv455osk" path="res://scenes/controllers/controller.gd" id="1_x13gl"]
 
 [node name="xbox" type="Control"]
 layout_mode = 3

@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="1_2i1p5"]
 [ext_resource type="StyleBox" uid="uid://bmyh6yvafukya" path="res://assets/button_style.tres" id="2_5rmss"]
-[ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="3_k1wj6"]
+[ext_resource type="Script" uid="uid://rm5me2dmoo2g" path="res://addons/fontawesome/FontAwesomeButton.gd" id="3_k1wj6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i8d07"]
 bg_color = Color(0.423529, 0.635294, 0.8, 0.67451)

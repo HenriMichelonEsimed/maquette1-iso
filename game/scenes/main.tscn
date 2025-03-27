@@ -1,17 +1,17 @@
 [gd_scene load_steps=25 format=3 uid="uid://dyj5pxcv4nq84"]
 
-[ext_resource type="Script" path="res://scenes/main.gd" id="1_4sx3e"]
+[ext_resource type="Script" uid="uid://bdamb55ima45q" path="res://scenes/main.gd" id="1_4sx3e"]
 [ext_resource type="PackedScene" uid="uid://drr16dfcqhfyw" path="res://scenes/player.tscn" id="1_hswq3"]
-[ext_resource type="Script" path="res://scenes/camera.gd" id="2_b0j3s"]
+[ext_resource type="Script" uid="uid://cohw2sltkr1xk" path="res://scenes/camera.gd" id="2_b0j3s"]
 [ext_resource type="Environment" uid="uid://730uhqlxrn44" path="res://env.tres" id="2_dhum8"]
 [ext_resource type="PackedScene" uid="uid://c4mbdc0ejm2ot" path="res://scenes/view_pivot.tscn" id="3_7bgj5"]
 [ext_resource type="PackedScene" uid="uid://qkckayiyvhkn" path="res://scenes/touch_move.tscn" id="5_asao4"]
 [ext_resource type="StyleBox" uid="uid://bmyh6yvafukya" path="res://assets/button_style.tres" id="5_ki3d2"]
-[ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="6_2kw7t"]
+[ext_resource type="Script" uid="uid://rm5me2dmoo2g" path="res://addons/fontawesome/FontAwesomeButton.gd" id="6_2kw7t"]
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="6_5m64j"]
 [ext_resource type="PackedScene" uid="uid://wpu71sh5k21k" path="res://scenes/touch_view.tscn" id="6_essw5"]
 [ext_resource type="Texture2D" uid="uid://38qd58n3acbb" path="res://assets/textures/talkwindow.png" id="7_le7i5"]
-[ext_resource type="Script" path="res://addons/fontawesome/FontAwesome.gd" id="8_ww8at"]
+[ext_resource type="Script" uid="uid://bl7utyk4cn0gt" path="res://addons/fontawesome/FontAwesome.gd" id="8_ww8at"]
 
 [sub_resource type="FontVariation" id="FontVariation_y25ao"]
 variation_embolden = 1.0

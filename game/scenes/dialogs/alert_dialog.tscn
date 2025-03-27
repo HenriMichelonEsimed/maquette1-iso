@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://cc7nc5nncmkua"]
 
-[ext_resource type="Script" path="res://scenes/dialogs/alert_dialog.gd" id="1_gpx26"]
+[ext_resource type="Script" uid="uid://dqhri46kdkwbp" path="res://scenes/dialogs/alert_dialog.gd" id="1_gpx26"]
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="2_hbjlj"]
 [ext_resource type="StyleBox" uid="uid://bmyh6yvafukya" path="res://assets/button_style.tres" id="2_p35bo"]
-[ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="4_mmsq2"]
+[ext_resource type="Script" uid="uid://rm5me2dmoo2g" path="res://addons/fontawesome/FontAwesomeButton.gd" id="4_mmsq2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25hsw"]
 bg_color = Color(0.505882, 0.701961, 0.854902, 0.839216)

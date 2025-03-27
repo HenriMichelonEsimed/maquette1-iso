@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://8j32ello7u56"]
 
-[ext_resource type="Script" path="res://scenes/menu_screen.gd" id="1_8wkod"]
+[ext_resource type="Script" uid="uid://c3l0lwj4ck5q4" path="res://scenes/menu_screen.gd" id="1_8wkod"]
 [ext_resource type="StyleBox" uid="uid://bmyh6yvafukya" path="res://assets/button_style.tres" id="2_7fp35"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_m4x5d"]

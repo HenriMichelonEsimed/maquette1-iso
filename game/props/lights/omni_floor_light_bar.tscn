@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://blttosmy6qdp7"]
 
-[ext_resource type="Script" path="res://props/lights/omni_light_bar.gd" id="1_fjxv0"]
+[ext_resource type="Script" uid="uid://crrwjnyebejs" path="res://props/lights/omni_light_bar.gd" id="1_fjxv0"]
 [ext_resource type="Material" uid="uid://bq24ptdvoql7j" path="res://assets/materials/diamond_plate.tres" id="2_1oy4g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_usuwu"]

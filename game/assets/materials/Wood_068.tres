@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bsgjl4hk6aqqf" path="res://assets/textures/Wood068_1K-JPG/Wood068_1K-JPG_Roughness.jpg" id="3_wbvew"]
 
 [resource]
+albedo_color = Color(0.680207, 0.315267, 0.292146, 1)
 albedo_texture = ExtResource("1_16x2y")
 roughness_texture = ExtResource("3_wbvew")
 normal_texture = ExtResource("2_t5qla")

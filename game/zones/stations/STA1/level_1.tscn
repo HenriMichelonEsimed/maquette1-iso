@@ -1,15 +1,15 @@
 [gd_scene load_steps=12 format=3 uid="uid://bke2hthw8fuoy"]
 
 [ext_resource type="Material" uid="uid://b4exwi2bgnbom" path="res://assets/materials/architecture/floor_2.tres" id="1_thkep"]
-[ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_tjs2w"]
+[ext_resource type="Script" uid="uid://cbgg88irc3kyb" path="res://lib/nodes/zone.gd" id="1_tjs2w"]
 [ext_resource type="PackedScene" uid="uid://brix30ocniwym" path="res://props/lights/omni_led_1.tscn" id="2_ohn6l"]
 [ext_resource type="PackedScene" uid="uid://23c376lwmywd" path="res://props/architecture/walls/wall_2_ext_corner_ext.tscn" id="3_7soyj"]
 [ext_resource type="PackedScene" uid="uid://bb6xlwamakagk" path="res://props/architecture/walls/wall_2_ext.tscn" id="4_b2a56"]
 [ext_resource type="PackedScene" uid="uid://c0b64m347r4gr" path="res://props/architecture/doors/door_sliding_1.tscn" id="5_7e415"]
 [ext_resource type="PackedScene" uid="uid://27sty830tukx" path="res://zones/stations/STA1/mysterious_man.tscn" id="7_ucs8j"]
-[ext_resource type="Script" path="res://zones/stations/STA1/mysterious_man.gd" id="8_n57mg"]
+[ext_resource type="Script" uid="uid://csnmi81hqisln" path="res://zones/stations/STA1/mysterious_man.gd" id="8_n57mg"]
 [ext_resource type="PackedScene" uid="uid://d0185cw36cxe0" path="res://props/furnitures/desk_1_long.tscn" id="9_eqq4t"]
-[ext_resource type="Script" path="res://zones/stations/STA1/SpawnPointHall2FromHall.gd" id="10_lbufr"]
+[ext_resource type="Script" uid="uid://bi3d6l3131g6v" path="res://zones/stations/STA1/SpawnPointHall2FromHall.gd" id="10_lbufr"]
 [ext_resource type="PackedScene" uid="uid://btdkocrw70s4u" path="res://lib/nodes/zone_change_trigger.tscn" id="11_0odjv"]
 
 [node name="Hall2" type="Node3D"]
