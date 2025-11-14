@@ -15,9 +15,11 @@ dest_files=["res://.godot/imported/wall_2_pillard.glb-0fb58d9c70a873641e64abaea0
 
 nodes/root_type="StaticBody3D"
 nodes/root_name="Wall_2_pillard"
+nodes/root_script=null
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -32,15 +34,20 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
 _subresources={
 "materials": {
 "Wall_2_core": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/materials/architecture/wall_1_core.tres"
+"use_external/fallback_path": "res://assets/materials/architecture/wall_1_core.tres",
+"use_external/path": "uid://dhhedq0nx4ymi"
 },
 "Wall_2_deco": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/materials/architecture/wall_1_deco.tres"
+"use_external/fallback_path": "res://assets/materials/architecture/wall_1_deco.tres",
+"use_external/path": "uid://bt7ro860t6qq8"
 }
 }
 }

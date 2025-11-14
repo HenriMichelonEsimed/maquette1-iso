@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Maquette 1 - ISO"
 run/main_scene="res://scenes/menu_screen.tscn"
-config/features=PackedStringArray("4.4", "Mobile")
+config/features=PackedStringArray("4.5", "Mobile")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 run/size/mode=3

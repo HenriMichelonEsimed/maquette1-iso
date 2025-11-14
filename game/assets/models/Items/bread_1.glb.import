@@ -15,9 +15,11 @@ dest_files=["res://.godot/imported/bread_1.glb-156c86f28950f44d1584181c72649c9f.
 
 nodes/root_type="Node3D"
 nodes/root_name="Bread1"
+nodes/root_script=null
 nodes/apply_root_scale=true
 nodes/root_scale=0.1
 nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -32,11 +34,15 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
 _subresources={
 "materials": {
 "Material.001": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/models/Items/bread.tres"
+"use_external/fallback_path": "res://assets/models/Items/bread.tres",
+"use_external/path": "uid://ckdsugkgw3yl0"
 }
 }
 }
